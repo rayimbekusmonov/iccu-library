@@ -1,0 +1,486 @@
+<!doctype html>
+<html lang="uz">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ICCU Library</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="sr-only" href="#main">Kontentga o'tish</a>
+
+  <!-- ══════════════ TOPBAR ══════════════ -->
+  <header class="topbar">
+    <button class="brand" type="button" onclick="showPage('home')" aria-label="Bosh sahifaga o'tish">
+      <span class="logo-slot" id="logo-slot">
+        <!-- <img src="logo.png" alt="ICCU logo"> -->
+        Logo
+      </span>
+      <span>
+        <span class="brand-title">ICCU Library</span>
+        <span class="brand-subtitle" data-t="brandSubtitle">Islom sivilizatsiyasi kutubxonasi</span>
+      </span>
+    </button>
+
+    <nav class="nav" aria-label="Asosiy menyu">
+      <button class="nav-link active" id="nav-home"     type="button" onclick="showPage('home')"     data-t="navHome">Bosh sahifa</button>
+      <button class="nav-link"        id="nav-discover" type="button" onclick="showPage('discover')" data-t="navDiscover">Fondlar</button>
+      <button class="nav-link"        id="nav-services" type="button" onclick="showPage('services')" data-t="navServices">Xizmatlar</button>
+      <button class="nav-link"        id="nav-visit"    type="button" onclick="showPage('visit')"    data-t="navVisit">Tashrif</button>
+      <button class="nav-link"        id="nav-about"    type="button" onclick="showPage('about')"    data-t="navAbout">Haqida</button>
+      <button class="nav-link"        id="nav-partners" type="button" onclick="showPage('partners')" data-t="navPartners">Hamkorlar</button>
+      <a class="btn-kirish" href="http://elibrary.cisc.uz:8080/" target="_blank" rel="noopener" data-t="navKirish">Kirish ↗</a>
+    </nav>
+
+    <!-- Language dropdown -->
+    <div class="lang-wrap">
+      <button class="lang-trigger" id="lang-trigger" type="button" onclick="toggleLangMenu()" aria-haspopup="listbox" aria-expanded="false">
+        <span class="lang-flag lt-flag">🇺🇿</span>
+        <span class="lt-label">O'zbek</span>
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8">
+          <path d="M1 1l4 4 4-4"/>
+        </svg>
+      </button>
+      <div class="lang-menu" id="lang-menu" role="listbox">
+        <button class="lang-option active" type="button" onclick="setLang('uz')"><span class="lang-flag">🇺🇿</span> O'zbek</button>
+        <button class="lang-option"        type="button" onclick="setLang('en')"><span class="lang-flag">🇬🇧</span> English</button>
+        <button class="lang-option"        type="button" onclick="setLang('ru')"><span class="lang-flag">🇷🇺</span> Русский</button>
+        <button class="lang-option"        type="button" onclick="setLang('tr')"><span class="lang-flag">🇹🇷</span> Türkçe</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- ══════════════ HOME ══════════════ -->
+    <section class="page active" id="page-home">
+
+      <!-- HERO -->
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-slides" aria-hidden="true">
+          <div class="hero-slide"></div>
+          <div class="hero-slide"></div>
+          <div class="hero-slide"></div>
+          <div class="hero-slide"></div>
+        </div>
+        <div class="hero-dots" aria-hidden="true">
+          <button class="hero-dot active" type="button"></button>
+          <button class="hero-dot"        type="button"></button>
+          <button class="hero-dot"        type="button"></button>
+          <button class="hero-dot"        type="button"></button>
+        </div>
+        <div class="container hero-content">
+          <div>
+            <div class="eyebrow" data-t="heroEyebrow">Raqamli meros platformasi</div>
+            <h1 id="hero-title" data-t="heroTitle">Islom sivilizatsiyasi manbalarini zamonaviy formatda kashf eting.</h1>
+            <p class="hero-copy" data-t="heroCopy">ICCU kutubxonasi qo'lyozmalar, kitoblar, ma'ruzalar, tadbirlar va tashrif xizmatlarini yagona qulay platformada birlashtiradi.</p>
+            <div class="hero-actions">
+              <a class="primary-button" href="https://e-library.cisc.uz" target="_blank" rel="noopener" data-t="heroPrimary">Resurslardan qidirish</a>
+              <button class="secondary-button" type="button" onclick="scrollToSection('home-news')" data-t="heroSecondary">Yangiliklarni ko'rish</button>
+            </div>
+          </div>
+          <aside class="hero-stats">
+            <div class="stat"><strong>120K+</strong><span data-t="statBooks">Kitoblar</span></div>
+            <div class="stat"><strong>15K+</strong><span data-t="statManuscripts">Qo'lyozmalar</span></div>
+            <div class="stat"><strong>8K+</strong><span data-t="statJournals">Jurnallar</span></div>
+            <div class="stat"><strong>24/7</strong><span data-t="statAccess">Onlayn kirish</span></div>
+          </aside>
+        </div>
+      </section>
+
+      <!-- NEWS -->
+      <section class="section alt" id="home-news">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <div class="section-kicker" data-t="updatesKicker">Yangiliklar</div>
+              <h2 class="section-title" data-t="newsTitle">So'nggi yangiliklar va e'lonlar</h2>
+              <p class="section-subtitle" data-t="newsSubtitle">Platformadagi muhim yangilanishlar, tadbirlar va hamkorliklar.</p>
+            </div>
+          </div>
+          <div class="grid news">
+            <article class="news-card featured" tabindex="0" role="button"
+              onclick="openNews(0)" onkeydown="cardKey(event, () => openNews(0))">
+              <div class="news-art" style="--art-color:#1a5e43"></div>
+              <div class="news-body">
+                <span class="news-tag" data-t="newsTag1">E'lon</span>
+                <h3 data-t="newsHeadline1">Usmoniylar davriga oid 3 000 qo'lyozma raqamli arxivga joylandi</h3>
+                <p data-t="newsText1">Yangi fond tadqiqotchilar uchun metadata va kirish so'rovlari bilan taqdim etildi.</p>
+                <div class="date">2 iyun 2026</div>
+              </div>
+            </article>
+            <article class="news-card" tabindex="0" role="button"
+              onclick="openNews(1)" onkeydown="cardKey(event, () => openNews(1))">
+              <div class="news-art" style="--art-color:#1e4d7a"></div>
+              <div class="news-body">
+                <span class="news-tag" data-t="newsTag2">Tadbir</span>
+                <h3 data-t="newsHeadline2">Islom sivilizatsiyasi tadqiqotlari konferensiyasiga ro'yxat ochildi</h3>
+                <p data-t="newsText2">Ma'ruzalar, seminarlar va fondlar bo'yicha maxsus sessiyalar rejalashtirilgan.</p>
+                <div class="date">28 may 2026</div>
+              </div>
+            </article>
+            <article class="news-card" tabindex="0" role="button"
+              onclick="openNews(2)" onkeydown="cardKey(event, () => openNews(2))">
+              <div class="news-art" style="--art-color:#6b3b2a"></div>
+              <div class="news-body">
+                <span class="news-tag" data-t="newsTag3">Hamkorlik</span>
+                <h3 data-t="newsHeadline3">ICCU Istanbul universiteti kutubxonasi bilan hamkorlikni boshladi</h3>
+                <p data-t="newsText3">Hamkorlik qo'shma kataloglash, almashinuv va raqamlashtirish yo'nalishlarini qamrab oladi.</p>
+                <div class="date">20 may 2026</div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- QUICK SERVICES -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <div class="section-kicker" data-t="quickKicker">Tezkor xizmatlar</div>
+              <h2 class="section-title" data-t="quickTitle">Foydalanuvchi uchun asosiy yo'nalishlar</h2>
+              <p class="section-subtitle" data-t="quickSubtitle">Katalog, qo'lyozmalar, tashrif va kutubxonachi yordami qisqa yo'l bilan.</p>
+            </div>
+            <button class="secondary-button" type="button" onclick="showPage('services')" data-t="viewAll">Hammasini ko'rish</button>
+          </div>
+          <div class="grid services">
+            <article class="card"><div class="card-icon">📜</div><h3 data-t="qs1Title">Raqamli qo'lyozmalar</h3><p data-t="qs1Text">Nodir manbalar uchun ko'rish va ruxsat so'rovi jarayoni.</p></article>
+            <article class="card"><div class="card-icon">📚</div><h3 data-t="qs2Title">Kutubxonachi yordami</h3><p data-t="qs2Text">Tadqiqot mavzusi, manba topish va bibliografiya bo'yicha yordam.</p></article>
+            <article class="card"><div class="card-icon">🏛</div><h3 data-t="qs3Title">Tashrifni rejalash</h3><p data-t="qs3Text">Ish vaqti, o'qish zali va maxsus fondlardan foydalanish tartibi.</p></article>
+          </div>
+        </div>
+      </section>
+
+      <!-- PROJECTS -->
+      <section class="section alt">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <div class="section-kicker" data-t="projectsKicker">Platforma loyihalari</div>
+              <h2 class="section-title" data-t="projectsTitle">Faol raqamli kutubxona tashabbuslari</h2>
+              <p class="section-subtitle" data-t="projectsSubtitle">Kutubxonani kundalik tadqiqot platformasiga aylantiradigan amaliy yo'nalishlar.</p>
+            </div>
+          </div>
+          <div class="grid projects">
+            <article class="project-card" style="--project-color:#1a5e43">
+              <span class="project-status" data-t="project1Status">Jarayonda</span>
+              <h3 data-t="project1Title">Qo'lyozmalarni raqamlashtirish</h3>
+              <p data-t="project1Text">Suratga olish, metadata, konservatsiya qaydlari va kirish so'rovlarini bitta jarayonga yig'ish.</p>
+            </article>
+            <article class="project-card" style="--project-color:#1e4d7a">
+              <span class="project-status" data-t="project2Status">Pilot</span>
+              <h3 data-t="project2Title">Tadqiqotchi kabineti</h3>
+              <p data-t="project2Text">Saqlangan qidiruvlar, o'qish ro'yxatlari va material so'rovlari uchun shaxsiy hudud.</p>
+            </article>
+            <article class="project-card" style="--project-color:#6b3b2a">
+              <span class="project-status" data-t="project3Status">Jonli arxiv</span>
+              <h3 data-t="project3Title">Ma'ruza va tadbirlar arxivi</h3>
+              <p data-t="project3Text">Videolar, transkriptlar va o'quv yo'llarini fondlar bilan bog'lash.</p>
+            </article>
+            <article class="project-card" style="--project-color:#c8a45d">
+              <span class="project-status" data-t="project4Status">Keyingi reliz</span>
+              <h3 data-t="project4Title">Tashrif va xona band qilish</h3>
+              <p data-t="project4Text">O'qish zali o'rinlari, maxsus fond uchrashuvlari va tashrif rejasini boshqarish.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIDEOS -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <div>
+              <div class="section-kicker" data-t="videosKicker">Multimedia</div>
+              <h2 class="section-title" data-t="videosTitle">Video ma'ruzalar</h2>
+              <p class="section-subtitle" data-t="videosSubtitle">Video bosilganda focus mode ochiladi.</p>
+            </div>
+          </div>
+          <div class="grid videos">
+            <article class="video-card" tabindex="0" role="button" onclick="openVideo(0)" onkeydown="cardKey(event,()=>openVideo(0))">
+              <div class="video-thumb" style="--video-color:#0f3527"><span class="play-icon">▶</span></div>
+              <div class="video-body"><h3 data-t="video1Title">Ipak yo'li sivilizatsiyalari tarixi</h3><p data-t="video1Meta">42 daqiqa</p></div>
+            </article>
+            <article class="video-card" tabindex="0" role="button" onclick="openVideo(1)" onkeydown="cardKey(event,()=>openVideo(1))">
+              <div class="video-thumb" style="--video-color:#1e4d7a"><span class="play-icon">▶</span></div>
+              <div class="video-body"><h3 data-t="video2Title">Al-Beruniy: Xorazmning qomusiy olimi</h3><p data-t="video2Meta">38 daqiqa</p></div>
+            </article>
+            <article class="video-card" tabindex="0" role="button" onclick="openVideo(2)" onkeydown="cardKey(event,()=>openVideo(2))">
+              <div class="video-thumb" style="--video-color:#6b3b2a"><span class="play-icon">▶</span></div>
+              <div class="video-body"><h3 data-t="video3Title">Xattotlik va islom qo'lyozmalari</h3><p data-t="video3Meta">51 daqiqa</p></div>
+            </article>
+            <article class="video-card" tabindex="0" role="button" onclick="openVideo(3)" onkeydown="cardKey(event,()=>openVideo(3))">
+              <div class="video-thumb" style="--video-color:#1a5e43"><span class="play-icon">▶</span></div>
+              <div class="video-body"><h3 data-t="video4Title">Nozik arxiv materiallarini saqlash</h3><p data-t="video4Meta">26 daqiqa</p></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+    </section><!-- /page-home -->
+
+    <!-- ══════════════ NEWS DETAIL ══════════════ -->
+    <section class="page" id="page-news-detail">
+      <div class="container">
+        <header class="page-header">
+          <div>
+            <div class="section-kicker" data-t="newsDetailKicker">Yangilik</div>
+            <h2 class="page-title" id="detail-title">Yangilik</h2>
+            <p class="page-subtitle" id="detail-date"></p>
+          </div>
+          <button class="secondary-button" type="button"
+            onclick="showPage('home'); scrollToSection('home-news')" data-t="backNews">Yangiliklarga qaytish</button>
+        </header>
+        <div class="detail-layout">
+          <article class="article-panel">
+            <span class="news-tag" id="detail-tag"></span>
+            <h2 id="detail-heading"></h2>
+            <p id="detail-body"></p>
+            <p id="detail-extra"></p>
+          </article>
+          <aside class="side-panel">
+            <h3 data-t="detailSideTitle">Aloqador yo'nalishlar</h3>
+            <p data-t="detailSideText">Bu yangilik fondlar, tadqiqotchi kabineti va raqamlashtirish jarayonlari bilan bog'liq.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════ DISCOVER ══════════════ -->
+    <section class="page" id="page-discover">
+      <div class="container">
+        <header class="page-header">
+          <div>
+            <div class="section-kicker" data-t="discoverKicker">Fondlar</div>
+            <h2 class="page-title" data-t="discoverTitle">Kutubxona fondlari</h2>
+            <p class="page-subtitle" data-t="discoverSubtitle">Katalog, qo'lyozmalar, mualliflar, raqamli ko'rgazmalar va tavsiya ro'yxatlari.</p>
+          </div>
+        </header>
+        <div class="grid discover">
+          <article class="card"><div class="card-icon">📖</div><h3 data-t="d1Title">Onlayn katalog</h3><p data-t="d1Text">Kitoblar, mualliflar, mavzular va identifikatorlar.</p></article>
+          <article class="card"><div class="card-icon">📜</div><h3 data-t="d2Title">Qo'lyozmalar</h3><p data-t="d2Text">Nodir manbalar va raqamli kirish qaydlari.</p></article>
+          <article class="card" style="cursor:pointer" onclick="window.open('https://allomalar.uz','_blank')">
+            <div class="card-icon">🧑‍🎓</div>
+            <h3 data-t="d3Title">Allomalar</h3>
+            <p data-t="d3Text">Allomalar.uz bilan bog'langan ma'lumot yo'nalishi.</p>
+          </article>
+          <article class="card" style="cursor:pointer" onclick="window.open('https://manbalar.uz','_blank')">
+            <div class="card-icon">📂</div>
+            <h3 data-t="d4Title">Manbalar</h3>
+            <p data-t="d4Text">Manbalar.uz resurslari uchun tezkor yo'nalish.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════ SERVICES ══════════════ -->
+    <section class="page" id="page-services">
+      <div class="container">
+        <header class="page-header">
+          <div>
+            <div class="section-kicker" data-t="servicesKicker">Xizmatlar</div>
+            <h2 class="page-title" data-t="servicesTitle">Kutubxona xizmatlari</h2>
+            <p class="page-subtitle" data-t="servicesSubtitle">Tadqiqot, tashrif, raqamli fondlar va hamkorlik jarayonlari uchun xizmatlar.</p>
+          </div>
+        </header>
+        <div class="grid services">
+          <article class="card"><div class="card-icon">📚</div><h3 data-t="svc1Title">Kutubxonachidan yordam</h3><p data-t="svc1Text">Manba tanlash, bibliografiya va tadqiqot yo'nalishi bo'yicha maslahat.</p></article>
+          <article class="card"><div class="card-icon">📋</div><h3 data-t="svc2Title">Maxsus fond so'rovi</h3><p data-t="svc2Text">Qo'lyozma yoki nodir materialni ko'rish uchun oldindan so'rov.</p></article>
+          <article class="card"><div class="card-icon">🤝</div><h3 data-t="svc3Title">Hamkorlik</h3><p data-t="svc3Text">Universitetlar, kutubxonalar va ilmiy markazlar bilan qo'shma loyihalar.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════ VISIT ══════════════ -->
+    <section class="page" id="page-visit">
+      <div class="container">
+        <header class="page-header">
+          <div>
+            <div class="section-kicker" data-t="visitKicker">Tashrif</div>
+            <h2 class="page-title" data-t="visitTitle">Tashrifingizni rejalang</h2>
+            <p class="page-subtitle" data-t="visitSubtitle">Ish vaqti, manzil va o'qish zali qoidalari.</p>
+          </div>
+        </header>
+        <div class="visit-grid">
+          <article class="info-card"><h3 data-t="hoursTitle">Ish vaqti</h3><ul class="info-list"><li data-t="weekday">Dushanba – juma: 09:00 – 18:00</li><li data-t="weekend">Shanba – yakshanba: 10:00 – 16:00</li><li data-t="holidays">Bayram kunlari: yopiq</li></ul></article>
+          <article class="info-card"><h3 data-t="contactTitle">Aloqa va manzil</h3><ul class="info-list"><li data-t="address">Manzil: Toshkent, O'zbekiston</li><li data-t="email">Email: library@iccu.example</li><li data-t="phone">Telefon: +998 00 000 00 00</li></ul></article>
+          <article class="info-card"><h3 data-t="rulesTitle">Kutubxona qoidalari</h3><ul class="info-list"><li data-t="rule1">O'qish zallarida tinchlikni saqlang.</li><li data-t="rule2">Oziq-ovqat va ichimliklar fond hududiga olib kirilmaydi.</li><li data-t="rule3">Qo'lyozmalarni suratga olish uchun ruxsat kerak.</li></ul></article>
+          <article class="info-card"><h3 data-t="beforeTitle">Kelishdan oldin</h3><p data-t="beforeText">Shaxsni tasdiqlovchi hujjat olib keling va nodir materiallarni oldindan band qiling.</p></article>
+          <div class="map" data-t="mapText">Interaktiv xarita maydoni</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════ ABOUT ══════════════ -->
+    <section class="page" id="page-about">
+      <div class="container">
+        <header class="page-header">
+          <div>
+            <div class="section-kicker" data-t="aboutKicker">Haqida</div>
+            <h2 class="page-title" data-t="aboutTitle">Kutubxona haqida</h2>
+            <p class="page-subtitle" data-t="aboutSubtitle">ICCU kutubxonasi islom sivilizatsiyasi merosini saqlash, o'rganish va keng jamoatchilikka yetkazishga xizmat qiladi.</p>
+          </div>
+        </header>
+        <div class="about-grid">
+          <article class="info-card"><h3 data-t="mission1Title">Saqlash</h3><p data-t="mission1Text">Nodir qo'lyozmalar va kitoblarni raqamlashtirish hamda konservatsiya qilish.</p></article>
+          <article class="info-card"><h3 data-t="mission2Title">Kirish</h3><p data-t="mission2Text">Talabalar, tadqiqotchilar va keng jamoatchilik uchun ochiq bilim yo'llarini yaratish.</p></article>
+        </div>
+        <div class="faq">
+          <div class="faq-item">
+            <button class="faq-question" type="button" onclick="toggleFaq('faq1',this)">
+              <span data-t="faq1Q">O'quvchi kartasini qanday olaman?</span><span>+</span>
+            </button>
+            <div class="faq-answer" id="faq1" data-t="faq1A">Ro'yxatdan o'tish bo'limiga shaxsni tasdiqlovchi hujjat bilan murojaat qiling.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" type="button" onclick="toggleFaq('faq2',this)">
+              <span data-t="faq2Q">Raqamli resurslarga uydan kira olamanmi?</span><span>+</span>
+            </button>
+            <div class="faq-answer" id="faq2" data-t="faq2A">Ko'plab raqamli resurslar onlayn mavjud, ayrim bazalar akkaunt talab qiladi.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ══════════════ PARTNERS ══════════════ -->
+    <section class="page" id="page-partners">
+      <div class="container">
+        <header class="page-header">
+          <div>
+            <div class="section-kicker" data-t="partnersKicker">Hamkorlar</div>
+            <h2 class="page-title" data-t="partnersTitle">Ishonchli hamkorlar</h2>
+            <p class="page-subtitle" data-t="partnersSubtitle">Birgalikda ilmiy va raqamli meros sohasidagi ishlarni rivojlantirmoqdamiz.</p>
+          </div>
+        </header>
+        <div class="partners-track">
+          <!-- Logo bo'lsa: <img src="partners/org1.png" alt="Org name"> -->
+          <div class="partner-card"><div class="partner-logo-ph">ISESCO</div><div class="partner-name">ISESCO</div></div>
+          <div class="partner-card"><div class="partner-logo-ph">UNESCO</div><div class="partner-name">UNESCO</div></div>
+          <div class="partner-card"><div class="partner-logo-ph">IRCICA</div><div class="partner-name">IRCICA</div></div>
+          <div class="partner-card"><div class="partner-logo-ph">Istanbul U.</div><div class="partner-name">Istanbul Universiteti</div></div>
+          <div class="partner-card"><div class="partner-logo-ph">NUUz</div><div class="partner-name">O'zMU</div></div>
+          <div class="partner-card"><div class="partner-logo-ph">INION RAS</div><div class="partner-name">INION RAS</div></div>
+          <div class="partner-card"><div class="partner-logo-ph">BNF</div><div class="partner-name">Bibliothèque nationale de France</div></div>
+          <div class="partner-card"><div class="partner-logo-ph">LOC</div><div class="partner-name">Library of Congress</div></div>
+          <div class="partner-card"><div class="partner-logo-ph">TLFF</div><div class="partner-name">Turkiston Kutubxonasi</div></div>
+          <div class="partner-card"><div class="partner-logo-ph">CISC</div><div class="partner-name">CISC</div></div>
+        </div>
+      </div>
+    </section>
+
+  </main><!-- /main -->
+
+  <!-- ══════════════ VIDEO MODAL ══════════════ -->
+  <div class="video-modal" id="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
+    <div class="video-focus">
+      <div class="fake-player">
+        <span class="play-icon" style="width:68px;height:68px;font-size:26px">▶</span>
+      </div>
+      <footer>
+        <div>
+          <strong id="video-modal-title" style="color:var(--white)">Video</strong>
+          <p id="video-modal-meta" style="margin-top:4px;color:rgba(255,250,240,.58);font-size:13px"></p>
+        </div>
+        <button class="close-button" type="button" onclick="closeVideo()" aria-label="Yopish">×</button>
+      </footer>
+    </div>
+  </div>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <section>
+        <div class="footer-brand">
+          <div class="footer-logo" id="footer-logo-slot">
+            <!-- <img src="logo.png" alt="ICCU logo"> -->
+            Logo
+          </div>
+          <div>
+            <strong style="color:var(--white);font-size:14px">ICCU Library</strong>
+            <div style="color:rgba(255,250,240,.5);font-size:11px;margin-top:2px" data-t="brandSubtitle">Islom sivilizatsiyasi kutubxonasi</div>
+          </div>
+        </div>
+        <p data-t="footerText">Raqamli fondlar, tashrif xizmatlari, hamkorlik va ilmiy resurslar uchun yagona platforma.</p>
+      </section>
+
+      <section>
+        <h3 data-t="footerContacts">Aloqa</h3>
+        <div class="footer-nav">
+          <a href="mailto:library@iccu.example">📧 library@iccu.example</a>
+          <a href="tel:+998000000000">📞 +998 00 000 00 00</a>
+          <a href="#">📍 Toshkent, O'zbekiston</a>
+        </div>
+      </section>
+
+      <section>
+        <h3 data-t="footerLinks">Tezkor havolalar</h3>
+        <div class="footer-nav">
+          <a href="https://allomalar.uz" target="_blank" rel="noopener">Allomalar ↗</a>
+          <a href="https://manbalar.uz"  target="_blank" rel="noopener">Manbalar ↗</a>
+          <a href="https://e-library.cisc.uz" target="_blank" rel="noopener">E-kutubxona ↗</a>
+        </div>
+      </section>
+
+      <section>
+        <h3 data-t="footerSocials">Ijtimoiy tarmoqlar</h3>
+        <div class="socials">
+          <a href="#" class="social-link" aria-label="Instagram">
+            <span class="social-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18">
+                <rect x="2" y="2" width="20" height="20" rx="5"/>
+                <circle cx="12" cy="12" r="4.5"/>
+                <circle cx="17.5" cy="6.5" r=".8" fill="currentColor" stroke="none"/>
+              </svg>
+            </span>Instagram
+          </a>
+          <a href="#" class="social-link" aria-label="Facebook">
+            <span class="social-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            </span>Facebook
+          </a>
+          <a href="#" class="social-link" aria-label="Telegram">
+            <span class="social-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18">
+                <path d="M22 3L2 10l7 3 2 6 3-4 5 4 3-16z"/>
+              </svg>
+            </span>Telegram
+          </a>
+          <a href="#" class="social-link" aria-label="YouTube">
+            <span class="social-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.96A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+                <polygon fill="#03110d" points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/>
+              </svg>
+            </span>YouTube
+          </a>
+          <a href="#" class="social-link" aria-label="X / Twitter">
+            <span class="social-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>
+            </span>X
+          </a>
+          <a href="#" class="social-link" aria-label="LinkedIn">
+            <span class="social-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor" width="18" height="18">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+              </svg>
+            </span>LinkedIn
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <div class="footer-bottom">
+      <span>© 2026 ICCU Library Platform</span>
+      <span data-t="footerRights">ICCU — Islom sivilizatsiyasi markazi</span>
+    </div>
+  </footer>
+
+  <script src="main.js"></script>
+</body>
+</html>

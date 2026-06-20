@@ -550,3 +550,7 @@ h1 {
   .partners-track { grid-template-columns:repeat(2,1fr); }
   .socials { grid-template-columns:1fr; }
 }
+
+#hero-title {
+  color: var(--gold-2); /* Yorqin tillarang */
+}

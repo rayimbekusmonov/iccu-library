@@ -13,23 +13,30 @@
   <header class="topbar">
     <button class="brand" type="button" onclick="showPage('home')" aria-label="Bosh sahifaga o'tish">
       <span class="logo-slot" id="logo-slot">
-        <!-- <img src="logo.png" alt="ICCU logo"> -->
-        Logo
+        <img src="images/logo.png" alt="ICCU Library Logo" width="40" height="40">
       </span>
       <span>
         <span class="brand-title">ICCU Library</span>
-        <span class="brand-subtitle" data-t="brandSubtitle">Islom sivilizatsiyasi kutubxonasi</span>
+        <span class="brand-subtitle" data-t="brandSubtitle">O'zbekistondagi islom sivilizatsiya markazi kutubxonasi</span>
       </span>
     </button>
 
     <nav class="nav" aria-label="Asosiy menyu">
-      <button class="nav-link active" id="nav-home"     type="button" onclick="showPage('home')"     data-t="navHome">Bosh sahifa</button>
-      <button class="nav-link"        id="nav-discover" type="button" onclick="showPage('discover')" data-t="navDiscover">Fondlar</button>
-      <button class="nav-link"        id="nav-services" type="button" onclick="showPage('services')" data-t="navServices">Xizmatlar</button>
-      <button class="nav-link"        id="nav-visit"    type="button" onclick="showPage('visit')"    data-t="navVisit">Tashrif</button>
-      <button class="nav-link"        id="nav-about"    type="button" onclick="showPage('about')"    data-t="navAbout">Haqida</button>
-      <button class="nav-link"        id="nav-partners" type="button" onclick="showPage('partners')" data-t="navPartners">Hamkorlar</button>
-      <a class="btn-kirish" href="http://elibrary.cisc.uz:8080/" target="_blank" rel="noopener" data-t="navKirish">Kirish ↗</a>
+      <!-- Chap tarafdagi navigatsiya linklari -->
+      <div class="nav-links">
+        <button class="nav-link active" id="nav-home"     type="button" onclick="showPage('home')"     data-t="navHome">Bosh sahifa</button>
+        <button class="nav-link"        id="nav-discover" type="button" onclick="showPage('discover')" data-t="navDiscover">Fondlar</button>
+        <button class="nav-link"        id="nav-services" type="button" onclick="showPage('services')" data-t="navServices">Xizmatlar</button>
+        <button class="nav-link"        id="nav-visit"    type="button" onclick="showPage('visit')"    data-t="navVisit">Tashrif</button>
+        <button class="nav-link"        id="nav-about"    type="button" onclick="showPage('about')"    data-t="navAbout">Haqida</button>
+        <button class="nav-link"        id="nav-partners" type="button" onclick="showPage('partners')" data-t="navPartners">Hamkorlar</button>
+      </div>
+
+      <!-- Klassik uslubda o'ng tarafga surilgan tugmalar guruhi -->
+      <div class="nav-actions">
+        <a class="btn-kirish" href="http://elibrary.cisc.uz:8080/" target="_blank" rel="noopener" data-t="navKirish">Kirish ↗</a>
+        <button class="btn-register" id="nav-register" type="button" onclick="showPage('register')" data-t="navRegister">Ro'yxatdan o'tish</button>
+      </div>
     </nav>
 
     <!-- Language dropdown -->
@@ -369,6 +376,36 @@
       </div>
     </section>
 
+    <!-- ══════════════ REGISTER PAGE ══════════════ -->
+    <section class="page" id="page-register">
+      <div class="container" style="max-width: 450px; padding: 60px 20px;">
+        <div style="background: var(--bg-2); padding: 30px; border-radius: var(--radius); border: 1px solid var(--line); box-shadow: var(--shadow);">
+          <h2 style="color: var(--gold-2); margin-bottom: 10px; font-size: 24px; font-weight: 900; text-align: center; font-family: Georgia, serif;">Ro'yxatdan o'tish</h2>
+          <p style="color: var(--muted); font-size: 14px; text-align: center; margin-bottom: 25px;">Kutubxona tizimidan to'liq foydalanish uchun profil yarating.</p>
+        
+          <form onsubmit="event.preventDefault(); alert('Muvaffaqiyatli ro\'yxatdan o\'tdingiz!');" style="display: flex; flex-direction: column; gap: 15px;">
+            <div>
+              <label style="display: block; font-size: 13px; color: var(--gold-2); margin-bottom: 5px; font-weight: 700;">Ism va familiyangiz</label>
+              <input type="text" placeholder="Ali Valiyev" required style="width: 100%; padding: 10px 12px; background: rgba(255,250,240,0.05); border: 1px solid var(--line); border-radius: 6px; font-size: 14px; color: var(--white); box-sizing: border-box;">
+            </div>
+          
+            <div>
+              <label style="display: block; font-size: 13px; color: var(--gold-2); margin-bottom: 5px; font-weight: 700;">Elektron pochta</label>
+              <input type="email" placeholder="example@mail.com" required style="width: 100%; padding: 10px 12px; background: rgba(255,250,240,0.05); border: 1px solid var(--line); border-radius: 6px; font-size: 14px; color: var(--white); box-sizing: border-box;">
+            </div>
+          
+            <div>
+              <label style="display: block; font-size: 13px; color: var(--gold-2); margin-bottom: 5px; font-weight: 700;">Parol</label>
+              <input type="password" placeholder="••••••••" required style="width: 100%; padding: 10px 12px; background: rgba(255,250,240,0.05); border: 1px solid var(--line); border-radius: 6px; font-size: 14px; color: var(--white); box-sizing: border-box;">
+            </div>
+          
+            <button type="submit" class="primary-button" style="justify-content: center; width: 100%; margin-top: 10px; min-height: 44px;">
+              Tasdiqlash
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
   </main><!-- /main -->
 
   <!-- ══════════════ VIDEO MODAL ══════════════ -->

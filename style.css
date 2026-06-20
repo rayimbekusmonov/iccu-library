@@ -132,7 +132,30 @@ h1,h2,h3,p { margin: 0; }
 }
 
 /* ── LANG DROPDOWN ── */
+/* ── LANG DROPDOWN ── */
 .lang-wrap { position: relative; flex-shrink: 0; }
+
+/* Til tugmasini menyudan uzoqlashtirib, o'ng tomondagi Kirish tugmasiga yaqinlashtirish */
+.nav .lang-wrap {
+  margin-left: auto;   /* Chap tarafdagi barcha menyularni maksimal surib yuboradi */
+  margin-right: -4px;  /* Kirish tugmasi guruhi (.nav-actions) bilan mantiqiy optimal masofa */
+}
+
+/* Kirish va Ro'yxatdan o'tish tugmalari joylashgan blok */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;           /* Kirish va Ro'yxatdan o'tish orasidagi masofa */
+  margin-left: 16px;   /* Til tugmasi va Kirish tugmasi orasidagi aniq masofa */
+}
+
+/* Agar mobil versiyada (980px dan pastda) dizayn buzilmasligi uchun */
+@media (max-width: 980px) {
+  .nav .lang-wrap {
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
 
 .lang-trigger {
   display: inline-flex; align-items: center; gap: 6px;

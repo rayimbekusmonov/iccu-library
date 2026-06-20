@@ -11,51 +11,55 @@
 
   <!-- ══════════════ TOPBAR ══════════════ -->
   <header class="topbar">
-    <button class="brand" type="button" onclick="showPage('home')" aria-label="Bosh sahifaga o'tish">
-      <span class="logo-slot" id="logo-slot">
-        <img src="images/logo.png" alt="ICCU Library Logo" width="40" height="40">
-      </span>
-      <span>
-        <span class="brand-title">ICCU Library</span>
-        <span class="brand-subtitle" data-t="brandSubtitle">O'zbekistondagi islom sivilizatsiya markazi kutubxonasi</span>
-      </span>
-    </button>
+  <button class="brand" type="button" onclick="showPage('home')" aria-label="Bosh sahifaga o'tish">
+    <span class="logo-slot" id="logo-slot">
+      <img src="images/logo.png" alt="ICCU Library Logo" width="40" height="40">
+    </span>
+    <span>
+      <span class="brand-title">ICCU Library</span>
+      <span class="brand-subtitle" data-t="brandSubtitle">O'zbekistondagi islom sivilizatsiya markazi kutubxonasi</span>
+    </span>
+  </button>
 
-    <nav class="nav" aria-label="Asosiy menyu">
-      <!-- Chap tarafdagi navigatsiya linklari -->
-      <div class="nav-links">
-        <button class="nav-link active" id="nav-home"     type="button" onclick="showPage('home')"     data-t="navHome">Bosh sahifa</button>
-        <button class="nav-link"        id="nav-discover" type="button" onclick="showPage('discover')" data-t="navDiscover">Fondlar</button>
-        <button class="nav-link"        id="nav-services" type="button" onclick="showPage('services')" data-t="navServices">Xizmatlar</button>
-        <button class="nav-link"        id="nav-visit"    type="button" onclick="showPage('visit')"    data-t="navVisit">Tashrif</button>
-        <button class="nav-link"        id="nav-about"    type="button" onclick="showPage('about')"    data-t="navAbout">Haqida</button>
-        <button class="nav-link"        id="nav-partners" type="button" onclick="showPage('partners')" data-t="navPartners">Hamkorlar</button>
-      </div>
+  <nav class="nav" aria-label="Asosiy menyu">
+    <div class="nav-links">
+      <button class="nav-link active" id="nav-home"     type="button" onclick="showPage('home')"     data-t="navHome">Bosh sahifa</button>
+      <button class="nav-link"        id="nav-discover" type="button" onclick="showPage('discover')" data-t="navDiscover">Fondlar</button>
+      <button class="nav-link"        id="nav-services" type="button" onclick="showPage('services')" data-t="navServices">Xizmatlar</button>
+      <button class="nav-link"        id="nav-visit"    type="button" onclick="showPage('visit')"    data-t="navVisit">Tashrif</button>
+      <button class="nav-link"        id="nav-about"    type="button" onclick="showPage('about')"    data-t="navAbout">Haqida</button>
+      <button class="nav-link"        id="nav-partners" type="button" onclick="showPage('partners')" data-t="navPartners">Hamkorlar</button>
+    </div>
 
-      <!-- Klassik uslubda o'ng tarafga surilgan tugmalar guruhi -->
-      <div class="nav-actions">
-        <a class="btn-kirish" href="http://elibrary.cisc.uz:8080/" target="_blank" rel="noopener" data-t="navKirish">Kirish ↗</a>
-        <button class="btn-register" id="nav-register" type="button" onclick="showPage('register')" data-t="navRegister">Ro'yxatdan o'tish</button>
-      </div>
-    </nav>
-
-    <!-- Language dropdown -->
     <div class="lang-wrap">
-      <button class="lang-trigger" id="lang-trigger" type="button" onclick="toggleLangMenu()" aria-haspopup="listbox" aria-expanded="false">
-        <span class="lang-flag lt-flag">🇺🇿</span>
-        <span class="lt-label">O'zbek</span>
-        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8">
+      <button class="lang-trigger" id="lang-trigger" type="button" onclick="toggleLangMenu()" aria-haspopup="listbox" aria-expanded="false" aria-label="Tilni tanlash">
+        <img src="https://flagcdn.com/w20/uz.png" alt="O'zbek" id="current-flag" width="20" style="vertical-align:middle;">
+        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" style="margin-left:4px; vertical-align:middle; width:10px; height:6px;">
           <path d="M1 1l4 4 4-4"/>
         </svg>
       </button>
       <div class="lang-menu" id="lang-menu" role="listbox">
-        <button class="lang-option active" type="button" onclick="setLang('uz')"><span class="lang-flag">🇺🇿</span> O'zbek</button>
-        <button class="lang-option"        type="button" onclick="setLang('en')"><span class="lang-flag">🇬🇧</span> English</button>
-        <button class="lang-option"        type="button" onclick="setLang('ru')"><span class="lang-flag">🇷🇺</span> Русский</button>
-        <button class="lang-option"        type="button" onclick="setLang('tr')"><span class="lang-flag">🇹🇷</span> Türkçe</button>
+        <button class="lang-option active" type="button" onclick="setLang('uz')">
+          <img src="https://flagcdn.com/w20/uz.png" alt="" width="20" style="margin-right:8px; vertical-align:middle;"> O'zbek
+        </button>
+        <button class="lang-option" type="button" onclick="setLang('en')">
+          <img src="https://flagcdn.com/w20/gb.png" alt="" width="20" style="margin-right:8px; vertical-align:middle;"> English
+        </button>
+        <button class="lang-option" type="button" onclick="setLang('ru')">
+          <img src="https://flagcdn.com/w20/ru.png" alt="" width="20" style="margin-right:8px; vertical-align:middle;"> Русский
+        </button>
+        <button class="lang-option" type="button" onclick="setLang('tr')">
+          <img src="https://flagcdn.com/w20/tr.png" alt="" width="20" style="margin-right:8px; vertical-align:middle;"> Türkçe
+        </button>
       </div>
     </div>
-  </header>
+
+    <div class="nav-actions">
+      <a class="btn-kirish" href="http://elibrary.cisc.uz:8080/" target="_blank" rel="noopener" data-t="navKirish">Kirish ↗</a>
+      <button class="btn-register" id="nav-register" type="button" onclick="showPage('register')" data-t="navRegister">Ro'yxatdan o'tish</button>
+    </div>
+  </nav>
+</header>
 
   <main id="main">
 

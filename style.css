@@ -554,3 +554,40 @@ h1 {
 #hero-title {
   color: var(--gold-2); /* Yorqin tillarang */
 }
+
+/* Aloqa qismini guruhlash */
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px; /* Linklar orasidagi mukammal masofa */
+}
+
+/* Har bir aloqa elementi */
+.contact-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px; /* Ikonka va matn orasidagi masofa */
+  color: var(--muted); /* Saytdagi standart xira oq rang */
+  font-size: 14px;
+  transition: color 200ms ease;
+}
+
+/* Luxury uslubdagi tillarang SVG ikonkalar */
+.contact-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--gold); /* Saytning asosiy tillarang tokeni */
+  opacity: 0.8;
+  transition: transform 200ms ease, opacity 200ms ease, color 200ms ease;
+}
+
+/* Hover effekti (Sichqoncha kelganda) */
+.contact-item:hover {
+  color: var(--white); /* Matn sof oq rangga o'tadi */
+}
+
+.contact-item:hover .contact-icon {
+  color: var(--gold-2); /* Ikonka ochroq va yorqinroq oltin rangga o'tadi */
+  opacity: 1;
+  transform: translateY(-1px); /* Yengil ko'tarilish effekti */
+}

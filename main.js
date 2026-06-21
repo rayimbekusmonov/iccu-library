@@ -6,7 +6,7 @@ const i18n = {
     brandSubtitle:"Islom sivilizatsiyasi kutubxonasi",
     navHome:"Bosh sahifa", navDiscover:"Fondlar", navServices:"Xizmatlar",
     navVisit:"Tashrif", navAbout:"Haqida", navPartners:"Hamkorlar",
-    navKirish:"Kirish",
+    navKirish:"Kirish", navRegister:"Ro'yxatdan o'tish",
     heroEyebrow:"Raqamli meros platformasi",
     heroTitle:"Islom sivilizatsiyasi manbalarini zamonaviy formatda kashf eting.",
     heroCopy:"ICCU kutubxonasi qo'lyozmalar, kitoblar, ma'ruzalar, tadbirlar va tashrif xizmatlarini yagona qulay platformada birlashtiradi.",
@@ -98,7 +98,7 @@ i18n.en = {
   ...i18n.uz,
   brandSubtitle:"Islamic Civilization Library",
   navHome:"Home", navDiscover:"Collections", navServices:"Services",
-  navVisit:"Visit", navAbout:"About", navPartners:"Partners", navKirish:"Login",
+  navVisit:"Visit", navAbout:"About", navPartners:"Partners", navKirish:"Login", navRegister:"Register",
   heroEyebrow:"Digital heritage platform",
   heroTitle:"Explore Islamic civilization sources in a modern format.",
   heroCopy:"ICCU Library brings manuscripts, books, lectures, events, and visitor services into one clear platform.",
@@ -184,7 +184,7 @@ i18n.ru = {
   ...i18n.en,
   brandSubtitle:"Библиотека исламской цивилизации",
   navHome:"Главная", navDiscover:"Фонды", navServices:"Услуги",
-  navVisit:"Визит", navAbout:"О нас", navPartners:"Партнёры", navKirish:"Войти",
+  navVisit:"Визит", navAbout:"О нас", navPartners:"Партнёры", navKirish:"Войти", navRegister:"Регистрация",
   heroEyebrow:"Платформа цифрового наследия",
   heroTitle:"Откройте источники исламской цивилизации.",
   heroCopy:"ICCU Библиотека объединяет рукописи, книги, лекции и услуги посетителей на единой платформе.",
@@ -206,7 +206,7 @@ i18n.tr = {
   ...i18n.en,
   brandSubtitle:"İslam Medeniyeti Kütüphanesi",
   navHome:"Ana sayfa", navDiscover:"Koleksiyonlar", navServices:"Hizmetler",
-  navVisit:"Ziyaret", navAbout:"Hakkında", navPartners:"Ortaklar", navKirish:"Giriş",
+  navVisit:"Ziyaret", navAbout:"Hakkında", navPartners:"Ortaklar", navKirish:"Giriş", navRegister:"Kaydol",
   heroEyebrow:"Dijital miras platformu",
   heroTitle:"İslam medeniyeti kaynaklarını modern formatta keşfedin.",
   heroCopy:"ICCU Kütüphanesi el yazmaları, kitaplar, dersler ve ziyaretçi hizmetlerini tek platformda bir araya getirir.",
@@ -243,6 +243,10 @@ function setLang(lang) {
   const trigger = document.getElementById("lang-trigger");
   trigger.querySelector(".lt-flag").textContent  = m.flag;
   trigger.querySelector(".lt-label").textContent = m.label;
+  // Update active state on lang options
+  document.querySelectorAll(".lang-option").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.lang === lang);
+  });
   closeLangMenu();
   applyTexts();
 }

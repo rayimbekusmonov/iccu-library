@@ -3,654 +3,938 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ICCU Admin — Yangiliklar</title>
+  <title>ICCU Admin Panel</title>
   <style>
     :root {
-      --bg: #071c16;
-      --bg-2: #0d2b22;
-      --panel: #0f352a;
-      --line: rgba(226,213,186,0.18);
-      --gold: #c8a45d;
+      --bg:     #071c16;
+      --bg-2:   #0d2b22;
+      --bg-3:   #0f352a;
+      --line:   rgba(226,213,186,0.15);
+      --gold:   #c8a45d;
       --gold-2: #ead29a;
-      --white: #fffaf0;
-      --muted: rgba(255,250,240,0.62);
-      --red: #e05c5c;
-      --green: #3aad72;
+      --white:  #fffaf0;
+      --muted:  rgba(255,250,240,0.55);
+      --red:    #e05c5c;
+      --green:  #3aad72;
+      --yellow: #e0a23a;
       --radius: 8px;
+      --shadow: 0 20px 50px rgba(0,0,0,0.35);
     }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--white);
-      font-family: Inter, ui-sans-serif, system-ui, sans-serif;
-      font-size: 14px;
-    }
-    a { color: inherit; text-decoration: none; }
-    h1,h2,h3,p { margin: 0; }
-    button { font: inherit; cursor: pointer; }
-    input, textarea, select { font: inherit; }
+    *, *::before, *::after { box-sizing: border-box; }
+    body { margin:0; background:var(--bg); color:var(--white); font-family:Inter,ui-sans-serif,system-ui,sans-serif; font-size:14px; line-height:1.5; }
+    h1,h2,h3,p { margin:0; }
+    button { font:inherit; cursor:pointer; }
+    input,textarea,select { font:inherit; }
+    a { color:inherit; text-decoration:none; }
+    ::placeholder { color:rgba(255,250,240,0.25); }
 
-    /* ── LOGIN ── */
+    /* ════ TOPBAR ════ */
+    .topbar {
+      position:sticky; top:0; z-index:60;
+      height:60px; padding:0 28px;
+      display:flex; align-items:center; justify-content:space-between; gap:16px;
+      background:rgba(7,28,22,0.97); border-bottom:1px solid var(--line);
+      backdrop-filter:blur(18px);
+    }
+    .topbar-left  { display:flex; align-items:center; gap:14px; }
+    .topbar-brand { font-weight:900; font-size:15px; color:var(--gold-2); }
+    .topbar-sep   { color:rgba(255,250,240,0.2); }
+    .topbar-page  { font-size:13px; color:var(--muted); }
+    .btn-logout {
+      padding:6px 14px; border-radius:var(--radius);
+      border:1px solid var(--line); background:transparent;
+      color:var(--muted); font-size:12px; font-weight:700;
+      transition:color 150ms,border-color 150ms;
+    }
+    .btn-logout:hover { color:var(--red); border-color:var(--red); }
+
+    /* ════ LOGIN ════ */
     #login-screen {
-      min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      padding: 24px;
+      min-height:100vh;
+      display:flex; align-items:center; justify-content:center; padding:24px;
     }
     .login-box {
-      width: 100%; max-width: 380px;
-      background: var(--bg-2);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      padding: 36px 32px;
+      width:100%; max-width:360px;
+      background:var(--bg-2); border:1px solid var(--line);
+      border-radius:12px; padding:36px 32px;
     }
     .login-box h2 {
-      font-family: Georgia, serif;
-      color: var(--gold-2);
-      font-size: 22px;
-      text-align: center;
-      margin-bottom: 6px;
+      font-family:Georgia,serif; color:var(--gold-2);
+      font-size:22px; text-align:center; margin-bottom:6px;
     }
-    .login-box p {
-      color: var(--muted);
-      text-align: center;
-      font-size: 13px;
-      margin-bottom: 28px;
+    .login-box p { color:var(--muted); text-align:center; font-size:13px; margin-bottom:28px; }
+    .login-err { color:var(--red); font-size:13px; text-align:center; margin-top:10px; display:none; }
+
+    /* ════ APP LAYOUT ════ */
+    #app { display:none; }
+    .app-body { display:grid; grid-template-columns:220px 1fr; min-height:calc(100vh - 60px); }
+
+    /* ════ SIDEBAR ════ */
+    .sidebar {
+      border-right:1px solid var(--line);
+      background:var(--bg-2);
+      padding:20px 12px;
+      display:flex; flex-direction:column; gap:4px;
+    }
+    .sidebar-label {
+      font-size:10px; font-weight:900; letter-spacing:.08em;
+      text-transform:uppercase; color:rgba(255,250,240,0.3);
+      padding:0 10px; margin:12px 0 6px;
+    }
+    .sidebar-label:first-child { margin-top:0; }
+    .nav-item {
+      display:flex; align-items:center; gap:10px;
+      min-height:38px; padding:0 10px; border-radius:var(--radius);
+      border:1px solid transparent; background:transparent;
+      color:var(--muted); font-size:13px; font-weight:600;
+      transition:background 150ms,color 150ms,border-color 150ms;
+      text-align:left; width:100%;
+    }
+    .nav-item:hover { background:rgba(255,250,240,0.06); color:var(--white); }
+    .nav-item.active {
+      background:rgba(200,164,93,0.12); color:var(--gold-2);
+      border-color:rgba(200,164,93,0.25);
+    }
+    .nav-item .icon { font-size:16px; flex-shrink:0; width:20px; text-align:center; }
+    .nav-badge {
+      margin-left:auto; min-width:20px; height:20px;
+      border-radius:999px; background:rgba(200,164,93,0.2);
+      color:var(--gold-2); font-size:10px; font-weight:900;
+      display:grid; place-items:center; padding:0 5px;
     }
 
-    /* ── LAYOUT ── */
-    #app { display: none; min-height: 100vh; }
-    .topbar {
-      position: sticky; top: 0; z-index: 40;
-      display: flex; align-items: center; justify-content: space-between;
-      gap: 16px; padding: 0 32px; height: 60px;
-      background: rgba(7,28,22,0.96);
-      border-bottom: 1px solid var(--line);
-      backdrop-filter: blur(16px);
-    }
-    .topbar-brand { font-weight: 900; color: var(--gold-2); font-size: 15px; }
-    .topbar-brand span { color: var(--muted); font-weight: 400; font-size: 12px; margin-left: 8px; }
-    .btn-logout {
-      padding: 6px 14px; border-radius: var(--radius);
-      border: 1px solid var(--line); background: transparent;
-      color: var(--muted); font-size: 13px;
-      transition: color 150ms, border-color 150ms;
-    }
-    .btn-logout:hover { color: var(--red); border-color: var(--red); }
+    /* ════ CONTENT PANE ════ */
+    .content { padding:32px 36px 60px; overflow:auto; }
 
-    .main-layout {
-      display: grid;
-      grid-template-columns: 1fr 420px;
-      gap: 0;
-      min-height: calc(100vh - 60px);
+    /* ════ PANEL HEADER ════ */
+    .panel-header {
+      display:flex; align-items:center; justify-content:space-between;
+      gap:16px; margin-bottom:28px;
     }
+    .panel-header h2 { font-size:20px; font-weight:900; }
+    .panel-header p  { margin-top:4px; color:var(--muted); font-size:13px; }
 
-    /* ── NEWS LIST ── */
-    .list-pane {
-      border-right: 1px solid var(--line);
-      padding: 28px 28px 40px;
+    /* ════ BUTTONS ════ */
+    .btn-primary {
+      display:inline-flex; align-items:center; gap:7px;
+      padding:9px 20px; border-radius:var(--radius);
+      background:var(--gold); color:#071c16;
+      border:none; font-weight:900; font-size:13px;
+      transition:background 150ms,transform 100ms;
     }
-    .list-header {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 20px;
-    }
-    .list-header h2 { font-size: 18px; font-weight: 900; }
-    .btn-new {
-      padding: 8px 18px; border-radius: var(--radius);
-      background: var(--gold); color: #071c16;
-      border: none; font-weight: 900; font-size: 13px;
-      transition: background 150ms;
-    }
-    .btn-new:hover { background: var(--gold-2); }
+    .btn-primary:hover { background:var(--gold-2); }
+    .btn-primary:active { transform:scale(0.98); }
+    .btn-primary:disabled { opacity:.6; cursor:not-allowed; }
 
-    .news-list { display: grid; gap: 10px; }
-    .news-item {
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: rgba(255,250,240,0.04);
-      padding: 14px 16px;
-      cursor: pointer;
-      transition: border-color 150ms, background 150ms;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 8px;
-      align-items: start;
+    .btn-ghost {
+      display:inline-flex; align-items:center; gap:7px;
+      padding:9px 16px; border-radius:var(--radius);
+      border:1px solid var(--line); background:transparent;
+      color:var(--muted); font-size:13px; font-weight:600;
+      transition:color 150ms,border-color 150ms,background 150ms;
     }
-    .news-item:hover { border-color: rgba(234,210,154,0.3); background: rgba(255,250,240,0.07); }
-    .news-item.selected { border-color: var(--gold); background: rgba(200,164,93,0.08); }
-    .news-item-tag {
-      display: inline-flex; align-items: center; min-height: 20px;
-      border-radius: 999px; padding: 0 8px;
-      background: rgba(200,164,93,0.15); color: var(--gold-2);
-      font-size: 10px; font-weight: 900; margin-bottom: 6px;
-    }
-    .news-item-title { font-size: 14px; font-weight: 700; line-height: 1.3; color: var(--white); }
-    .news-item-date { color: var(--muted); font-size: 11px; margin-top: 5px; }
-    .news-item-actions { display: flex; gap: 6px; flex-shrink: 0; }
-    .btn-icon {
-      width: 30px; height: 30px; border-radius: 6px;
-      border: 1px solid var(--line); background: transparent;
-      color: var(--muted); font-size: 14px;
-      display: grid; place-items: center;
-      transition: color 150ms, border-color 150ms, background 150ms;
-    }
-    .btn-icon:hover { color: var(--white); border-color: rgba(255,250,240,0.3); background: rgba(255,250,240,0.08); }
-    .btn-icon.del:hover { color: var(--red); border-color: var(--red); background: rgba(224,92,92,0.1); }
+    .btn-ghost:hover { color:var(--white); border-color:rgba(255,250,240,0.3); background:rgba(255,250,240,0.06); }
 
-    .badge-draft {
-      display: inline-block;
-      padding: 2px 7px; border-radius: 4px;
-      background: rgba(224,92,92,0.15); color: var(--red);
-      font-size: 10px; font-weight: 900; margin-left: 6px;
+    .btn-danger {
+      display:inline-flex; align-items:center; gap:7px;
+      padding:7px 14px; border-radius:var(--radius);
+      border:1px solid rgba(224,92,92,0.3); background:rgba(224,92,92,0.08);
+      color:var(--red); font-size:12px; font-weight:700;
+      transition:background 150ms,border-color 150ms;
     }
-    .badge-featured {
-      display: inline-block;
-      padding: 2px 7px; border-radius: 4px;
-      background: rgba(200,164,93,0.18); color: var(--gold-2);
-      font-size: 10px; font-weight: 900; margin-left: 4px;
-    }
+    .btn-danger:hover { background:rgba(224,92,92,0.16); border-color:var(--red); }
 
-    .empty-state {
-      text-align: center; padding: 56px 20px; color: var(--muted);
+    .btn-edit {
+      display:inline-flex; align-items:center; gap:7px;
+      padding:7px 14px; border-radius:var(--radius);
+      border:1px solid rgba(234,210,154,0.2); background:rgba(234,210,154,0.07);
+      color:var(--gold-2); font-size:12px; font-weight:700;
+      transition:background 150ms,border-color 150ms;
     }
-    .empty-state .icon { font-size: 40px; margin-bottom: 12px; }
+    .btn-edit:hover { background:rgba(234,210,154,0.14); border-color:var(--gold); }
 
-    /* ── FORM PANE ── */
-    .form-pane {
-      padding: 28px 32px 40px;
-      background: var(--bg-2);
+    /* ════ STATS CARDS ════ */
+    .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:32px; }
+    .stat-card {
+      border:1px solid var(--line); border-radius:var(--radius);
+      background:var(--bg-2); padding:18px 20px;
     }
-    .form-pane h3 { font-size: 16px; font-weight: 900; margin-bottom: 22px; color: var(--gold-2); }
+    .stat-card .label { font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
+    .stat-card .value { font-size:28px; font-weight:900; color:var(--gold-2); margin-top:6px; line-height:1; }
+    .stat-card .sub   { font-size:12px; color:var(--muted); margin-top:4px; }
 
-    .tabs {
-      display: flex; gap: 4px; margin-bottom: 20px;
-      border-bottom: 1px solid var(--line); padding-bottom: 0;
-    }
-    .tab {
-      padding: 8px 14px; border-radius: var(--radius) var(--radius) 0 0;
-      border: 1px solid transparent; border-bottom: none;
-      background: transparent; color: var(--muted); font-size: 13px; font-weight: 700;
-      cursor: pointer; transition: color 150ms, background 150ms;
-      position: relative; bottom: -1px;
-    }
-    .tab.active {
-      color: var(--gold-2);
-      background: var(--bg-2);
-      border-color: var(--line);
-      border-bottom-color: var(--bg-2);
-    }
-    .tab-panel { display: none; }
-    .tab-panel.active { display: grid; gap: 14px; }
+    /* ════ NEWS LIST ════ */
+    .news-list { display:grid; gap:10px; }
 
-    .field { display: grid; gap: 6px; }
-    .field label { font-size: 12px; font-weight: 700; color: var(--gold-2); }
-    .field input, .field textarea, .field select {
-      width: 100%; padding: 9px 12px;
-      background: rgba(255,250,240,0.05);
-      border: 1px solid var(--line);
-      border-radius: 6px; color: var(--white);
-      transition: border-color 150ms;
+    .news-row {
+      display:grid;
+      grid-template-columns:56px 1fr auto;
+      gap:14px; align-items:center;
+      border:1px solid var(--line); border-radius:var(--radius);
+      background:rgba(255,250,240,0.04); padding:14px 16px;
+      transition:border-color 150ms,background 150ms;
     }
-    .field input:focus, .field textarea:focus {
-      outline: none; border-color: rgba(234,210,154,0.45);
-    }
-    .field textarea { min-height: 80px; resize: vertical; line-height: 1.6; }
+    .news-row:hover { border-color:rgba(234,210,154,0.25); background:rgba(255,250,240,0.07); }
 
-    .form-footer {
-      display: flex; gap: 10px; margin-top: 22px; flex-wrap: wrap;
+    .news-thumb {
+      width:56px; height:40px; border-radius:6px;
+      object-fit:cover; background:var(--bg-3);
+      display:grid; place-items:center; flex-shrink:0;
+      font-size:20px; overflow:hidden;
     }
-    .btn-save {
-      padding: 10px 22px; border-radius: var(--radius);
-      background: var(--gold); color: #071c16;
-      border: none; font-weight: 900; font-size: 14px;
-      transition: background 150ms, transform 100ms;
-    }
-    .btn-save:hover { background: var(--gold-2); }
-    .btn-save:active { transform: scale(0.98); }
-    .btn-cancel {
-      padding: 10px 18px; border-radius: var(--radius);
-      border: 1px solid var(--line); background: transparent;
-      color: var(--muted); font-size: 14px;
-      transition: color 150ms, border-color 150ms;
-    }
-    .btn-cancel:hover { color: var(--white); border-color: rgba(255,250,240,0.3); }
+    .news-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
 
-    .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .news-info { min-width:0; }
+    .news-title-row { display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
+    .news-title { font-size:14px; font-weight:700; color:var(--white); line-height:1.3; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:480px; }
+    .news-meta  { font-size:11px; color:var(--muted); margin-top:4px; }
 
-    /* color swatches */
-    .color-options { display: flex; gap: 8px; flex-wrap: wrap; }
-    .color-swatch {
-      width: 32px; height: 32px; border-radius: 6px; border: 2px solid transparent;
-      cursor: pointer; transition: transform 120ms, border-color 120ms;
+    .badge {
+      display:inline-flex; align-items:center; min-height:20px;
+      border-radius:999px; padding:0 8px;
+      font-size:10px; font-weight:900; white-space:nowrap; flex-shrink:0;
     }
-    .color-swatch:hover { transform: scale(1.1); }
-    .color-swatch.selected { border-color: var(--gold-2); transform: scale(1.1); }
+    .badge-pub    { background:rgba(58,173,114,0.15); color:var(--green); }
+    .badge-draft  { background:rgba(224,92,92,0.12);  color:var(--red); }
+    .badge-cat    { background:rgba(200,164,93,0.15);  color:var(--gold-2); }
 
-    /* toggles */
-    .toggle-row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-    .toggle-label { font-size: 13px; color: var(--muted); }
+    .lang-dots { display:flex; gap:4px; align-items:center; }
+    .lang-dot  { font-size:13px; }
+    .lang-dot.dim { opacity:.22; }
+
+    .row-actions { display:flex; gap:8px; flex-shrink:0; }
+
+    /* ════ FORM SHEET ════ */
+    .form-sheet {
+      border:1px solid var(--line); border-radius:12px;
+      background:var(--bg-2); padding:28px 32px;
+      margin-bottom:28px;
+    }
+    .form-sheet h3 { font-size:17px; font-weight:900; color:var(--gold-2); margin-bottom:24px; }
+
+    .form-grid-2 { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:20px; }
+    .form-grid-3 { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; margin-bottom:20px; }
+
+    .field { display:grid; gap:6px; }
+    .field label { font-size:11px; font-weight:900; text-transform:uppercase; letter-spacing:.05em; color:rgba(234,210,154,0.75); }
+    .field input,
+    .field textarea,
+    .field select {
+      width:100%; padding:9px 12px;
+      background:rgba(255,250,240,0.05);
+      border:1px solid rgba(226,213,186,0.18);
+      border-radius:6px; color:var(--white);
+      transition:border-color 150ms;
+    }
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus { outline:none; border-color:rgba(234,210,154,0.45); }
+    .field textarea { min-height:72px; resize:vertical; line-height:1.6; }
+    .field select option { background:#0d2b22; }
+
+    /* ── Lang tabs ── */
+    .lang-tabs { display:flex; gap:0; border-bottom:1px solid var(--line); margin-bottom:0; }
+    .lang-tab {
+      display:flex; align-items:center; gap:7px;
+      padding:9px 18px; border:1px solid transparent;
+      border-bottom:2px solid transparent;
+      background:transparent; color:var(--muted);
+      font-size:13px; font-weight:700;
+      cursor:pointer; transition:color 150ms;
+      position:relative; bottom:-1px;
+    }
+    .lang-tab.active {
+      color:var(--gold-2); border-bottom-color:var(--gold);
+    }
+    .lang-tab .dot {
+      width:7px; height:7px; border-radius:50%;
+      background:rgba(255,250,240,0.2); flex-shrink:0;
+      transition:background 200ms;
+    }
+    .lang-tab .dot.done    { background:var(--green); }
+    .lang-tab .dot.partial { background:var(--yellow); }
+
+    .lang-body {
+      border:1px solid var(--line); border-top:none;
+      border-radius:0 0 var(--radius) var(--radius);
+      background:rgba(255,250,240,0.03);
+      padding:20px; margin-bottom:20px;
+      display:grid; gap:14px;
+    }
+    .required-note { font-size:11px; color:var(--red); font-weight:700; }
+
+    /* ── Color swatches ── */
+    .swatches { display:flex; gap:8px; flex-wrap:wrap; }
+    .swatch {
+      width:30px; height:30px; border-radius:6px;
+      border:2px solid transparent; cursor:pointer;
+      transition:transform 120ms,border-color 120ms;
+    }
+    .swatch:hover { transform:scale(1.12); }
+    .swatch.sel   { border-color:var(--gold-2); transform:scale(1.12); }
+
+    /* ── Toggle ── */
+    .toggle-row { display:flex; align-items:center; gap:10px; }
+    .toggle-row span { font-size:13px; color:var(--muted); }
     .toggle {
-      position: relative; width: 42px; height: 24px;
-      appearance: none; background: rgba(255,250,240,0.15);
-      border-radius: 999px; cursor: pointer;
-      transition: background 200ms;
+      position:relative; width:42px; height:24px;
+      appearance:none; background:rgba(255,250,240,0.15);
+      border-radius:999px; cursor:pointer; transition:background 200ms;
     }
     .toggle::before {
-      content: ""; position: absolute;
-      width: 18px; height: 18px; border-radius: 50%;
-      background: var(--white); top: 3px; left: 3px;
-      transition: transform 200ms;
+      content:""; position:absolute;
+      width:18px; height:18px; border-radius:50%;
+      background:var(--white); top:3px; left:3px;
+      transition:transform 200ms;
     }
-    .toggle:checked { background: var(--green); }
-    .toggle:checked::before { transform: translateX(18px); }
+    .toggle:checked { background:var(--green); }
+    .toggle:checked::before { transform:translateX(18px); }
 
-    /* toast */
+    .form-footer { display:flex; gap:10px; margin-top:24px; flex-wrap:wrap; align-items:center; }
+    .form-footer .spacer { flex:1; }
+
+    /* ── Section divider ── */
+    .divider { border:none; border-top:1px solid var(--line); margin:20px 0; }
+
+    /* ════ IMAGE PREVIEW ════ */
+    .img-preview {
+      width:100%; height:120px; border-radius:6px;
+      object-fit:cover; border:1px solid var(--line);
+      margin-top:8px; display:none;
+    }
+    .img-preview.show { display:block; }
+
+    /* ════ EMPTY STATE ════ */
+    .empty { text-align:center; padding:60px 20px; color:var(--muted); }
+    .empty .ico { font-size:42px; margin-bottom:12px; }
+
+    /* ════ ERROR BANNER ════ */
+    .err-banner {
+      border:1px solid rgba(224,92,92,0.25);
+      background:rgba(224,92,92,0.08);
+      border-radius:var(--radius); padding:10px 16px;
+      color:var(--red); font-size:13px; margin-bottom:20px; display:none;
+    }
+
+    /* ════ SKELETON ════ */
+    @keyframes shimmer { 0%{background-position:-500px 0} 100%{background-position:500px 0} }
+    .skeleton {
+      height:70px; border-radius:var(--radius);
+      background:linear-gradient(90deg,rgba(255,250,240,.04) 25%,rgba(255,250,240,.08) 50%,rgba(255,250,240,.04) 75%);
+      background-size:500px 100%;
+      animation:shimmer 1.3s infinite linear;
+      border:1px solid rgba(234,210,154,.06);
+    }
+
+    /* ════ TOAST ════ */
     .toast {
-      position: fixed; bottom: 28px; right: 28px; z-index: 999;
-      padding: 12px 20px; border-radius: var(--radius);
-      font-size: 14px; font-weight: 700;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
-      opacity: 0; transform: translateY(8px);
-      transition: opacity 250ms, transform 250ms;
-      pointer-events: none;
+      position:fixed; bottom:28px; right:28px; z-index:999;
+      padding:12px 20px; border-radius:var(--radius);
+      font-size:14px; font-weight:700;
+      box-shadow:0 8px 28px rgba(0,0,0,.45);
+      opacity:0; transform:translateY(8px);
+      transition:opacity 250ms,transform 250ms;
+      pointer-events:none;
     }
-    .toast.show { opacity: 1; transform: translateY(0); }
-    .toast.success { background: var(--green); color: #fff; }
-    .toast.error   { background: var(--red);   color: #fff; }
+    .toast.show  { opacity:1; transform:translateY(0); }
+    .toast.ok    { background:var(--green); color:#fff; }
+    .toast.fail  { background:var(--red);   color:#fff; }
 
-    /* loading spinner */
-    .spinner {
-      width: 18px; height: 18px; border-radius: 50%;
-      border: 2px solid rgba(255,250,240,0.2);
-      border-top-color: var(--gold-2);
-      animation: spin 600ms linear infinite;
-      display: inline-block; vertical-align: middle;
+    /* ════ SPINNER ════ */
+    .spin {
+      width:16px; height:16px; border-radius:50%;
+      border:2px solid rgba(255,250,240,.2);
+      border-top-color:var(--gold-2);
+      animation:rotate .6s linear infinite;
+      display:inline-block; vertical-align:middle;
     }
-    @keyframes spin { to { transform: rotate(360deg); } }
+    @keyframes rotate { to{transform:rotate(360deg)} }
 
-    /* form fields input placeholder */
-    ::placeholder { color: rgba(255,250,240,0.28); }
+    /* ════ RESPONSIVE ════ */
+    @media(max-width:900px) {
+      .app-body { grid-template-columns:1fr; }
+      .sidebar  { display:none; }
+      .stats-grid { grid-template-columns:repeat(2,1fr); }
+    }
+    @media(max-width:560px) {
+      .content { padding:20px 16px 40px; }
+      .form-sheet { padding:20px 16px; }
+      .form-grid-2,.form-grid-3 { grid-template-columns:1fr; }
+      .news-row { grid-template-columns:1fr auto; }
+      .news-thumb { display:none; }
+      .stats-grid { grid-template-columns:1fr 1fr; }
+    }
   </style>
 </head>
 <body>
 
-<!-- ── LOGIN ── -->
+<!-- ════ LOGIN ════ -->
 <div id="login-screen">
   <div class="login-box">
     <h2>ICCU Admin</h2>
-    <p>Yangiliklar boshqaruv paneli</p>
+    <p>Kutubxona boshqaruv paneli</p>
     <div class="field" style="margin-bottom:14px">
       <label>Email</label>
-      <input type="email" id="login-email" placeholder="admin@iccu.example" autocomplete="username">
+      <input type="email" id="l-email" placeholder="admin@iccu.uz" autocomplete="username">
     </div>
     <div class="field" style="margin-bottom:22px">
       <label>Parol</label>
-      <input type="password" id="login-pass" placeholder="••••••••" autocomplete="current-password">
+      <input type="password" id="l-pass" placeholder="••••••••" autocomplete="current-password">
     </div>
-    <button class="btn-save" style="width:100%" onclick="doLogin()">Kirish</button>
-    <p id="login-err" style="color:#e05c5c;font-size:13px;text-align:center;margin-top:12px;display:none"></p>
+    <button class="btn-primary" style="width:100%;justify-content:center" onclick="doLogin()">Kirish</button>
+    <p class="login-err" id="l-err"></p>
   </div>
 </div>
 
-<!-- ── APP ── -->
+<!-- ════ APP ════ -->
 <div id="app">
   <header class="topbar">
-    <div class="topbar-brand">
-      ICCU Library <span>Admin Panel</span>
+    <div class="topbar-left">
+      <span class="topbar-brand">ICCU Library</span>
+      <span class="topbar-sep">|</span>
+      <span class="topbar-page" id="topbar-page">Admin Panel</span>
     </div>
-    <button class="btn-logout" onclick="doLogout()">Chiqish</button>
+    <button class="btn-logout" onclick="doLogout()">Chiqish ↗</button>
   </header>
 
-  <div class="main-layout">
-    <!-- LIST -->
-    <div class="list-pane">
-      <div class="list-header">
-        <h2>Yangiliklar <span id="news-count" style="color:var(--muted);font-weight:400;font-size:14px"></span></h2>
-        <button class="btn-new" onclick="openForm()">+ Yangi yangilik</button>
+  <div class="app-body">
+    <!-- SIDEBAR -->
+    <nav class="sidebar">
+      <span class="sidebar-label">Boshqaruv</span>
+      <button class="nav-item active" onclick="showSection('dashboard')" id="nav-dashboard">
+        <span class="icon">📊</span> Dashboard
+      </button>
+      <button class="nav-item" onclick="showSection('news')" id="nav-news">
+        <span class="icon">📰</span> Yangiliklar
+        <span class="nav-badge" id="nb-news">0</span>
+      </button>
+
+      <span class="sidebar-label">Tez havolalar</span>
+      <a class="nav-item" href="/" target="_blank">
+        <span class="icon">🌐</span> Saytni ko'rish
+      </a>
+    </nav>
+
+    <!-- CONTENT -->
+    <div class="content">
+
+      <!-- ─── DASHBOARD ─── -->
+      <div id="sec-dashboard">
+        <div class="panel-header">
+          <div>
+            <h2>Dashboard</h2>
+            <p>Kutubxona boshqaruv paneli</p>
+          </div>
+        </div>
+        <div class="stats-grid">
+          <div class="stat-card">
+            <div class="label">Jami yangiliklar</div>
+            <div class="value" id="st-total">—</div>
+            <div class="sub">Barcha yozuvlar</div>
+          </div>
+          <div class="stat-card">
+            <div class="label">Nashr qilingan</div>
+            <div class="value" id="st-pub" style="color:var(--green)">—</div>
+            <div class="sub">Saytda ko'rinadi</div>
+          </div>
+          <div class="stat-card">
+            <div class="label">Qoralama</div>
+            <div class="value" id="st-draft" style="color:var(--red)">—</div>
+            <div class="sub">Nashr qilinmagan</div>
+          </div>
+          <div class="stat-card">
+            <div class="label">Featured</div>
+            <div class="value" id="st-feat" style="color:var(--gold-2)">—</div>
+            <div class="sub">Katta karta</div>
+          </div>
+        </div>
+        <div style="text-align:center;margin-top:32px">
+          <button class="btn-primary" onclick="showSection('news')">Yangiliklar bo'limiga o'tish →</button>
+        </div>
       </div>
-      <div id="news-list" class="news-list">
-        <div class="empty-state"><div class="spinner"></div></div>
-      </div>
-    </div>
 
-    <!-- FORM -->
-    <div class="form-pane">
-      <div id="form-empty" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100%;color:var(--muted);text-align:center;gap:12px;padding:40px">
-        <div style="font-size:40px">📝</div>
-        <p>Yangilik tanlang yoki<br>yangi qo'shing</p>
-      </div>
-
-      <div id="form-wrap" style="display:none">
-        <h3 id="form-title">Yangi yangilik</h3>
-
-        <!-- Language tabs -->
-        <div class="tabs">
-          <button class="tab active" onclick="switchTab('uz',this)">O'zbek</button>
-          <button class="tab" onclick="switchTab('en',this)">English</button>
-          <button class="tab" onclick="switchTab('ru',this)">Русский</button>
-          <button class="tab" onclick="switchTab('tr',this)">Türkçe</button>
+      <!-- ─── NEWS ─── -->
+      <div id="sec-news" style="display:none">
+        <div class="panel-header">
+          <div>
+            <h2>Yangiliklar</h2>
+            <p id="news-subtitle">Yuklanmoqda...</p>
+          </div>
+          <button class="btn-primary" onclick="openForm()">+ Yangi yangilik</button>
         </div>
 
-        <!-- UZ -->
-        <div class="tab-panel active" id="tab-uz">
-          <div class="field"><label>Tag (O'zbek)</label><input id="tag_uz" placeholder="E'lon"></div>
-          <div class="field"><label>Sarlavha (O'zbek)</label><input id="headline_uz" placeholder="Yangilik sarlavhasi..."></div>
-          <div class="field"><label>Qisqa matn (O'zbek)</label><textarea id="body_uz" placeholder="Kartada ko'rinadigan qisqa tavsif..."></textarea></div>
-        </div>
-        <!-- EN -->
-        <div class="tab-panel" id="tab-en">
-          <div class="field"><label>Tag (English)</label><input id="tag_en" placeholder="Announcement"></div>
-          <div class="field"><label>Headline (English)</label><input id="headline_en" placeholder="News headline..."></div>
-          <div class="field"><label>Body (English)</label><textarea id="body_en" placeholder="Short description shown on card..."></textarea></div>
-        </div>
-        <!-- RU -->
-        <div class="tab-panel" id="tab-ru">
-          <div class="field"><label>Тег (Русский)</label><input id="tag_ru" placeholder="Объявление"></div>
-          <div class="field"><label>Заголовок (Русский)</label><input id="headline_ru" placeholder="Заголовок новости..."></div>
-          <div class="field"><label>Текст (Русский)</label><textarea id="body_ru" placeholder="Краткое описание..."></textarea></div>
-        </div>
-        <!-- TR -->
-        <div class="tab-panel" id="tab-tr">
-          <div class="field"><label>Etiket (Türkçe)</label><input id="tag_tr" placeholder="Duyuru"></div>
-          <div class="field"><label>Başlık (Türkçe)</label><input id="headline_tr" placeholder="Haber başlığı..."></div>
-          <div class="field"><label>Metin (Türkçe)</label><textarea id="body_tr" placeholder="Kısa açıklama..."></textarea></div>
-        </div>
+        <div class="err-banner" id="news-err"></div>
 
-        <!-- Settings -->
-        <div style="border-top:1px solid var(--line);margin-top:4px;padding-top:18px;display:grid;gap:14px">
-          <div class="field-row">
+        <!-- FORM -->
+        <div class="form-sheet" id="form-sheet" style="display:none">
+          <h3 id="form-heading">Yangi yangilik qo'shish</h3>
+
+          <!-- Row 1: category + color + featured + published -->
+          <div class="form-grid-3">
+            <div class="field">
+              <label>Kategoriya</label>
+              <select id="f-category">
+                <option value="YANGILIK">Yangilik</option>
+                <option value="TADBIR">Tadbir</option>
+                <option value="KORGAZMA">Ko'rgazma</option>
+                <option value="BAYRAM">Bayram</option>
+                <option value="HAMKORLIK">Hamkorlik</option>
+                <option value="ELON">E'lon</option>
+              </select>
+            </div>
             <div class="field">
               <label>Sana</label>
-              <input type="datetime-local" id="published_at">
+              <input type="datetime-local" id="f-date">
             </div>
             <div class="field">
               <label>Karta rangi</label>
-              <div class="color-options" id="color-options">
-                <div class="color-swatch selected" style="background:#1a5e43" data-color="#1a5e43" onclick="selectColor(this)"></div>
-                <div class="color-swatch" style="background:#1e4d7a" data-color="#1e4d7a" onclick="selectColor(this)"></div>
-                <div class="color-swatch" style="background:#6b3b2a" data-color="#6b3b2a" onclick="selectColor(this)"></div>
-                <div class="color-swatch" style="background:#4a3070" data-color="#4a3070" onclick="selectColor(this)"></div>
-                <div class="color-swatch" style="background:#2d5a3d" data-color="#2d5a3d" onclick="selectColor(this)"></div>
-                <div class="color-swatch" style="background:#7a4520" data-color="#7a4520" onclick="selectColor(this)"></div>
+              <div class="swatches" id="swatches">
+                <div class="swatch sel" style="background:#1a5e43" data-c="#1a5e43" onclick="pickColor(this)"></div>
+                <div class="swatch"     style="background:#1e4d7a" data-c="#1e4d7a" onclick="pickColor(this)"></div>
+                <div class="swatch"     style="background:#6b3b2a" data-c="#6b3b2a" onclick="pickColor(this)"></div>
+                <div class="swatch"     style="background:#4a3070" data-c="#4a3070" onclick="pickColor(this)"></div>
+                <div class="swatch"     style="background:#2d5a3d" data-c="#2d5a3d" onclick="pickColor(this)"></div>
+                <div class="swatch"     style="background:#7a4520" data-c="#7a4520" onclick="pickColor(this)"></div>
               </div>
             </div>
           </div>
 
-          <div class="toggle-row">
-            <span class="toggle-label">Featured (katta karta)</span>
-            <input type="checkbox" class="toggle" id="is_featured">
+          <!-- Row 2: image URL -->
+          <div class="field" style="margin-bottom:20px">
+            <label>Rasm URL (ixtiyoriy)</label>
+            <input type="url" id="f-image" placeholder="https://..." oninput="previewImg(this.value)">
+            <img id="f-img-preview" class="img-preview" alt="preview">
           </div>
-          <div class="toggle-row">
-            <span class="toggle-label">Nashr qilingan</span>
-            <input type="checkbox" class="toggle" id="is_published" checked>
+
+          <!-- Lang tabs -->
+          <div style="margin-bottom:0">
+            <label style="display:block;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;color:rgba(234,210,154,.75);margin-bottom:10px">Til bo'yicha kontent</label>
+            <div class="lang-tabs">
+              <button class="lang-tab active" onclick="switchLang('uz',this)" id="ltab-uz">
+                <img src="https://flagcdn.com/w20/uz.png" width="16" style="border-radius:2px"> O'zbek
+                <span class="dot" id="ldot-uz"></span>
+              </button>
+              <button class="lang-tab" onclick="switchLang('en',this)" id="ltab-en">
+                <img src="https://flagcdn.com/w20/gb.png" width="16" style="border-radius:2px"> English
+                <span class="dot" id="ldot-en"></span>
+              </button>
+              <button class="lang-tab" onclick="switchLang('ru',this)" id="ltab-ru">
+                <img src="https://flagcdn.com/w20/ru.png" width="16" style="border-radius:2px"> Русский
+                <span class="dot" id="ldot-ru"></span>
+              </button>
+              <button class="lang-tab" onclick="switchLang('tr',this)" id="ltab-tr">
+                <img src="https://flagcdn.com/w20/tr.png" width="16" style="border-radius:2px"> Türkçe
+                <span class="dot" id="ldot-tr"></span>
+              </button>
+            </div>
+            <div class="lang-body" id="lang-body">
+              <div id="uz-required" class="required-note">* O'zbek tili majburiy</div>
+              <div class="field">
+                <label>Tag / Yorliq <span id="lbl-req">*</span></label>
+                <input id="f-tag" placeholder="E'lon, Tadbir, Hamkorlik...">
+              </div>
+              <div class="field">
+                <label>Sarlavha <span id="lbl-req2">*</span></label>
+                <input id="f-headline" placeholder="Yangilik sarlavhasi...">
+              </div>
+              <div class="field">
+                <label>Qisqa matn (excerpt) — kartada ko'rinadi</label>
+                <textarea id="f-excerpt" placeholder="1–2 jumlali qisqa tavsif..."></textarea>
+              </div>
+              <div class="field">
+                <label>To'liq matn (kengaytirilgan) <span id="lbl-req3">*</span></label>
+                <textarea id="f-body" style="min-height:110px" placeholder="Yangilik to'liq matni..."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <hr class="divider">
+
+          <!-- Toggles -->
+          <div style="display:grid;gap:12px;margin-bottom:4px">
+            <div class="toggle-row">
+              <input type="checkbox" class="toggle" id="f-featured">
+              <span>Featured — katta karta sifatida ko'rsatish</span>
+            </div>
+            <div class="toggle-row">
+              <input type="checkbox" class="toggle" id="f-published" checked>
+              <span>Nashr qilish — saytda darhol ko'rinadi</span>
+            </div>
+          </div>
+
+          <div class="form-footer">
+            <button class="btn-primary" id="btn-save" onclick="saveNews()">Saqlash</button>
+            <button class="btn-ghost"   onclick="closeForm()">Bekor qilish</button>
+            <span class="spacer"></span>
+            <span id="form-saving" style="color:var(--muted);font-size:13px;display:none"><span class="spin"></span> Saqlanmoqda...</span>
           </div>
         </div>
 
-        <div class="form-footer">
-          <button class="btn-save" id="btn-save" onclick="saveNews()">Saqlash</button>
-          <button class="btn-cancel" onclick="closeForm()">Bekor qilish</button>
-        </div>
+        <!-- LIST -->
+        <div id="news-list"></div>
       </div>
-    </div>
-  </div>
-</div>
+
+    </div><!-- /content -->
+  </div><!-- /app-body -->
+</div><!-- /app -->
 
 <div class="toast" id="toast"></div>
 
 <script>
-/* ── CONFIG ── */
-const SB_URL = "https://ipdkimklpaegfrkpvsai.supabase.co";
-const SB_KEY = "sb_publishable_PeKKoi1I-5Vn1YGA5Xznfg_oa3eH4Ei";
+/* ════ CONFIG ════ */
+const SB   = "https://ipdkimklpaegfrkpvsai.supabase.co";
+const KEY  = "sb_publishable_PeKKoi1I-5Vn1YGA5Xznfg_oa3eH4Ei";
+const PASS = "iccu2026";
+const MAIL = "admin@iccu.uz";
 
-/* Simple admin password — change this to whatever you want */
-const ADMIN_PASS = "iccu2026";
-const ADMIN_EMAIL = "admin@iccu.uz";
+/* ════ STATE ════ */
+let allNews   = [];
+let editId    = null;
+let activeLang = "uz";
+let selColor  = "#1a5e43";
 
-/* ── STATE ── */
-let allNews = [];
-let editingId = null;
-let selectedColor = "#1a5e43";
+/* Per-lang field cache: { uz:{tag,headline,excerpt,body}, en:{...}, ... } */
+let langData  = { uz:{}, en:{}, ru:{}, tr:{} };
 
-/* ── AUTH (local, no Supabase auth needed) ── */
+/* ════ AUTH ════ */
 function doLogin() {
-  const email = document.getElementById("login-email").value.trim();
-  const pass  = document.getElementById("login-pass").value;
-  const err   = document.getElementById("login-err");
-
-  if (email === ADMIN_EMAIL && pass === ADMIN_PASS) {
-    sessionStorage.setItem("iccu_admin", "1");
+  const email = document.getElementById("l-email").value.trim();
+  const pass  = document.getElementById("l-pass").value;
+  const err   = document.getElementById("l-err");
+  if (email === MAIL && pass === PASS) {
+    sessionStorage.setItem("iccu_adm","1");
     document.getElementById("login-screen").style.display = "none";
     document.getElementById("app").style.display = "block";
-    loadNews();
+    init();
   } else {
     err.textContent = "Email yoki parol noto'g'ri.";
     err.style.display = "block";
   }
 }
-
 document.addEventListener("keydown", e => {
   if (e.key === "Enter" && document.getElementById("login-screen").style.display !== "none") doLogin();
 });
+function doLogout() { sessionStorage.removeItem("iccu_adm"); location.reload(); }
 
-function doLogout() {
-  sessionStorage.removeItem("iccu_admin");
-  location.reload();
-}
-
-/* ── SUPABASE HELPERS ── */
-async function sbFetch(path, opts = {}) {
-  const res = await fetch(`${SB_URL}/rest/v1${path}`, {
+/* ════ SUPABASE ════ */
+async function sbReq(path, opts = {}) {
+  const res = await fetch(`${SB}/rest/v1${path}`, {
     ...opts,
     headers: {
-      "apikey": SB_KEY,
-      "Authorization": `Bearer ${SB_KEY}`,
+      "apikey": KEY, "Authorization": `Bearer ${KEY}`,
       "Content-Type": "application/json",
       "Prefer": opts.prefer || "",
       ...(opts.headers || {})
     }
   });
-  if (!res.ok) {
-    const text = await res.text();
-    throw new Error(text);
-  }
   if (res.status === 204) return null;
-  return res.json();
+  const body = await res.json();
+  if (!res.ok) throw new Error(JSON.stringify(body));
+  return body;
 }
 
-/* ── LOAD ── */
+/* ════ SECTIONS ════ */
+function showSection(name) {
+  ["dashboard","news"].forEach(s => {
+    document.getElementById(`sec-${s}`).style.display   = s === name ? "" : "none";
+    document.getElementById(`nav-${s}`).classList.toggle("active", s === name);
+  });
+  document.getElementById("topbar-page").textContent =
+    name === "dashboard" ? "Dashboard" : "Yangiliklar";
+}
+
+/* ════ INIT ════ */
+async function init() {
+  showSection("dashboard");
+  await loadNews();
+}
+
+/* ════ LOAD NEWS ════ */
 async function loadNews() {
+  const list = document.getElementById("news-list");
+  list.innerHTML = `<div class="skeleton"></div><div class="skeleton" style="margin-top:10px"></div><div class="skeleton" style="margin-top:10px"></div>`;
   try {
-    allNews = await sbFetch("/news?order=published_at.desc&select=*");
-    renderList();
+    allNews = await sbReq("/news?order=published_at.desc&select=*");
+    updateStats();
+    renderNewsList();
   } catch(e) {
-    showToast("Yuklab bo'lmadi: " + e.message, "error");
+    showErr("news-err", "Yuklab bo'lmadi: " + e.message);
   }
 }
 
-/* ── RENDER LIST ── */
-function renderList() {
-  const el = document.getElementById("news-list");
-  document.getElementById("news-count").textContent = `(${allNews.length})`;
+/* ════ STATS ════ */
+function updateStats() {
+  const total = allNews.length;
+  const pub   = allNews.filter(n => n.is_published).length;
+  const draft = total - pub;
+  const feat  = allNews.filter(n => n.is_featured).length;
+  document.getElementById("st-total").textContent = total;
+  document.getElementById("st-pub").textContent   = pub;
+  document.getElementById("st-draft").textContent = draft;
+  document.getElementById("st-feat").textContent  = feat;
+  document.getElementById("nb-news").textContent  = total;
+  document.getElementById("news-subtitle").textContent =
+    `Jami ${total} ta yangilik · ${pub} ta nashr · ${draft} ta qoralama`;
+}
 
+/* ════ RENDER LIST ════ */
+const CAT_LABELS = { YANGILIK:"Yangilik", TADBIR:"Tadbir", KORGAZMA:"Ko'rgazma", BAYRAM:"Bayram", HAMKORLIK:"Hamkorlik", ELON:"E'lon" };
+const LANGS_META = [
+  { k:"uz", flag:"🇺🇿" },
+  { k:"en", flag:"🇬🇧" },
+  { k:"ru", flag:"🇷🇺" },
+  { k:"tr", flag:"🇹🇷" },
+];
+
+function renderNewsList() {
+  const el = document.getElementById("news-list");
   if (!allNews.length) {
-    el.innerHTML = `<div class="empty-state"><div class="icon">📰</div><p>Yangilik yo'q.<br>Birinchisini qo'shing!</p></div>`;
+    el.innerHTML = `<div class="empty"><div class="ico">📰</div><p>Hali yangilik yo'q.<br>Birinchisini qo'shing!</p></div>`;
     return;
   }
 
   el.innerHTML = allNews.map(n => {
-    const date = new Date(n.published_at).toLocaleDateString("uz-UZ", { day:"numeric", month:"short", year:"numeric" });
-    const featuredBadge = n.is_featured ? `<span class="badge-featured">⭐ Featured</span>` : "";
-    const draftBadge    = !n.is_published ? `<span class="badge-draft">Draft</span>` : "";
+    const title = n.headline_uz || n.headline_en || "—";
+    const date  = new Date(n.published_at).toLocaleDateString("uz-UZ", { day:"numeric", month:"short", year:"numeric" });
+    const cat   = CAT_LABELS[n.category] || n.category || "";
+    const langDots = LANGS_META.map(l => {
+      const has = !!(n[`headline_${l.k}`]);
+      return `<span class="lang-dot ${has?"":"dim"}" title="${l.k.toUpperCase()}">${l.flag}</span>`;
+    }).join("");
+    const thumb = n.image_url
+      ? `<div class="news-thumb"><img src="${n.image_url}" onerror="this.style.display='none'"></div>`
+      : `<div class="news-thumb" style="font-size:18px">📰</div>`;
+
     return `
-    <div class="news-item ${editingId === n.id ? 'selected' : ''}" onclick="openForm(${n.id})">
-      <div>
-        <div><span class="news-item-tag">${n.tag_uz || n.tag_en}</span>${featuredBadge}${draftBadge}</div>
-        <div class="news-item-title">${n.headline_uz || n.headline_en}</div>
-        <div class="news-item-date">${date}</div>
+    <div class="news-row">
+      ${thumb}
+      <div class="news-info">
+        <div class="news-title-row">
+          <span class="news-title">${title}</span>
+          <span class="badge ${n.is_published?"badge-pub":"badge-draft"}">${n.is_published?"Nashr":"Qoralama"}</span>
+          ${cat ? `<span class="badge badge-cat">${cat}</span>` : ""}
+          ${n.is_featured ? `<span class="badge" style="background:rgba(200,164,93,.15);color:var(--gold-2)">⭐ Featured</span>` : ""}
+        </div>
+        <div class="news-meta">
+          ${date}
+          <span style="margin:0 6px;opacity:.35">·</span>
+          <span class="lang-dots">${langDots}</span>
+        </div>
       </div>
-      <div class="news-item-actions" onclick="event.stopPropagation()">
-        <button class="btn-icon" title="Tahrirlash" onclick="openForm(${n.id})">✏️</button>
-        <button class="btn-icon del" title="O'chirish" onclick="deleteNews(${n.id})">🗑️</button>
+      <div class="row-actions">
+        <button class="btn-edit"   onclick="openForm(${n.id})">✏️ Tahrirlash</button>
+        <button class="btn-danger" onclick="deleteNews(${n.id})">🗑️</button>
       </div>
     </div>`;
   }).join("");
 }
 
-/* ── FORM ── */
+/* ════ FORM ════ */
 function openForm(id = null) {
-  editingId = id;
-  document.getElementById("form-empty").style.display = "none";
-  document.getElementById("form-wrap").style.display = "block";
-  document.getElementById("form-title").textContent = id ? "Yangilikni tahrirlash" : "Yangi yangilik";
+  editId = id;
+  langData = { uz:{}, en:{}, ru:{}, tr:{} };
+  showSection("news");
 
-  // Reset tabs
-  switchTab("uz", document.querySelector(".tab"));
+  document.getElementById("form-sheet").style.display  = "";
+  document.getElementById("form-heading").textContent  = id ? "Yangilikni tahrirlash" : "Yangi yangilik qo'shish";
 
   if (id) {
     const n = allNews.find(x => x.id === id);
     if (!n) return;
-    ["tag_uz","tag_en","tag_ru","tag_tr",
-     "headline_uz","headline_en","headline_ru","headline_tr",
-     "body_uz","body_en","body_ru","body_tr"].forEach(k => {
-      const el = document.getElementById(k);
-      if (el) el.value = n[k] || "";
+    // populate langData
+    ["uz","en","ru","tr"].forEach(l => {
+      langData[l] = {
+        tag:      n[`tag_${l}`]      || "",
+        headline: n[`headline_${l}`] || "",
+        excerpt:  n[`excerpt_${l}`]  || "",
+        body:     n[`body_${l}`]     || "",
+      };
     });
+    document.getElementById("f-category").value  = n.category || "YANGILIK";
+    document.getElementById("f-image").value      = n.image_url || "";
+    document.getElementById("f-featured").checked = n.is_featured;
+    document.getElementById("f-published").checked= n.is_published;
+    previewImg(n.image_url || "");
+    setColorSwatch(n.art_color || "#1a5e43");
     // date
     const dt = new Date(n.published_at);
     dt.setMinutes(dt.getMinutes() - dt.getTimezoneOffset());
-    document.getElementById("published_at").value = dt.toISOString().slice(0,16);
-    document.getElementById("is_featured").checked  = n.is_featured;
-    document.getElementById("is_published").checked = n.is_published;
-    selectColorByValue(n.art_color || "#1a5e43");
+    document.getElementById("f-date").value = dt.toISOString().slice(0,16);
   } else {
-    // defaults
-    ["tag_uz","tag_en","tag_ru","tag_tr",
-     "headline_uz","headline_en","headline_ru","headline_tr",
-     "body_uz","body_en","body_ru","body_tr"].forEach(k => {
-      const el = document.getElementById(k);
-      if (el) el.value = "";
-    });
+    ["uz","en","ru","tr"].forEach(l => { langData[l] = { tag:"", headline:"", excerpt:"", body:"" }; });
+    document.getElementById("f-category").value   = "YANGILIK";
+    document.getElementById("f-image").value       = "";
+    document.getElementById("f-featured").checked  = false;
+    document.getElementById("f-published").checked = true;
+    previewImg("");
+    setColorSwatch("#1a5e43");
     const now = new Date();
     now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-    document.getElementById("published_at").value = now.toISOString().slice(0,16);
-    document.getElementById("is_featured").checked  = false;
-    document.getElementById("is_published").checked = true;
-    selectColorByValue("#1a5e43");
+    document.getElementById("f-date").value = now.toISOString().slice(0,16);
   }
 
-  renderList(); // update selected highlight
+  switchLang("uz");
+  updateAllDots();
+
+  window.scrollTo({ top:0, behavior:"smooth" });
 }
 
 function closeForm() {
-  editingId = null;
-  document.getElementById("form-empty").style.display = "";
-  document.getElementById("form-wrap").style.display = "none";
-  renderList();
+  saveLangFields(); // flush current tab before closing
+  editId = null;
+  document.getElementById("form-sheet").style.display = "none";
 }
 
-/* ── TABS ── */
-function switchTab(lang, btn) {
-  document.querySelectorAll(".tab").forEach(t => t.classList.remove("active"));
-  document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
-  if (btn) btn.classList.add("active");
-  else document.querySelector(".tab").classList.add("active");
-  document.getElementById(`tab-${lang}`).classList.add("active");
+/* ── Language switching ── */
+function switchLang(lang, btn) {
+  saveLangFields(); // save current tab fields before switching
+  activeLang = lang;
+
+  document.querySelectorAll(".lang-tab").forEach(t => t.classList.remove("active"));
+  (btn || document.getElementById(`ltab-${lang}`)).classList.add("active");
+
+  // load fields
+  const d = langData[lang] || {};
+  document.getElementById("f-tag").value     = d.tag      || "";
+  document.getElementById("f-headline").value= d.headline || "";
+  document.getElementById("f-excerpt").value = d.excerpt  || "";
+  document.getElementById("f-body").value    = d.body     || "";
+
+  // required hint
+  const isUz = lang === "uz";
+  document.getElementById("uz-required").style.display = isUz ? "" : "none";
+  ["lbl-req","lbl-req2","lbl-req3"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.style.display = isUz ? "" : "none";
+  });
+
+  updateAllDots();
 }
 
-/* ── COLOR ── */
-function selectColor(el) {
-  document.querySelectorAll(".color-swatch").forEach(s => s.classList.remove("selected"));
-  el.classList.add("selected");
-  selectedColor = el.dataset.color;
+function saveLangFields() {
+  langData[activeLang] = {
+    tag:      document.getElementById("f-tag").value.trim(),
+    headline: document.getElementById("f-headline").value.trim(),
+    excerpt:  document.getElementById("f-excerpt").value.trim(),
+    body:     document.getElementById("f-body").value.trim(),
+  };
+  updateAllDots();
 }
-function selectColorByValue(val) {
-  selectedColor = val;
-  document.querySelectorAll(".color-swatch").forEach(s => {
-    s.classList.toggle("selected", s.dataset.color === val);
+
+function updateAllDots() {
+  ["uz","en","ru","tr"].forEach(l => {
+    const d    = langData[l] || {};
+    const dot  = document.getElementById(`ldot-${l}`);
+    if (!dot) return;
+    const done = !!(d.headline && d.body);
+    const part = !!(d.headline || d.body || d.tag);
+    dot.className = "dot" + (done ? " done" : part ? " partial" : "");
   });
 }
 
-/* ── SAVE ── */
-async function saveNews() {
-  const btn = document.getElementById("btn-save");
-  btn.innerHTML = '<span class="spinner"></span>';
-  btn.disabled = true;
+/* ── Color ── */
+function pickColor(el) {
+  document.querySelectorAll(".swatch").forEach(s => s.classList.remove("sel"));
+  el.classList.add("sel");
+  selColor = el.dataset.c;
+}
+function setColorSwatch(val) {
+  selColor = val;
+  document.querySelectorAll(".swatch").forEach(s => {
+    s.classList.toggle("sel", s.dataset.c === val);
+  });
+}
 
-  const payload = {
-    tag_uz:      document.getElementById("tag_uz").value.trim(),
-    tag_en:      document.getElementById("tag_en").value.trim(),
-    tag_ru:      document.getElementById("tag_ru").value.trim(),
-    tag_tr:      document.getElementById("tag_tr").value.trim(),
-    headline_uz: document.getElementById("headline_uz").value.trim(),
-    headline_en: document.getElementById("headline_en").value.trim(),
-    headline_ru: document.getElementById("headline_ru").value.trim(),
-    headline_tr: document.getElementById("headline_tr").value.trim(),
-    body_uz:     document.getElementById("body_uz").value.trim(),
-    body_en:     document.getElementById("body_en").value.trim(),
-    body_ru:     document.getElementById("body_ru").value.trim(),
-    body_tr:     document.getElementById("body_tr").value.trim(),
-    art_color:   selectedColor,
-    published_at: new Date(document.getElementById("published_at").value).toISOString(),
-    is_featured: document.getElementById("is_featured").checked,
-    is_published: document.getElementById("is_published").checked,
-  };
-
-  if (!payload.headline_uz && !payload.headline_en) {
-    showToast("Kamida bitta sarlavha kiriting!", "error");
-    btn.innerHTML = "Saqlash"; btn.disabled = false; return;
-  }
-
-  try {
-    if (editingId) {
-      await sbFetch(`/news?id=eq.${editingId}`, {
-        method: "PATCH",
-        prefer: "return=representation",
-        body: JSON.stringify(payload)
-      });
-      showToast("Yangilandi ✓", "success");
-    } else {
-      await sbFetch("/news", {
-        method: "POST",
-        prefer: "return=representation",
-        body: JSON.stringify(payload)
-      });
-      showToast("Qo'shildi ✓", "success");
-    }
-    await loadNews();
-    closeForm();
-  } catch(e) {
-    showToast("Xato: " + e.message, "error");
-  } finally {
-    btn.innerHTML = "Saqlash"; btn.disabled = false;
+/* ── Image preview ── */
+function previewImg(url) {
+  const el = document.getElementById("f-img-preview");
+  if (url && url.startsWith("http")) {
+    el.src = url;
+    el.classList.add("show");
+  } else {
+    el.classList.remove("show");
   }
 }
 
-/* ── DELETE ── */
+/* ════ SAVE ════ */
+async function saveNews() {
+  saveLangFields();
+
+  // Validate uz
+  if (!langData.uz.headline) { showErr("news-err","O'zbekcha sarlavha kiritilishi shart!"); return; }
+  if (!langData.uz.body)     { showErr("news-err","O'zbekcha to'liq matn kiritilishi shart!"); return; }
+  hideErr("news-err");
+
+  document.getElementById("btn-save").disabled        = true;
+  document.getElementById("form-saving").style.display= "";
+
+  const payload = {
+    category:    document.getElementById("f-category").value,
+    image_url:   document.getElementById("f-image").value.trim(),
+    art_color:   selColor,
+    published_at: new Date(document.getElementById("f-date").value).toISOString(),
+    is_featured: document.getElementById("f-featured").checked,
+    is_published:document.getElementById("f-published").checked,
+  };
+  // flatten lang fields
+  ["uz","en","ru","tr"].forEach(l => {
+    const d = langData[l] || {};
+    payload[`tag_${l}`]      = d.tag      || "";
+    payload[`headline_${l}`] = d.headline || "";
+    payload[`excerpt_${l}`]  = d.excerpt  || "";
+    payload[`body_${l}`]     = d.body     || "";
+  });
+
+  try {
+    if (editId) {
+      await sbReq(`/news?id=eq.${editId}`, { method:"PATCH", prefer:"return=representation", body:JSON.stringify(payload) });
+      toast("Yangilandi ✓");
+    } else {
+      await sbReq("/news", { method:"POST", prefer:"return=representation", body:JSON.stringify(payload) });
+      toast("Qo'shildi ✓");
+    }
+    closeForm();
+    await loadNews();
+  } catch(e) {
+    showErr("news-err", "Xato: " + e.message);
+  } finally {
+    document.getElementById("btn-save").disabled         = false;
+    document.getElementById("form-saving").style.display = "none";
+  }
+}
+
+/* ════ DELETE ════ */
 async function deleteNews(id) {
   if (!confirm("Bu yangilikni o'chirasizmi?")) return;
   try {
-    await sbFetch(`/news?id=eq.${id}`, { method: "DELETE" });
-    if (editingId === id) closeForm();
-    showToast("O'chirildi", "success");
+    await sbReq(`/news?id=eq.${id}`, { method:"DELETE" });
+    if (editId === id) closeForm();
+    toast("O'chirildi");
     await loadNews();
   } catch(e) {
-    showToast("Xato: " + e.message, "error");
+    showErr("news-err","O'chirishda xato: " + e.message);
   }
 }
 
-/* ── TOAST ── */
-function showToast(msg, type = "success") {
+/* ════ HELPERS ════ */
+function showErr(id, msg) {
+  const el = document.getElementById(id);
+  el.textContent = msg; el.style.display = "";
+  el.scrollIntoView({ behavior:"smooth", block:"nearest" });
+}
+function hideErr(id) { document.getElementById(id).style.display = "none"; }
+
+function toast(msg, type = "ok") {
   const t = document.getElementById("toast");
-  t.textContent = msg;
-  t.className = `toast ${type} show`;
+  t.textContent = msg; t.className = `toast ${type} show`;
   setTimeout(() => t.classList.remove("show"), 3000);
 }
 
-/* ── INIT ── */
-if (sessionStorage.getItem("iccu_admin")) {
+/* ════ BOOT ════ */
+if (sessionStorage.getItem("iccu_adm")) {
   document.getElementById("login-screen").style.display = "none";
   document.getElementById("app").style.display = "block";
-  loadNews();
+  init();
 }
 </script>
 </body>

@@ -407,20 +407,28 @@ function renderNewsGrid() {
   }
 
   const lang = currentLang;
+  const featuredIdx = liveNews.findIndex(n => n.is_featured);
+  const bigIdx      = featuredIdx >= 0 ? featuredIdx : 0;
+
   grid.innerHTML = liveNews.map((n, i) => {
     const tag      = n[`tag_${lang}`]      || n.tag_uz      || n.tag_en || "";
     const headline = n[`headline_${lang}`] || n.headline_uz || n.headline_en || "";
-    const body     = n[`body_${lang}`]     || n.body_uz     || n.body_en || "";
+    const excerpt  = n[`excerpt_${lang}`]  || n.excerpt_uz  || n.excerpt_en  || "";
+    const body     = n[`body_${lang}`]     || n.body_uz     || n.body_en     || "";
+    const preview  = excerpt || body.slice(0, 120) + (body.length > 120 ? "\u2026" : "");
     const date     = formatDate(n.published_at, lang);
-    const featured = i === 0 && n.is_featured ? "featured" : (n.is_featured ? "featured" : "");
+    const isBig    = i === bigIdx;
+    const artStyle = n.image_url
+      ? `background-image:url('${n.image_url}');background-size:cover;background-position:center;`
+      : `--art-color:${n.art_color || '#1a5e43'}`;
 
-    return `<article class="news-card ${featured}" tabindex="0" role="button"
+    return `<article class="news-card ${isBig ? "featured" : ""}" tabindex="0" role="button"
       onclick="openNews(${n.id})" onkeydown="cardKey(event,()=>openNews(${n.id}))">
-      <div class="news-art" style="--art-color:${n.art_color || '#1a5e43'}"></div>
+      <div class="news-art" style="${artStyle}"></div>
       <div class="news-body">
         <span class="news-tag">${tag}</span>
         <h3>${headline}</h3>
-        <p>${body}</p>
+        <p>${preview}</p>
         <div class="date">${date}</div>
       </div>
     </article>`;
@@ -452,6 +460,23 @@ function openNews(id) {
   document.getElementById("detail-body").textContent    = body;
   document.getElementById("detail-extra").textContent   = "";
   document.getElementById("detail-date").textContent    = date;
+
+  // Image in detail view
+  let imgEl = document.getElementById("detail-img");
+  if (!imgEl) {
+    imgEl = document.createElement("img");
+    imgEl.id = "detail-img";
+    imgEl.style.cssText = "width:100%;max-height:280px;object-fit:cover;border-radius:8px;margin-bottom:16px;display:block;";
+    const panel = document.querySelector(".article-panel");
+    if (panel) panel.insertBefore(imgEl, panel.querySelector("span"));
+  }
+  if (n.image_url) {
+    imgEl.src   = n.image_url;
+    imgEl.style.display = "block";
+  } else {
+    imgEl.style.display = "none";
+  }
+
   showPage("news-detail");
 }
 

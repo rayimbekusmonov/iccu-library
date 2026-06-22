@@ -1,4 +1,21 @@
 /* ─────────────────────────────────────────────
+   SUPABASE CONFIG
+───────────────────────────────────────────── */
+const SB_URL = "https://ipdkimklpaegfrkpvsai.supabase.co";
+const SB_KEY = "sb_publishable_PeKKoi1I-5Vn1YGA5Xznfg_oa3eH4Ei";
+
+async function sbGet(path) {
+  const res = await fetch(`${SB_URL}/rest/v1${path}`, {
+    headers: { "apikey": SB_KEY, "Authorization": `Bearer ${SB_KEY}` }
+  });
+  if (!res.ok) throw new Error(await res.text());
+  return res.json();
+}
+
+/* Live news cache */
+let liveNews = [];
+
+/* ─────────────────────────────────────────────
    i18n
 ───────────────────────────────────────────── */
 const i18n = {
@@ -320,6 +337,8 @@ function applyTexts() {
     const key = el.getAttribute("data-t");
     if (dict[key] !== undefined) el.textContent = dict[key];
   });
+  // News grid til almashganda qayta chiziladi
+  if (liveNews.length) renderNewsGrid();
 }
 
 function toggleLangMenu() {
@@ -361,23 +380,78 @@ function scrollToSection(id) {
 }
 
 /* ─────────────────────────────────────────────
+   News — load from Supabase
+───────────────────────────────────────────── */
+async function loadNews() {
+  const grid = document.getElementById("news-grid");
+  if (!grid) return;
+
+  try {
+    liveNews = await sbGet(
+      "/news?is_published=eq.true&order=published_at.desc&limit=9&select=*"
+    );
+    renderNewsGrid();
+  } catch (e) {
+    console.error("News yuklanmadi:", e);
+    grid.innerHTML = `<p style="color:var(--muted);grid-column:1/-1;text-align:center;padding:32px 0">Yangiliklar yuklanmadi.</p>`;
+  }
+}
+
+function renderNewsGrid() {
+  const grid = document.getElementById("news-grid");
+  if (!grid) return;
+
+  if (!liveNews.length) {
+    grid.innerHTML = `<p style="color:var(--muted);grid-column:1/-1;text-align:center;padding:32px 0">Hozircha yangiliklar yo'q.</p>`;
+    return;
+  }
+
+  const lang = currentLang;
+  grid.innerHTML = liveNews.map((n, i) => {
+    const tag      = n[`tag_${lang}`]      || n.tag_uz      || n.tag_en || "";
+    const headline = n[`headline_${lang}`] || n.headline_uz || n.headline_en || "";
+    const body     = n[`body_${lang}`]     || n.body_uz     || n.body_en || "";
+    const date     = formatDate(n.published_at, lang);
+    const featured = i === 0 && n.is_featured ? "featured" : (n.is_featured ? "featured" : "");
+
+    return `<article class="news-card ${featured}" tabindex="0" role="button"
+      onclick="openNews(${n.id})" onkeydown="cardKey(event,()=>openNews(${n.id}))">
+      <div class="news-art" style="--art-color:${n.art_color || '#1a5e43'}"></div>
+      <div class="news-body">
+        <span class="news-tag">${tag}</span>
+        <h3>${headline}</h3>
+        <p>${body}</p>
+        <div class="date">${date}</div>
+      </div>
+    </article>`;
+  }).join("");
+}
+
+function formatDate(iso, lang) {
+  const d = new Date(iso);
+  const localeMap = { uz:"uz-UZ", en:"en-GB", ru:"ru-RU", tr:"tr-TR" };
+  return d.toLocaleDateString(localeMap[lang] || "en-GB", { day:"numeric", month:"long", year:"numeric" });
+}
+
+/* ─────────────────────────────────────────────
    News detail
 ───────────────────────────────────────────── */
-function openNews(index) {
-  const dict = i18n[currentLang] || i18n.uz;
-  const n = index + 1;
-  const dates = {
-    uz:["2 iyun 2026","28 may 2026","20 may 2026"],
-    en:["2 June 2026","28 May 2026","20 May 2026"],
-    ru:["2 июня 2026","28 мая 2026","20 мая 2026"],
-    tr:["2 Haziran 2026","28 Mayıs 2026","20 Mayıs 2026"]
-  };
-  document.getElementById("detail-tag").textContent     = dict[`newsTag${n}`]      || "";
-  document.getElementById("detail-title").textContent   = dict[`newsHeadline${n}`] || "";
-  document.getElementById("detail-heading").textContent = dict[`newsHeadline${n}`] || "";
-  document.getElementById("detail-body").textContent    = dict[`newsBody${n}`]     || "";
-  document.getElementById("detail-extra").textContent   = dict[`newsExtra${n}`]    || "";
-  document.getElementById("detail-date").textContent    = (dates[currentLang] || dates.en)[index];
+function openNews(id) {
+  const n = liveNews.find(x => x.id === id);
+  if (!n) return;
+
+  const lang     = currentLang;
+  const tag      = n[`tag_${lang}`]      || n.tag_uz      || n.tag_en || "";
+  const headline = n[`headline_${lang}`] || n.headline_uz || n.headline_en || "";
+  const body     = n[`body_${lang}`]     || n.body_uz     || n.body_en || "";
+  const date     = formatDate(n.published_at, lang);
+
+  document.getElementById("detail-tag").textContent     = tag;
+  document.getElementById("detail-title").textContent   = headline;
+  document.getElementById("detail-heading").textContent = headline;
+  document.getElementById("detail-body").textContent    = body;
+  document.getElementById("detail-extra").textContent   = "";
+  document.getElementById("detail-date").textContent    = date;
   showPage("news-detail");
 }
 
@@ -437,4 +511,5 @@ function initHeroCarousel() {
 document.addEventListener("DOMContentLoaded", () => {
   applyTexts();
   initHeroCarousel();
+  loadNews();
 });

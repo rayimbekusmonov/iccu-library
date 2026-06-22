@@ -6,6 +6,7 @@ const i18n = {
     brandSubtitle:"Islom sivilizatsiyasi kutubxonasi",
     navHome:"Bosh sahifa", navDiscover:"Fondlar", navServices:"Xizmatlar",
     navVisit:"Tashrif", navAbout:"Haqida", navPartners:"Hamkorlar",
+    navDirectors:"Rahbariyat",
     navKirish:"Kirish", navRegister:"Ro'yxatdan o'tish",
     heroEyebrow:"Raqamli meros platformasi",
     heroTitle:"Islom sivilizatsiyasi manbalarini zamonaviy formatda kashf eting.",
@@ -44,12 +45,6 @@ const i18n = {
     project3Text:"Videolar, transkriptlar va o'quv yo'llarini fondlar bilan bog'lash.",
     project4Status:"Keyingi reliz", project4Title:"Tashrif va xona band qilish",
     project4Text:"O'qish zali o'rinlari, maxsus fond uchrashuvlari va tashrif rejasini boshqarish.",
-    videosKicker:"Multimedia", videosTitle:"Video ma'ruzalar",
-    videosSubtitle:"Video bosilganda focus mode ochiladi.",
-    video1Title:"Ipak yo'li sivilizatsiyalari tarixi", video1Meta:"42 daqiqa",
-    video2Title:"Al-Beruniy: Xorazmning qomusiy olimi", video2Meta:"38 daqiqa",
-    video3Title:"Xattotlik va islom qo'lyozmalari", video3Meta:"51 daqiqa",
-    video4Title:"Nozik arxiv materiallarini saqlash", video4Meta:"26 daqiqa",
     partnersKicker:"Hamkorlar", partnersTitle:"Ishonchli hamkorlar",
     partnersSubtitle:"Birgalikda ilmiy va raqamli meros sohasidagi ishlarni rivojlantirmoqdamiz.",
     newsDetailKicker:"Yangilik", backNews:"Yangiliklarga qaytish",
@@ -89,7 +84,26 @@ const i18n = {
     faq2A:"Ko'plab raqamli resurslar onlayn mavjud, ayrim bazalar akkaunt talab qiladi.",
     footerText:"Raqamli fondlar, tashrif xizmatlari, hamkorlik va ilmiy resurslar uchun yagona platforma.",
     footerContacts:"Aloqa", footerLinks:"Tezkor havolalar",
-    footerSocials:"Ijtimoiy tarmoqlar", footerRights:"ICCU — Islom sivilizatsiyasi markazi"
+    footerSocials:"Ijtimoiy tarmoqlar", footerRights:"ICCU — Islom sivilizatsiyasi markazi",
+    /* Directors page */
+    directorsKicker:"Rahbariyat",
+    directorsTitle:"Kutubxona rahbariyati",
+    directorsSubtitle:"ICCU kutubxonasini rivojlantirish va boshqarishga mas'ul mutaxassislar jamoasi.",
+    director1Name:"Prof. Dr. Abdulloh Karimov",
+    director1Role:"Bosh direktor",
+    director1Bio:"Islom sivilizatsiyasi va raqamli arxivlar sohasida 25 yillik tajribaga ega. UNESCO va ISESCO bilan hamkorlikdagi loyihalarga rahbarlik qiladi.",
+    director2Name:"Dr. Malika Yusupova",
+    director2Role:"Ilmiy ishllar bo'yicha direktor o'rinbosari",
+    director2Bio:"Qo'lyozmashunoslik va kataloglash bo'yicha mutaxassis. 15 yillik ilmiy faoliyat davomida 3 000 dan ortiq nodir manba tavsifini tayyorlagan.",
+    director3Name:"Jahongir Mirzayev",
+    director3Role:"Raqamli texnologiyalar bo'limi boshlig'i",
+    director3Bio:"Kutubxona tizimlarini raqamlashtirish va metadata standartlarini joriy etish bo'yicha rahbar mutaxassis.",
+    director4Name:"Dilnoza Rashidova",
+    director4Role:"Xalqaro hamkorlik bo'limi boshlig'i",
+    director4Bio:"Xalqaro kutubxona tashkilotlari bilan munosabatlarni muvofiqlashtiradi. Istanbul, Paris va Vashington sherik kutubxonalari bilan faol ishlaydi.",
+    director5Name:"Behzod Nazarov",
+    director5Role:"Foydalanuvchi xizmatlari bo'limi boshlig'i",
+    director5Bio:"Tadqiqotchilar va talabalar uchun kirish xizmatlari, o'qish zallari va masofaviy resurslar bo'yicha mas'ul.",
   }
 };
 
@@ -98,7 +112,9 @@ i18n.en = {
   ...i18n.uz,
   brandSubtitle:"Islamic Civilization Library",
   navHome:"Home", navDiscover:"Collections", navServices:"Services",
-  navVisit:"Visit", navAbout:"About", navPartners:"Partners", navKirish:"Login", navRegister:"Register",
+  navVisit:"Visit", navAbout:"About", navPartners:"Partners",
+  navDirectors:"Directors",
+  navKirish:"Login", navRegister:"Register",
   heroEyebrow:"Digital heritage platform",
   heroTitle:"Explore Islamic civilization sources in a modern format.",
   heroCopy:"ICCU Library brings manuscripts, books, lectures, events, and visitor services into one clear platform.",
@@ -134,12 +150,6 @@ i18n.en = {
   project3Text:"Connect videos, transcripts, and learning paths with collections.",
   project4Status:"Next release", project4Title:"Visit and room booking",
   project4Text:"Manage reading room seats, special collection appointments, and visit plans.",
-  videosKicker:"Multimedia", videosTitle:"Video lectures",
-  videosSubtitle:"Videos open in focus mode with the rest of the page dimmed.",
-  video1Title:"History of Silk Road civilizations", video1Meta:"42 min",
-  video2Title:"Al-Biruni: universal scholar of Khwarezm", video2Meta:"38 min",
-  video3Title:"Calligraphy and Islamic manuscripts", video3Meta:"51 min",
-  video4Title:"Preserving fragile archive materials", video4Meta:"26 min",
   partnersKicker:"Partners", partnersTitle:"Trusted partners",
   partnersSubtitle:"Together we advance digital heritage and scholarly work.",
   newsDetailKicker:"News", backNews:"Back to news",
@@ -177,14 +187,34 @@ i18n.en = {
   faq2A:"Many resources are online; some databases require an account.",
   footerText:"One platform for digital collections, visitor services, and research resources.",
   footerContacts:"Contacts", footerLinks:"Quick links",
-  footerSocials:"Social accounts", footerRights:"ICCU — Islamic Civilization Center"
+  footerSocials:"Social accounts", footerRights:"ICCU — Islamic Civilization Center",
+  directorsKicker:"Leadership",
+  directorsTitle:"Library leadership",
+  directorsSubtitle:"The team responsible for developing and managing the ICCU Library.",
+  director1Name:"Prof. Dr. Abdulloh Karimov",
+  director1Role:"Executive Director",
+  director1Bio:"25 years of experience in Islamic civilization studies and digital archives. Leads projects in cooperation with UNESCO and ISESCO.",
+  director2Name:"Dr. Malika Yusupova",
+  director2Role:"Deputy Director for Research",
+  director2Bio:"Specialist in manuscript studies and cataloguing. Has prepared descriptions for over 3,000 rare sources over 15 years of scholarly work.",
+  director3Name:"Jahongir Mirzayev",
+  director3Role:"Head of Digital Technologies",
+  director3Bio:"Lead specialist in library system digitization and implementation of metadata standards.",
+  director4Name:"Dilnoza Rashidova",
+  director4Role:"Head of International Cooperation",
+  director4Bio:"Coordinates relations with international library organizations. Actively works with partner libraries in Istanbul, Paris, and Washington.",
+  director5Name:"Behzod Nazarov",
+  director5Role:"Head of User Services",
+  director5Bio:"Responsible for access services, reading rooms, and remote resources for researchers and students.",
 };
 
 i18n.ru = {
   ...i18n.en,
   brandSubtitle:"Библиотека исламской цивилизации",
   navHome:"Главная", navDiscover:"Фонды", navServices:"Услуги",
-  navVisit:"Визит", navAbout:"О нас", navPartners:"Партнёры", navKirish:"Войти", navRegister:"Регистрация",
+  navVisit:"Визит", navAbout:"О нас", navPartners:"Партнёры",
+  navDirectors:"Руководство",
+  navKirish:"Войти", navRegister:"Регистрация",
   heroEyebrow:"Платформа цифрового наследия",
   heroTitle:"Откройте источники исламской цивилизации.",
   heroCopy:"ICCU Библиотека объединяет рукописи, книги, лекции и услуги посетителей на единой платформе.",
@@ -192,21 +222,40 @@ i18n.ru = {
   updatesKicker:"Новости", newsTitle:"Последние новости и объявления",
   quickKicker:"Быстрые услуги", quickTitle:"Основные пути для пользователей",
   projectsKicker:"Проекты", projectsTitle:"Активные цифровые инициативы",
-  videosKicker:"Мультимедиа", videosTitle:"Видеолекции",
   partnersKicker:"Партнёры", partnersTitle:"Надёжные партнёры",
   discoverKicker:"Фонды", discoverTitle:"Фонды библиотеки",
   servicesKicker:"Услуги", servicesTitle:"Услуги библиотеки",
   visitKicker:"Визит", visitTitle:"Планируйте визит",
   aboutKicker:"О нас", aboutTitle:"О библиотеке",
   footerContacts:"Контакты", footerLinks:"Быстрые ссылки",
-  footerSocials:"Социальные сети", footerRights:"ICCU — Центр исламской цивилизации"
+  footerSocials:"Социальные сети", footerRights:"ICCU — Центр исламской цивилизации",
+  directorsKicker:"Руководство",
+  directorsTitle:"Руководство библиотеки",
+  directorsSubtitle:"Команда, ответственная за развитие и управление библиотекой ICCU.",
+  director1Name:"Проф. д-р Абдулло Каримов",
+  director1Role:"Исполнительный директор",
+  director1Bio:"25 лет опыта в области исламской цивилизации и цифровых архивов. Руководит проектами совместно с ЮНЕСКО и ИСЕСКО.",
+  director2Name:"Д-р Малика Юсупова",
+  director2Role:"Заместитель директора по научной работе",
+  director2Bio:"Специалист по рукописям и каталогизации. За 15 лет научной деятельности подготовила описания более 3 000 редких источников.",
+  director3Name:"Жахонгир Мирзаев",
+  director3Role:"Руководитель отдела цифровых технологий",
+  director3Bio:"Ведущий специалист по цифровизации библиотечных систем и внедрению стандартов метаданных.",
+  director4Name:"Дилноза Рашидова",
+  director4Role:"Руководитель отдела международного сотрудничества",
+  director4Bio:"Координирует отношения с международными библиотечными организациями. Активно работает с партнёрскими библиотеками в Стамбуле, Париже и Вашингтоне.",
+  director5Name:"Бехзод Назаров",
+  director5Role:"Руководитель отдела обслуживания пользователей",
+  director5Bio:"Отвечает за услуги доступа, читальные залы и дистанционные ресурсы для исследователей и студентов.",
 };
 
 i18n.tr = {
   ...i18n.en,
   brandSubtitle:"İslam Medeniyeti Kütüphanesi",
   navHome:"Ana sayfa", navDiscover:"Koleksiyonlar", navServices:"Hizmetler",
-  navVisit:"Ziyaret", navAbout:"Hakkında", navPartners:"Ortaklar", navKirish:"Giriş", navRegister:"Kaydol",
+  navVisit:"Ziyaret", navAbout:"Hakkında", navPartners:"Ortaklar",
+  navDirectors:"Yöneticiler",
+  navKirish:"Giriş", navRegister:"Kaydol",
   heroEyebrow:"Dijital miras platformu",
   heroTitle:"İslam medeniyeti kaynaklarını modern formatta keşfedin.",
   heroCopy:"ICCU Kütüphanesi el yazmaları, kitaplar, dersler ve ziyaretçi hizmetlerini tek platformda bir araya getirir.",
@@ -214,14 +263,31 @@ i18n.tr = {
   updatesKicker:"Haberler", newsTitle:"Son haberler ve duyurular",
   quickKicker:"Hızlı hizmetler", quickTitle:"Kullanıcılar için temel yollar",
   projectsKicker:"Projeler", projectsTitle:"Aktif dijital kütüphane girişimleri",
-  videosKicker:"Multimedya", videosTitle:"Video dersler",
   partnersKicker:"Ortaklar", partnersTitle:"Güvenilir ortaklar",
   discoverKicker:"Koleksiyonlar", discoverTitle:"Kütüphane koleksiyonları",
   servicesKicker:"Hizmetler", servicesTitle:"Kütüphane hizmetleri",
   visitKicker:"Ziyaret", visitTitle:"Ziyaretinizi planlayın",
   aboutKicker:"Hakkında", aboutTitle:"Kütüphane hakkında",
   footerContacts:"İletişim", footerLinks:"Hızlı bağlantılar",
-  footerSocials:"Sosyal hesaplar", footerRights:"ICCU — İslam Medeniyeti Merkezi"
+  footerSocials:"Sosyal hesaplar", footerRights:"ICCU — İslam Medeniyeti Merkezi",
+  directorsKicker:"Liderlik",
+  directorsTitle:"Kütüphane yönetimi",
+  directorsSubtitle:"ICCU Kütüphanesini geliştirmekten ve yönetmekten sorumlu ekip.",
+  director1Name:"Prof. Dr. Abdulloh Karimov",
+  director1Role:"Genel Müdür",
+  director1Bio:"İslam medeniyeti çalışmaları ve dijital arşivlerde 25 yıllık deneyim. UNESCO ve ISESCO ile işbirliği projelerine liderlik eder.",
+  director2Name:"Dr. Malika Yusupova",
+  director2Role:"Araştırma Genel Müdür Yardımcısı",
+  director2Bio:"El yazmaları ve kataloglama uzmanı. 15 yıllık bilimsel çalışmada 3.000'den fazla nadir kaynak tanımı hazırladı.",
+  director3Name:"Jahongir Mirzayev",
+  director3Role:"Dijital Teknolojiler Bölüm Başkanı",
+  director3Bio:"Kütüphane sistemlerinin dijitalleştirilmesi ve meta veri standartlarının uygulanması konusunda baş uzman.",
+  director4Name:"Dilnoza Rashidova",
+  director4Role:"Uluslararası İşbirliği Bölüm Başkanı",
+  director4Bio:"Uluslararası kütüphane kuruluşlarıyla ilişkileri koordine eder. İstanbul, Paris ve Washington'daki ortak kütüphanelerle aktif olarak çalışır.",
+  director5Name:"Behzod Nazarov",
+  director5Role:"Kullanıcı Hizmetleri Bölüm Başkanı",
+  director5Bio:"Araştırmacılar ve öğrenciler için erişim hizmetleri, okuma odaları ve uzaktan kaynaklardan sorumludur.",
 };
 
 /* ─────────────────────────────────────────────
@@ -229,24 +295,21 @@ i18n.tr = {
 ───────────────────────────────────────────── */
 let currentLang = "uz";
 
-const langMeta = {
-  uz: { flag:"🇺🇿", label:"O'zbek" },
-  en: { flag:"🇬🇧", label:"English" },
-  ru: { flag:"🇷🇺", label:"Русский" },
-  tr: { flag:"🇹🇷", label:"Türkçe" }
-};
-
 function setLang(lang) {
   currentLang = lang;
   document.documentElement.lang = lang;
-  const m = langMeta[lang];
-  const trigger = document.getElementById("lang-trigger");
-  trigger.querySelector(".lt-flag").textContent  = m.flag;
-  trigger.querySelector(".lt-label").textContent = m.label;
+
+  // Update flag image in trigger
+  const flagMap = { uz:"uz", en:"gb", ru:"ru", tr:"tr" };
+  const flagImg = document.getElementById("current-flag");
+  if (flagImg) flagImg.src = `https://flagcdn.com/w20/${flagMap[lang]}.png`;
+
   // Update active state on lang options
   document.querySelectorAll(".lang-option").forEach(btn => {
-    btn.classList.toggle("active", btn.dataset.lang === lang);
+    const btnLang = btn.getAttribute("onclick").match(/setLang\('(\w+)'\)/)?.[1];
+    btn.classList.toggle("active", btnLang === lang);
   });
+
   closeLangMenu();
   applyTexts();
 }
@@ -263,12 +326,16 @@ function toggleLangMenu() {
   const menu    = document.getElementById("lang-menu");
   const trigger = document.getElementById("lang-trigger");
   const isOpen  = menu.classList.toggle("open");
+  trigger.setAttribute("aria-expanded", isOpen);
   trigger.classList.toggle("open", isOpen);
 }
 
 function closeLangMenu() {
-  document.getElementById("lang-menu").classList.remove("open");
-  document.getElementById("lang-trigger").classList.remove("open");
+  const menu    = document.getElementById("lang-menu");
+  const trigger = document.getElementById("lang-trigger");
+  menu.classList.remove("open");
+  trigger.classList.remove("open");
+  trigger.setAttribute("aria-expanded", "false");
 }
 
 document.addEventListener("click", e => {
@@ -315,23 +382,6 @@ function openNews(index) {
 }
 
 /* ─────────────────────────────────────────────
-   Video modal
-───────────────────────────────────────────── */
-function openVideo(index) {
-  const dict = i18n[currentLang] || i18n.uz;
-  const n = index + 1;
-  document.getElementById("video-modal-title").textContent = dict[`video${n}Title`] || "";
-  document.getElementById("video-modal-meta").textContent  = dict[`video${n}Meta`]  || "";
-  document.getElementById("video-modal").classList.add("open");
-  document.body.classList.add("modal-open");
-}
-
-function closeVideo() {
-  document.getElementById("video-modal").classList.remove("open");
-  document.body.classList.remove("modal-open");
-}
-
-/* ─────────────────────────────────────────────
    FAQ
 ───────────────────────────────────────────── */
 function toggleFaq(id, button) {
@@ -350,14 +400,41 @@ function cardKey(e, fn) {
   if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); }
 }
 
-document.addEventListener("keydown", e => { if (e.key === "Escape") closeVideo(); });
+/* ─────────────────────────────────────────────
+   Hero carousel
+───────────────────────────────────────────── */
+let heroSlideIndex = 0;
+const HERO_INTERVAL = 6000;
+
+function initHeroCarousel() {
+  const slides = document.querySelectorAll(".hero-slide");
+  const dots   = document.querySelectorAll(".hero-dot");
+  if (!slides.length) return;
+
+  function goTo(idx) {
+    slides[heroSlideIndex].classList.remove("active");
+    dots[heroSlideIndex].classList.remove("active");
+    heroSlideIndex = (idx + slides.length) % slides.length;
+    slides[heroSlideIndex].classList.add("active");
+    dots[heroSlideIndex].classList.add("active");
+  }
+
+  // Dots click
+  dots.forEach((dot, i) => dot.addEventListener("click", () => {
+    clearInterval(heroTimer);
+    goTo(i);
+    heroTimer = setInterval(() => goTo(heroSlideIndex + 1), HERO_INTERVAL);
+  }));
+
+  // Auto play
+  goTo(0);
+  let heroTimer = setInterval(() => goTo(heroSlideIndex + 1), HERO_INTERVAL);
+}
 
 /* ─────────────────────────────────────────────
    Boot
 ───────────────────────────────────────────── */
 document.addEventListener("DOMContentLoaded", () => {
   applyTexts();
-  document.getElementById("video-modal").addEventListener("click", e => {
-    if (e.target.id === "video-modal") closeVideo();
-  });
+  initHeroCarousel();
 });

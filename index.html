@@ -23,12 +23,13 @@
 
   <nav class="nav" aria-label="Asosiy menyu">
     <div class="nav-links">
-      <button class="nav-link active" id="nav-home"     type="button" onclick="showPage('home')"     data-t="navHome">Bosh sahifa</button>
-      <button class="nav-link"        id="nav-discover" type="button" onclick="showPage('discover')" data-t="navDiscover">Fondlar</button>
-      <button class="nav-link"        id="nav-services" type="button" onclick="showPage('services')" data-t="navServices">Xizmatlar</button>
-      <button class="nav-link"        id="nav-visit"    type="button" onclick="showPage('visit')"    data-t="navVisit">Tashrif</button>
-      <button class="nav-link"        id="nav-about"    type="button" onclick="showPage('about')"    data-t="navAbout">Haqida</button>
-      <button class="nav-link"        id="nav-partners" type="button" onclick="showPage('partners')" data-t="navPartners">Hamkorlar</button>
+      <button class="nav-link active" id="nav-home"      type="button" onclick="showPage('home')"      data-t="navHome">Bosh sahifa</button>
+      <button class="nav-link"        id="nav-discover"  type="button" onclick="showPage('discover')"  data-t="navDiscover">Fondlar</button>
+      <button class="nav-link"        id="nav-services"  type="button" onclick="showPage('services')"  data-t="navServices">Xizmatlar</button>
+      <button class="nav-link"        id="nav-visit"     type="button" onclick="showPage('visit')"     data-t="navVisit">Tashrif</button>
+      <button class="nav-link"        id="nav-about"     type="button" onclick="showPage('about')"     data-t="navAbout">Haqida</button>
+      <button class="nav-link"        id="nav-partners"  type="button" onclick="showPage('partners')"  data-t="navPartners">Hamkorlar</button>
+      <button class="nav-link"        id="nav-directors" type="button" onclick="showPage('directors')" data-t="navDirectors">Rahbariyat</button>
     </div>
 
     <div class="lang-wrap">
@@ -69,16 +70,18 @@
       <!-- HERO -->
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-slides" aria-hidden="true">
-          <div class="hero-slide"></div>
-          <div class="hero-slide"></div>
-          <div class="hero-slide"></div>
-          <div class="hero-slide"></div>
+          <div class="hero-slide" style="background-image: linear-gradient(90deg,rgba(4,20,14,.82) 0%,rgba(4,20,14,.28) 100%), url('images/1.jpg'); background-size:cover; background-position:center;"></div>
+          <div class="hero-slide" style="background-image: linear-gradient(90deg,rgba(4,20,14,.82) 0%,rgba(4,20,14,.28) 100%), url('images/2.jpg'); background-size:cover; background-position:center;"></div>
+          <div class="hero-slide" style="background-image: linear-gradient(90deg,rgba(4,20,14,.82) 0%,rgba(4,20,14,.28) 100%), url('images/3.jpg'); background-size:cover; background-position:center;"></div>
+          <div class="hero-slide" style="background-image: linear-gradient(90deg,rgba(4,20,14,.82) 0%,rgba(4,20,14,.28) 100%), url('images/4.jpg'); background-size:cover; background-position:center;"></div>
+          <div class="hero-slide" style="background-image: linear-gradient(90deg,rgba(4,20,14,.82) 0%,rgba(4,20,14,.28) 100%), url('images/5.jpg'); background-size:cover; background-position:center;"></div>
         </div>
         <div class="hero-dots" aria-hidden="true">
-          <button class="hero-dot active" type="button"></button>
-          <button class="hero-dot"        type="button"></button>
-          <button class="hero-dot"        type="button"></button>
-          <button class="hero-dot"        type="button"></button>
+          <button class="hero-dot" type="button"></button>
+          <button class="hero-dot" type="button"></button>
+          <button class="hero-dot" type="button"></button>
+          <button class="hero-dot" type="button"></button>
+          <button class="hero-dot" type="button"></button>
         </div>
         <div class="container hero-content">
           <div>
@@ -193,37 +196,6 @@
               <span class="project-status" data-t="project4Status">Keyingi reliz</span>
               <h3 data-t="project4Title">Tashrif va xona band qilish</h3>
               <p data-t="project4Text">O'qish zali o'rinlari, maxsus fond uchrashuvlari va tashrif rejasini boshqarish.</p>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <!-- VIDEOS -->
-      <section class="section">
-        <div class="container">
-          <div class="section-header">
-            <div>
-              <div class="section-kicker" data-t="videosKicker">Multimedia</div>
-              <h2 class="section-title" data-t="videosTitle">Tadbirlar</h2>
-              <p class="section-subtitle" data-t="videosSubtitle">Video bosilganda focus mode ochiladi.</p>
-            </div>
-          </div>
-          <div class="grid videos">
-            <article class="video-card" tabindex="0" role="button" onclick="openVideo(0)" onkeydown="cardKey(event,()=>openVideo(0))">
-              <div class="video-thumb" style="--video-color:#0f3527"><span class="play-icon">▶</span></div>
-              <div class="video-body"><h3 data-t="video1Title">Ipak yo'li sivilizatsiyalari tarixi</h3><p data-t="video1Meta">42 daqiqa</p></div>
-            </article>
-            <article class="video-card" tabindex="0" role="button" onclick="openVideo(1)" onkeydown="cardKey(event,()=>openVideo(1))">
-              <div class="video-thumb" style="--video-color:#1e4d7a"><span class="play-icon">▶</span></div>
-              <div class="video-body"><h3 data-t="video2Title">Al-Beruniy: Xorazmning qomusiy olimi</h3><p data-t="video2Meta">38 daqiqa</p></div>
-            </article>
-            <article class="video-card" tabindex="0" role="button" onclick="openVideo(2)" onkeydown="cardKey(event,()=>openVideo(2))">
-              <div class="video-thumb" style="--video-color:#6b3b2a"><span class="play-icon">▶</span></div>
-              <div class="video-body"><h3 data-t="video3Title">Xattotlik va islom qo'lyozmalari</h3><p data-t="video3Meta">51 daqiqa</p></div>
-            </article>
-            <article class="video-card" tabindex="0" role="button" onclick="openVideo(3)" onkeydown="cardKey(event,()=>openVideo(3))">
-              <div class="video-thumb" style="--video-color:#1a5e43"><span class="play-icon">▶</span></div>
-              <div class="video-body"><h3 data-t="video4Title">Nozik arxiv materiallarini saqlash</h3><p data-t="video4Meta">26 daqiqa</p></div>
             </article>
           </div>
         </div>
@@ -365,7 +337,6 @@
           </div>
         </header>
         <div class="partners-track">
-          <!-- Logo bo'lsa: <img src="partners/org1.png" alt="Org name"> -->
           <div class="partner-card"><div class="partner-logo-ph">ISESCO</div><div class="partner-name">ISESCO</div></div>
           <div class="partner-card"><div class="partner-logo-ph">UNESCO</div><div class="partner-name">UNESCO</div></div>
           <div class="partner-card"><div class="partner-logo-ph">IRCICA</div><div class="partner-name">IRCICA</div></div>
@@ -377,6 +348,86 @@
           <div class="partner-card"><div class="partner-logo-ph">TLFF</div><div class="partner-name">Turkiston Kutubxonasi</div></div>
           <div class="partner-card"><div class="partner-logo-ph">CISC</div><div class="partner-name">CISC</div></div>
         </div>
+      </div>
+    </section>
+
+    <!-- ══════════════ DIRECTORS ══════════════ -->
+    <section class="page" id="page-directors">
+      <div class="container">
+        <header class="page-header">
+          <div>
+            <div class="section-kicker" data-t="directorsKicker">Rahbariyat</div>
+            <h2 class="page-title" data-t="directorsTitle">Kutubxona rahbariyati</h2>
+            <p class="page-subtitle" data-t="directorsSubtitle">ICCU kutubxonasini rivojlantirish va boshqarishga mas'ul mutaxassislar jamoasi.</p>
+          </div>
+        </header>
+
+        <!-- Pyramid row 1: Head Director (center) -->
+        <div class="directors-pyramid">
+          <div class="directors-row directors-row--1">
+            <div class="director-card director-card--head">
+              <div class="director-avatar">
+                <img src="images/director1.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                <div class="director-avatar-ph" style="display:none">👤</div>
+              </div>
+              <div class="director-badge">Bosh direktor</div>
+              <h3 class="director-name" data-t="director1Name">Prof. Dr. Abdulloh Karimov</h3>
+              <p class="director-role" data-t="director1Role">Bosh direktor</p>
+              <p class="director-bio" data-t="director1Bio">Islom sivilizatsiyasi va raqamli arxivlar sohasida 25 yillik tajribaga ega.</p>
+            </div>
+          </div>
+
+          <!-- Connector line -->
+          <div class="directors-connector" aria-hidden="true"></div>
+
+          <!-- Pyramid row 2: Two deputies -->
+          <div class="directors-row directors-row--2">
+            <div class="director-card">
+              <div class="director-avatar">
+                <img src="images/director2.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                <div class="director-avatar-ph" style="display:none">👤</div>
+              </div>
+              <h3 class="director-name" data-t="director2Name">Dr. Malika Yusupova</h3>
+              <p class="director-role" data-t="director2Role">Ilmiy ishlar bo'yicha direktor o'rinbosari</p>
+              <p class="director-bio" data-t="director2Bio">Qo'lyozmashunoslik va kataloglash bo'yicha mutaxassis.</p>
+            </div>
+            <div class="director-card">
+              <div class="director-avatar">
+                <img src="images/director3.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                <div class="director-avatar-ph" style="display:none">👤</div>
+              </div>
+              <h3 class="director-name" data-t="director3Name">Jahongir Mirzayev</h3>
+              <p class="director-role" data-t="director3Role">Raqamli texnologiyalar bo'limi boshlig'i</p>
+              <p class="director-bio" data-t="director3Bio">Kutubxona tizimlarini raqamlashtirish bo'yicha rahbar mutaxassis.</p>
+            </div>
+          </div>
+
+          <!-- Connector line -->
+          <div class="directors-connector" aria-hidden="true"></div>
+
+          <!-- Pyramid row 3: Three department heads -->
+          <div class="directors-row directors-row--2">
+            <div class="director-card">
+              <div class="director-avatar">
+                <img src="images/director4.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                <div class="director-avatar-ph" style="display:none">👤</div>
+              </div>
+              <h3 class="director-name" data-t="director4Name">Dilnoza Rashidova</h3>
+              <p class="director-role" data-t="director4Role">Xalqaro hamkorlik bo'limi boshlig'i</p>
+              <p class="director-bio" data-t="director4Bio">Xalqaro kutubxona tashkilotlari bilan munosabatlarni muvofiqlashtiradi.</p>
+            </div>
+            <div class="director-card">
+              <div class="director-avatar">
+                <img src="images/director5.jpg" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                <div class="director-avatar-ph" style="display:none">👤</div>
+              </div>
+              <h3 class="director-name" data-t="director5Name">Behzod Nazarov</h3>
+              <p class="director-role" data-t="director5Role">Foydalanuvchi xizmatlari bo'limi boshlig'i</p>
+              <p class="director-bio" data-t="director5Bio">Tadqiqotchilar va talabalar uchun kirish xizmatlari bo'yicha mas'ul.</p>
+            </div>
+          </div>
+        </div><!-- /directors-pyramid -->
+
       </div>
     </section>
 
@@ -392,17 +443,14 @@
               <label style="display: block; font-size: 13px; color: var(--gold-2); margin-bottom: 5px; font-weight: 700;">Ism va familiyangiz</label>
               <input type="text" placeholder="Ali Valiyev" required style="width: 100%; padding: 10px 12px; background: rgba(255,250,240,0.05); border: 1px solid var(--line); border-radius: 6px; font-size: 14px; color: var(--white); box-sizing: border-box;">
             </div>
-          
             <div>
               <label style="display: block; font-size: 13px; color: var(--gold-2); margin-bottom: 5px; font-weight: 700;">Elektron pochta</label>
               <input type="email" placeholder="example@mail.com" required style="width: 100%; padding: 10px 12px; background: rgba(255,250,240,0.05); border: 1px solid var(--line); border-radius: 6px; font-size: 14px; color: var(--white); box-sizing: border-box;">
             </div>
-          
             <div>
               <label style="display: block; font-size: 13px; color: var(--gold-2); margin-bottom: 5px; font-weight: 700;">Parol</label>
               <input type="password" placeholder="••••••••" required style="width: 100%; padding: 10px 12px; background: rgba(255,250,240,0.05); border: 1px solid var(--line); border-radius: 6px; font-size: 14px; color: var(--white); box-sizing: border-box;">
             </div>
-          
             <button type="submit" class="primary-button" style="justify-content: center; width: 100%; margin-top: 10px; min-height: 44px;">
               Tasdiqlash
             </button>
@@ -411,22 +459,6 @@
       </div>
     </section>
   </main><!-- /main -->
-
-  <!-- ══════════════ VIDEO MODAL ══════════════ -->
-  <div class="video-modal" id="video-modal" role="dialog" aria-modal="true" aria-labelledby="video-modal-title">
-    <div class="video-focus">
-      <div class="fake-player">
-        <span class="play-icon" style="width:68px;height:68px;font-size:26px">▶</span>
-      </div>
-      <footer>
-        <div>
-          <strong id="video-modal-title" style="color:var(--white)">Video</strong>
-          <p id="video-modal-meta" style="margin-top:4px;color:rgba(255,250,240,.58);font-size:13px"></p>
-        </div>
-        <button class="close-button" type="button" onclick="closeVideo()" aria-label="Yopish">×</button>
-      </footer>
-    </div>
-  </div>
 
   <!-- ══════════════ FOOTER ══════════════ -->
   <footer class="footer">
@@ -454,14 +486,12 @@
             </svg>
             <span>library@iccu.example</span>
           </a>
-        
           <a href="tel:+998000000000" class="contact-item">
             <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
             </svg>
             <span>+998 00 000 00 00</span>
           </a>
-        
           <a href="#" class="contact-item">
             <svg class="contact-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>

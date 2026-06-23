@@ -887,10 +887,10 @@ async function saveNews() {
 
   try {
     if (editId) {
-      await sbReq(`/news?id=eq.${editId}`, { method:"PATCH", prefer:"return=representation", body:JSON.stringify(payload) });
+      await sbReq(`/news?id=eq.${editId}`, { method:"PATCH", prefer:"return=minimal", body:JSON.stringify(payload) });
       toast("Yangilandi ✓");
     } else {
-      await sbReq("/news", { method:"POST", prefer:"return=representation", body:JSON.stringify(payload) });
+      await sbReq("/news", { method:"POST", prefer:"return=minimal", body:JSON.stringify(payload) });
       toast("Qo'shildi ✓");
     }
     closeForm();

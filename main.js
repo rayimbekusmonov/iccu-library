@@ -15,6 +15,10 @@ async function sbGet(path) {
 /* Live news cache */
 let liveNews = [];
 
+/* Carousel state */
+let carouselPage = 0;
+const CARDS_PER_PAGE = 3; // desktop; adjusted per breakpoint in newsCarousel()
+
 /* ─────────────────────────────────────────────
    i18n
 ───────────────────────────────────────────── */
@@ -397,43 +401,93 @@ async function loadNews() {
   }
 }
 
+function getCardsPerPage() {
+  if (window.innerWidth <= 640) return 1;
+  if (window.innerWidth <= 980) return 2;
+  return 3;
+}
+
 function renderNewsGrid() {
   const grid = document.getElementById("news-grid");
   if (!grid) return;
 
   if (!liveNews.length) {
     grid.innerHTML = `<p style="color:var(--muted);grid-column:1/-1;text-align:center;padding:32px 0">Hozircha yangiliklar yo'q.</p>`;
+    renderCarouselDots(0);
     return;
   }
 
-  const lang = currentLang;
-  const featuredIdx = liveNews.findIndex(n => n.is_featured);
-  const bigIdx      = featuredIdx >= 0 ? featuredIdx : 0;
+  const cpp   = getCardsPerPage();
+  const total = Math.ceil(liveNews.length / cpp);
+  // clamp page
+  if (carouselPage >= total) carouselPage = total - 1;
+  if (carouselPage < 0)      carouselPage = 0;
 
-  grid.innerHTML = liveNews.map((n, i) => {
+  const start = carouselPage * cpp;
+  const slice = liveNews.slice(start, start + cpp);
+  const lang  = currentLang;
+
+  grid.innerHTML = slice.map(n => {
     const tag      = n[`tag_${lang}`]      || n.tag_uz      || n.tag_en || "";
     const headline = n[`headline_${lang}`] || n.headline_uz || n.headline_en || "";
     const excerpt  = n[`excerpt_${lang}`]  || n.excerpt_uz  || n.excerpt_en  || "";
     const body     = n[`body_${lang}`]     || n.body_uz     || n.body_en     || "";
     const preview  = excerpt || body.slice(0, 120) + (body.length > 120 ? "\u2026" : "");
     const date     = formatDate(n.published_at, lang);
-    const isBig    = i === bigIdx;
     const artStyle = n.image_url
       ? `background-image:url('${n.image_url}');background-size:cover;background-position:center;`
       : `--art-color:${n.art_color || '#1a5e43'}`;
+    const moreLabel = { uz:"Batafsil", en:"Read more", ru:"Подробнее", tr:"Devamı" }[lang] || "Batafsil";
 
-    return `<article class="news-card ${isBig ? "featured" : ""}" tabindex="0" role="button"
-      onclick="openNews(${n.id})" onkeydown="cardKey(event,()=>openNews(${n.id}))">
+    return `<article class="news-card" tabindex="0" role="button"
+      onkeydown="cardKey(event,()=>openNews(${n.id}))">
       <div class="news-art" style="${artStyle}"></div>
       <div class="news-body">
         <span class="news-tag">${tag}</span>
         <h3>${headline}</h3>
         <p>${preview}</p>
+        <button class="news-more-btn" onclick="openNews(${n.id})">${moreLabel} →</button>
         <div class="date">${date}</div>
       </div>
     </article>`;
   }).join("");
+
+  renderCarouselDots(total);
+  updateCarouselArrows(total);
 }
+
+function renderCarouselDots(total) {
+  const dotsEl = document.getElementById("carousel-dots");
+  if (!dotsEl) return;
+  dotsEl.innerHTML = Array.from({length: total}, (_,i) =>
+    `<button class="carousel-dot-item ${i===carouselPage?"active":""}"
+      onclick="goCarouselPage(${i})" aria-label="${i+1}-sahifa"></button>`
+  ).join("");
+}
+
+function updateCarouselArrows(total) {
+  const prev = document.querySelector(".carousel-arrow--prev");
+  const next = document.querySelector(".carousel-arrow--next");
+  if (prev) prev.disabled = carouselPage === 0;
+  if (next) next.disabled = carouselPage >= total - 1;
+}
+
+function newsCarousel(dir) {
+  const cpp   = getCardsPerPage();
+  const total = Math.ceil(liveNews.length / cpp);
+  carouselPage = Math.max(0, Math.min(total - 1, carouselPage + dir));
+  renderNewsGrid();
+}
+
+function goCarouselPage(idx) {
+  carouselPage = idx;
+  renderNewsGrid();
+}
+
+window.addEventListener("resize", () => {
+  carouselPage = 0;
+  renderNewsGrid();
+});
 
 function formatDate(iso, lang) {
   const d = new Date(iso);

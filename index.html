@@ -70,11 +70,11 @@
       <!-- HERO -->
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-slides" aria-hidden="true">
-          <div class="hero-slide" style="background-image: linear-gradient(90deg, rgba(4,20,14,.35) 0%, rgba(4,20,14,0) 100%), url('images/1.jpg'); background-size:cover; background-position:center;"></div>
-          <div class="hero-slide" style="background-image: linear-gradient(90deg, rgba(4,20,14,.35) 0%, rgba(4,20,14,0) 100%), url('images/2.jpg'); background-size:cover; background-position:center;"></div>
-          <div class="hero-slide" style="background-image: linear-gradient(90deg, rgba(4,20,14,.35) 0%, rgba(4,20,14,0) 100%), url('images/3.jpg'); background-size:cover; background-position:center;"></div>
-          <div class="hero-slide" style="background-image: linear-gradient(90deg, rgba(4,20,14,.35) 0%, rgba(4,20,14,0) 100%), url('images/4.jpg'); background-size:cover; background-position:center;"></div>
-          <div class="hero-slide" style="background-image: linear-gradient(90deg, rgba(4,20,14,.35) 0%, rgba(4,20,14,0) 100%), url('images/5.jpg'); background-size:cover; background-position:center;"></div>
+          <div class="hero-slide" style="background-image: linear-gradient(90deg,rgba(4,20,14,.82) 0%,rgba(4,20,14,.28) 100%), url('images/hero1.jpg'); background-size:cover; background-position:center;"></div>
+          <div class="hero-slide" style="background-image: linear-gradient(90deg,rgba(4,20,14,.82) 0%,rgba(4,20,14,.28) 100%), url('images/hero2.jpg'); background-size:cover; background-position:center;"></div>
+          <div class="hero-slide" style="background-image: linear-gradient(90deg,rgba(4,20,14,.82) 0%,rgba(4,20,14,.28) 100%), url('images/hero3.jpg'); background-size:cover; background-position:center;"></div>
+          <div class="hero-slide" style="background-image: linear-gradient(90deg,rgba(4,20,14,.82) 0%,rgba(4,20,14,.28) 100%), url('images/hero4.jpg'); background-size:cover; background-position:center;"></div>
+          <div class="hero-slide" style="background-image: linear-gradient(90deg,rgba(4,20,14,.82) 0%,rgba(4,20,14,.28) 100%), url('images/hero5.jpg'); background-size:cover; background-position:center;"></div>
         </div>
         <div class="hero-dots" aria-hidden="true">
           <button class="hero-dot" type="button"></button>
@@ -112,12 +112,17 @@
               <p class="section-subtitle" data-t="newsSubtitle">Platformadagi muhim yangilanishlar, tadbirlar va hamkorliklar.</p>
             </div>
           </div>
-          <div class="grid news" id="news-grid">
-            <!-- Supabase dan yuklanadi -->
-            <div class="news-skeleton featured"></div>
-            <div class="news-skeleton"></div>
-            <div class="news-skeleton"></div>
+          <!-- News Carousel -->
+          <div class="news-carousel-wrap">
+            <button class="carousel-arrow carousel-arrow--prev" onclick="newsCarousel(-1)" aria-label="Oldingi">&#8592;</button>
+            <div class="news-carousel" id="news-grid">
+              <div class="news-skeleton"></div>
+              <div class="news-skeleton"></div>
+              <div class="news-skeleton"></div>
+            </div>
+            <button class="carousel-arrow carousel-arrow--next" onclick="newsCarousel(1)" aria-label="Keyingi">&#8594;</button>
           </div>
+          <div class="carousel-dots" id="carousel-dots"></div>
         </div>
       </section>
 

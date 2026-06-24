@@ -219,20 +219,95 @@
             <p class="page-subtitle" data-t="discoverSubtitle">Katalog, qo'lyozmalar, mualliflar, raqamli ko'rgazmalar va tavsiya ro'yxatlari.</p>
           </div>
         </header>
-        <div class="grid discover">
-          <article class="card"><div class="card-icon">📖</div><h3 data-t="d1Title">Onlayn katalog</h3><p data-t="d1Text">Kitoblar, mualliflar, mavzular va identifikatorlar.</p></article>
-          <article class="card"><div class="card-icon">📜</div><h3 data-t="d2Title">Qo'lyozmalar</h3><p data-t="d2Text">Nodir manbalar va raqamli kirish qaydlari.</p></article>
-          <article class="card" style="cursor:pointer" onclick="window.open('https://allomalar.uz','_blank')">
-            <div class="card-icon">🧑‍🎓</div>
+      
+        <!-- Hero fond cards -->
+        <div class="svc-hero">
+          <div class="svc-hero-card--main">
+            <div class="svc-hero-bg" style="--svc-color:#1a5e43"></div>
+            <div class="svc-hero-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                <line x1="12" y1="6" x2="16" y2="6"/>
+                <line x1="12" y1="10" x2="16" y2="10"/>
+                <line x1="12" y1="14" x2="14" y2="14"/>
+              </svg>
+            </div>
+            <div class="svc-hero-body">
+              <span class="svc-tag" data-t="discoverKicker">Fondlar</span>
+              <h3 data-t="d1Title">Onlayn katalog</h3>
+              <p data-t="d1Text">Kitoblar, mualliflar, mavzular va identifikatorlar.</p>
+              <ul class="svc-features">
+                <li data-t="d1f1">120 000+ kitob va nashrlar bazasi</li>
+                <li data-t="d1f2">Muallif, mavzu, yil va til bo'yicha kengaytirilgan qidiruv</li>
+                <li data-t="d1f3">ISBN, ISSN va boshqa identifikatorlar orqali izlash</li>
+              </ul>
+              <a href="https://e-library.cisc.uz" target="_blank" rel="noopener" class="svc-cta" data-t="d1Cta">Katalogga kirish →</a>
+            </div>
+          </div>
+        
+          <div class="svc-hero-card--main">
+            <div class="svc-hero-bg" style="--svc-color:#6b3b2a"></div>
+            <div class="svc-hero-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <path d="M9 13h6M9 17h4"/>
+              </svg>
+            </div>
+            <div class="svc-hero-body">
+              <span class="svc-tag" data-t="discoverKicker">Fondlar</span>
+              <h3 data-t="d2Title">Qo'lyozmalar</h3>
+              <p data-t="d2Text">Nodir manbalar va raqamli kirish qaydlari.</p>
+              <ul class="svc-features">
+                <li data-t="d2f1">15 000+ nodir qo'lyozma raqamli arxivda</li>
+                <li data-t="d2f2">Usmoniylar, Temuriylar va boshqa davrlar fondi</li>
+                <li data-t="d2f3">Metadata, davr, til va saqlanish holati bo'yicha filter</li>
+              </ul>
+              <a href="https://e-library.cisc.uz" target="_blank" rel="noopener" class="svc-cta" data-t="d2Cta">Arxivga kirish →</a>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Secondary fond cards -->
+        <div class="svc-grid">
+          <article class="svc-card" style="cursor:pointer" onclick="window.open('https://allomalar.uz','_blank')">
+            <div class="svc-card-icon" style="--si:#1e4d7a">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+              </svg>
+            </div>
             <h3 data-t="d3Title">Allomalar</h3>
             <p data-t="d3Text">Allomalar.uz bilan bog'langan ma'lumot yo'nalishi.</p>
+            <span class="svc-link" data-t="d3Link">Allomalar.uz ↗</span>
           </article>
-          <article class="card" style="cursor:pointer" onclick="window.open('https://manbalar.uz','_blank')">
-            <div class="card-icon">📂</div>
+        
+          <article class="svc-card" style="cursor:pointer" onclick="window.open('https://manbalar.uz','_blank')">
+            <div class="svc-card-icon" style="--si:#2d5a3d">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+                <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/>
+              </svg>
+            </div>
             <h3 data-t="d4Title">Manbalar</h3>
             <p data-t="d4Text">Manbalar.uz resurslari uchun tezkor yo'nalish.</p>
+            <span class="svc-link" data-t="d4Link">Manbalar.uz ↗</span>
+          </article>
+        
+          <article class="svc-card" style="cursor:pointer" onclick="window.open('https://e-library.cisc.uz','_blank')">
+            <div class="svc-card-icon" style="--si:#4a3070">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            </div>
+            <h3 data-t="d5Title">Elektron kutubxona</h3>
+            <p data-t="d5Text">E-library.cisc.uz orqali raqamli resurslar va jurnallarga to'liq kirish.</p>
+            <span class="svc-link" data-t="d5Link">E-library ↗</span>
           </article>
         </div>
+      
       </div>
     </section>
 
@@ -246,15 +321,99 @@
             <p class="page-subtitle" data-t="servicesSubtitle">Tadqiqot, tashrif, raqamli fondlar va hamkorlik jarayonlari uchun xizmatlar.</p>
           </div>
         </header>
-        <div class="grid services">
-          <article class="card"><div class="card-icon">📚</div><h3 data-t="svc1Title">Kutubxonachidan yordam</h3><p data-t="svc1Text">Manba tanlash, bibliografiya va tadqiqot yo'nalishi bo'yicha maslahat.</p></article>
-          <article class="card"><div class="card-icon">📋</div><h3 data-t="svc2Title">Maxsus fond so'rovi</h3><p data-t="svc2Text">Qo'lyozma yoki nodir materialni ko'rish uchun oldindan so'rov.</p></article>
-          <article class="card"><div class="card-icon">🤝</div><h3 data-t="svc3Title">Hamkorlik</h3><p data-t="svc3Text">Universitetlar, kutubxonalar va ilmiy markazlar bilan qo'shma loyihalar.</p></article>
+      
+        <!-- Hero service cards -->
+        <div class="svc-hero">
+          <div class="svc-hero-card svc-hero-card--main">
+            <div class="svc-hero-bg" style="--svc-color:#1a5e43"></div>
+            <div class="svc-hero-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+              </svg>
+            </div>
+            <div class="svc-hero-body">
+              <span class="svc-tag" data-t="servicesKicker">Xizmatlar</span>
+              <h3 data-t="svc1Title">Kutubxonachidan yordam</h3>
+              <p data-t="svc1Text">Manba tanlash, bibliografiya va tadqiqot yo'nalishi bo'yicha maslahat.</p>
+              <ul class="svc-features">
+                <li data-t="svc1f1">Mavzuga mos manba va adabiyotlarni tanlash</li>
+                <li data-t="svc1f2">Bibliografiya va iqtibos formatlash (APA, MLA, Chicago)</li>
+                <li data-t="svc1f3">Onlayn va jismoniy fondlar bo'yicha yo'naltirish</li>
+              </ul>
+              <a href="mailto:library@iccu.example" class="svc-cta" data-t="svc1Cta">So'rov yuborish →</a>
+            </div>
+          </div>
+        
+          <div class="svc-hero-card svc-hero-card--main">
+            <div class="svc-hero-bg" style="--svc-color:#1e4d7a"></div>
+            <div class="svc-hero-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="9" y1="13" x2="15" y2="13"/>
+                <line x1="9" y1="17" x2="12" y2="17"/>
+              </svg>
+            </div>
+            <div class="svc-hero-body">
+              <span class="svc-tag" data-t="servicesKicker">Xizmatlar</span>
+              <h3 data-t="svc2Title">Maxsus fond so'rovi</h3>
+              <p data-t="svc2Text">Qo'lyozma yoki nodir materialni ko'rish uchun oldindan so'rov.</p>
+              <ul class="svc-features">
+                <li data-t="svc2f1">Nodir qo'lyozmalar va arxiv materiallariga ruxsat</li>
+                <li data-t="svc2f2">Tashrif oldidan onlayn band qilish imkoniyati</li>
+                <li data-t="svc2f3">Raqamli nusxa olish va ko'chirish xizmati</li>
+              </ul>
+              <a href="mailto:library@iccu.example" class="svc-cta" data-t="svc2Cta">So'rov yuborish →</a>
+            </div>
+          </div>
+        </div>
+      
+        <!-- Secondary service cards -->
+        <div class="svc-grid">
+          <article class="svc-card">
+            <div class="svc-card-icon" style="--si:#6b3b2a">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>
+            </div>
+            <h3 data-t="svc3Title">Hamkorlik</h3>
+            <p data-t="svc3Text">Universitetlar, kutubxonalar va ilmiy markazlar bilan qo'shma loyihalar.</p>
+            <a href="mailto:library@iccu.example" class="svc-link" data-t="svcContact">Bog'lanish →</a>
+          </article>
+        
+          <article class="svc-card">
+            <div class="svc-card-icon" style="--si:#2d5a3d">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+                <rect x="2" y="3" width="20" height="14" rx="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            </div>
+            <h3 data-t="svc4Title">Masofaviy kirish</h3>
+            <p data-t="svc4Text">Raqamli katalog va elektron bazalarga uydan 24/7 kirish imkoniyati.</p>
+            <a href="http://elibrary.cisc.uz:8080/" target="_blank" rel="noopener" class="svc-link" data-t="svcOpen">Ochish →</a>
+          </article>
+        
+          <article class="svc-card">
+            <div class="svc-card-icon" style="--si:#4a3070">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <h3 data-t="svc5Title">Guruh va ekskursiya</h3>
+            <p data-t="svc5Text">Talabalar guruhlari, maktablar va tashkilotlar uchun kutubxona ekskursiyasi.</p>
+            <a href="mailto:library@iccu.example" class="svc-link" data-t="svcContact">Bog'lanish →</a>
+          </article>
         </div>
       </div>
     </section>
 
-    <!-- ══════════════ VISIT ══════════════ -->
+     <!-- ══════════════ VISIT ══════════════ -->
     <section class="page" id="page-visit">
       <div class="container">
         <header class="page-header">
@@ -269,7 +428,17 @@
           <article class="info-card"><h3 data-t="contactTitle">Aloqa va manzil</h3><ul class="info-list"><li data-t="address">Manzil: Toshkent, O'zbekiston</li><li data-t="email">Email: library@iccu.example</li><li data-t="phone">Telefon: +998 00 000 00 00</li></ul></article>
           <article class="info-card"><h3 data-t="rulesTitle">Kutubxona qoidalari</h3><ul class="info-list"><li data-t="rule1">O'qish zallarida tinchlikni saqlang.</li><li data-t="rule2">Oziq-ovqat va ichimliklar fond hududiga olib kirilmaydi.</li><li data-t="rule3">Qo'lyozmalarni suratga olish uchun ruxsat kerak.</li></ul></article>
           <article class="info-card"><h3 data-t="beforeTitle">Kelishdan oldin</h3><p data-t="beforeText">Shaxsni tasdiqlovchi hujjat olib keling va nodir materiallarni oldindan band qiling.</p></article>
-          <div class="map" data-t="mapText">Interaktiv xarita maydoni</div>
+          <div class="map-embed">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3027.0014065040205!2d69.24048578654856!3d41.33506641108974!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b12574d13c3%3A0x15ca4a2e8ac7f5a2!2sIslom%20sivilizatsiya%20Markazi!5e1!3m2!1sru!2s!4v1782212754728!5m2!1sru!2s"
+              width="100%" height="100%"
+              style="border:0; display:block;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="ICCU joylashuvi">
+            </iframe>
+          </div>
         </div>
       </div>
     </section>
@@ -316,16 +485,75 @@
           </div>
         </header>
         <div class="partners-track">
-          <div class="partner-card"><div class="partner-logo-ph">ISESCO</div><div class="partner-name">ISESCO</div></div>
-          <div class="partner-card"><div class="partner-logo-ph">UNESCO</div><div class="partner-name">UNESCO</div></div>
-          <div class="partner-card"><div class="partner-logo-ph">IRCICA</div><div class="partner-name">IRCICA</div></div>
-          <div class="partner-card"><div class="partner-logo-ph">Istanbul U.</div><div class="partner-name">Istanbul Universiteti</div></div>
-          <div class="partner-card"><div class="partner-logo-ph">NUUz</div><div class="partner-name">O'zMU</div></div>
-          <div class="partner-card"><div class="partner-logo-ph">INION RAS</div><div class="partner-name">INION RAS</div></div>
-          <div class="partner-card"><div class="partner-logo-ph">BNF</div><div class="partner-name">Bibliothèque nationale de France</div></div>
-          <div class="partner-card"><div class="partner-logo-ph">LOC</div><div class="partner-name">Library of Congress</div></div>
-          <div class="partner-card"><div class="partner-logo-ph">TLFF</div><div class="partner-name">Turkiston Kutubxonasi</div></div>
-          <div class="partner-card"><div class="partner-logo-ph">CISC</div><div class="partner-name">CISC</div></div>
+          <div class="partner-card">
+            <div class="partner-logo-ph">
+              <img src="images/brill.png" alt="Brill logo" width="50" height="50" onerror="this.style.display='none'">
+            </div>
+            <div class="partner-name">Brill</div>
+          </div>
+          
+          <div class="partner-card">
+            <div class="partner-logo-ph">
+              <img src="images/unesco.png" alt="UNESCO logo" width="50" height="50" onerror="this.style.display='none'">
+            </div>
+            <div class="partner-name">UNESCO</div>
+          </div>
+          
+          <div class="partner-card">
+            <div class="partner-logo-ph">
+              <img src="images/ircica.png" alt="IRCICA logo" width="50" height="50" onerror="this.style.display='none'">
+            </div>
+            <div class="partner-name">IRCICA</div>
+          </div>
+          
+          <div class="partner-card">
+            <div class="partner-logo-ph">
+              <img src="images/istanbul.png" alt="Istanbul Universiteti logo" width="50" height="50" onerror="this.style.display='none'">
+            </div>
+            <div class="partner-name">Istanbul Universiteti</div>
+          </div>
+          
+          <div class="partner-card">
+            <div class="partner-logo-ph">
+              <img src="images/ozmu.png" alt="O'zMU logo" width="50" height="50" onerror="this.style.display='none'">
+            </div>
+            <div class="partner-name">O'zMU</div>
+          </div>
+          
+          <div class="partner-card">
+            <div class="partner-logo-ph">
+              <img src="images/isesco.png" alt="ISESCO logo" width="50" height="50" onerror="this.style.display='none'">
+            </div>
+            <div class="partner-name">ISESCO</div>
+          </div>
+          
+          <div class="partner-card">
+            <div class="partner-logo-ph">
+              <img src="images/bnf.png" alt="Bibliothèque nationale de France logo" width="50" height="50" onerror="this.style.display='none'">
+            </div>
+            <div class="partner-name">Bibliothèque nationale de France</div>
+          </div>
+          
+          <div class="partner-card">
+            <div class="partner-logo-ph">
+              <img src="images/loc.png" alt="Library of Congress logo" width="50" height="50" onerror="this.style.display='none'">
+            </div>
+            <div class="partner-name">Library of Congress</div>
+          </div>
+          
+          <div class="partner-card">
+            <div class="partner-logo-ph">
+              <img src="images/tlff.png" alt="Turkiston Kutubxonasi logo" width="50" height="50" onerror="this.style.display='none'">
+            </div>
+            <div class="partner-name">Turkiston Kutubxonasi</div>
+          </div>
+          
+          <div class="partner-card">
+            <div class="partner-logo-ph">
+              <img src="images/cisc.png" alt="CISC logo" width="50" height="50" onerror="this.style.display='none'">
+            </div>
+            <div class="partner-name">CISC</div>
+          </div>
         </div>
       </div>
     </section>

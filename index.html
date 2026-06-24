@@ -137,10 +137,69 @@
             </div>
             <button class="secondary-button" type="button" onclick="showPage('services')" data-t="viewAll">Hammasini ko'rish</button>
           </div>
-          <div class="grid services">
-            <article class="card"><div class="card-icon">📜</div><h3 data-t="qs1Title">Raqamli qo'lyozmalar</h3><p data-t="qs1Text">Nodir manbalar uchun ko'rish va ruxsat so'rovi jarayoni.</p></article>
-            <article class="card"><div class="card-icon">📚</div><h3 data-t="qs2Title">Kutubxonachi yordami</h3><p data-t="qs2Text">Tadqiqot mavzusi, manba topish va bibliografiya bo'yicha yordam.</p></article>
-            <article class="card"><div class="card-icon">🏛</div><h3 data-t="qs3Title">Tashrifni rejalash</h3><p data-t="qs3Text">Ish vaqti, o'qish zali va maxsus fondlardan foydalanish tartibi.</p></article>
+        
+          <div class="qs-grid">
+          
+            <article class="qs-card" onclick="showPage('discover')" style="cursor:pointer">
+              <div class="qs-icon" style="--qc:#1a5e43">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                  <polyline points="14 2 14 8 20 8"/>
+                  <path d="M9 13h6M9 17h4"/>
+                </svg>
+              </div>
+              <div class="qs-body">
+                <h3 data-t="qs1Title">Raqamli qo'lyozmalar</h3>
+                <p data-t="qs1Text">Nodir manbalar uchun ko'rish va ruxsat so'rovi jarayoni.</p>
+                <span class="qs-link" data-t="qs1Link">Arxivga o'tish →</span>
+              </div>
+              <div class="qs-arrow">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <path d="M3 8h10M9 4l4 4-4 4"/>
+                </svg>
+              </div>
+            </article>
+          
+            <article class="qs-card" onclick="window.location.href='mailto:library@iccu.example'" style="cursor:pointer">
+              <div class="qs-icon" style="--qc:#1e4d7a">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                  <path d="M21 21v-2a4 4 0 0 0-3-3.87"/>
+                </svg>
+              </div>
+              <div class="qs-body">
+                <h3 data-t="qs2Title">Kutubxonachi yordami</h3>
+                <p data-t="qs2Text">Tadqiqot mavzusi, manba topish va bibliografiya bo'yicha yordam.</p>
+                <span class="qs-link" data-t="qs2Link">Murojaat qilish →</span>
+              </div>
+              <div class="qs-arrow">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <path d="M3 8h10M9 4l4 4-4 4"/>
+                </svg>
+              </div>
+            </article>
+          
+            <article class="qs-card" onclick="showPage('visit')" style="cursor:pointer">
+              <div class="qs-icon" style="--qc:#6b3b2a">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
+                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                  <polyline points="9 22 9 12 15 12 15 22"/>
+                </svg>
+              </div>
+              <div class="qs-body">
+                <h3 data-t="qs3Title">Tashrifni rejalash</h3>
+                <p data-t="qs3Text">Ish vaqti, o'qish zali va maxsus fondlardan foydalanish tartibi.</p>
+                <span class="qs-link" data-t="qs3Link">Batafsil →</span>
+              </div>
+              <div class="qs-arrow">
+                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <path d="M3 8h10M9 4l4 4-4 4"/>
+                </svg>
+              </div>
+            </article>
+          
           </div>
         </div>
       </section>

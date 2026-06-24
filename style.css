@@ -1085,3 +1085,82 @@ h1 {
   .about-mission { grid-template-columns: 1fr; }
   .about-highlight-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* ── QUICK SERVICES ── */
+.qs-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.qs-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding: 22px 20px;
+  border: 1px solid rgba(234,210,154,.15);
+  border-radius: var(--radius);
+  background: rgba(255,250,240,.04);
+  transition: transform 150ms, border-color 150ms, background 150ms, box-shadow 150ms;
+  position: relative;
+  overflow: hidden;
+}
+.qs-card::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 3px;
+  background: var(--gold);
+  opacity: 0;
+  transition: opacity 200ms;
+}
+.qs-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(234,210,154,.32);
+  background: rgba(255,250,240,.08);
+  box-shadow: var(--shadow);
+}
+.qs-card:hover::before {
+  opacity: 1;
+}
+
+.qs-icon {
+  width: 54px; height: 54px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--qc) 25%, transparent);
+  border: 1px solid color-mix(in srgb, var(--qc) 45%, transparent);
+  display: grid; place-items: center;
+  color: var(--gold-2);
+  flex-shrink: 0;
+}
+
+.qs-body {
+  flex: 1; min-width: 0;
+  display: flex; flex-direction: column; gap: 5px;
+}
+.qs-body h3 {
+  font-size: 15px; font-weight: 900;
+  color: var(--white); line-height: 1.2;
+}
+.qs-body p {
+  font-size: 13px; color: var(--muted);
+  line-height: 1.55;
+}
+.qs-link {
+  font-size: 12px; font-weight: 700;
+  color: var(--gold-2); margin-top: 2px;
+}
+
+.qs-arrow {
+  color: rgba(234,210,154,.35);
+  flex-shrink: 0;
+  transition: color 200ms, transform 200ms;
+}
+.qs-card:hover .qs-arrow {
+  color: var(--gold-2);
+  transform: translateX(3px);
+}
+
+@media (max-width: 980px) {
+  .qs-grid { grid-template-columns: 1fr; }
+}

@@ -147,6 +147,9 @@ const i18n = {
     faq3A:"Kutubxona bir vaqtning o'zida 266 nafar kitobxonga xizmat ko'rsatish imkoniyatiga ega.",
     faq4Q:"Nodir qo'lyozmalarni ko'rish mumkinmi?",
     faq4A:"Ha, oldindan so'rov yuborish orqali nodir fond materiallaridan foydalanish mumkin. Raqamlashtirish bo'limiga murojaat qiling.",
+    qs1Link:"Arxivga o'tish →",
+    qs2Link:"Murojaat qilish →",
+    qs3Link:"Batafsil →",
     /* Directors page */
     directorsKicker:"Jamoa",
     directorsTitle:"Kutubxona jamoasi",

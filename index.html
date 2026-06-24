@@ -453,10 +453,97 @@
             <p class="page-subtitle" data-t="aboutSubtitle">ICCU kutubxonasi islom sivilizatsiyasi merosini saqlash, o'rganish va keng jamoatchilikka yetkazishga xizmat qiladi.</p>
           </div>
         </header>
-        <div class="about-grid">
-          <article class="info-card"><h3 data-t="mission1Title">Saqlash</h3><p data-t="mission1Text">Nodir qo'lyozmalar va kitoblarni raqamlashtirish hamda konservatsiya qilish.</p></article>
-          <article class="info-card"><h3 data-t="mission2Title">Kirish</h3><p data-t="mission2Text">Talabalar, tadqiqotchilar va keng jamoatchilik uchun ochiq bilim yo'llarini yaratish.</p></article>
+      
+        <!-- Real raqamlar -->
+        <div class="about-stats">
+          <div class="about-stat">
+            <strong>35 150</strong>
+            <span data-t="abStat1">Jami adabiyot</span>
+          </div>
+          <div class="about-stat">
+            <strong>350 000+</strong>
+            <span data-t="abStat2">Elektron nusxa</span>
+          </div>
+          <div class="about-stat">
+            <strong>21 670</strong>
+            <span data-t="abStat3">Qo'lyozma</span>
+          </div>
+          <div class="about-stat">
+            <strong>3 105 m²</strong>
+            <span data-t="abStat4">Kutubxona maydoni</span>
+          </div>
+          <div class="about-stat">
+            <strong>266</strong>
+            <span data-t="abStat5">O'rin sig'imi</span>
+          </div>
+          <div class="about-stat">
+            <strong>700+</strong>
+            <span data-t="abStat6">Raqamlashtirилган nodir asar</span>
+          </div>
         </div>
+      
+        <!-- Mission cards -->
+        <div class="about-mission">
+          <article class="about-mission-card">
+            <div class="about-mission-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3 data-t="mission1Title">Saqlash</h3>
+            <p data-t="mission1Text">Nodir qo'lyozmalar va kitoblarni raqamlashtirish hamda konservatsiya qilish. 30 000+ adabiyotga RFID teg o'rnatildi.</p>
+          </article>
+          <article class="about-mission-card">
+            <div class="about-mission-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+              </svg>
+            </div>
+            <h3 data-t="mission2Title">Kirish</h3>
+            <p data-t="mission2Text">Talabalar, tadqiqotchilar va keng jamoatchilik uchun ochiq bilim yo'llari. 10 milliondan ortiq elektron resursga ulanish imkoniyati.</p>
+          </article>
+          <article class="about-mission-card">
+            <div class="about-mission-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <h3 data-t="mission3Title">Rivojlantirish</h3>
+            <p data-t="mission3Text">Zamonaviy axborot-kutubxona xizmatlarini kengaytirish, yozma merosni asrash va ilm-fan rivojiga xizmat qiluvchi loyihalar.</p>
+          </article>
+        </div>
+      
+        <!-- Fond ma'lumotlari -->
+        <div class="about-highlights">
+          <div class="about-highlight-header">
+            <div class="section-kicker" data-t="aboutFondKicker">Fond haqida</div>
+            <h3 data-t="aboutFondTitle">2025-yil natijalari</h3>
+          </div>
+          <div class="about-highlight-grid">
+            <div class="about-highlight-item">
+              <div class="about-highlight-num">4 789</div>
+              <div class="about-highlight-label" data-t="abH1">Yangi qabul qilingan adabiyot</div>
+              <div class="about-highlight-sub" data-t="abH1sub">3 879 tasi hadya, 910 tasi xarid</div>
+            </div>
+            <div class="about-highlight-item">
+              <div class="about-highlight-num">52 255</div>
+              <div class="about-highlight-label" data-t="abH2">Yagona bazadagi yozma manba</div>
+              <div class="about-highlight-sub" data-t="abH2sub">Qo'lyozma va toshbosma asarlar</div>
+            </div>
+            <div class="about-highlight-item">
+              <div class="about-highlight-num">9 910</div>
+              <div class="about-highlight-label" data-t="abH3">Yozma manba reystri</div>
+              <div class="about-highlight-sub" data-t="abH3sub">Pasport tayyorlangan manbalar</div>
+            </div>
+            <div class="about-highlight-item">
+              <div class="about-highlight-num">762</div>
+              <div class="about-highlight-label" data-t="abH4">Brayl yozuvidagi adabiyot</div>
+              <div class="about-highlight-sub" data-t="abH4sub">Imkoniyati cheklangan shaxslar uchun</div>
+            </div>
+          </div>
+        </div>
+      
+        <!-- FAQ -->
         <div class="faq">
           <div class="faq-item">
             <button class="faq-question" type="button" onclick="toggleFaq('faq1',this)">
@@ -470,7 +557,20 @@
             </button>
             <div class="faq-answer" id="faq2" data-t="faq2A">Ko'plab raqamli resurslar onlayn mavjud, ayrim bazalar akkaunt talab qiladi.</div>
           </div>
+          <div class="faq-item">
+            <button class="faq-question" type="button" onclick="toggleFaq('faq3',this)">
+              <span data-t="faq3Q">Kutubxonada nechta o'rin bor?</span><span>+</span>
+            </button>
+            <div class="faq-answer" id="faq3" data-t="faq3A">Kutubxona bir vaqtning o'zida 266 nafar kitobxonga xizmat ko'rsatish imkoniyatiga ega.</div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" type="button" onclick="toggleFaq('faq4',this)">
+              <span data-t="faq4Q">Nodir qo'lyozmalarni ko'rish mumkinmi?</span><span>+</span>
+            </button>
+            <div class="faq-answer" id="faq4" data-t="faq4A">Ha, oldindan so'rov yuborish orqali nodir fond materiallaridan foydalanish mumkin. Raqamlashtirish bo'limiga murojaat qiling.</div>
+          </div>
         </div>
+      
       </div>
     </section>
 
@@ -485,75 +585,89 @@
           </div>
         </header>
         <div class="partners-track">
+        
+          <!-- TO'RTBURCHAK qolip: Brill, UNESCO, IRCICA, BNF, LOC -->
           <div class="partner-card">
-            <div class="partner-logo-ph">
-              <img src="images/brill.png" alt="Brill logo" width="50" height="50" onerror="this.style.display='none'">
+            <div class="partner-logo partner-logo--rect">
+              <img src="images/brill.png" alt="Brill" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <span class="partner-logo-fallback" style="display:none">Brill</span>
             </div>
             <div class="partner-name">Brill</div>
           </div>
-          
+        
           <div class="partner-card">
-            <div class="partner-logo-ph">
-              <img src="images/unesco.png" alt="UNESCO logo" width="50" height="50" onerror="this.style.display='none'">
+            <div class="partner-logo partner-logo--rect">
+              <img src="images/unesco.png" alt="UNESCO" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <span class="partner-logo-fallback" style="display:none">UNESCO</span>
             </div>
             <div class="partner-name">UNESCO</div>
           </div>
-          
+        
           <div class="partner-card">
-            <div class="partner-logo-ph">
-              <img src="images/ircica.png" alt="IRCICA logo" width="50" height="50" onerror="this.style.display='none'">
+            <div class="partner-logo partner-logo--rect">
+              <img src="images/ircica.png" alt="IRCICA" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <span class="partner-logo-fallback" style="display:none">IRCICA</span>
             </div>
             <div class="partner-name">IRCICA</div>
           </div>
-          
+        
           <div class="partner-card">
-            <div class="partner-logo-ph">
-              <img src="images/istanbul.png" alt="Istanbul Universiteti logo" width="50" height="50" onerror="this.style.display='none'">
-            </div>
-            <div class="partner-name">Istanbul Universiteti</div>
-          </div>
-          
-          <div class="partner-card">
-            <div class="partner-logo-ph">
-              <img src="images/ozmu.png" alt="O'zMU logo" width="50" height="50" onerror="this.style.display='none'">
-            </div>
-            <div class="partner-name">O'zMU</div>
-          </div>
-          
-          <div class="partner-card">
-            <div class="partner-logo-ph">
-              <img src="images/isesco.png" alt="ISESCO logo" width="50" height="50" onerror="this.style.display='none'">
-            </div>
-            <div class="partner-name">ISESCO</div>
-          </div>
-          
-          <div class="partner-card">
-            <div class="partner-logo-ph">
-              <img src="images/bnf.png" alt="Bibliothèque nationale de France logo" width="50" height="50" onerror="this.style.display='none'">
+            <div class="partner-logo partner-logo--rect">
+              <img src="images/bnf.png" alt="BNF" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <span class="partner-logo-fallback" style="display:none">BNF</span>
             </div>
             <div class="partner-name">Bibliothèque nationale de France</div>
           </div>
-          
+        
           <div class="partner-card">
-            <div class="partner-logo-ph">
-              <img src="images/loc.png" alt="Library of Congress logo" width="50" height="50" onerror="this.style.display='none'">
+            <div class="partner-logo partner-logo--rect">
+              <img src="images/loc.png" alt="Library of Congress" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <span class="partner-logo-fallback" style="display:none">LOC</span>
             </div>
             <div class="partner-name">Library of Congress</div>
           </div>
-          
+        
+          <!-- YUMALOQ qolip: Istanbul U., O'zMU, ISESCO, Turkiston, CISC -->
           <div class="partner-card">
-            <div class="partner-logo-ph">
-              <img src="images/tlff.png" alt="Turkiston Kutubxonasi logo" width="50" height="50" onerror="this.style.display='none'">
+            <div class="partner-logo partner-logo--circle">
+              <img src="images/istanbul.png" alt="Istanbul Universiteti" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <span class="partner-logo-fallback" style="display:none">IU</span>
+            </div>
+            <div class="partner-name">Istanbul Universiteti</div>
+          </div>
+        
+          <div class="partner-card">
+            <div class="partner-logo partner-logo--circle">
+              <img src="images/ozmu.png" alt="O'zMU" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <span class="partner-logo-fallback" style="display:none">O'zMU</span>
+            </div>
+            <div class="partner-name">O'zMU</div>
+          </div>
+        
+          <div class="partner-card">
+            <div class="partner-logo partner-logo--circle">
+              <img src="images/isesco.png" alt="ISESCO" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <span class="partner-logo-fallback" style="display:none">ISESCO</span>
+            </div>
+            <div class="partner-name">ISESCO</div>
+          </div>
+        
+          <div class="partner-card">
+            <div class="partner-logo partner-logo--rect">
+              <img src="images/tlff.png" alt="Turkiston Kutubxonasi" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <span class="partner-logo-fallback" style="display:none">TK</span>
             </div>
             <div class="partner-name">Turkiston Kutubxonasi</div>
           </div>
-          
+        
           <div class="partner-card">
-            <div class="partner-logo-ph">
-              <img src="images/cisc.png" alt="CISC logo" width="50" height="50" onerror="this.style.display='none'">
+            <div class="partner-logo partner-logo--rect">
+              <img src="images/cisc.png" alt="CISC" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+              <span class="partner-logo-fallback" style="display:none">CISC</span>
             </div>
             <div class="partner-name">CISC</div>
           </div>
+        
         </div>
       </div>
     </section>

@@ -144,12 +144,20 @@ const i18n = {
     mission3Title:"Rivojlantirish",
     mission3Text:"Zamonaviy axborot-kutubxona xizmatlarini kengaytirish, yozma merosni asrash va ilm-fan rivojiga xizmat qiluvchi loyihalar.",
     faq3Q:"Kutubxonada nechta o'rin bor?",
-    faq3A:"Kutubxona bir vaqtning o'zida 266 nafar kitobxonga xizmat ko'rsatish imkoniyatiga ega.",
+    faq3A:"Kutubxona bir vaqtning o'zida 310 nafar kitobxonga xizmat ko'rsatish imkoniyatiga ega.",
     faq4Q:"Nodir qo'lyozmalarni ko'rish mumkinmi?",
     faq4A:"Ha, oldindan so'rov yuborish orqali nodir fond materiallaridan foydalanish mumkin. Raqamlashtirish bo'limiga murojaat qiling.",
     qs1Link:"Arxivga o'tish →",
     qs2Link:"Murojaat qilish →",
     qs3Link:"Batafsil →",
+    project1Progress:"72% bajarildi", project1Count:"700+ asar",
+    project2Progress:"45% bajarildi", project2Count:"Beta sinov",
+    project3Progress:"Faol ishlaydi", project3Count:"50+ video",
+    project4Progress:"Ishlab chiqilmoqda", project4Count:"2026 Q3",
+    floorPlanBtn:"Kutubxona ichki xaritasini ko'rish",
+    floorPlanKicker:"Kutubxona xaritasi",
+    floorPlanTitle:"Ichki tuzilma xaritasi",
+    floorPlanHint:"Sichqoncha g'ildiragi bilan zoom · Bosib suring",
     /* Directors page */
     directorsKicker:"Jamoa",
     directorsTitle:"Kutubxona jamoasi",
@@ -596,6 +604,96 @@ function toggleFaq(id, button) {
 function cardKey(e, fn) {
   if (e.key === "Enter" || e.key === " ") { e.preventDefault(); fn(); }
 }
+
+/* ── FLOOR PLAN ── */
+let fpScale = 1, fpX = 0, fpY = 0, fpDragging = false, fpStart = {};
+
+function openFloorPlan() {
+  document.getElementById("fp-modal").classList.add("open");
+  document.body.classList.add("modal-open");
+  fpReset();
+  initFPDrag();
+}
+function closeFloorPlan() {
+  document.getElementById("fp-modal").classList.remove("open");
+  document.body.classList.remove("modal-open");
+}
+function closeFPifOutside(e) {
+  if (e.target.id === "fp-modal") closeFloorPlan();
+}
+
+function fpZoom(delta) {
+  fpScale = Math.min(4, Math.max(0.3, fpScale + delta));
+  applyFPTransform();
+}
+function fpReset() {
+  fpScale = 1; fpX = 0; fpY = 0;
+  applyFPTransform();
+}
+function applyFPTransform() {
+  const c = document.getElementById("fp-canvas");
+  if (c) c.style.transform =
+    `translate(calc(-50% + ${fpX}px), calc(-50% + ${fpY}px)) scale(${fpScale})`;
+}
+
+function initFPDrag() {
+  const vp = document.getElementById("fp-viewport");
+  if (!vp || vp._fpInit) return;
+  vp._fpInit = true;
+
+  // Mouse
+  vp.addEventListener("mousedown", e => {
+    fpDragging = true;
+    fpStart = { x: e.clientX - fpX, y: e.clientY - fpY };
+    e.preventDefault();
+  });
+  window.addEventListener("mousemove", e => {
+    if (!fpDragging) return;
+    fpX = e.clientX - fpStart.x;
+    fpY = e.clientY - fpStart.y;
+    applyFPTransform();
+  });
+  window.addEventListener("mouseup", () => { fpDragging = false; });
+
+  // Wheel zoom
+  vp.addEventListener("wheel", e => {
+    e.preventDefault();
+    fpZoom(e.deltaY < 0 ? 0.15 : -0.15);
+  }, { passive: false });
+
+  // Touch
+  let lastDist = 0;
+  vp.addEventListener("touchstart", e => {
+    if (e.touches.length === 1) {
+      fpDragging = true;
+      fpStart = { x: e.touches[0].clientX - fpX, y: e.touches[0].clientY - fpY };
+    } else if (e.touches.length === 2) {
+      lastDist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+    }
+  }, { passive: true });
+  vp.addEventListener("touchmove", e => {
+    if (e.touches.length === 1 && fpDragging) {
+      fpX = e.touches[0].clientX - fpStart.x;
+      fpY = e.touches[0].clientY - fpStart.y;
+      applyFPTransform();
+    } else if (e.touches.length === 2) {
+      const dist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+      fpZoom((dist - lastDist) * 0.008);
+      lastDist = dist;
+    }
+  }, { passive: true });
+  vp.addEventListener("touchend", () => { fpDragging = false; });
+}
+
+document.addEventListener("keydown", e => {
+  if (e.key === "Escape") closeFloorPlan();
+});
 
 /* ─────────────────────────────────────────────
    Hero carousel

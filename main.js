@@ -24,7 +24,7 @@ const CARDS_PER_PAGE = 3; // desktop; adjusted per breakpoint in newsCarousel()
 ───────────────────────────────────────────── */
 const i18n = {
   uz: {
-    brandSubtitle:"Islom sivilizatsiyasi kutubxonasi",
+    brandSubtitle:"O'zbekistondagi islom sivilizatsiyasi markazi kutubxonasi",
     navHome:"Bosh sahifa", navDiscover:"Fondlar", navServices:"Xizmatlar",
     navVisit:"Tashrif", navAbout:"Haqida", navPartners:"Hamkorlar",
     navDirectors:"Kutubxona jamoasi",
@@ -36,7 +36,7 @@ const i18n = {
     statBooks:"Kitoblar", statManuscripts:"Qo'lyozmalar",
     statJournals:"Jurnallar", statAccess:"Onlayn kirish",
     updatesKicker:"Yangiliklar",
-    newsTitle:"So'nggi yangiliklar va e'lonlar",
+    newsTitle:"So'nggi yangiliklar",
     newsSubtitle:"Platformadagi muhim yangilanishlar, tadbirlar va hamkorliklar.",
     newsTag1:"E'lon", newsHeadline1:"Usmoniylar davriga oid 3 000 qo'lyozma raqamli arxivga joylandi",
     newsText1:"Yangi fond tadqiqotchilar uchun metadata va kirish so'rovlari bilan taqdim etildi.",

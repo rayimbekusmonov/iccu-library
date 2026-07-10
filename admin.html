@@ -1362,15 +1362,16 @@ async function loadAnnouncements() {
   const list = document.getElementById("ann-list");
   list.innerHTML = `<div class="skeleton"></div><div class="skeleton" style="margin-top:10px"></div>`;
   try {
-    allAnn = await sbReq("/announcements?order=starts_at.desc&select=*");
+    // Sort by created_at desc (instead of starts_at) since created_at column is defined in the table schema
+    allAnn = await sbReq("/announcements?order=created_at.desc&select=*");
     renderAnnList();
     const active = allAnn.filter(a => a.is_active).length;
     document.getElementById("nb-ann").textContent = active;
     document.getElementById("ann-subtitle").textContent =
       `Jami ${allAnn.length} ta e'lon · ${active} ta faol`;
   } catch(e) {
-    document.getElementById("ann-subtitle").textContent = "Announcements jadvali topilmadi — Supabase'da yarating.";
-    list.innerHTML = `<div class="empty"><div class="ico">⚠️</div><p>Announcements jadvali mavjud emas.<br>Supabase'da <code>announcements</code> jadvali yarating.</p></div>`;
+    document.getElementById("ann-subtitle").textContent = "Xato: " + e.message;
+    list.innerHTML = `<div class="empty"><div class="ico">⚠️</div><p>E'lonlarni yuklab bo'lmadi:<br><code>${e.message}</code></p></div>`;
   }
 }
 
@@ -1381,9 +1382,15 @@ function renderAnnList() {
     return;
   }
   el.innerHTML = allAnn.map(a => {
-    const title = a.title_uz || a.title_en || "—";
-    const date  = a.starts_at ? new Date(a.starts_at).toLocaleDateString("uz-UZ", {day:"numeric",month:"short",year:"numeric"}) : "—";
-    const accent= a.art_color || "#c8a45d";
+    let data;
+    try {
+      data = JSON.parse(a.content);
+    } catch(e) {
+      data = { title_uz: "E'lon", body_uz: a.content || "", priority: "normal", art_color: "#c8a45d" };
+    }
+    const title = data.title_uz || data.title_en || "—";
+    const date  = a.created_at ? new Date(a.created_at).toLocaleDateString("uz-UZ", {day:"numeric",month:"short",year:"numeric"}) : "—";
+    const accent= data.art_color || "#c8a45d";
     return `
     <div class="news-row" style="border-left:3px solid ${accent}">
       <div class="news-thumb" style="font-size:18px;background:rgba(${hexToRgb(accent)},.12)">📢</div>
@@ -1391,7 +1398,7 @@ function renderAnnList() {
         <div class="news-title-row">
           <span class="news-title">${title}</span>
           <span class="badge ${a.is_active?"badge-pub":"badge-draft"}">${a.is_active?"Faol":"Nofaol"}</span>
-          ${a.priority==="high"?`<span class="badge" style="background:rgba(224,92,92,.15);color:#e05c5c">⚡ Muhim</span>`:""}
+          ${data.priority==="high"?`<span class="badge" style="background:rgba(224,92,92,.15);color:#e05c5c">⚡ Muhim</span>`:""}
         </div>
         <div class="news-meta">${date}</div>
       </div>
@@ -1419,18 +1426,27 @@ function openAnnForm(id = null) {
   if (id) {
     const a = allAnn.find(x => x.id === id);
     if (!a) return;
+    let data;
+    try {
+      data = JSON.parse(a.content);
+    } catch(e) {
+      data = { title_uz: "E'lon", body_uz: a.content || "", priority: "normal", art_color: "#c8a45d" };
+    }
     ["uz","en","ru","tr"].forEach(l => {
-      annLangData[l] = { title: a[`title_${l}`]||"", body: a[`body_${l}`]||"" };
+      annLangData[l] = { title: data[`title_${l}`]||"", body: data[`body_${l}`]||"" };
     });
-    document.getElementById("af-priority").value  = a.priority || "normal";
+    document.getElementById("af-priority").value  = data.priority || "normal";
     document.getElementById("af-active").checked  = a.is_active;
-    setAnnColorSwatch(a.art_color || "#c8a45d");
-    if (a.starts_at) {
-      const dt = new Date(a.starts_at); dt.setMinutes(dt.getMinutes()-dt.getTimezoneOffset());
+    setAnnColorSwatch(data.art_color || "#c8a45d");
+    if (data.starts_at) {
+      const dt = new Date(data.starts_at); dt.setMinutes(dt.getMinutes()-dt.getTimezoneOffset());
+      document.getElementById("af-starts").value = dt.toISOString().slice(0,16);
+    } else {
+      const dt = new Date(a.created_at || Date.now()); dt.setMinutes(dt.getMinutes()-dt.getTimezoneOffset());
       document.getElementById("af-starts").value = dt.toISOString().slice(0,16);
     }
-    if (a.ends_at) {
-      const dt2 = new Date(a.ends_at); dt2.setMinutes(dt2.getMinutes()-dt2.getTimezoneOffset());
+    if (a.expires_at) {
+      const dt2 = new Date(a.expires_at); dt2.setMinutes(dt2.getMinutes()-dt2.getTimezoneOffset());
       document.getElementById("af-ends").value = dt2.toISOString().slice(0,16);
     } else { document.getElementById("af-ends").value = ""; }
   } else {
@@ -1508,18 +1524,25 @@ async function saveAnn() {
   document.getElementById("ann-btn-save").disabled           = true;
   document.getElementById("ann-form-saving").style.display   = "";
 
-  const payload = {
+  const contentObj = {
     priority:   document.getElementById("af-priority").value,
     art_color:  annSelColor,
-    is_active:  document.getElementById("af-active").checked,
     starts_at:  new Date(document.getElementById("af-starts").value || Date.now()).toISOString(),
-    ends_at:    document.getElementById("af-ends").value ? new Date(document.getElementById("af-ends").value).toISOString() : null,
+    title_uz:   annLangData.uz.title || "",
+    title_en:   annLangData.en.title || "",
+    title_ru:   annLangData.ru.title || "",
+    title_tr:   annLangData.tr.title || "",
+    body_uz:    annLangData.uz.body || "",
+    body_en:    annLangData.en.body || "",
+    body_ru:    annLangData.ru.body || "",
+    body_tr:    annLangData.tr.body || "",
   };
-  ["uz","en","ru","tr"].forEach(l => {
-    const d = annLangData[l] || {};
-    payload[`title_${l}`] = d.title || "";
-    payload[`body_${l}`]  = d.body  || "";
-  });
+
+  const payload = {
+    content:    JSON.stringify(contentObj),
+    is_active:  document.getElementById("af-active").checked,
+    expires_at: document.getElementById("af-ends").value ? new Date(document.getElementById("af-ends").value).toISOString() : new Date(Date.now() + 365*24*60*60*1000).toISOString(),
+  };
 
   try {
     if (editAnnId) {

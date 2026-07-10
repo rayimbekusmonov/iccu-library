@@ -1003,7 +1003,7 @@ async function loadAnnouncements() {
 
   try {
     liveAnnouncements = await sbGet(
-      "/announcements?is_active=eq.true&order=starts_at.desc&limit=20&select=*"
+      "/announcements?is_active=eq.true&order=created_at.desc&limit=20&select=*"
     );
   } catch (e) {
     // Table may not exist yet — use a demo item so kiosk still shows
@@ -1040,9 +1040,16 @@ function renderKiosk() {
   const ann   = liveAnnouncements[0];
   if (!ann) return;
 
+  let data;
+  try {
+    data = JSON.parse(ann.content);
+  } catch (e) {
+    data = { title_uz: "E'lon", body_uz: ann.content || "", priority: "normal", art_color: "#c8a45d" };
+  }
+
   const lang    = currentLang;
-  const title   = ann[`title_${lang}`] || ann.title_uz || ann.title_en || "";
-  const body    = ann[`body_${lang}`]  || ann.body_uz  || ann.body_en  || "";
+  const title   = data[`title_${lang}`] || data.title_uz || data.title_en || "";
+  const body    = data[`body_${lang}`]  || data.body_uz  || data.body_en  || "";
 
   const titleEl   = document.getElementById("kiosk-title");
   const excerptEl = document.getElementById("kiosk-excerpt");
@@ -1052,8 +1059,8 @@ function renderKiosk() {
 
   // Set accent color
   const inner = document.getElementById("kiosk-inner");
-  if (inner && ann.art_color) {
-    inner.style.setProperty("--ann-accent", ann.art_color);
+  if (inner && data.art_color) {
+    inner.style.setProperty("--ann-accent", data.art_color);
   }
 }
 
@@ -1070,12 +1077,18 @@ function renderAnnouncementsPage() {
   }
 
   grid.innerHTML = liveAnnouncements.map(ann => {
-    const title    = ann[`title_${lang}`] || ann.title_uz || ann.title_en || "";
-    const body     = ann[`body_${lang}`]  || ann.body_uz  || ann.body_en  || "";
-    const isHigh   = ann.priority === "high";
-    const accent   = ann.art_color || (isHigh ? "#e05c5c" : "#c8a45d");
+    let data;
+    try {
+      data = JSON.parse(ann.content);
+    } catch(e) {
+      data = { title_uz: "E'lon", body_uz: ann.content || "", priority: "normal", art_color: "#c8a45d" };
+    }
+    const title    = data[`title_${lang}`] || data.title_uz || data.title_en || "";
+    const body     = data[`body_${lang}`]  || data.body_uz  || data.body_en  || "";
+    const isHigh   = data.priority === "high";
+    const accent   = data.art_color || (isHigh ? "#e05c5c" : "#c8a45d");
     const badgeLabel = isHigh ? (dict.annPriorityHigh || "Muhim") : (dict.annPriority || "E'lon");
-    const date     = ann.starts_at ? formatDate(ann.starts_at, lang) : "";
+    const date     = data.starts_at ? formatDate(data.starts_at, lang) : ann.created_at ? formatDate(ann.created_at, lang) : "";
 
     return `<div class="ann-card ${isHigh ? "ann-priority-high" : ""}" style="--ann-accent:${accent}">
       <div class="ann-card-top">

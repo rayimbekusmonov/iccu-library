@@ -58,14 +58,18 @@ const i18n = {
     qs3Title:"Tashrifni rejalash", qs3Text:"Ish vaqti, o'qish zali va maxsus fondlardan foydalanish tartibi.",
     projectsKicker:"Platforma loyihalari", projectsTitle:"Faol raqamli kutubxona tashabbuslari",
     projectsSubtitle:"Kutubxonani kundalik tadqiqot platformasiga aylantiradigan amaliy yo'nalishlar.",
-    project1Status:"Jarayonda", project1Title:"Qo'lyozmalarni raqamlashtirish",
-    project1Text:"Suratga olish, metadata, konservatsiya qaydlari va kirish so'rovlarini bitta jarayonga yig'ish.",
-    project2Status:"Pilot", project2Title:"Tadqiqotchi kabineti",
-    project2Text:"Saqlangan qidiruvlar, o'qish ro'yxatlari va material so'rovlari uchun shaxsiy hudud.",
+    project1Status:"Faol", project1Title:"Hamkorlik",
+    project1Text:"Universitetlar, kutubxonalar va ilmiy markazlar bilan qo'shma loyihalar va shartnomalar.",
+    project1Progress:"Faol hamkorlik", project1Count:"10+ hamkor",
+    project2Status:"24/7", project2Title:"Masofaviy kirish",
+    project2Text:"Raqamli katalog va elektron bazalarga uydan 24/7 kirish imkoniyati.",
+    project2Progress:"Doimo ochiq", project2Count:"E-kutubxona",
     project3Status:"Jonli arxiv", project3Title:"Ma'ruza va tadbirlar arxivi",
     project3Text:"Videolar, transkriptlar va o'quv yo'llarini fondlar bilan bog'lash.",
-    project4Status:"Keyingi reliz", project4Title:"Tashrif va xona band qilish",
-    project4Text:"O'qish zali o'rinlari, maxsus fond uchrashuvlari va tashrif rejasini boshqarish.",
+    project3Progress:"Faol ishlaydi", project3Count:"50+ video",
+    project4Status:"Faol", project4Title:"Guruh va ekskursiya",
+    project4Text:"Talabalar guruhlari, maktablar va tashkilotlar uchun kutubxona ekskursiyasi.",
+    project4Progress:"Ariza qabul qilinadi", project4Count:"Bog'lanish →",
     partnersKicker:"Hamkorlar", partnersTitle:"Ishonchli hamkorlar",
     partnersSubtitle:"Birgalikda ilmiy va raqamli meros sohasidagi ishlarni rivojlantirmoqdamiz.",
     newsDetailKicker:"Yangilik", backNews:"Yangiliklarga qaytish",
@@ -177,6 +181,15 @@ const i18n = {
     director5Name:"Behzod Nazarov",
     director5Role:"Foydalanuvchi xizmatlari bo'limi boshlig'i",
     director5Bio:"Tadqiqotchilar va talabalar uchun kirish xizmatlari, o'qish zallari va masofaviy resurslar bo'yicha mas'ul.",
+    navAnnouncements:"E'lonlar",
+    kioskLabel:"Yangi e'lon",
+    kioskDefaultTitle:"E'lonlar yuklanmoqda...",
+    kioskViewAll:"Ko'rish →",
+    announcementsKicker:"E'lonlar",
+    announcementsTitle:"Joriy e'lonlar",
+    announcementsSubtitle:"Kutubxona va platforma bo'yicha muhim xabarlar va e'lonlar.",
+    announcementsEmpty:"Hozircha faol e'lonlar yo'q.",
+    annPriority:"E'lon", annPriorityHigh:"Muhim",
   }
 };
 
@@ -215,14 +228,18 @@ i18n.en = {
   qs3Title:"Plan a visit", qs3Text:"Hours, reading rooms, and special collection access rules.",
   projectsKicker:"Platform projects", projectsTitle:"Active digital library initiatives",
   projectsSubtitle:"Practical workstreams turning the library into a daily research platform.",
-  project1Status:"In progress", project1Title:"Manuscript digitization",
-  project1Text:"Capture, metadata, conservation notes, and access requests in one workflow.",
-  project2Status:"Pilot", project2Title:"Researcher cabinet",
-  project2Text:"Saved searches, reading lists, and material requests in a personal space.",
+  project1Status:"Active", project1Title:"Partnerships",
+  project1Text:"Joint projects and agreements with universities, libraries, and research centers.",
+  project1Progress:"Active cooperation", project1Count:"10+ partners",
+  project2Status:"24/7", project2Title:"Remote access",
+  project2Text:"24/7 access to the digital catalogue and e-databases from home.",
+  project2Progress:"Always open", project2Count:"E-library",
   project3Status:"Live archive", project3Title:"Lecture and event archive",
   project3Text:"Connect videos, transcripts, and learning paths with collections.",
-  project4Status:"Next release", project4Title:"Visit and room booking",
-  project4Text:"Manage reading room seats, special collection appointments, and visit plans.",
+  project3Progress:"Live", project3Count:"50+ videos",
+  project4Status:"Active", project4Title:"Group visits & tours",
+  project4Text:"Library excursions for student groups, schools, and organisations.",
+  project4Progress:"Applications open", project4Count:"Contact →",
   partnersKicker:"Partners", partnersTitle:"Trusted partners",
   partnersSubtitle:"Together we advance digital heritage and scholarly work.",
   newsDetailKicker:"News", backNews:"Back to news",
@@ -279,29 +296,143 @@ i18n.en = {
   director5Name:"Behzod Nazarov",
   director5Role:"Head of User Services",
   director5Bio:"Responsible for access services, reading rooms, and remote resources for researchers and students.",
+  navAnnouncements:"Announcements",
+  kioskLabel:"New announcement",
+  kioskDefaultTitle:"Loading announcements...",
+  kioskViewAll:"View all →",
+  announcementsKicker:"Announcements",
+  announcementsTitle:"Current announcements",
+  announcementsSubtitle:"Important news and announcements about the library and platform.",
+  announcementsEmpty:"No active announcements at this time.",
+  annPriority:"Announcement", annPriorityHigh:"Important",
 };
 
 i18n.ru = {
   ...i18n.en,
-  brandSubtitle:"Библиотека исламской цивилизации",
+  brandSubtitle:"Библиотека Центра исламской цивилизации",
   navHome:"Главная", navDiscover:"Фонды", navServices:"Услуги",
   navVisit:"Визит", navAbout:"О нас", navPartners:"Партнёры",
-  navDirectors:"Команда",
+  navDirectors:"Команда", navAnnouncements:"Объявления",
   navKirish:"Войти", navRegister:"Регистрация",
   heroEyebrow:"Платформа цифрового наследия",
-  heroTitle:"Откройте источники исламской цивилизации.",
-  heroCopy:"ICCU Библиотека объединяет рукописи, книги, лекции и услуги посетителей на единой платформе.",
-  heroPrimary:"Поиск ресурсов", heroSecondary:"Читать новости",
+  heroTitle:"Откройте источники исламской цивилизации в современном формате.",
+  heroCopy:"Библиотека ICCU объединяет рукописи, книги, лекции, мероприятия и посетительские услуги на единой удобной платформе.",
+  heroPrimary:"Найти ресурсы", heroSecondary:"Читать новости",
+  statBooks:"Книги", statManuscripts:"Рукописи", statJournals:"Журналы", statAccess:"Онлайн-доступ",
   updatesKicker:"Новости", newsTitle:"Последние новости и объявления",
-  quickKicker:"Быстрые услуги", quickTitle:"Основные пути для пользователей",
-  projectsKicker:"Проекты", projectsTitle:"Активные цифровые инициативы",
+  newsSubtitle:"Важные обновления платформы, мероприятия и партнёрства.",
+  quickKicker:"Быстрые услуги", quickTitle:"Основные направления для пользователей",
+  quickSubtitle:"Каталог, рукописи, посещение и помощь библиотекаря — кратким путём.",
+  viewAll:"Смотреть все",
+  qs1Title:"Цифровые рукописи", qs1Text:"Просмотр и запрос доступа к редким источникам.",
+  qs1Link:"Перейти в архив →",
+  qs2Title:"Помощь библиотекаря", qs2Text:"Помощь в исследованиях, поиске источников и библиографии.",
+  qs2Link:"Обратиться →",
+  qs3Title:"Планировать визит", qs3Text:"Часы работы, читальные залы и правила доступа к спецфонду.",
+  qs3Link:"Подробнее →",
+  projectsKicker:"Проекты платформы", projectsTitle:"Активные цифровые инициативы библиотеки",
+  projectsSubtitle:"Практические направления, превращающие библиотеку в ежедневную исследовательскую платформу.",
+  project1Status:"Активно", project1Title:"Партнёрства",
+  project1Text:"Совместные проекты и соглашения с университетами, библиотеками и научными центрами.",
+  project1Progress:"Активное сотрудничество", project1Count:"10+ партнёров",
+  project2Status:"24/7", project2Title:"Удалённый доступ",
+  project2Text:"Круглосуточный доступ к цифровому каталогу и электронным базам данных из дома.",
+  project2Progress:"Всегда доступно", project2Count:"Э-библиотека",
+  project3Status:"Живой архив", project3Title:"Архив лекций и событий",
+  project3Text:"Видео, транскрипты и учебные маршруты в связке с фондами.",
+  project3Progress:"Работает", project3Count:"50+ видео",
+  project4Status:"Активно", project4Title:"Групповые визиты и экскурсии",
+  project4Text:"Экскурсии по библиотеке для студенческих групп, школ и организаций.",
+  project4Progress:"Приём заявок открыт", project4Count:"Связаться →",
   partnersKicker:"Партнёры", partnersTitle:"Надёжные партнёры",
+  partnersSubtitle:"Вместе развиваем науку и сохраняем цифровое наследие.",
+  newsDetailKicker:"Новость", backNews:"Назад к новостям",
+  detailSideTitle:"Связанные направления",
+  detailSideText:"Эта новость связана с фондами, кабинетом исследователя и процессами оцифровки.",
   discoverKicker:"Фонды", discoverTitle:"Фонды библиотеки",
+  discoverSubtitle:"Каталог, рукописи, учёные, выставки и списки рекомендаций.",
+  d1Title:"Онлайн-каталог", d1Text:"Книги, авторы, темы и идентификаторы.",
+  d1f1:"120 000+ книг и изданий",
+  d1f2:"Расширенный поиск по автору, теме, году и языку",
+  d1f3:"Поиск по ISBN, ISSN и другим идентификаторам",
+  d1Cta:"Открыть каталог →",
+  d2Title:"Рукописи", d2Text:"Редкие источники с записями цифрового доступа.",
+  d2f1:"15 000+ редких рукописей в цифровом архиве",
+  d2f2:"Фонды Османской, Тимуридской и других эпох",
+  d2f3:"Фильтрация по метаданным, эпохе, языку и состоянию",
+  d2Cta:"Открыть архив →",
+  d3Title:"Аллоmalар", d3Text:"Информационный путь, связанный с allomalar.uz.",
+  d3Link:"Allomalar.uz ↗",
+  d4Title:"Источники", d4Text:"Быстрый путь к ресурсам manbalar.uz.",
+  d4Link:"Manbalar.uz ↗",
+  d5Title:"Электронная библиотека",
+  d5Text:"Полный доступ к цифровым ресурсам и журналам через e-library.cisc.uz.",
+  d5Link:"E-library ↗",
   servicesKicker:"Услуги", servicesTitle:"Услуги библиотеки",
-  visitKicker:"Визит", visitTitle:"Планируйте визит",
+  servicesSubtitle:"Услуги для исследований, посещений, цифровых фондов и партнёрства.",
+  svc1Title:"Помощь библиотекаря", svc1Text:"Консультации по выбору источников, библиографии и направлению исследований.",
+  svc1f1:"Подбор источников и литературы по теме",
+  svc1f2:"Оформление библиографии (APA, MLA, Chicago)",
+  svc1f3:"Навигация по онлайн- и физическим фондам",
+  svc1Cta:"Отправить запрос →",
+  svc2Title:"Запрос к спецфонду", svc2Text:"Предварительный запрос на просмотр рукописи или редкого материала.",
+  svc2f1:"Доступ к редким рукописям и архивным материалам",
+  svc2f2:"Онлайн-бронирование до визита",
+  svc2f3:"Услуга цифрового копирования",
+  svc2Cta:"Отправить запрос →",
+  svc3Title:"Партнёрства", svc3Text:"Совместные проекты с университетами и научными центрами.",
+  svc4Title:"Удалённый доступ", svc4Text:"Круглосуточный доступ к цифровому каталогу из дома.",
+  svc5Title:"Групповые визиты и экскурсии", svc5Text:"Экскурсии для студенческих групп, школ и организаций.",
+  svcContact:"Связаться →", svcOpen:"Открыть →",
+  visitKicker:"Визит", visitTitle:"Планируйте свой визит",
+  visitSubtitle:"Часы работы, адрес и правила читального зала.",
+  hoursTitle:"Часы работы",
+  weekday:"Понедельник – пятница: 09:00 – 18:00",
+  out:"Суббота: 10:00 – 16:00",
+  holidays:"Воскресенье: закрыто",
+  contactTitle:"Контакты и адрес", address:"Адрес: Ташкент, Узбекистан",
+  email:"Email: library@iccu.example", phone:"Телефон: +998 00 000 00 00",
+  rulesTitle:"Правила библиотеки",
+  rule1:"Соблюдайте тишину в читальных залах.",
+  rule2:"Еда и напитки запрещены в зоне фондов.",
+  rule3:"Для фотосъёмки рукописей требуется разрешение.",
+  beforeTitle:"Перед визитом",
+  beforeText:"Возьмите удостоверение личности и забронируйте редкие материалы заранее.",
+  mapText:"Интерактивная карта",
+  floorPlanBtn:"Посмотреть внутреннюю карту библиотеки",
+  floorPlanKicker:"Карта библиотеки",
+  floorPlanTitle:"Внутренняя карта",
+  floorPlanHint:"Колесо мыши для масштабирования · Перетаскивание",
   aboutKicker:"О нас", aboutTitle:"О библиотеке",
+  aboutSubtitle:"Библиотека ICCU сохраняет, изучает и распространяет наследие исламской цивилизации.",
+  abStat1:"Всего литературы", abStat2:"Электронных копий",
+  abStat3:"Рукописей", abStat4:"Площадь библиотеки",
+  abStat5:"Мест для читателей", abStat6:"Оцифрованных редких произведений",
+  aboutFondKicker:"О фонде", aboutFondTitle:"Итоги 2025 года",
+  abH1:"Новые поступления", abH1sub:"3 879 подарено, 910 приобретено",
+  abH2:"Письменных источников в базе", abH2sub:"Рукописи и литографии",
+  abH3:"Реестр письменных источников", abH3sub:"Источники с паспортом",
+  abH4:"Литература по Брайлю", abH4sub:"Для людей с ограниченными возможностями",
+  mission1Title:"Сохранение", mission1Text:"Оцифровка и консервация редких рукописей и книг. На 30 000+ изданий установлены RFID-метки.",
+  mission2Title:"Доступ", mission2Text:"Открытые пути к знаниям для студентов, исследователей и широкой публики.",
+  mission3Title:"Развитие", mission3Text:"Расширение современных информационно-библиотечных услуг и проекты в пользу науки.",
+  faq1Q:"Как получить читательский билет?", faq1A:"Обратитесь на стойку регистрации с документом, удостоверяющим личность.",
+  faq2Q:"Можно ли получить доступ к цифровым ресурсам дома?",
+  faq2A:"Многие ресурсы доступны онлайн; для некоторых баз требуется аккаунт.",
+  faq3Q:"Сколько мест в библиотеке?", faq3A:"Библиотека может обслуживать 310 читателей одновременно.",
+  faq4Q:"Можно ли посмотреть редкие рукописи?",
+  faq4A:"Да, после предварительного запроса. Обратитесь в отдел оцифровки.",
+  footerText:"Единая платформа для цифровых фондов, посетительских услуг и научных ресурсов.",
   footerContacts:"Контакты", footerLinks:"Быстрые ссылки",
   footerSocials:"Социальные сети", footerRights:"ICCU — Центр исламской цивилизации",
+  kioskLabel:"Новое объявление",
+  kioskDefaultTitle:"Загрузка объявлений...",
+  kioskViewAll:"Смотреть →",
+  announcementsKicker:"Объявления",
+  announcementsTitle:"Текущие объявления",
+  announcementsSubtitle:"Важные новости и объявления о библиотеке и платформе.",
+  announcementsEmpty:"Активных объявлений пока нет.",
+  annPriority:"Объявление", annPriorityHigh:"Важно",
   directorsKicker:"Команда",
   directorsTitle:"Команда библиотеки",
   directorsSubtitle:"Команда, ответственная за развитие и управление библиотекой ICCU.",
@@ -310,13 +441,13 @@ i18n.ru = {
   director1Bio:"25 лет опыта в области исламской цивилизации и цифровых архивов. Руководит проектами совместно с ЮНЕСКО и ИСЕСКО.",
   director2Name:"Д-р Малика Юсупова",
   director2Role:"Заместитель директора по научной работе",
-  director2Bio:"Специалист по рукописям и каталогизации. За 15 лет научной деятельности подготовила описания более 3 000 редких источников.",
+  director2Bio:"Специалист по рукописям и каталогизации. За 15 лет подготовила описания более 3 000 редких источников.",
   director3Name:"Жахонгир Мирзаев",
   director3Role:"Руководитель отдела цифровых технологий",
   director3Bio:"Ведущий специалист по цифровизации библиотечных систем и внедрению стандартов метаданных.",
   director4Name:"Дилноза Рашидова",
   director4Role:"Руководитель отдела международного сотрудничества",
-  director4Bio:"Координирует отношения с международными библиотечными организациями. Активно работает с партнёрскими библиотеками в Стамбуле, Париже и Вашингтоне.",
+  director4Bio:"Координирует отношения с международными библиотечными организациями. Активно работает с партнёрами в Стамбуле, Париже и Вашингтоне.",
   director5Name:"Бехзод Назаров",
   director5Role:"Руководитель отдела обслуживания пользователей",
   director5Bio:"Отвечает за услуги доступа, читальные залы и дистанционные ресурсы для исследователей и студентов.",
@@ -324,25 +455,128 @@ i18n.ru = {
 
 i18n.tr = {
   ...i18n.en,
-  brandSubtitle:"İslam Medeniyeti Kütüphanesi",
+  brandSubtitle:"İslam Medeniyeti Merkezi Kütüphanesi",
   navHome:"Ana sayfa", navDiscover:"Koleksiyonlar", navServices:"Hizmetler",
   navVisit:"Ziyaret", navAbout:"Hakkında", navPartners:"Ortaklar",
-  navDirectors:"Ekibimiz",
+  navDirectors:"Ekibimiz", navAnnouncements:"Duyurular",
   navKirish:"Giriş", navRegister:"Kaydol",
   heroEyebrow:"Dijital miras platformu",
   heroTitle:"İslam medeniyeti kaynaklarını modern formatta keşfedin.",
-  heroCopy:"ICCU Kütüphanesi el yazmaları, kitaplar, dersler ve ziyaretçi hizmetlerini tek platformda bir araya getirir.",
+  heroCopy:"ICCU Kütüphanesi el yazmaları, kitaplar, dersler, etkinlikler ve ziyaretçi hizmetlerini tek ve kullanıcı dostu bir platformda bir araya getirir.",
   heroPrimary:"Kaynak ara", heroSecondary:"Haberleri görüntüle",
+  statBooks:"Kitaplar", statManuscripts:"El Yazmaları", statJournals:"Dergiler", statAccess:"Çevrimiçi erişim",
   updatesKicker:"Haberler", newsTitle:"Son haberler ve duyurular",
+  newsSubtitle:"Önemli platform güncellemeleri, etkinlikler ve ortaklıklar.",
   quickKicker:"Hızlı hizmetler", quickTitle:"Kullanıcılar için temel yollar",
-  projectsKicker:"Projeler", projectsTitle:"Aktif dijital kütüphane girişimleri",
+  quickSubtitle:"Katalog, el yazmaları, ziyaret ve kütüphaneci yardımı için kısayollar.",
+  viewAll:"Tümünü görüntüle",
+  qs1Title:"Dijital el yazmaları", qs1Text:"Nadir kaynaklar için görüntüleme ve erişim talepleri.",
+  qs1Link:"Arşive git →",
+  qs2Title:"Kütüphaneci yardımı", qs2Text:"Araştırma konuları, kaynak bulma ve bibliyografya konusunda destek.",
+  qs2Link:"Başvuru yap →",
+  qs3Title:"Ziyaret planla", qs3Text:"Çalışma saatleri, okuma salonları ve özel koleksiyon erişim kuralları.",
+  qs3Link:"Ayrıntılar →",
+  projectsKicker:"Platform projeleri", projectsTitle:"Aktif dijital kütüphane girişimleri",
+  projectsSubtitle:"Kütüphaneyi günlük araştırma platformuna dönüştüren pratik çalışma alanları.",
+  project1Status:"Aktif", project1Title:"Ortaklıklar",
+  project1Text:"Üniversiteler, kütüphaneler ve araştırma merkezleriyle ortak projeler ve anlaşmalar.",
+  project1Progress:"Aktif işbirliği", project1Count:"10+ ortak",
+  project2Status:"7/24", project2Title:"Uzaktan erişim",
+  project2Text:"Dijital katalog ve e-veritabanlarına evden 7/24 erişim imkânı.",
+  project2Progress:"Her zaman açık", project2Count:"E-kütüphane",
+  project3Status:"Canlı arşiv", project3Title:"Ders ve etkinlik arşivi",
+  project3Text:"Videolar, transkriptler ve öğrenme yollarını koleksiyonlarla ilişkilendirme.",
+  project3Progress:"Aktif", project3Count:"50+ video",
+  project4Status:"Aktif", project4Title:"Grup ziyaretleri ve turlar",
+  project4Text:"Öğrenci grupları, okullar ve kuruluşlar için kütüphane gezisi.",
+  project4Progress:"Başvuru alınıyor", project4Count:"İletişim →",
   partnersKicker:"Ortaklar", partnersTitle:"Güvenilir ortaklar",
+  partnersSubtitle:"Birlikte bilimsel ve dijital miras alanında çalışmaları ilerletiyoruz.",
+  newsDetailKicker:"Haber", backNews:"Haberlere dön",
+  detailSideTitle:"İlgili alanlar", detailSideText:"Bu haber, koleksiyonlar ve dijitalleştirme süreçleriyle bağlantılıdır.",
   discoverKicker:"Koleksiyonlar", discoverTitle:"Kütüphane koleksiyonları",
+  discoverSubtitle:"Katalog, el yazmaları, akademisyenler, sergiler ve okuma listeleri.",
+  d1Title:"Çevrimiçi katalog", d1Text:"Kitaplar, yazarlar, konular ve tanımlayıcılar.",
+  d1f1:"120.000+ kitap ve yayın",
+  d1f2:"Yazar, konu, yıl ve dile göre gelişmiş arama",
+  d1f3:"ISBN, ISSN ve diğer tanımlayıcılarla arama",
+  d1Cta:"Kataloğa gir →",
+  d2Title:"El yazmaları", d2Text:"Dijital erişim notlarıyla nadir kaynaklar.",
+  d2f1:"15.000+ nadir el yazması dijital arşivde",
+  d2f2:"Osmanlı, Timuri ve diğer dönem koleksiyonları",
+  d2f3:"Meta veri, dönem, dil ve durum bazlı filtreleme",
+  d2Cta:"Arşive gir →",
+  d3Title:"Allomalar", d3Text:"allomalar.uz ile bağlantılı bilgi yolu.",
+  d3Link:"Allomalar.uz ↗",
+  d4Title:"Kaynaklar", d4Text:"manbalar.uz kaynakları için hızlı yol.",
+  d4Link:"Manbalar.uz ↗",
+  d5Title:"Elektronik kütüphane", d5Text:"e-library.cisc.uz üzerinden dijital kaynak ve dergilere tam erişim.",
+  d5Link:"E-library ↗",
   servicesKicker:"Hizmetler", servicesTitle:"Kütüphane hizmetleri",
+  servicesSubtitle:"Araştırma, ziyaret, dijital koleksiyonlar ve ortaklık süreçleri için hizmetler.",
+  svc1Title:"Kütüphaneciye sor", svc1Text:"Kaynak seçimi, bibliyografya ve araştırma yönlendirmesi konusunda rehberlik.",
+  svc1f1:"Konuya uygun kaynak ve literatür seçimi",
+  svc1f2:"Bibliyografya ve atıf biçimlendirme (APA, MLA, Chicago)",
+  svc1f3:"Çevrimiçi ve fiziksel koleksiyonlara yönlendirme",
+  svc1Cta:"İstek gönder →",
+  svc2Title:"Özel koleksiyon talebi", svc2Text:"El yazması veya nadir materyal için önceden talep.",
+  svc2f1:"Nadir el yazmalarına ve arşiv materyallerine erişim",
+  svc2f2:"Ziyaretten önce çevrimiçi rezervasyon imkânı",
+  svc2f3:"Dijital kopyalama hizmeti",
+  svc2Cta:"İstek gönder →",
+  svc3Title:"Ortaklıklar", svc3Text:"Üniversiteler ve araştırma merkezleriyle ortak projeler.",
+  svc4Title:"Uzaktan erişim", svc4Text:"Dijital katalog ve e-veritabanlarına evden 7/24 erişim.",
+  svc5Title:"Grup ziyaretleri ve turlar", svc5Text:"Öğrenci grupları, okullar ve kuruluşlar için kütüphane gezisi.",
+  svcContact:"İletişim →", svcOpen:"Aç →",
   visitKicker:"Ziyaret", visitTitle:"Ziyaretinizi planlayın",
+  visitSubtitle:"Çalışma saatleri, adres ve okuma salonu kuralları.",
+  hoursTitle:"Çalışma saatleri",
+  weekday:"Pazartesi – Cuma: 09:00 – 18:00",
+  out:"Cumartesi: 10:00 – 16:00",
+  holidays:"Pazar: Kapalı",
+  contactTitle:"İletişim ve adres", address:"Adres: Taşkent, Özbekistan",
+  email:"E-posta: library@iccu.example", phone:"Telefon: +998 00 000 00 00",
+  rulesTitle:"Kütüphane kuralları",
+  rule1:"Okuma salonlarında sessizliği koruyun.",
+  rule2:"Yiyecek ve içecek koleksiyon alanına alınamaz.",
+  rule3:"El yazmalarının fotoğraflanması için izin gereklidir.",
+  beforeTitle:"Gelmeden önce",
+  beforeText:"Kimlik belgesi getirin ve nadir materyalleri önceden rezerve edin.",
+  mapText:"Etkileşimli harita alanı",
+  floorPlanBtn:"Kütüphanenin iç haritasını görüntüle",
+  floorPlanKicker:"Kütüphane haritası",
+  floorPlanTitle:"İç yapı haritası",
+  floorPlanHint:"Yakınlaştırmak için fare tekerleği · Sürükle",
   aboutKicker:"Hakkında", aboutTitle:"Kütüphane hakkında",
+  aboutSubtitle:"ICCU Kütüphanesi, İslam medeniyeti mirasını korumak, incelemek ve geniş kitlelere ulaştırmak için hizmet vermektedir.",
+  abStat1:"Toplam literatür", abStat2:"Elektronik kopya",
+  abStat3:"El yazması", abStat4:"Kütüphane alanı",
+  abStat5:"Koltuk kapasitesi", abStat6:"Dijitalleştirilmiş nadir eser",
+  aboutFondKicker:"Fon hakkında", aboutFondTitle:"2025 yılı sonuçları",
+  abH1:"Yeni kabul edilen literatür", abH1sub:"3.879 bağış, 910 satın alma",
+  abH2:"Veritabanındaki yazılı kaynak", abH2sub:"El yazmaları ve taş baskılar",
+  abH3:"Yazılı kaynak sicili", abH3sub:"Pasaportu hazırlanan kaynaklar",
+  abH4:"Braille literatürü", abH4sub:"Engelli bireyler için",
+  mission1Title:"Koruma", mission1Text:"Nadir el yazmaları ve kitapların dijitalleştirilmesi ve konservasyonu.",
+  mission2Title:"Erişim", mission2Text:"Öğrenciler, araştırmacılar ve kamuoyu için açık bilgi yolları.",
+  mission3Title:"Geliştirme", mission3Text:"Modern bilgi-kütüphane hizmetlerinin genişletilmesi ve bilime hizmet eden projeler.",
+  faq1Q:"Okuyucu kartını nasıl alabilirim?", faq1A:"Kimlik belgesiyle kayıt masasına başvurun.",
+  faq2Q:"Dijital kaynaklara evden erişebilir miyim?",
+  faq2A:"Birçok kaynak çevrimiçi mevcuttur; bazı veritabanları hesap gerektirir.",
+  faq3Q:"Kütüphanede kaç koltuk var?", faq3A:"Kütüphane aynı anda 310 okuyucuya hizmet verebilmektedir.",
+  faq4Q:"Nadir el yazmalarını görebilir miyim?",
+  faq4A:"Evet, önceden talep göndererek nadir koleksiyon materyallerine erişebilirsiniz.",
+  footerText:"Dijital koleksiyonlar, ziyaretçi hizmetleri ve araştırma kaynakları için tek platform.",
   footerContacts:"İletişim", footerLinks:"Hızlı bağlantılar",
   footerSocials:"Sosyal hesaplar", footerRights:"ICCU — İslam Medeniyeti Merkezi",
+  kioskLabel:"Yeni duyuru",
+  kioskDefaultTitle:"Duyurular yükleniyor...",
+  kioskViewAll:"Görüntüle →",
+  announcementsKicker:"Duyurular",
+  announcementsTitle:"Güncel duyurular",
+  announcementsSubtitle:"Kütüphane ve platform hakkında önemli haberler ve duyurular.",
+  announcementsEmpty:"Şu an aktif duyuru bulunmamaktadır.",
+  annPriority:"Duyuru", annPriorityHigh:"Önemli",
   directorsKicker:"Ekip",
   directorsTitle:"Kütüphane ekibi",
   directorsSubtitle:"ICCU Kütüphanesini geliştirmekten ve yönetmekten sorumlu ekip.",
@@ -351,13 +585,13 @@ i18n.tr = {
   director1Bio:"İslam medeniyeti çalışmaları ve dijital arşivlerde 25 yıllık deneyim. UNESCO ve ISESCO ile işbirliği projelerine liderlik eder.",
   director2Name:"Dr. Malika Yusupova",
   director2Role:"Araştırma Genel Müdür Yardımcısı",
-  director2Bio:"El yazmaları ve kataloglama uzmanı. 15 yıllık bilimsel çalışmada 3.000'den fazla nadir kaynak tanımı hazırladı.",
+  director2Bio:"El yazmaları ve kataloglama uzmanı. 15 yıllık çalışmada 3.000+ nadir kaynak tanımı hazırladı.",
   director3Name:"Jahongir Mirzayev",
   director3Role:"Dijital Teknolojiler Bölüm Başkanı",
   director3Bio:"Kütüphane sistemlerinin dijitalleştirilmesi ve meta veri standartlarının uygulanması konusunda baş uzman.",
   director4Name:"Dilnoza Rashidova",
   director4Role:"Uluslararası İşbirliği Bölüm Başkanı",
-  director4Bio:"Uluslararası kütüphane kuruluşlarıyla ilişkileri koordine eder. İstanbul, Paris ve Washington'daki ortak kütüphanelerle aktif olarak çalışır.",
+  director4Bio:"Uluslararası kütüphane kuruluşlarıyla ilişkileri koordine eder. İstanbul, Paris ve Washington'daki ortaklarla aktif çalışır.",
   director5Name:"Behzod Nazarov",
   director5Role:"Kullanıcı Hizmetleri Bölüm Başkanı",
   director5Bio:"Araştırmacılar ve öğrenciler için erişim hizmetleri, okuma odaları ve uzaktan kaynaklardan sorumludur.",
@@ -395,6 +629,23 @@ function applyTexts() {
   });
   // News grid til almashganda qayta chiziladi
   if (liveNews.length) renderNewsGrid();
+  // Kiosk & announcements page re-render on lang change
+  if (liveAnnouncements && liveAnnouncements.length) {
+    renderKiosk();
+    renderAnnouncementsPage();
+  } else {
+    // Update demo kiosk text
+    const demoTitles = {
+      uz: "Kutubxonaga xush kelibsiz! Yangi xizmatlar va tadbirlar haqida kuzatib boring.",
+      en: "Welcome to the Library! Stay tuned for new services and events.",
+      ru: "Добро пожаловать в библиотеку! Следите за новыми услугами и мероприятиями.",
+      tr: "Kütüphaneye hoş geldiniz! Yeni hizmetler ve etkinlikler için takipte kalın.",
+    };
+    const demoEl = document.getElementById("kiosk-title");
+    if (demoEl && demoEl.dataset.t === "kioskDefaultTitle") {
+      demoEl.textContent = demoTitles[currentLang] || demoTitles.uz;
+    }
+  }
 }
 
 function toggleLangMenu() {
@@ -428,6 +679,8 @@ function showPage(name) {
   if (page) page.classList.add("active");
   if (nav)  nav.classList.add("active");
   window.scrollTo({ top: 0, behavior: "smooth" });
+  // Re-render announcements page when navigating to it
+  if (name === "announcements" && liveAnnouncements.length > 0) renderAnnouncementsPage();
 }
 
 function scrollToSection(id) {
@@ -733,4 +986,116 @@ document.addEventListener("DOMContentLoaded", () => {
   applyTexts();
   initHeroCarousel();
   loadNews();
+  loadAnnouncements();
 });
+
+/* ─────────────────────────────────────────────
+   Announcements
+───────────────────────────────────────────── */
+let liveAnnouncements = [];
+
+async function loadAnnouncements() {
+  // Dismiss check
+  if (sessionStorage.getItem("kiosk_dismissed")) {
+    const wrap = document.getElementById("kiosk-wrap");
+    if (wrap) wrap.classList.add("dismissed");
+    return;
+  }
+
+  try {
+    liveAnnouncements = await sbGet(
+      "/announcements?is_active=eq.true&order=starts_at.desc&limit=20&select=*"
+    );
+  } catch (e) {
+    // Table may not exist yet — use a demo item so kiosk still shows
+    console.warn("Announcements table not found or error:", e.message);
+    liveAnnouncements = [];
+  }
+
+  // Show demo kiosk item if no real data
+  if (!liveAnnouncements.length) {
+    const lang = currentLang;
+    const dict = i18n[lang] || i18n.uz;
+    const demoTitles = {
+      uz: "Kutubxonaga xush kelibsiz! Yangi xizmatlar va tadbirlar haqida kuzatib boring.",
+      en: "Welcome to the Library! Stay tuned for new services and events.",
+      ru: "Добро пожаловать в библиотеку! Следите за новыми услугами и мероприятиями.",
+      tr: "Kütüphaneye hoş geldiniz! Yeni hizmetler ve etkinlikler için takipte kalın.",
+    };
+    const demoEl = document.getElementById("kiosk-title");
+    if (demoEl) demoEl.textContent = demoTitles[lang] || demoTitles.uz;
+    const excerptEl = document.getElementById("kiosk-excerpt");
+    if (excerptEl) excerptEl.textContent = "";
+    return;
+  }
+
+  renderKiosk();
+  renderAnnouncementsPage();
+
+  // Show badge on nav
+  const dot = document.getElementById("ann-nav-dot");
+  if (dot) dot.style.display = "";
+}
+
+function renderKiosk() {
+  const ann   = liveAnnouncements[0];
+  if (!ann) return;
+
+  const lang    = currentLang;
+  const title   = ann[`title_${lang}`] || ann.title_uz || ann.title_en || "";
+  const body    = ann[`body_${lang}`]  || ann.body_uz  || ann.body_en  || "";
+
+  const titleEl   = document.getElementById("kiosk-title");
+  const excerptEl = document.getElementById("kiosk-excerpt");
+
+  if (titleEl)   titleEl.textContent   = title;
+  if (excerptEl) excerptEl.textContent = body.slice(0, 120) + (body.length > 120 ? "\u2026" : "");
+
+  // Set accent color
+  const inner = document.getElementById("kiosk-inner");
+  if (inner && ann.art_color) {
+    inner.style.setProperty("--ann-accent", ann.art_color);
+  }
+}
+
+function renderAnnouncementsPage() {
+  const grid = document.getElementById("ann-page-grid");
+  if (!grid) return;
+
+  const lang = currentLang;
+  const dict = i18n[lang] || i18n.uz;
+
+  if (!liveAnnouncements.length) {
+    grid.innerHTML = `<div class="ann-empty"><div class="ann-empty-ico">📢</div><p>${dict.announcementsEmpty || "Hozircha faol e'lonlar yo'q."}</p></div>`;
+    return;
+  }
+
+  grid.innerHTML = liveAnnouncements.map(ann => {
+    const title    = ann[`title_${lang}`] || ann.title_uz || ann.title_en || "";
+    const body     = ann[`body_${lang}`]  || ann.body_uz  || ann.body_en  || "";
+    const isHigh   = ann.priority === "high";
+    const accent   = ann.art_color || (isHigh ? "#e05c5c" : "#c8a45d");
+    const badgeLabel = isHigh ? (dict.annPriorityHigh || "Muhim") : (dict.annPriority || "E'lon");
+    const date     = ann.starts_at ? formatDate(ann.starts_at, lang) : "";
+
+    return `<div class="ann-card ${isHigh ? "ann-priority-high" : ""}" style="--ann-accent:${accent}">
+      <div class="ann-card-top">
+        <span class="ann-badge"><span class="ann-badge-dot"></span>${badgeLabel}</span>
+        <span class="ann-date">${date}</span>
+      </div>
+      <div class="ann-title">${title}</div>
+      <div class="ann-body">${body}</div>
+    </div>`;
+  }).join("");
+}
+
+function kioskClick(e) {
+  if (e.target.closest(".kiosk-dismiss") || e.target.closest(".kiosk-cta")) return;
+  showPage("announcements");
+}
+
+function dismissKiosk() {
+  sessionStorage.setItem("kiosk_dismissed", "1");
+  const wrap = document.getElementById("kiosk-wrap");
+  if (wrap) wrap.classList.add("dismissed");
+}

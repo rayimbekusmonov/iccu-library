@@ -489,7 +489,7 @@ h1 {
   border: 1px solid rgba(234,210,154,.18);
   border-radius: var(--radius);
   background: rgba(255,250,240,.05);
-  padding: 36px 24px 24px;
+  padding: 28px 16px 16px;
   text-align: center;
   transition: transform 150ms, border-color 150ms, background 150ms, box-shadow 150ms;
   position: relative;
@@ -518,8 +518,8 @@ h1 {
 
 /* Avatar */
 .director-avatar {
-  width: 170px;
-  height: 170px;
+  width: 230px;
+  height: 230px;
   border-radius: 50%;
   overflow: hidden;
   margin: 0 auto 20px;
@@ -528,8 +528,8 @@ h1 {
 }
 
 .director-card--head .director-avatar {
-  width: 210px;
-  height: 210px;
+  width: 270px;
+  height: 270px;
   border-color: rgba(200,164,93,.55);
 }
 

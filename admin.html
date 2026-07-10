@@ -296,13 +296,94 @@
     /* ── Section divider ── */
     .divider { border:none; border-top:1px solid var(--line); margin:20px 0; }
 
-    /* ════ IMAGE PREVIEW ════ */
-    .img-preview {
-      width:100%; height:120px; border-radius:6px;
-      object-fit:cover; border:1px solid var(--line);
-      margin-top:8px; display:none;
+    /* ════ IMAGE UPLOAD ZONE ════ */
+    .upload-zone {
+      border: 2px dashed rgba(226,213,186,0.22);
+      border-radius: var(--radius);
+      padding: 24px;
+      text-align: center;
+      background: rgba(255,250,240,0.02);
+      cursor: pointer;
+      transition: border-color 150ms, background 150ms;
+      position: relative;
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
-    .img-preview.show { display:block; }
+    .upload-zone:hover {
+      border-color: var(--gold-2);
+      background: rgba(255,250,240,0.05);
+    }
+    .upload-zone-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+    }
+    .upload-icon {
+      font-size: 28px;
+    }
+    .upload-sub {
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .upload-zone img {
+      max-height: 140px;
+      max-width: 100%;
+      object-fit: cover;
+      border-radius: 6px;
+      display: none;
+    }
+    .upload-zone img.show {
+      display: block;
+    }
+    .btn-remove-img {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      padding: 4px 10px;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 4px;
+      background: rgba(224,92,92,0.12);
+      border: 1px solid rgba(224,92,92,0.3);
+      color: var(--red);
+      cursor: pointer;
+      display: none;
+      transition: background 150ms, border-color 150ms;
+    }
+    .btn-remove-img:hover {
+      background: rgba(224,92,92,0.2);
+      border-color: var(--red);
+    }
+
+    /* ── Auto-translate controls ── */
+    .translate-action-wrap {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 8px;
+    }
+    .btn-translate {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      font-size: 11px;
+      font-weight: 700;
+      border-radius: 4px;
+      background: rgba(200,164,93,0.15);
+      border: 1px solid rgba(200,164,93,0.3);
+      color: var(--gold-2);
+      cursor: pointer;
+      transition: background 150ms, border-color 150ms;
+    }
+    .btn-translate:hover {
+      background: rgba(200,164,93,0.25);
+      border-color: var(--gold);
+    }
 
     /* ════ EMPTY STATE ════ */
     .empty { text-align:center; padding:60px 20px; color:var(--muted); }
@@ -503,16 +584,33 @@
             </div>
           </div>
 
-          <!-- Row 2: image URL -->
+          <!-- Row 2: image upload / drag-drop -->
           <div class="field" style="margin-bottom:20px">
-            <label>Rasm URL (ixtiyoriy)</label>
-            <input type="url" id="f-image" placeholder="https://..." oninput="previewImg(this.value)">
-            <img id="f-img-preview" class="img-preview" alt="preview">
+            <label>Muqova rasmi (Kompyuterdan yuklash yoki URL)</label>
+            <div class="upload-zone" id="news-upload-zone" onclick="document.getElementById('f-file-news').click()">
+              <div class="upload-zone-content" id="news-upload-content">
+                <span class="upload-icon">🖼️</span>
+                <span>Rasm tanlash yoki bu yerga tashlash</span>
+                <span class="upload-sub">Kompyuter yoki telefondan rasm yuklash (maks. 5MB)</span>
+              </div>
+              <img id="f-img-preview" class="img-preview" alt="preview">
+              <button class="btn-remove-img" id="btn-remove-news-img" type="button" onclick="removeNewsImg(event)">O'chirish</button>
+            </div>
+            <input type="file" id="f-file-news" accept="image/*" style="display:none" onchange="handleNewsFileSelect(this)">
+            <input type="hidden" id="f-image">
+            <div style="margin-top: 8px; display: flex; gap: 8px;">
+              <input type="url" id="f-image-url" placeholder="Yoki rasm URL manzilini bu yerga yozing..." style="flex:1; padding: 7px 10px; font-size:12px; background:rgba(255,250,240,0.05); border:1px solid rgba(226,213,186,0.15); border-radius:6px; color:var(--white);" oninput="previewNewsUrl(this.value)">
+            </div>
           </div>
 
-          <!-- Lang tabs -->
+          <!-- Lang tabs with Auto Translate -->
           <div style="margin-bottom:0">
-            <label style="display:block;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;color:rgba(234,210,154,.75);margin-bottom:10px">Til bo'yicha kontent</label>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+              <label style="font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;color:rgba(234,210,154,.75)">Til bo'yicha kontent</label>
+              <button type="button" class="btn-translate" onclick="autoTranslateNews()" title="Google Translate or similar simulation">
+                <span>🤖 O'zbekchadan boshqa tillarga tarjima qilish</span>
+              </button>
+            </div>
             <div class="lang-tabs">
               <button class="lang-tab active" onclick="switchLang('uz',this)" id="ltab-uz">
                 <img src="https://flagcdn.com/w20/uz.png" width="16" style="border-radius:2px"> O'zbek
@@ -624,9 +722,14 @@
             </div>
           </div>
 
-          <!-- Lang tabs -->
+          <!-- Lang tabs with Auto Translate -->
           <div style="margin-bottom:0">
-            <label style="display:block;font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;color:rgba(234,210,154,.75);margin-bottom:10px">Til bo'yicha kontent</label>
+            <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
+              <label style="font-size:11px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;color:rgba(234,210,154,.75)">Til bo'yicha kontent</label>
+              <button type="button" class="btn-translate" onclick="autoTranslateAnn()" title="Google Translate or similar simulation">
+                <span>🤖 O'zbekchadan boshqa tillarga tarjima qilish</span>
+              </button>
+            </div>
             <div class="lang-tabs">
               <button class="lang-tab active" onclick="switchAnnLang('uz',this)" id="altab-uz">
                 <img src="https://flagcdn.com/w20/uz.png" width="16" style="border-radius:2px"> O'zbek
@@ -751,6 +854,30 @@ async function init() {
   showSection("dashboard");
   await loadNews();
   await loadAnnouncements();
+
+  // Attach Drag & Drop handlers to the news upload zone
+  const zone = document.getElementById("news-upload-zone");
+  if (zone) {
+    zone.addEventListener("dragover", (e) => {
+      e.preventDefault();
+      zone.style.borderColor = "var(--gold)";
+      zone.style.background = "rgba(255,250,240,0.06)";
+    });
+    zone.addEventListener("dragleave", () => {
+      zone.style.borderColor = "rgba(226,213,186,0.22)";
+      zone.style.background = "rgba(255,250,240,0.02)";
+    });
+    zone.addEventListener("drop", (e) => {
+      e.preventDefault();
+      zone.style.borderColor = "rgba(226,213,186,0.22)";
+      zone.style.background = "rgba(255,250,240,0.02)";
+      if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+        const fileInput = document.getElementById("f-file-news");
+        fileInput.files = e.dataTransfer.files;
+        handleNewsFileSelect(fileInput);
+      }
+    });
+  }
 }
 
 /* ════ LOAD NEWS ════ */
@@ -951,12 +1078,195 @@ function setColorSwatch(val) {
 
 /* ── Image preview ── */
 function previewImg(url) {
-  const el = document.getElementById("f-img-preview");
-  if (url && url.startsWith("http")) {
-    el.src = url;
-    el.classList.add("show");
+  const imgEl = document.getElementById("f-img-preview");
+  const content = document.getElementById("news-upload-content");
+  const removeBtn = document.getElementById("btn-remove-news-img");
+  const imageVal = document.getElementById("f-image");
+  const imageUrlInput = document.getElementById("f-image-url");
+
+  imageVal.value = url;
+
+  if (url) {
+    imgEl.src = url;
+    imgEl.classList.add("show");
+    if (content) content.style.display = "none";
+    if (removeBtn) removeBtn.style.display = "block";
+    if (url.startsWith("http") && imageUrlInput) {
+      imageUrlInput.value = url;
+    } else if (!url.startsWith("http") && imageUrlInput) {
+      imageUrlInput.value = ""; // Clear URL field for Base64 local images
+    }
   } else {
-    el.classList.remove("show");
+    imgEl.src = "";
+    imgEl.classList.remove("show");
+    if (content) content.style.display = "flex";
+    if (removeBtn) removeBtn.style.display = "none";
+    if (imageUrlInput) imageUrlInput.value = "";
+  }
+}
+
+/* ── Local file select and upload zone handling ── */
+function handleNewsFileSelect(input) {
+  const file = input.files[0];
+  if (!file) return;
+
+  if (file.size > 5 * 1024 * 1024) {
+    alert("Rasm hajmi juda katta (maks. 5MB)");
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const rawData = e.target.result;
+    resizeAndCompressImg(rawData, function(compressedBase64) {
+      previewImg(compressedBase64);
+    });
+  };
+  reader.readAsDataURL(file);
+}
+
+function resizeAndCompressImg(base64Str, callback) {
+  const img = new Image();
+  img.src = base64Str;
+  img.onload = function() {
+    const max_w = 1000;
+    const max_h = 750;
+    let w = img.width;
+    let h = img.height;
+
+    if (w > max_w) {
+      h = Math.round((h * max_w) / w);
+      w = max_w;
+    }
+    if (h > max_h) {
+      w = Math.round((w * max_h) / h);
+      h = max_h;
+    }
+
+    const canvas = document.createElement("canvas");
+    canvas.width = w;
+    canvas.height = h;
+    const ctx = canvas.getContext("2d");
+    ctx.drawImage(img, 0, 0, w, h);
+
+    const compressed = canvas.toDataURL("image/jpeg", 0.75);
+    callback(compressed);
+  };
+}
+
+function removeNewsImg(event) {
+  if (event) event.stopPropagation();
+  const fileInput = document.getElementById("f-file-news");
+  if (fileInput) fileInput.value = "";
+  previewImg("");
+}
+
+function previewNewsUrl(url) {
+  previewImg(url);
+}
+
+/* ── Auto Translation Helper Functions ── */
+async function translateText(text, targetLang) {
+  if (!text) return "";
+  try {
+    // MyMemory API: Free translation API (1000 words/day limit)
+    const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=uz|${targetLang}`);
+    if (!res.ok) throw new Error("Translation request failed");
+    const json = await res.json();
+    if (json.responseData && json.responseData.translatedText) {
+      // Decode html entities if returned
+      const parser = new DOMParser();
+      const doc = parser.parseFromString(json.responseData.translatedText, 'text/html');
+      return doc.body.textContent;
+    }
+    return text;
+  } catch(e) {
+    console.error(`Translation error (uz -> ${targetLang}):`, e);
+    return text; // fallback
+  }
+}
+
+async function autoTranslateNews() {
+  saveLangFields();
+  
+  const headlineUz = langData.uz.headline;
+  const excerptUz  = langData.uz.excerpt;
+  const bodyUz     = langData.uz.body;
+  const tagUz      = langData.uz.tag;
+
+  if (!headlineUz && !bodyUz) {
+    alert("Iltimos, avval O'zbekcha kontentni yozing (Sarlavha va To'liq matn)!");
+    return;
+  }
+
+  const btn = document.querySelector(".btn-translate");
+  const originalHtml = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = `<span class="spin"></span> Tarjima qilinmoqda...`;
+
+  const targets = ["en", "ru", "tr"];
+  try {
+    for (const target of targets) {
+      const tHeadline = await translateText(headlineUz, target);
+      const tExcerpt  = await translateText(excerptUz, target);
+      const tBody     = await translateText(bodyUz, target);
+      const tTag      = await translateText(tagUz, target);
+
+      langData[target] = {
+        tag:      tTag,
+        headline: tHeadline,
+        excerpt:  tExcerpt,
+        body:     tBody
+      };
+    }
+    
+    switchLang(activeLang);
+    updateAllDots();
+    toast("Muvaffaqiyatli tarjima qilindi ✓");
+  } catch(e) {
+    alert("Tarjimada xatolik yuz berdi: " + e.message);
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = originalHtml;
+  }
+}
+
+async function autoTranslateAnn() {
+  saveAnnLangFields();
+  
+  const titleUz = annLangData.uz.title;
+  const bodyUz  = annLangData.uz.body;
+
+  if (!titleUz && !bodyUz) {
+    alert("Iltimos, avval O'zbekcha kontentni yozing (Sarlavha va Matn)!");
+    return;
+  }
+
+  const btn = document.querySelector("#sec-announcements .btn-translate");
+  const originalHtml = btn.innerHTML;
+  btn.disabled = true;
+  btn.innerHTML = `<span class="spin"></span> Tarjima qilinmoqda...`;
+
+  const targets = ["en", "ru", "tr"];
+  try {
+    for (const target of targets) {
+      const tTitle = await translateText(titleUz, target);
+      const tBody  = await translateText(bodyUz, target);
+
+      annLangData[target] = {
+        title: tTitle,
+        body:  tBody
+      };
+    }
+    
+    switchAnnLang(annActiveLang);
+    updateAnnDots();
+    toast("Muvaffaqiyatli tarjima qilindi ✓");
+  } catch(e) {
+    alert("Tarjimada xatolik yuz berdi: " + e.message);
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = originalHtml;
   }
 }
 

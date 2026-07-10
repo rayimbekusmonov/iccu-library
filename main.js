@@ -995,11 +995,10 @@ document.addEventListener("DOMContentLoaded", () => {
 let liveAnnouncements = [];
 
 async function loadAnnouncements() {
-  // Dismiss check
-  if (sessionStorage.getItem("kiosk_dismissed")) {
+  // Minimize check
+  if (sessionStorage.getItem("kiosk_minimized")) {
     const wrap = document.getElementById("kiosk-wrap");
-    if (wrap) wrap.classList.add("dismissed");
-    return;
+    if (wrap) wrap.classList.add("minimized");
   }
 
   try {
@@ -1090,12 +1089,25 @@ function renderAnnouncementsPage() {
 }
 
 function kioskClick(e) {
+  const wrap = document.getElementById("kiosk-wrap");
+  if (wrap && wrap.classList.contains("minimized")) {
+    e.preventDefault();
+    e.stopPropagation();
+    expandKiosk();
+    return;
+  }
   if (e.target.closest(".kiosk-dismiss") || e.target.closest(".kiosk-cta")) return;
   showPage("announcements");
 }
 
 function dismissKiosk() {
-  sessionStorage.setItem("kiosk_dismissed", "1");
+  sessionStorage.setItem("kiosk_minimized", "1");
   const wrap = document.getElementById("kiosk-wrap");
-  if (wrap) wrap.classList.add("dismissed");
+  if (wrap) wrap.classList.add("minimized");
+}
+
+function expandKiosk() {
+  sessionStorage.removeItem("kiosk_minimized");
+  const wrap = document.getElementById("kiosk-wrap");
+  if (wrap) wrap.classList.remove("minimized");
 }

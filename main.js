@@ -89,7 +89,8 @@ const i18n = {
     visitKicker:"Tashrif", visitTitle:"Tashrifingizni rejalang",
     visitSubtitle:"Ish vaqti, manzil va o'qish zali qoidalari.",
     hoursTitle:"Ish vaqti", weekday:"Dushanba – juma: 09:00 – 18:00",
-    weekend:"Shanba – yakshanba: 10:00 – 16:00", holidays:"Bayram kunlari: yopiq",
+    saturday:"Shanba: 10:00 – 16:00", sunday:"Yakshanba: yopiq",
+
     contactTitle:"Aloqa va manzil", address:"Manzil: Toshkent, O'zbekiston",
     email:"Email: library@iccu.example", phone:"Telefon: +998 00 000 00 00",
     rulesTitle:"Kutubxona qoidalari",
@@ -190,6 +191,31 @@ const i18n = {
     announcementsSubtitle:"Kutubxona va platforma bo'yicha muhim xabarlar va e'lonlar.",
     announcementsEmpty:"Hozircha faol e'lonlar yo'q.",
     annPriority:"E'lon", annPriorityHigh:"Muhim",
+    navMap:"Xarita",
+    close:"Yopish",
+    zoomIn:"Kattalashtirish",
+    zoomOut:"Kichiklashtirish",
+    resetSize:"Asl o'lcham",
+    ariaHome:"Bosh sahifaga o'tish",
+    ariaMenu:"Menyuni ochish",
+    regTitle:"Ro'yxatdan o'tish",
+    regSubtitle:"Kutubxona tizimidan to'liq foydalanish uchun profil yarating.",
+    regNameLabel:"Ism va familiyangiz",
+    regNamePlaceholder:"Ali Valiyev",
+    regEmailLabel:"Elektron pochta",
+    regEmailPlaceholder:"example@mail.com",
+    regPasswordLabel:"Parol",
+    regPasswordPlaceholder:"••••••••",
+    regSubmit:"Tasdiqlash",
+    regSuccess:"Muvaffaqiyatli ro'yxatdan o'tdingiz!",
+    partnerBnf:"Bibliothèque nationale de France",
+    partnerLoc:"Kongress kutubxonasi",
+    partnerIstanbul:"Istanbul Universiteti",
+    partnerOzmu:"O'zMU",
+    partnerTurkiston:"Turkiston Kutubxonasi",
+    floorPlanFallback:"floor-plan.svg fayli<br>images/ papkasiga qo'ying",
+    footerAddress:"Toshkent, O'zbekiston",
+    directorBadge:"Bosh direktor",
   }
 };
 
@@ -258,7 +284,8 @@ i18n.en = {
   visitKicker:"Visit", visitTitle:"Plan your visit",
   visitSubtitle:"Hours, location, and reading room rules.",
   hoursTitle:"Opening hours", weekday:"Monday – Friday: 09:00 – 18:00",
-  weekend:"Saturday – Sunday: 10:00 – 16:00", holidays:"Public holidays: closed",
+  saturday:"Saturday: 10:00 – 16:00", sunday:"Sunday: closed",
+
   contactTitle:"Contact and address", address:"Address: Tashkent, Uzbekistan",
   email:"Email: library@iccu.example", phone:"Phone: +998 00 000 00 00",
   rulesTitle:"Library rules",
@@ -305,6 +332,87 @@ i18n.en = {
   announcementsSubtitle:"Important news and announcements about the library and platform.",
   announcementsEmpty:"No active announcements at this time.",
   annPriority:"Announcement", annPriorityHigh:"Important",
+  svc1f1:"Selecting sources and literature for the topic",
+  svc1f2:"Formatting bibliography and citations (APA, MLA, Chicago)",
+  svc1f3:"Guidance on online and physical collections",
+  svc1Cta:"Submit request →",
+  svc2f1:"Access to rare manuscripts and archival materials",
+  svc2f2:"Online booking prior to visit",
+  svc2f3:"Digital reproduction and copying service",
+  svc2Cta:"Submit request →",
+  svc4Title:"Remote access",
+  svc4Text:"24/7 access to the digital catalog and databases from home.",
+  svc5Title:"Group visits & tours",
+  svc5Text:"Library tours for student groups, schools, and organizations.",
+  svcContact:"Contact →",
+  svcOpen:"Open →",
+  d1f1:"Database of 120,000+ books and publications",
+  d1f2:"Advanced search by author, subject, year, and language",
+  d1f3:"Search via ISBN, ISSN, and other identifiers",
+  d1Cta:"Access catalog →",
+  d2f1:"15,000+ rare manuscripts in digital archive",
+  d2f2:"Ottoman, Timurid, and other historical collections",
+  d2f3:"Filter by metadata, period, language, and condition",
+  d2Cta:"Access archive →",
+  d3Link:"Allomalar.uz ↗",
+  d4Link:"Manbalar.uz ↗",
+  d5Title:"Electronic library",
+  d5Text:"Full access to digital resources and journals via e-library.cisc.uz.",
+  d5Link:"E-library ↗",
+  abStat1:"Total books",
+  abStat2:"Digital copies",
+  abStat3:"Manuscripts",
+  abStat4:"Library area",
+  abStat5:"Seating capacity",
+  abStat6:"Digitized rare books",
+  aboutFondKicker:"About collections",
+  aboutFondTitle:"2025 results",
+  abH1:"Newly received books",
+  abH1sub:"3,879 donated, 910 purchased",
+  abH2:"Written sources in database",
+  abH2sub:"Manuscripts and lithographs",
+  abH3:"Written source register",
+  abH3sub:"Sources with passport ready",
+  abH4:"Braille literature",
+  abH4sub:"For visually impaired people",
+  mission3Title:"Development",
+  mission3Text:"Expanding modern information and library services, preserving written heritage, and supporting research projects.",
+  faq3Q:"How many seats are in the library?",
+  faq3A:"The library can serve up to 310 readers simultaneously.",
+  faq4Q:"Can I view rare manuscripts?",
+  faq4A:"Yes, rare collection materials can be accessed upon prior request. Please contact the digitization department.",
+  qs1Link:"Go to archive →",
+  qs2Link:"Contact →",
+  qs3Link:"More info →",
+  floorPlanBtn:"View library floor plan",
+  floorPlanKicker:"Library map",
+  floorPlanTitle:"Floor plan",
+  floorPlanHint:"Mouse wheel to zoom · Drag to pan",
+  navMap:"Map",
+  close:"Close",
+  zoomIn:"Zoom In",
+  zoomOut:"Zoom Out",
+  resetSize:"Reset Size",
+  ariaHome:"Go to homepage",
+  ariaMenu:"Open menu",
+  regTitle:"Register",
+  regSubtitle:"Create a profile to fully access the library system.",
+  regNameLabel:"Full Name",
+  regNamePlaceholder:"John Doe",
+  regEmailLabel:"Email Address",
+  regEmailPlaceholder:"example@mail.com",
+  regPasswordLabel:"Password",
+  regPasswordPlaceholder:"••••••••",
+  regSubmit:"Submit",
+  regSuccess:"Successfully registered!",
+  partnerBnf:"Bibliothèque nationale de France",
+  partnerLoc:"Library of Congress",
+  partnerIstanbul:"Istanbul University",
+  partnerOzmu:"National University of Uzbekistan",
+  partnerTurkiston:"Turkestan Library",
+  floorPlanFallback:"floor-plan.svg file<br>place in images/ folder",
+  footerAddress:"Tashkent, Uzbekistan",
+  directorBadge:"Director General",
 };
 
 i18n.ru = {
@@ -388,8 +496,9 @@ i18n.ru = {
   visitSubtitle:"Часы работы, адрес и правила читального зала.",
   hoursTitle:"Часы работы",
   weekday:"Понедельник – пятница: 09:00 – 18:00",
-  out:"Суббота: 10:00 – 16:00",
-  holidays:"Воскресенье: закрыто",
+  saturday:"Суббота: 10:00 – 16:00",
+  sunday:"Воскресенье: закрыто",
+
   contactTitle:"Контакты и адрес", address:"Адрес: Ташкент, Узбекистан",
   email:"Email: library@iccu.example", phone:"Телефон: +998 00 000 00 00",
   rulesTitle:"Правила библиотеки",
@@ -451,6 +560,31 @@ i18n.ru = {
   director5Name:"Каримова Мавлюда Анваровна",
   director5Role:"Главный специалист библиотеки",
   director5Bio:"Курирует обслуживание пользователей, работу читальных залов и организацию дистанционных информационно-библиотечных услуг.",
+  navMap:"Карта",
+  close:"Закрыть",
+  zoomIn:"Увеличить",
+  zoomOut:"Уменьшить",
+  resetSize:"Сбросить размер",
+  ariaHome:"Перейти на главную",
+  ariaMenu:"Открыть меню",
+  regTitle:"Регистрация",
+  regSubtitle:"Создайте профиль, чтобы получить полный доступ к системе библиотеки.",
+  regNameLabel:"Имя и фамилия",
+  regNamePlaceholder:"Иван Иванов",
+  regEmailLabel:"Электронная почта",
+  regEmailPlaceholder:"example@mail.com",
+  regPasswordLabel:"Пароль",
+  regPasswordPlaceholder:"••••••••",
+  regSubmit:"Подтвердить",
+  regSuccess:"Успешная регистрация!",
+  partnerBnf:"Национальная библиотека Франции",
+  partnerLoc:"Библиотека Конгресса",
+  partnerIstanbul:"Стамбульский университет",
+  partnerOzmu:"Национальный университет Узбекистана",
+  partnerTurkiston:"Туркестанская библиотека",
+  floorPlanFallback:"файл floor-plan.svg<br>поместите в папку images/",
+  footerAddress:"Ташкент, Узбекистан",
+  directorBadge:"Генеральный директор",
 };
 
 i18n.tr = {
@@ -532,8 +666,9 @@ i18n.tr = {
   visitSubtitle:"Çalışma saatleri, adres ve okuma salonu kuralları.",
   hoursTitle:"Çalışma saatleri",
   weekday:"Pazartesi – Cuma: 09:00 – 18:00",
-  out:"Cumartesi: 10:00 – 16:00",
-  holidays:"Pazar: Kapalı",
+  saturday:"Cumartesi: 10:00 – 16:00",
+  sunday:"Pazar: Kapalı",
+
   contactTitle:"İletişim ve adres", address:"Adres: Taşkent, Özbekistan",
   email:"E-posta: library@iccu.example", phone:"Telefon: +998 00 000 00 00",
   rulesTitle:"Kütüphane kuralları",
@@ -595,6 +730,31 @@ i18n.tr = {
   director5Name:"Karimova Mavluda Anvarovna",
   director5Role:"Kütüphane Başuzmanı",
   director5Bio:"Kullanıcı hizmetlerini, okuma salonlarının koordinasyonunu ve uzaktan kütüphane ve bilgi hizmetlerinin sunulmasını yönetir.",
+  navMap:"Harita",
+  close:"Kapat",
+  zoomIn:"Yakınlaştır",
+  zoomOut:"Uzaklaştır",
+  resetSize:"Sıfırla",
+  ariaHome:"Ana sayfaya git",
+  ariaMenu:"Menüyü aç",
+  regTitle:"Kaydol",
+  regSubtitle:"Kütüphane sistemine tam erişim sağlamak için bir profil oluşturun.",
+  regNameLabel:"Adınız ve soyadınız",
+  regNamePlaceholder:"Ahmet Yılmaz",
+  regEmailLabel:"E-posta adresi",
+  regEmailPlaceholder:"example@mail.com",
+  regPasswordLabel:"Şifre",
+  regPasswordPlaceholder:"••••••••",
+  regSubmit:"Onayla",
+  regSuccess:"Başarıyla kayıt oldunuz!",
+  partnerBnf:"Fransa Ulusal Kütüphanesi",
+  partnerLoc:"Kongre Kütüphanesi",
+  partnerIstanbul:"İstanbul Üniversitesi",
+  partnerOzmu:"Özbekistan Milliy Üniversitesi",
+  partnerTurkiston:"Türkistan Kütüphanesi",
+  floorPlanFallback:"floor-plan.svg dosyası<br>images/ klasörüne yerleştirin",
+  footerAddress:"Taşkent, Özbekistan",
+  directorBadge:"Genel Müdür",
 };
 
 /* ─────────────────────────────────────────────
@@ -625,8 +785,29 @@ function applyTexts() {
   const dict = i18n[currentLang] || i18n.uz;
   document.querySelectorAll("[data-t]").forEach(el => {
     const key = el.getAttribute("data-t");
-    if (dict[key] !== undefined) el.textContent = dict[key];
+    if (dict[key] !== undefined) {
+      if (key === "floorPlanFallback") {
+        el.innerHTML = dict[key];
+      } else {
+        el.textContent = dict[key];
+      }
+    }
   });
+
+  // Support translating attributes: title, placeholder, aria-label
+  document.querySelectorAll("[data-t-title]").forEach(el => {
+    const key = el.getAttribute("data-t-title");
+    if (dict[key] !== undefined) el.setAttribute("title", dict[key]);
+  });
+  document.querySelectorAll("[data-t-placeholder]").forEach(el => {
+    const key = el.getAttribute("data-t-placeholder");
+    if (dict[key] !== undefined) el.setAttribute("placeholder", dict[key]);
+  });
+  document.querySelectorAll("[data-t-aria]").forEach(el => {
+    const key = el.getAttribute("data-t-aria");
+    if (dict[key] !== undefined) el.setAttribute("aria-label", dict[key]);
+  });
+
   // News grid til almashganda qayta chiziladi
   if (liveNews.length) renderNewsGrid();
   // Kiosk & announcements page re-render on lang change
@@ -647,6 +828,13 @@ function applyTexts() {
     }
   }
 }
+
+function handleRegisterSubmit(event) {
+  event.preventDefault();
+  const dict = i18n[currentLang] || i18n.uz;
+  alert(dict.regSuccess || "Muvaffaqiyatli ro'yxatdan o'tdingiz!");
+}
+
 
 function toggleLangMenu() {
   const menu    = document.getElementById("lang-menu");
@@ -671,6 +859,24 @@ document.addEventListener("click", e => {
 /* ─────────────────────────────────────────────
    Page navigation
 ───────────────────────────────────────────── */
+function toggleHamburger() {
+  const nav    = document.getElementById('nav-links');
+  const btn    = document.getElementById('hamburger');
+  const isOpen = nav.classList.toggle('open');
+  btn.classList.toggle('open', isOpen);
+  btn.setAttribute('aria-expanded', isOpen);
+  // Prevent body scroll when open
+  document.body.classList.toggle('nav-open', isOpen);
+}
+
+function closeHamburger() {
+  const nav = document.getElementById('nav-links');
+  const btn = document.getElementById('hamburger');
+  if (nav) nav.classList.remove('open');
+  if (btn) { btn.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+  document.body.classList.remove('nav-open');
+}
+
 function showPage(name) {
   document.querySelectorAll(".page").forEach(p => p.classList.remove("active"));
   document.querySelectorAll(".nav-link").forEach(b => b.classList.remove("active"));
@@ -679,9 +885,11 @@ function showPage(name) {
   if (page) page.classList.add("active");
   if (nav)  nav.classList.add("active");
   window.scrollTo({ top: 0, behavior: "smooth" });
+  closeHamburger();
   // Re-render announcements page when navigating to it
   if (name === "announcements" && liveAnnouncements.length > 0) renderAnnouncementsPage();
 }
+
 
 function scrollToSection(id) {
   const el = document.getElementById(id);

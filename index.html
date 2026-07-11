@@ -3,15 +3,20 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>ICCU Library</title>
+  <meta name="description" content="ICCU Library — Islom sivilizatsiyasi meros platformasi. Qo'lyozmalar, kitoblar, raqamli arxiv va tashrif xizmatlari.">
+  <title>ICCU Library — Islom sivilizatsiyasi kutubxonasi</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
   <a class="sr-only" href="#main">Kontentga o'tish</a>
 
   <!-- ══════════════ TOPBAR ══════════════ -->
   <header class="topbar">
-  <button class="brand" type="button" onclick="showPage('home')" aria-label="Bosh sahifaga o'tish">
+  <button class="brand" type="button" onclick="showPage('home')" aria-label="Bosh sahifaga o'tish" data-t-aria="ariaHome">
     <span class="logo-slot" id="logo-slot">
       <img src="images/logo.png" alt="ICCU Library Logo" width="40" height="40">
     </span>
@@ -21,12 +26,23 @@
     </span>
   </button>
 
-  <nav class="nav" aria-label="Asosiy menyu">
-    <div class="nav-links">
+  <!-- Hamburger (mobile only) -->
+  <button class="hamburger" id="hamburger" type="button" onclick="toggleHamburger()" aria-label="Menyuni ochish" aria-expanded="false" data-t-aria="ariaMenu">
+    <span class="ham-bar"></span>
+    <span class="ham-bar"></span>
+    <span class="ham-bar"></span>
+  </button>
+
+  <nav class="nav" id="main-nav" aria-label="Asosiy menyu">
+    <div class="nav-links" id="nav-links">
       <button class="nav-link active" id="nav-home"      type="button" onclick="showPage('home')"      data-t="navHome">Bosh sahifa</button>
       <button class="nav-link"        id="nav-discover"  type="button" onclick="showPage('discover')"  data-t="navDiscover">Fondlar</button>
       <button class="nav-link"        id="nav-services"  type="button" onclick="showPage('services')"  data-t="navServices">Xizmatlar</button>
       <button class="nav-link"        id="nav-visit"     type="button" onclick="showPage('visit')"     data-t="navVisit">Tashrif</button>
+      <button class="nav-link nav-link--map" type="button" onclick="showPage('visit'); setTimeout(openFloorPlan,200)" title="Kutubxona ichki xaritasi" data-t-title="floorPlanBtn">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18M9 3v18"/></svg>
+        <span data-t="navMap">Xarita</span>
+      </button>
       <button class="nav-link"        id="nav-about"     type="button" onclick="showPage('about')"     data-t="navAbout">Haqida</button>
       <button class="nav-link"        id="nav-partners"  type="button" onclick="showPage('partners')"  data-t="navPartners">Hamkorlar</button>
       <button class="nav-link"        id="nav-directors" type="button" onclick="showPage('directors')" data-t="navDirectors">Kutubxona jamoasi</button>
@@ -36,32 +52,34 @@
       </div>
     </div>
 
-    <div class="lang-wrap">
-      <button class="lang-trigger" id="lang-trigger" type="button" onclick="toggleLangMenu()" aria-haspopup="listbox" aria-expanded="false" aria-label="Tilni tanlash">
-        <img src="https://flagcdn.com/w20/uz.png" alt="O'zbek" id="current-flag" width="20" style="vertical-align:middle;">
-        <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" style="margin-left:4px; vertical-align:middle; width:10px; height:6px;">
-          <path d="M1 1l4 4 4-4"/>
-        </svg>
-      </button>
-      <div class="lang-menu" id="lang-menu" role="listbox">
-        <button class="lang-option active" type="button" onclick="setLang('uz')">
-          <img src="https://flagcdn.com/w20/uz.png" alt="" width="20" style="margin-right:8px; vertical-align:middle;"> O'zbek
+    <div class="nav-right">
+      <div class="lang-wrap">
+        <button class="lang-trigger" id="lang-trigger" type="button" onclick="toggleLangMenu()" aria-haspopup="listbox" aria-expanded="false" aria-label="Tilni tanlash">
+          <img src="https://flagcdn.com/w20/uz.png" alt="O'zbek" id="current-flag" width="20" style="vertical-align:middle;">
+          <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" style="margin-left:4px; vertical-align:middle; width:10px; height:6px;">
+            <path d="M1 1l4 4 4-4"/>
+          </svg>
         </button>
-        <button class="lang-option" type="button" onclick="setLang('en')">
-          <img src="https://flagcdn.com/w20/gb.png" alt="" width="20" style="margin-right:8px; vertical-align:middle;"> English
-        </button>
-        <button class="lang-option" type="button" onclick="setLang('ru')">
-          <img src="https://flagcdn.com/w20/ru.png" alt="" width="20" style="margin-right:8px; vertical-align:middle;"> Русский
-        </button>
-        <button class="lang-option" type="button" onclick="setLang('tr')">
-          <img src="https://flagcdn.com/w20/tr.png" alt="" width="20" style="margin-right:8px; vertical-align:middle;"> Türkçe
-        </button>
+        <div class="lang-menu" id="lang-menu" role="listbox">
+          <button class="lang-option active" type="button" onclick="setLang('uz')">
+            <img src="https://flagcdn.com/w20/uz.png" alt="" width="20" style="margin-right:8px; vertical-align:middle;"> O'zbek
+          </button>
+          <button class="lang-option" type="button" onclick="setLang('en')">
+            <img src="https://flagcdn.com/w20/gb.png" alt="" width="20" style="margin-right:8px; vertical-align:middle;"> English
+          </button>
+          <button class="lang-option" type="button" onclick="setLang('ru')">
+            <img src="https://flagcdn.com/w20/ru.png" alt="" width="20" style="margin-right:8px; vertical-align:middle;"> Русский
+          </button>
+          <button class="lang-option" type="button" onclick="setLang('tr')">
+            <img src="https://flagcdn.com/w20/tr.png" alt="" width="20" style="margin-right:8px; vertical-align:middle;"> Türkçe
+          </button>
+        </div>
       </div>
-    </div>
 
-    <div class="nav-actions">
-      <a class="btn-kirish" href="http://elibrary.cisc.uz:8080/" target="_blank" rel="noopener" data-t="navKirish">Kirish ↗</a>
-      <button class="btn-register" id="nav-register" type="button" onclick="showPage('register')" data-t="navRegister">Ro'yxatdan o'tish</button>
+      <div class="nav-actions">
+        <a class="btn-kirish" href="http://elibrary.cisc.uz:8080/" target="_blank" rel="noopener" data-t="navKirish">Kirish ↗</a>
+        <button class="btn-register" id="nav-register" type="button" onclick="showPage('register')" data-t="navRegister">Ro'yxatdan o'tish</button>
+      </div>
     </div>
   </nav>
 </header>
@@ -128,7 +146,7 @@
             </div>
             <div class="kiosk-actions" onclick="event.stopPropagation()">
               <button class="kiosk-cta" type="button" onclick="showPage('announcements')" data-t="kioskViewAll">Ko'rish →</button>
-              <button class="kiosk-dismiss" type="button" id="kiosk-dismiss" title="Yopish" onclick="dismissKiosk()">×</button>
+              <button class="kiosk-dismiss" type="button" id="kiosk-dismiss" title="Yopish" data-t-title="close" onclick="dismissKiosk()">×</button>
             </div>
           </div>
         </div>
@@ -159,7 +177,7 @@
       </section>
 
       <!-- QUICK SERVICES -->
-      <section class="section">
+      <section class="section qs-section">
         <div class="container">
           <div class="section-header">
             <div>
@@ -170,74 +188,66 @@
             <button class="secondary-button" type="button" onclick="showPage('services')" data-t="viewAll">Hammasini ko'rish</button>
           </div>
         
-          <div class="qs-grid">
-          
-            <article class="qs-card" onclick="showPage('discover')" style="cursor:pointer">
-              <div class="qs-icon" style="--qc:#1a5e43">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
-                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-                  <polyline points="14 2 14 8 20 8"/>
-                  <path d="M9 13h6M9 17h4"/>
-                </svg>
-              </div>
-              <div class="qs-body">
-                <h3 data-t="qs1Title">Raqamli qo'lyozmalar</h3>
-                <p data-t="qs1Text">Nodir manbalar uchun ko'rish va ruxsat so'rovi jarayoni.</p>
-                <span class="qs-link" data-t="qs1Link">Arxivga o'tish →</span>
-              </div>
-              <div class="qs-arrow">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-                  <path d="M3 8h10M9 4l4 4-4 4"/>
-                </svg>
-              </div>
-            </article>
-          
-            <article class="qs-card" onclick="window.location.href='mailto:library@iccu.example'" style="cursor:pointer">
-              <div class="qs-icon" style="--qc:#1e4d7a">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                  <circle cx="12" cy="7" r="4"/>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                  <path d="M21 21v-2a4 4 0 0 0-3-3.87"/>
-                </svg>
-              </div>
-              <div class="qs-body">
-                <h3 data-t="qs2Title">Kutubxonachi yordami</h3>
-                <p data-t="qs2Text">Tadqiqot mavzusi, manba topish va bibliografiya bo'yicha yordam.</p>
-                <span class="qs-link" data-t="qs2Link">Murojaat qilish →</span>
-              </div>
-              <div class="qs-arrow">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-                  <path d="M3 8h10M9 4l4 4-4 4"/>
-                </svg>
+          <div class="qs-bento">
+
+            <!-- Featured card (col-span 2 on desktop) -->
+            <article class="qs-feature-card" onclick="showPage('discover')" tabindex="0" role="button">
+              <div class="qs-feature-bg" style="--qc:#1a5e43"></div>
+              <div class="qs-feature-inner">
+                <div class="qs-feature-icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="32" height="32">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <path d="M9 13h6M9 17h4"/>
+                  </svg>
+                </div>
+                <div class="qs-feature-tag" data-t="discoverKicker">Fondlar</div>
+                <h3 class="qs-feature-title" data-t="qs1Title">Raqamli qo'lyozmalar</h3>
+                <p class="qs-feature-text" data-t="qs1Text">Nodir manbalar uchun ko'rish va ruxsat so'rovi jarayoni. 15 000+ manba raqamli arxivda.</p>
+                <div class="qs-feature-cta">
+                  <span data-t="qs1Link">Arxivga o'tish</span>
+                  <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" width="14" height="14"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+                </div>
               </div>
             </article>
-          
-            <article class="qs-card" onclick="showPage('visit')" style="cursor:pointer">
-              <div class="qs-icon" style="--qc:#6b3b2a">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="26" height="26">
-                  <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
-                  <polyline points="9 22 9 12 15 12 15 22"/>
-                </svg>
-              </div>
-              <div class="qs-body">
-                <h3 data-t="qs3Title">Tashrifni rejalash</h3>
-                <p data-t="qs3Text">Ish vaqti, o'qish zali va maxsus fondlardan foydalanish tartibi.</p>
-                <span class="qs-link" data-t="qs3Link">Batafsil →</span>
-              </div>
-              <div class="qs-arrow">
-                <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
-                  <path d="M3 8h10M9 4l4 4-4 4"/>
-                </svg>
-              </div>
-            </article>
-          
+
+            <!-- Side cards stack -->
+            <div class="qs-side-stack">
+              <article class="qs-side-card" onclick="window.location.href='mailto:library@iccu.example'" tabindex="0" role="button">
+                <div class="qs-side-icon" style="--qc:#1e4d7a">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                    <circle cx="12" cy="7" r="4"/>
+                  </svg>
+                </div>
+                <div class="qs-side-body">
+                  <h3 data-t="qs2Title">Kutubxonachi yordami</h3>
+                  <p data-t="qs2Text">Tadqiqot mavzusi, manba topish va bibliografiya bo'yicha yordam.</p>
+                  <span class="qs-side-link" data-t="qs2Link">Murojaat qilish →</span>
+                </div>
+              </article>
+
+              <article class="qs-side-card" onclick="showPage('visit')" tabindex="0" role="button">
+                <div class="qs-side-icon" style="--qc:#7a4c2a">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                    <polyline points="9 22 9 12 15 12 15 22"/>
+                  </svg>
+                </div>
+                <div class="qs-side-body">
+                  <h3 data-t="qs3Title">Tashrifni rejalash</h3>
+                  <p data-t="qs3Text">Ish vaqti, o'qish zali va maxsus fondlardan foydalanish tartibi.</p>
+                  <span class="qs-side-link" data-t="qs3Link">Batafsil →</span>
+                </div>
+              </article>
+            </div>
+
           </div>
         </div>
       </section>
 
       <!-- PROJECTS -->
-      <section class="section alt">
+      <section class="section alt proj-section">
         <div class="container">
           <div class="section-header">
             <div>
@@ -246,101 +256,103 @@
               <p class="section-subtitle" data-t="projectsSubtitle">Kutubxonani kundalik tadqiqot platformasiga aylantiradigan amaliy yo'nalishlar.</p>
             </div>
           </div>
-        
-          <div class="projects-grid">
-          
-            <!-- Card 1: Partnerships -->
-            <article class="project-card-new" style="--pc:#6b3b2a; cursor:pointer" onclick="showPage('partners')">
-              <div class="pc-top">
-                <div class="pc-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
-                    <circle cx="12" cy="12" r="10"/>
-                    <line x1="2" y1="12" x2="22" y2="12"/>
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-                  </svg>
+
+          <div class="proj-bento">
+
+            <!-- Card 1: Partnerships — LARGE -->
+            <article class="proj-card proj-card--lg" style="--pc:#7a4c2a" onclick="showPage('partners')" tabindex="0" role="button">
+              <div class="proj-card-accent"></div>
+              <div class="proj-card-inner">
+                <div class="proj-card-head">
+                  <div class="proj-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+                      <circle cx="12" cy="12" r="10"/>
+                      <line x1="2" y1="12" x2="22" y2="12"/>
+                      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                  </div>
+                  <span class="proj-badge proj-badge--active" data-t="project1Status">Faol</span>
                 </div>
-                <span class="pc-badge pc-badge--active" data-t="project1Status">Faol</span>
-              </div>
-              <h3 data-t="project1Title">Hamkorlik</h3>
-              <p data-t="project1Text">Universitetlar, kutubxonalar va ilmiy markazlar bilan qo'shma loyihalar va shartnomalar.</p>
-              <div class="pc-progress">
-                <div class="pc-progress-bar" style="width:100%"></div>
-              </div>
-              <div class="pc-meta">
-                <span data-t="project1Progress">Faol hamkorlik</span>
-                <span data-t="project1Count">10+ hamkor</span>
+                <h3 data-t="project1Title">Hamkorlik</h3>
+                <p data-t="project1Text">Universitetlar, kutubxonalar va ilmiy markazlar bilan qo'shma loyihalar va shartnomalar.</p>
+                <div class="proj-progress"><div class="proj-progress-fill" style="width:100%"></div></div>
+                <div class="proj-meta">
+                  <span data-t="project1Progress">Faol hamkorlik</span>
+                  <span class="proj-count" data-t="project1Count">10+ hamkor</span>
+                </div>
               </div>
             </article>
-          
-            <!-- Card 2: Masofaviy kirish -->
-            <article class="project-card-new" style="--pc:#1e4d7a; cursor:pointer" onclick="window.open('http://elibrary.cisc.uz:8080/','_blank')">
-              <div class="pc-top">
-                <div class="pc-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
-                    <rect x="2" y="3" width="20" height="14" rx="2"/>
-                    <line x1="8" y1="21" x2="16" y2="21"/>
-                    <line x1="12" y1="17" x2="12" y2="21"/>
-                  </svg>
+
+            <!-- Card 2: Remote Access — LARGE -->
+            <article class="proj-card proj-card--lg" style="--pc:#1e4d7a" onclick="window.open('http://elibrary.cisc.uz:8080/','_blank')" tabindex="0" role="button">
+              <div class="proj-card-accent"></div>
+              <div class="proj-card-inner">
+                <div class="proj-card-head">
+                  <div class="proj-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="24" height="24">
+                      <rect x="2" y="3" width="20" height="14" rx="2"/>
+                      <line x1="8" y1="21" x2="16" y2="21"/>
+                      <line x1="12" y1="17" x2="12" y2="21"/>
+                    </svg>
+                  </div>
+                  <span class="proj-badge proj-badge--live" data-t="project2Status">24/7</span>
                 </div>
-                <span class="pc-badge pc-badge--live" data-t="project2Status">24/7</span>
-              </div>
-              <h3 data-t="project2Title">Masofaviy kirish</h3>
-              <p data-t="project2Text">Raqamli katalog va elektron bazalarga uydan 24/7 kirish imkoniyati.</p>
-              <div class="pc-progress">
-                <div class="pc-progress-bar" style="width:100%"></div>
-              </div>
-              <div class="pc-meta">
-                <span data-t="project2Progress">Doimo ochiq</span>
-                <span data-t="project2Count">E-kutubxona</span>
+                <h3 data-t="project2Title">Masofaviy kirish</h3>
+                <p data-t="project2Text">Raqamli katalog va elektron bazalarga uydan 24/7 kirish imkoniyati.</p>
+                <div class="proj-progress"><div class="proj-progress-fill" style="width:100%"></div></div>
+                <div class="proj-meta">
+                  <span data-t="project2Progress">Doimo ochiq</span>
+                  <span class="proj-count" data-t="project2Count">E-kutubxona</span>
+                </div>
               </div>
             </article>
-          
-            <!-- Card 3: Lecture & event archive — KEPT -->
-            <article class="project-card-new" style="--pc:#6b3b2a">
-              <div class="pc-top">
-                <div class="pc-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
-                    <polygon points="23 7 16 12 23 17 23 7"/>
-                    <rect x="1" y="5" width="15" height="14" rx="2"/>
-                  </svg>
+
+            <!-- Card 3: Lecture Archive — SMALL -->
+            <article class="proj-card proj-card--sm" style="--pc:#6b3b2a">
+              <div class="proj-card-accent"></div>
+              <div class="proj-card-inner">
+                <div class="proj-card-head">
+                  <div class="proj-icon proj-icon--sm">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                      <polygon points="23 7 16 12 23 17 23 7"/>
+                      <rect x="1" y="5" width="15" height="14" rx="2"/>
+                    </svg>
+                  </div>
+                  <span class="proj-badge proj-badge--live" data-t="project3Status">Jonli arxiv</span>
                 </div>
-                <span class="pc-badge pc-badge--live" data-t="project3Status">Jonli arxiv</span>
-              </div>
-              <h3 data-t="project3Title">Ma'ruza va tadbirlar arxivi</h3>
-              <p data-t="project3Text">Videolar, transkriptlar va o'quv yo'llarini fondlar bilan bog'lash.</p>
-              <div class="pc-progress">
-                <div class="pc-progress-bar" style="width:90%"></div>
-              </div>
-              <div class="pc-meta">
-                <span data-t="project3Progress">Faol ishlaydi</span>
-                <span data-t="project3Count">50+ video</span>
+                <h3 data-t="project3Title">Ma'ruza va tadbirlar arxivi</h3>
+                <p data-t="project3Text">Videolar, transkriptlar va o'quv yo'llarini fondlar bilan bog'lash.</p>
+                <div class="proj-meta">
+                  <span data-t="project3Progress">Faol ishlaydi</span>
+                  <span class="proj-count" data-t="project3Count">50+ video</span>
+                </div>
               </div>
             </article>
-          
-            <!-- Card 4: Guruh va ekskursiya -->
-            <article class="project-card-new" style="--pc:#c8a45d; cursor:pointer" onclick="showPage('services')">
-              <div class="pc-top">
-                <div class="pc-icon">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                    <circle cx="9" cy="7" r="4"/>
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                  </svg>
+
+            <!-- Card 4: Group visits — SMALL -->
+            <article class="proj-card proj-card--sm" style="--pc:#c8a45d; cursor:pointer" onclick="showPage('services')" tabindex="0" role="button">
+              <div class="proj-card-accent"></div>
+              <div class="proj-card-inner">
+                <div class="proj-card-head">
+                  <div class="proj-icon proj-icon--sm">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="20" height="20">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                      <circle cx="9" cy="7" r="4"/>
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                  </div>
+                  <span class="proj-badge proj-badge--active" data-t="project4Status">Faol</span>
                 </div>
-                <span class="pc-badge pc-badge--active" data-t="project4Status">Faol</span>
-              </div>
-              <h3 data-t="project4Title">Guruh va ekskursiya</h3>
-              <p data-t="project4Text">Talabalar guruhlari, maktablar va tashkilotlar uchun kutubxona ekskursiyasi.</p>
-              <div class="pc-progress">
-                <div class="pc-progress-bar" style="width:85%"></div>
-              </div>
-              <div class="pc-meta">
-                <span data-t="project4Progress">Ariza qabul qilinadi</span>
-                <span data-t="project4Count">Bog'lanish →</span>
+                <h3 data-t="project4Title">Guruh va ekskursiya</h3>
+                <p data-t="project4Text">Talabalar guruhlari, maktablar va tashkilotlar uchun kutubxona ekskursiyasi.</p>
+                <div class="proj-meta">
+                  <span data-t="project4Progress">Ariza qabul qilinadi</span>
+                  <span class="proj-count" data-t="project4Count">Bog'lanish →</span>
+                </div>
               </div>
             </article>
-          
+
           </div>
         </div>
       </section>
@@ -607,7 +619,7 @@
           </div>
         </header>
         <div class="visit-grid">
-          <article class="info-card"><h3 data-t="hoursTitle">Ish vaqti</h3><ul class="info-list"><li data-t="weekday">Dushanba – juma: 09:00 – 18:00</li><li data-t="out">Shanba : 10:00 – 16:00</li><li data-t="holidays">Yakshanba : yopiq</li></ul></article>
+          <article class="info-card"><h3 data-t="hoursTitle">Ish vaqti</h3><ul class="info-list"><li data-t="weekday">Dushanba – juma: 09:00 – 18:00</li><li data-t="saturday">Shanba : 10:00 – 16:00</li><li data-t="sunday">Yakshanba : yopiq</li></ul></article>
           <article class="info-card"><h3 data-t="contactTitle">Aloqa va manzil</h3><ul class="info-list"><li data-t="address">Manzil: Toshkent, O'zbekiston</li><li data-t="email">Email: library@iccu.example</li><li data-t="phone">Telefon: +998 00 000 00 00</li></ul></article>
           <article class="info-card"><h3 data-t="rulesTitle">Kutubxona qoidalari</h3><ul class="info-list"><li data-t="rule1">O'qish zallarida tinchlikni saqlang.</li><li data-t="rule2">Oziq-ovqat va ichimliklar fond hududiga olib kirilmaydi.</li><li data-t="rule3">Qo'lyozmalarni suratga olish uchun ruxsat kerak.</li></ul></article>
           <article class="info-card"><h3 data-t="beforeTitle">Kelishdan oldin</h3><p data-t="beforeText">Shaxsni tasdiqlovchi hujjat olib keling va nodir materiallarni oldindan band qiling.</p></article>
@@ -647,16 +659,16 @@
                 <h3 class="fp-title" data-t="floorPlanTitle">Ichki tuzilma xaritasi</h3>
               </div>
               <div class="fp-header-actions">
-                <button class="fp-ctrl" onclick="fpZoom(0.2)" title="Kattalashtirish">
+                <button class="fp-ctrl" onclick="fpZoom(0.2)" title="Kattalashtirish" data-t-title="zoomIn">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
                 </button>
-                <button class="fp-ctrl" onclick="fpZoom(-0.2)" title="Kichiklashtirish">
+                <button class="fp-ctrl" onclick="fpZoom(-0.2)" title="Kichiklashtirish" data-t-title="zoomOut">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
                 </button>
-                <button class="fp-ctrl" onclick="fpReset()" title="Asl o'lcham">
+                <button class="fp-ctrl" onclick="fpReset()" title="Asl o'lcham" data-t-title="resetSize">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg>
                 </button>
-                <button class="fp-ctrl fp-close" onclick="closeFloorPlan()" title="Yopish">
+                <button class="fp-ctrl fp-close" onclick="closeFloorPlan()" title="Yopish" data-t-title="close">
                   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
                 </button>
               </div>
@@ -676,7 +688,7 @@
                     <rect x="3" y="3" width="18" height="18" rx="2"/>
                     <path d="M3 9h18M3 15h18M9 3v18"/>
                   </svg>
-                  <p>floor-plan.svg fayli<br>images/ papkasiga qo'ying</p>
+                  <p data-t="floorPlanFallback">floor-plan.svg fayli<br>images/ papkasiga qo'ying</p>
                 </div>
               </div>
             </div>
@@ -861,7 +873,7 @@
               <img src="images/bnf.png" alt="BNF" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
               <span class="partner-logo-fallback" style="display:none">BNF</span>
             </div>
-            <div class="partner-name">Bibliothèque nationale de France</div>
+            <div class="partner-name" data-t="partnerBnf">Bibliothèque nationale de France</div>
           </div>
         
           <div class="partner-card">
@@ -869,7 +881,7 @@
               <img src="images/loc.png" alt="Library of Congress" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
               <span class="partner-logo-fallback" style="display:none">LOC</span>
             </div>
-            <div class="partner-name">Library of Congress</div>
+            <div class="partner-name" data-t="partnerLoc">Library of Congress</div>
           </div>
         
           <!-- YUMALOQ qolip: Istanbul U., O'zMU, ISESCO, Turkiston, CISC -->
@@ -878,7 +890,7 @@
               <img src="images/istanbul.png" alt="Istanbul Universiteti" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
               <span class="partner-logo-fallback" style="display:none">IU</span>
             </div>
-            <div class="partner-name">Istanbul Universiteti</div>
+            <div class="partner-name" data-t="partnerIstanbul">Istanbul Universiteti</div>
           </div>
         
           <div class="partner-card">
@@ -886,7 +898,7 @@
               <img src="images/ozmu.png" alt="O'zMU" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
               <span class="partner-logo-fallback" style="display:none">O'zMU</span>
             </div>
-            <div class="partner-name">O'zMU</div>
+            <div class="partner-name" data-t="partnerOzmu">O'zMU</div>
           </div>
         
           <div class="partner-card">
@@ -902,7 +914,7 @@
               <img src="images/tlff.png" alt="Turkiston Kutubxonasi" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
               <span class="partner-logo-fallback" style="display:none">TK</span>
             </div>
-            <div class="partner-name">Turkiston Kutubxonasi</div>
+            <div class="partner-name" data-t="partnerTurkiston">Turkiston Kutubxonasi</div>
           </div>
         
           <div class="partner-card">
@@ -936,7 +948,7 @@
                 <img src="images/directors/ravshan1.JPG" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
                 <div class="director-avatar-ph" style="display:none">👤</div>
               </div>
-              <div class="director-badge">Bosh direktor</div>
+              <div class="director-badge" data-t="directorBadge">Bosh direktor</div>
               <h3 class="director-name" data-t="director1Name">Qodirov Ravshan Lazizovich</h3>
               <p class="director-role" data-t="director1Role">Bo'lim boshlig'i</p>
               <p class="director-bio" data-t="director1Bio">Islom sivilizatsiyasi va raqamli arxivlar sohasida 25 yillik tajribaga ega.</p>
@@ -959,8 +971,8 @@
             </div>
             <div class="director-card">
               <div class="director-avatar">
-                <img src="images/directors/sevara1.JPG" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
-                <div class="director-avatar-ph" style="display:none">👤</div>
+                <img src="images/directors/sevara1.JPG" alt="" onerror="thidivs.style.display='none'; this.nextElementSibling.style.display='grid';">
+                <div class="director-avatar-ph" style="display:none">👤</>
               </div>
               <h3 class="director-name" data-t="director3Name">Nigmatova Sevara Irgashevna</h3>
               <p class="director-role" data-t="director3Role">Kutubxona bosh mutaxassisi</p>
@@ -999,25 +1011,25 @@
 
     <!-- ══════════════ REGISTER PAGE ══════════════ -->
     <section class="page" id="page-register">
-      <div class="container" style="max-width: 450px; padding: 60px 20px;">
-        <div style="background: var(--bg-2); padding: 30px; border-radius: var(--radius); border: 1px solid var(--line); box-shadow: var(--shadow);">
-          <h2 style="color: var(--gold-2); margin-bottom: 10px; font-size: 24px; font-weight: 900; text-align: center; font-family: Georgia, serif;">Ro'yxatdan o'tish</h2>
-          <p style="color: var(--muted); font-size: 14px; text-align: center; margin-bottom: 25px;">Kutubxona tizimidan to'liq foydalanish uchun profil yarating.</p>
+      <div class="register-container">
+        <div class="register-box">
+          <h2 data-t="regTitle">Ro'yxatdan o'tish</h2>
+          <p data-t="regSubtitle">Kutubxona tizimidan to'liq foydalanish uchun profil yarating.</p>
         
-          <form onsubmit="event.preventDefault(); alert('Muvaffaqiyatli ro\'yxatdan o\'tdingiz!');" style="display: flex; flex-direction: column; gap: 15px;">
-            <div>
-              <label style="display: block; font-size: 13px; color: var(--gold-2); margin-bottom: 5px; font-weight: 700;">Ism va familiyangiz</label>
-              <input type="text" placeholder="Ali Valiyev" required style="width: 100%; padding: 10px 12px; background: rgba(255,250,240,0.05); border: 1px solid var(--line); border-radius: 6px; font-size: 14px; color: var(--white); box-sizing: border-box;">
+          <form onsubmit="handleRegisterSubmit(event)" class="form-group">
+            <div class="form-field">
+              <label class="form-label" data-t="regNameLabel">Ism va familiyangiz</label>
+              <input type="text" placeholder="Ali Valiyev" data-t-placeholder="regNamePlaceholder" required class="form-input">
             </div>
-            <div>
-              <label style="display: block; font-size: 13px; color: var(--gold-2); margin-bottom: 5px; font-weight: 700;">Elektron pochta</label>
-              <input type="email" placeholder="example@mail.com" required style="width: 100%; padding: 10px 12px; background: rgba(255,250,240,0.05); border: 1px solid var(--line); border-radius: 6px; font-size: 14px; color: var(--white); box-sizing: border-box;">
+            <div class="form-field">
+              <label class="form-label" data-t="regEmailLabel">Elektron pochta</label>
+              <input type="email" placeholder="example@mail.com" data-t-placeholder="regEmailPlaceholder" required class="form-input">
             </div>
-            <div>
-              <label style="display: block; font-size: 13px; color: var(--gold-2); margin-bottom: 5px; font-weight: 700;">Parol</label>
-              <input type="password" placeholder="••••••••" required style="width: 100%; padding: 10px 12px; background: rgba(255,250,240,0.05); border: 1px solid var(--line); border-radius: 6px; font-size: 14px; color: var(--white); box-sizing: border-box;">
+            <div class="form-field">
+              <label class="form-label" data-t="regPasswordLabel">Parol</label>
+              <input type="password" placeholder="••••••••" data-t-placeholder="regPasswordPlaceholder" required class="form-input">
             </div>
-            <button type="submit" class="primary-button" style="justify-content: center; width: 100%; margin-top: 10px; min-height: 44px;">
+            <button type="submit" class="primary-button" style="justify-content: center; width: 100%; margin-top: 10px; min-height: 44px;" data-t="regSubmit">
               Tasdiqlash
             </button>
           </form>
@@ -1063,7 +1075,7 @@
               <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
               <circle cx="12" cy="10" r="3"/>
             </svg>
-            <span>Toshkent, O'zbekiston</span>
+            <span data-t="footerAddress">Toshkent, O'zbekiston</span>
           </a>
         </div>
       </section>

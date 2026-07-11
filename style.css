@@ -1763,6 +1763,8 @@ h1 {
   font-size: 13px;
   color: var(--muted);
   line-height: 1.65;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 .ann-priority-high::before { background: #e05c5c; }
 .ann-priority-high .ann-badge { background: rgba(224,92,92,0.15); color: #e05c5c; }

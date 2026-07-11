@@ -167,7 +167,7 @@ const i18n = {
     directorsTitle:"Kutubxona jamoasi",
     directorsSubtitle:"ICCU kutubxonasini rivojlantirish va boshqarishga mas'ul mutaxassislar jamoasi.",
     director1Name:"Qodirov Ravshan Lazizovich",
-    director1Role:"Bosh direktor",
+    director1Role:"Bo'lim boshlig'i",
     director1Bio:"Islom sivilizatsiyasi markazi kutubxonasining umumiy faoliyatiga rahbarlik qiladi. Ilmiy-tadqiqot va raqamlashtirish loyihalarini muvofiqlashtiradi.",
     director2Name:"Islomova Muqaddas Shogulyamovna",
     director2Role:"Yetakchi mutaxassis",
@@ -1123,4 +1123,4 @@ function expandKiosk() {
   sessionStorage.removeItem("kiosk_minimized");
   const wrap = document.getElementById("kiosk-wrap");
   if (wrap) wrap.classList.remove("minimized");
-}
+}

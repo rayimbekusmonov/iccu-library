@@ -1168,21 +1168,67 @@ function previewNewsUrl(url) {
 /* ── Auto Translation Helper Functions ── */
 async function translateText(text, targetLang) {
   if (!text) return "";
-  try {
-    // MyMemory API: Free translation API (1000 words/day limit)
-    const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(text)}&langpair=uz|${targetLang}`);
+
+  async function fetchTranslationChunk(chunk) {
+    const res = await fetch(`https://api.mymemory.translated.net/get?q=${encodeURIComponent(chunk)}&langpair=uz|${targetLang}`);
     if (!res.ok) throw new Error("Translation request failed");
     const json = await res.json();
     if (json.responseData && json.responseData.translatedText) {
-      // Decode html entities if returned
       const parser = new DOMParser();
       const doc = parser.parseFromString(json.responseData.translatedText, 'text/html');
       return doc.body.textContent;
     }
-    return text;
+    if (json.responseStatus && json.responseStatus !== 200) {
+      throw new Error(json.responseDetails || "API Error");
+    }
+    return chunk;
+  }
+
+  function splitLine(line, maxLength) {
+    const segments = [];
+    const words = line.split(" ");
+    let currentSegment = "";
+    for (const word of words) {
+      if ((currentSegment + " " + word).trim().length > maxLength) {
+        if (currentSegment) {
+          segments.push(currentSegment.trim());
+        }
+        currentSegment = word;
+      } else {
+        currentSegment = (currentSegment + " " + word).trim();
+      }
+    }
+    if (currentSegment) {
+      segments.push(currentSegment.trim());
+    }
+    return segments;
+  }
+
+  try {
+    const lines = text.split("\n");
+    const translatedLines = [];
+    for (const line of lines) {
+      if (!line.trim()) {
+        translatedLines.push("");
+        continue;
+      }
+      if (line.length <= 450) {
+        const translated = await fetchTranslationChunk(line);
+        translatedLines.push(translated);
+      } else {
+        const segments = splitLine(line, 450);
+        const translatedSegments = [];
+        for (const segment of segments) {
+          const translated = await fetchTranslationChunk(segment);
+          translatedSegments.push(translated);
+        }
+        translatedLines.push(translatedSegments.join(" "));
+      }
+    }
+    return translatedLines.join("\n");
   } catch(e) {
     console.error(`Translation error (uz -> ${targetLang}):`, e);
-    return text; // fallback
+    throw new Error(e.message);
   }
 }
 

@@ -53,35 +53,35 @@
     </div>
 
     <div class="nav-right">
-      <div class="lang-wrap">
-        <button class="lang-trigger" id="lang-trigger" type="button" onclick="toggleLangMenu()" aria-haspopup="listbox" aria-expanded="false" aria-label="Tilni tanlash">
-          <img src="https://flagcdn.com/w20/uz.png" alt="O'zbek" id="current-flag" width="20" style="vertical-align:middle;">
-          <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" style="margin-left:4px; vertical-align:middle; width:10px; height:6px;">
-            <path d="M1 1l4 4 4-4"/>
-          </svg>
-        </button>
-        <div class="lang-menu" id="lang-menu" role="listbox">
-          <button class="lang-option active" type="button" onclick="setLang('uz')">
-            <img src="https://flagcdn.com/w20/uz.png" alt="" width="20" style="margin-right:8px; vertical-align:middle;"> O'zbek
-          </button>
-          <button class="lang-option" type="button" onclick="setLang('en')">
-            <img src="https://flagcdn.com/w20/gb.png" alt="" width="20" style="margin-right:8px; vertical-align:middle;"> English
-          </button>
-          <button class="lang-option" type="button" onclick="setLang('ru')">
-            <img src="https://flagcdn.com/w20/ru.png" alt="" width="20" style="margin-right:8px; vertical-align:middle;"> Русский
-          </button>
-          <button class="lang-option" type="button" onclick="setLang('tr')">
-            <img src="https://flagcdn.com/w20/tr.png" alt="" width="20" style="margin-right:8px; vertical-align:middle;"> Türkçe
-          </button>
-        </div>
-      </div>
-
       <div class="nav-actions">
         <a class="btn-kirish" href="http://elibrary.cisc.uz:8080/" target="_blank" rel="noopener" data-t="navKirish">Kirish ↗</a>
         <button class="btn-register" id="nav-register" type="button" onclick="showPage('register')" data-t="navRegister">Ro'yxatdan o'tish</button>
       </div>
     </div>
   </nav>
+
+  <div class="lang-wrap">
+    <button class="lang-trigger" id="lang-trigger" type="button" onclick="toggleLangMenu()" aria-haspopup="listbox" aria-expanded="false" aria-label="Tilni tanlash">
+      <img src="https://flagcdn.com/w20/uz.png" alt="O'zbek" id="current-flag" width="20" style="vertical-align:middle;">
+      <svg viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8" style="margin-left:4px; vertical-align:middle; width:10px; height:6px;">
+        <path d="M1 1l4 4 4-4"/>
+      </svg>
+    </button>
+    <div class="lang-menu" id="lang-menu" role="listbox">
+      <button class="lang-option active" type="button" onclick="setLang('uz')">
+        <img src="https://flagcdn.com/w20/uz.png" alt="" width="20" style="margin-right:8px; vertical-align:middle;"> O'zbek
+      </button>
+      <button class="lang-option" type="button" onclick="setLang('en')">
+        <img src="https://flagcdn.com/w20/gb.png" alt="" width="20" style="margin-right:8px; vertical-align:middle;"> English
+      </button>
+      <button class="lang-option" type="button" onclick="setLang('ru')">
+        <img src="https://flagcdn.com/w20/ru.png" alt="" width="20" style="margin-right:8px; vertical-align:middle;"> Русский
+      </button>
+      <button class="lang-option" type="button" onclick="setLang('tr')">
+        <img src="https://flagcdn.com/w20/tr.png" alt="" width="20" style="margin-right:8px; vertical-align:middle;"> Türkçe
+      </button>
+    </div>
+  </div>
 </header>
 
   <main id="main">
@@ -971,8 +971,8 @@
             </div>
             <div class="director-card">
               <div class="director-avatar">
-                <img src="images/directors/sevara1.JPG" alt="" onerror="thidivs.style.display='none'; this.nextElementSibling.style.display='grid';">
-                <div class="director-avatar-ph" style="display:none">👤</>
+                <img src="images/directors/sevara1.JPG" alt="" onerror="this.style.display='none'; this.nextElementSibling.style.display='grid';">
+                <div class="director-avatar-ph" style="display:none">👤</div>
               </div>
               <h3 class="director-name" data-t="director3Name">Nigmatova Sevara Irgashevna</h3>
               <p class="director-role" data-t="director3Role">Kutubxona bosh mutaxassisi</p>

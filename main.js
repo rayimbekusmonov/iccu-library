@@ -192,7 +192,7 @@ const i18n = {
     announcementsEmpty:"Hozircha faol e'lonlar yo'q.",
     annPriority:"E'lon", annPriorityHigh:"Muhim",
     navMap:"Xarita",
-    nav3D:"3D Sayohat",
+    nav3D:"3D Tashrif",
     close:"Yopish",
     zoomIn:"Kattalashtirish",
     zoomOut:"Kichiklashtirish",

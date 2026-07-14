@@ -216,6 +216,21 @@ const i18n = {
     floorPlanFallback:"floor-plan.svg fayli<br>images/ papkasiga qo'ying",
     footerAddress:"Toshkent, O'zbekiston",
     directorBadge:"Bosh direktor",
+    tour3dKicker: "Virtual Tashrif",
+    tour3dTitle: "Kutubxona 3D Virtual Sayohati",
+    tour3dSubtitle: "Kutubxona binolari va zallarini 3D model orqali masofadan o'rganing. Zallarni ko'rish uchun belgilarni bosing.",
+    tdAutoRotate: "Avtomatik aylantirish",
+    tdReset: "Kamerani qaytarish",
+    tdFullscreen: "To'liq ekran",
+    tdHint: "Sichqoncha bilan aylantirish · Zoom · Belgilarni bosing",
+    tdHallReadingTitle: "Asosiy o'quv zali",
+    tdHallReadingDesc: "Zamonaviy jihozlangan, 200 dan ortiq o'ringa ega yorug' o'quv zali. Bu yerda asosiy fond darsliklari va elektron resurslardan foydalanish mumkin.",
+    tdHallManuscriptsTitle: "Qo'lyozmalar fondi",
+    tdHallManuscriptsDesc: "Islom sivilizatsiyasiga oid 15 000 dan ortiq nodir qo'lyozma va toshbosma asarlar saqlanadigan bo'lim. Harorat va namlik doimiy nazorat qilinadi.",
+    tdHallDigiTitle: "Raqamlashtirish laboratoriyasi",
+    tdHallDigiDesc: "Nodir manbalarni yuqori aniqlikda skanerlash va raqamli formatga o'tkazish markazi. Bu yerda asarlar kelajak avlodlar uchun saqlanadi.",
+    tdHallGalleryTitle: "Ko'rgazmalar galereyasi",
+    tdHallGalleryDesc: "Kutubxonadagi eng qadimiy manbalar va tarixiy yozuvlar ko'rgazmasi joylashgan hudud. Tashrif buyuruvchilar uchun ochiq eksponatlar mavjud.",
   }
 };
 
@@ -413,6 +428,21 @@ i18n.en = {
   floorPlanFallback:"floor-plan.svg file<br>place in images/ folder",
   footerAddress:"Tashkent, Uzbekistan",
   directorBadge:"Director General",
+  tour3dKicker: "Virtual Tour",
+  tour3dTitle: "3D Virtual Tour",
+  tour3dSubtitle: "Explore the library building and halls via 3D model remotely. Click hotspots to explore sections.",
+  tdAutoRotate: "Auto-rotate",
+  tdReset: "Reset Camera",
+  tdFullscreen: "Fullscreen",
+  tdHint: "Drag to rotate · Scroll to zoom · Click hotspots",
+  tdHallReadingTitle: "Main Reading Hall",
+  tdHallReadingDesc: "A modern, bright reading hall with over 200 seats. Here you can access textbooks, research journals, and digital workstations.",
+  tdHallManuscriptsTitle: "Manuscripts Archive",
+  tdHallManuscriptsDesc: "Home to over 15,000 rare manuscripts and lithographs on Islamic civilization, stored in climate-controlled preservation vaults.",
+  tdHallDigiTitle: "Digitization Lab",
+  tdHallDigiDesc: "The high-tech scanning hub where historic documents are digitized at high-resolution to be preserved for future generations.",
+  tdHallGalleryTitle: "Exhibition Gallery",
+  tdHallGalleryDesc: "A museum-like gallery space highlighting the oldest books, historical scripts, and cultural exhibits open for visitors.",
 };
 
 i18n.ru = {
@@ -585,6 +615,21 @@ i18n.ru = {
   floorPlanFallback:"файл floor-plan.svg<br>поместите в папку images/",
   footerAddress:"Ташкент, Узбекистан",
   directorBadge:"Генеральный директор",
+  tour3dKicker: "Виртуальный Визит",
+  tour3dTitle: "3D Виртуальный Тур по Библиотеке",
+  tour3dSubtitle: "Изучите здание и залы библиотеки с помощью интерактивной 3D-модели. Нажимайте на метки для подробностей.",
+  tdAutoRotate: "Авто-вращение",
+  tdReset: "Сбросить камеру",
+  tdFullscreen: "Во весь экран",
+  tdHint: "Вращение мышью · Масштаб · Клик на метки",
+  tdHallReadingTitle: "Главный читальный зал",
+  tdHallReadingDesc: "Современный просторный зал на более чем 200 мест с доступом к учебным материалам и компьютерам электронной библиотеки.",
+  tdHallManuscriptsTitle: "Фонд редких рукописей",
+  tdHallManuscriptsDesc: "Здесь хранятся более 15 000 исламских рукописей и литографий в специальных условиях температурного и влажностного контроля.",
+  tdHallDigiTitle: "Лаборатория оцифровки",
+  tdHallDigiDesc: "Высокотехнологичный центр сканирования и конвертации редких рукописных книг в цифровой формат для сохранения наследия.",
+  tdHallGalleryTitle: "Выставочная галерея",
+  tdHallGalleryDesc: "Галерейное пространство, где выставлены старейшие оригиналы книг, образцы каллиграфии и исторические артефакты.",
 };
 
 i18n.tr = {
@@ -755,6 +800,21 @@ i18n.tr = {
   floorPlanFallback:"floor-plan.svg dosyası<br>images/ klasörüne yerleştirin",
   footerAddress:"Taşkent, Özbekistan",
   directorBadge:"Genel Müdür",
+  tour3dKicker: "Sanal Ziyaret",
+  tour3dTitle: "Kütüphane 3D Sanal Turu",
+  tour3dSubtitle: "Kütüphane binasını ve salonlarını 3D model üzerinden uzaktan keşfedin. Detaylar için işaretçilere tıklayın.",
+  tdAutoRotate: "Otomatik döndür",
+  tdReset: "Kamerayı sıfırla",
+  tdFullscreen: "Tam ekran",
+  tdHint: "Döndürmek için sürükleyin · Yakınlaştırın · İşaretçilere tıklayın",
+  tdHallReadingTitle: "Ana Okuma Salonu",
+  tdHallReadingDesc: "200'den fazla okuma kapasitesine sahip, modern ve aydınlık okuma salonu. Ders kitapları ve dijital kaynaklara buradan erişilir.",
+  tdHallManuscriptsTitle: "El Yazmaları Arşivi",
+  tdHallManuscriptsDesc: "İslam medeniyetine ait 15.000'den fazla nadir el yazması ve taş baskı eserin iklim kontrollü odalarda korunduğu bölüm.",
+  tdHallDigiTitle: "Dijitalleştirme Laboratuvarı",
+  tdHallDigiDesc: "Tarihi kaynakların yüksek çözünürlükte taranarak gelecek nesiller için dijital ortama aktarıldığı teknolojik merkez.",
+  tdHallGalleryTitle: "Sergi Galerisi",
+  tdHallGalleryDesc: "Kütüphanedeki en eski eserlerin, kaligrafi örneklerinin ve tarihi objelerin sergilendiği, ziyaretçilere açık galeri alanı.",
 };
 
 /* ─────────────────────────────────────────────
@@ -827,6 +887,11 @@ function applyTexts() {
       demoEl.textContent = demoTitles[currentLang] || demoTitles.uz;
     }
   }
+
+  // Update 3D details card language if a hotspot is currently focused
+  if (typeof tdFocusedHotspot === "string" && tdFocusedHotspot && typeof focusHotspot === "function") {
+    focusHotspot(tdFocusedHotspot);
+  }
 }
 
 function handleRegisterSubmit(event) {
@@ -888,6 +953,11 @@ function showPage(name) {
   closeHamburger();
   // Re-render announcements page when navigating to it
   if (name === "announcements" && liveAnnouncements.length > 0) renderAnnouncementsPage();
+  
+  // Resize 3D canvas when showing the Visit page
+  if (name === "visit" && typeof on3DWindowResize === "function") {
+    setTimeout(on3DWindowResize, 150);
+  }
 }
 
 
@@ -1195,6 +1265,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initHeroCarousel();
   loadNews();
   loadAnnouncements();
+  init3DExplorer();
 });
 
 /* ─────────────────────────────────────────────
@@ -1331,4 +1402,505 @@ function expandKiosk() {
   sessionStorage.removeItem("kiosk_minimized");
   const wrap = document.getElementById("kiosk-wrap");
   if (wrap) wrap.classList.remove("minimized");
+}
+
+/* ─────────────────────────────────────────────
+   3D LIBRARY EXPLORER (THREE.JS)
+   ───────────────────────────────────────────── */
+let tdScene, tdCamera, tdRenderer, tdControls;
+let tdLibraryGroup; // Group containing the library model
+let tdHotspots = []; // List of hotspot objects
+let tdAutoRotate = true;
+let tdFocusedHotspot = null;
+let tdRaycaster = new THREE.Raycaster();
+let tdMouse = new THREE.Vector2();
+
+// Camera target interpolation state
+let tdTargetPos = new THREE.Vector3(14, 11, 16);
+let tdTargetLookAt = new THREE.Vector3(0, 0, 0);
+let tdCurrentLookAt = new THREE.Vector3(0, 0, 0);
+
+// Hotspot coordinates and translation keys
+const HOTSPOT_DATA = [
+  {
+    id: "reading",
+    pos: new THREE.Vector3(-6.5, 1.8, 0),
+    tagKey: "discoverKicker",
+    titleKey: "tdHallReadingTitle",
+    descKey: "tdHallReadingDesc"
+  },
+  {
+    id: "manuscripts",
+    pos: new THREE.Vector3(6.5, 1.8, 0),
+    tagKey: "navDiscover",
+    titleKey: "tdHallManuscriptsTitle",
+    descKey: "tdHallManuscriptsDesc"
+  },
+  {
+    id: "digitization",
+    pos: new THREE.Vector3(0, 1.8, -6),
+    tagKey: "servicesKicker",
+    titleKey: "tdHallDigiTitle",
+    descKey: "tdHallDigiDesc"
+  },
+  {
+    id: "gallery",
+    pos: new THREE.Vector3(0, 2.2, 5.5),
+    tagKey: "updatesKicker",
+    titleKey: "tdHallGalleryTitle",
+    descKey: "tdHallGalleryDesc"
+  }
+];
+
+function init3DExplorer() {
+  const container = document.getElementById("td-viewport");
+  if (!container) return;
+
+  // 1. Create Scene
+  tdScene = new THREE.Scene();
+  tdScene.fog = new THREE.FogExp2(0x071c16, 0.025);
+
+  // 2. Create Camera
+  tdCamera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 100);
+  tdCamera.position.copy(tdTargetPos);
+
+  // 3. Create Renderer
+  tdRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  tdRenderer.setSize(container.clientWidth, container.clientHeight);
+  tdRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  tdRenderer.shadowMap.enabled = true;
+  tdRenderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  container.appendChild(tdRenderer.domElement);
+
+  // 4. Create OrbitControls
+  tdControls = new THREE.OrbitControls(tdCamera, tdRenderer.domElement);
+  tdControls.enableDamping = true;
+  tdControls.dampingFactor = 0.05;
+  tdControls.maxPolarAngle = Math.PI / 2 - 0.05; // Don't go below ground
+  tdControls.minDistance = 6;
+  tdControls.maxDistance = 35;
+  tdControls.target.copy(tdTargetLookAt);
+
+  // 5. Ambient & Directional Lighting
+  const ambientLight = new THREE.AmbientLight(0x1a4536, 1.2);
+  tdScene.add(ambientLight);
+
+  // Main directional light (Sun-like warm highlight)
+  const dirLight = new THREE.DirectionalLight(0xfffaf0, 1.5);
+  dirLight.position.set(15, 20, 10);
+  dirLight.castShadow = true;
+  dirLight.shadow.mapSize.width = 1024;
+  dirLight.shadow.mapSize.height = 1024;
+  dirLight.shadow.bias = -0.001;
+  tdScene.add(dirLight);
+
+  // Glowing point lights for accents
+  const goldLight = new THREE.PointLight(0xc8a45d, 2.5, 12);
+  goldLight.position.set(0, 4, 0);
+  tdScene.add(goldLight);
+
+  const tealLight = new THREE.PointLight(0xead29a, 2, 10);
+  tealLight.position.set(-6, 2, 0);
+  tdScene.add(tealLight);
+
+  // 6. Build the Library Model
+  tdLibraryGroup = new THREE.Group();
+  buildLibraryModel();
+  tdScene.add(tdLibraryGroup);
+
+  // 7. Add Hotspots
+  create3DHotspots();
+
+  // 8. Event Listeners
+  window.addEventListener("resize", on3DWindowResize);
+  tdRenderer.domElement.addEventListener("click", on3DViewportClick);
+  tdRenderer.domElement.addEventListener("mousemove", on3DViewportMouseMove);
+
+  // 9. Start Loop
+  animate3D();
+}
+
+function buildLibraryModel() {
+  // Common Materials
+  const baseMat = new THREE.MeshStandardMaterial({
+    color: 0x092b1e,
+    roughness: 0.8,
+    metalness: 0.2
+  });
+
+  const wallMat = new THREE.MeshStandardMaterial({
+    color: 0x0e3a2b,
+    roughness: 0.6,
+    metalness: 0.1
+  });
+
+  const goldMat = new THREE.MeshStandardMaterial({
+    color: 0xc8a45d,
+    roughness: 0.3,
+    metalness: 0.9,
+    emissive: 0x6e5223,
+    emissiveIntensity: 0.15
+  });
+
+  const glassMat = new THREE.MeshStandardMaterial({
+    color: 0xa8dfc9,
+    transparent: true,
+    opacity: 0.35,
+    roughness: 0.1,
+    metalness: 0.9
+  });
+
+  const shelfMat = new THREE.MeshStandardMaterial({
+    color: 0x051a13,
+    roughness: 0.9
+  });
+
+  const booksMat = new THREE.MeshStandardMaterial({
+    color: 0xead29a,
+    emissive: 0xc8a45d,
+    emissiveIntensity: 0.4
+  });
+
+  // A. Main Foundation Base
+  const baseGeo = new THREE.CylinderGeometry(11, 11.5, 0.6, 8);
+  const baseMesh = new THREE.Mesh(baseGeo, baseMat);
+  baseMesh.position.y = -0.3;
+  baseMesh.receiveShadow = true;
+  tdLibraryGroup.add(baseMesh);
+
+  // B. Grand Central Rotunda (Drum)
+  const rotundaGeo = new THREE.CylinderGeometry(4.5, 4.5, 3.2, 8, 1, false);
+  const rotundaMesh = new THREE.Mesh(rotundaGeo, wallMat);
+  rotundaMesh.position.y = 1.6;
+  rotundaMesh.castShadow = true;
+  rotundaMesh.receiveShadow = true;
+  tdLibraryGroup.add(rotundaMesh);
+
+  // Decorative gold arches on Rotunda
+  for (let i = 0; i < 8; i++) {
+    const angle = (i * Math.PI) / 4;
+    const archGeo = new THREE.BoxGeometry(0.8, 1.8, 0.1);
+    const archMesh = new THREE.Mesh(archGeo, goldMat);
+    archMesh.position.set(Math.cos(angle) * 4.55, 1.2, Math.sin(angle) * 4.55);
+    archMesh.rotation.y = -angle + Math.PI / 2;
+    tdLibraryGroup.add(archMesh);
+  }
+
+  // C. Central Golden Dome
+  const domeGeo = new THREE.SphereGeometry(4.5, 32, 16, 0, Math.PI * 2, 0, Math.PI / 2);
+  const domeMesh = new THREE.Mesh(domeGeo, goldMat);
+  domeMesh.position.y = 3.2;
+  domeMesh.castShadow = true;
+  tdLibraryGroup.add(domeMesh);
+
+  // Dome Finial spire
+  const finialGeo = new THREE.CylinderGeometry(0.05, 0.15, 1.2, 8);
+  const finialMesh = new THREE.Mesh(finialGeo, goldMat);
+  finialMesh.position.y = 8.1;
+  tdLibraryGroup.add(finialMesh);
+
+  const sphereFinial = new THREE.Mesh(new THREE.SphereGeometry(0.18, 8, 8), goldMat);
+  sphereFinial.position.y = 8.8;
+  tdLibraryGroup.add(sphereFinial);
+
+  // D. Left Wing - Main Reading Hall
+  const leftWingGeo = new THREE.BoxGeometry(4.5, 2.2, 3.5);
+  const leftWing = new THREE.Mesh(leftWingGeo, wallMat);
+  leftWing.position.set(-6.5, 1.1, 0);
+  leftWing.castShadow = true;
+  leftWing.receiveShadow = true;
+  tdLibraryGroup.add(leftWing);
+
+  // Glassmorphic arched roof for Reading Hall
+  const leftRoofGeo = new THREE.CylinderGeometry(1.85, 1.85, 4.5, 16, 1, false, 0, Math.PI);
+  const leftRoof = new THREE.Mesh(leftRoofGeo, glassMat);
+  leftRoof.position.set(-6.5, 2.2, 0);
+  leftRoof.rotation.z = Math.PI / 2;
+  leftRoof.rotation.x = Math.PI;
+  leftRoof.castShadow = true;
+  tdLibraryGroup.add(leftRoof);
+
+  // Left Wing Facade Colonnade
+  for (let i = -1; i <= 1; i++) {
+    const colGeo = new THREE.CylinderGeometry(0.12, 0.12, 2.0, 8);
+    const col = new THREE.Mesh(colGeo, goldMat);
+    col.position.set(-6.5 + i * 1.5, 1.0, 1.8);
+    col.castShadow = true;
+    tdLibraryGroup.add(col);
+  }
+
+  // E. Right Wing - Manuscripts Archive
+  const rightWingGeo = new THREE.BoxGeometry(4.5, 2.5, 3.5);
+  const rightWing = new THREE.Mesh(rightWingGeo, wallMat);
+  rightWing.position.set(6.5, 1.25, 0);
+  rightWing.castShadow = true;
+  rightWing.receiveShadow = true;
+  tdLibraryGroup.add(rightWing);
+
+  // Traditional flat roof with crenellations
+  const rightRoofGeo = new THREE.BoxGeometry(4.7, 0.25, 3.7);
+  const rightRoof = new THREE.Mesh(rightRoofGeo, goldMat);
+  rightRoof.position.set(6.5, 2.6, 0);
+  rightRoof.castShadow = true;
+  tdLibraryGroup.add(rightRoof);
+
+  // F. Rear Wing - Digitization Lab
+  const rearWingGeo = new THREE.BoxGeometry(3.5, 2.4, 4.0);
+  const rearWing = new THREE.Mesh(rearWingGeo, wallMat);
+  rearWing.position.set(0, 1.2, -6.5);
+  rearWing.castShadow = true;
+  rearWing.receiveShadow = true;
+  tdLibraryGroup.add(rearWing);
+
+  // Glass pyramid skylight
+  const rearRoofGeo = new THREE.ConeGeometry(2.0, 1.2, 4);
+  const rearRoof = new THREE.Mesh(rearRoofGeo, glassMat);
+  rearRoof.position.set(0, 3.0, -6.5);
+  rearRoof.rotation.y = Math.PI / 4;
+  rearRoof.castShadow = true;
+  tdLibraryGroup.add(rearRoof);
+
+  // G. Front Court - Exhibition Gallery (Entrance)
+  const frontWingGeo = new THREE.BoxGeometry(4.8, 1.5, 3.0);
+  const frontWing = new THREE.Mesh(frontWingGeo, wallMat);
+  frontWing.position.set(0, 0.75, 5.5);
+  frontWing.castShadow = true;
+  frontWing.receiveShadow = true;
+  tdLibraryGroup.add(frontWing);
+
+  // Grand Entrance Arch (Iwan style portal)
+  const iwanGeo = new THREE.BoxGeometry(2.4, 2.2, 1.2);
+  const iwan = new THREE.Mesh(iwanGeo, wallMat);
+  iwan.position.set(0, 1.1, 6.4);
+  iwan.castShadow = true;
+  tdLibraryGroup.add(iwan);
+
+  const iwanArchInner = new THREE.Mesh(new THREE.BoxGeometry(1.6, 1.6, 1.3), baseMat);
+  iwanArchInner.position.set(0, 0.8, 6.45);
+  tdLibraryGroup.add(iwanArchInner);
+
+  const iwanGoldFrame = new THREE.Mesh(new THREE.BoxGeometry(2.0, 0.12, 1.3), goldMat);
+  iwanGoldFrame.position.set(0, 2.2, 6.45);
+  tdLibraryGroup.add(iwanGoldFrame);
+
+  // H. Interior Details (Bookshelves visible through transparent parts)
+  for (let i = -1; i <= 1; i += 2) {
+    const rackGeo = new THREE.BoxGeometry(0.3, 1.2, 1.4);
+    const rack = new THREE.Mesh(rackGeo, shelfMat);
+    rack.position.set(-6.5 + i * 1.0, 0.6, -0.4);
+    tdLibraryGroup.add(rack);
+
+    const books = new THREE.Mesh(new THREE.BoxGeometry(0.31, 0.15, 1.2), booksMat);
+    books.position.set(-6.5 + i * 1.0, 0.7, -0.4);
+    tdLibraryGroup.add(books);
+  }
+}
+
+function create3DHotspots() {
+  HOTSPOT_DATA.forEach(data => {
+    // Hotspot Container
+    const hotspotGroup = new THREE.Group();
+    hotspotGroup.position.copy(data.pos);
+    hotspotGroup.userData = { id: data.id };
+
+    // Outer Ring (glowing torus)
+    const ringGeo = new THREE.TorusGeometry(0.42, 0.05, 8, 24);
+    const ringMat = new THREE.MeshBasicMaterial({
+      color: 0xc8a45d,
+      transparent: true,
+      opacity: 0.85
+    });
+    const ringMesh = new THREE.Mesh(ringGeo, ringMat);
+    ringMesh.rotation.x = Math.PI / 2;
+    hotspotGroup.add(ringMesh);
+
+    // Inner Core (glowing pulsing sphere)
+    const coreGeo = new THREE.SphereGeometry(0.18, 16, 16);
+    const coreMat = new THREE.MeshBasicMaterial({
+      color: 0xfffaf0
+    });
+    const coreMesh = new THREE.Mesh(coreGeo, coreMat);
+    hotspotGroup.add(coreMesh);
+
+    tdScene.add(hotspotGroup);
+    tdHotspots.push(hotspotGroup);
+  });
+}
+
+function animate3D() {
+  requestAnimationFrame(animate3D);
+
+  const time = Date.now() * 0.001;
+
+  // 1. Scene auto-rotation
+  if (tdAutoRotate && !tdFocusedHotspot) {
+    tdLibraryGroup.rotation.y = time * 0.08;
+    // Rotate hotspots along with the library group
+    tdHotspots.forEach((hs, idx) => {
+      const origData = HOTSPOT_DATA[idx];
+      const angle = (time * 0.08);
+      hs.position.x = origData.pos.x * Math.cos(angle) - origData.pos.z * Math.sin(angle);
+      hs.position.z = origData.pos.x * Math.sin(angle) + origData.pos.z * Math.cos(angle);
+    });
+  }
+
+  // 2. Animate Hotspot objects (bouncing and rotating)
+  tdHotspots.forEach(hs => {
+    const torus = hs.children[0];
+    if (torus) torus.rotation.z = time * 1.5;
+
+    const core = hs.children[1];
+    if (core) {
+      const scale = 1.0 + Math.sin(time * 6) * 0.15;
+      core.scale.set(scale, scale, scale);
+    }
+    
+    if (hs.userData.baseY !== undefined) {
+      hs.position.y = hs.userData.baseY + Math.sin(time * 4) * 0.12;
+    }
+  });
+
+  // Store original Y coordinate on first run
+  tdHotspots.forEach(hs => {
+    if (hs.userData.baseY === undefined) {
+      hs.userData.baseY = hs.position.y;
+    }
+  });
+
+  // 3. Smooth Camera focus interpolation
+  if (tdFocusedHotspot) {
+    tdCurrentLookAt.lerp(tdTargetLookAt, 0.08);
+    tdCamera.position.lerp(tdTargetPos, 0.08);
+    tdControls.target.copy(tdCurrentLookAt);
+  } else {
+    tdCurrentLookAt.lerp(new THREE.Vector3(0, 0, 0), 0.05);
+    tdControls.target.copy(tdCurrentLookAt);
+  }
+
+  tdControls.update();
+  tdRenderer.render(tdScene, tdCamera);
+}
+
+function on3DWindowResize() {
+  const container = document.getElementById("td-viewport");
+  if (!container || !tdRenderer) return;
+
+  tdCamera.aspect = container.clientWidth / container.clientHeight;
+  tdCamera.updateProjectionMatrix();
+  tdRenderer.setSize(container.clientWidth, container.clientHeight);
+}
+
+function on3DViewportClick(e) {
+  const container = document.getElementById("td-viewport");
+  if (!container) return;
+
+  const rect = tdRenderer.domElement.getBoundingClientRect();
+  tdMouse.x = ((e.clientX - rect.left) / container.clientWidth) * 2 - 1;
+  tdMouse.y = -((e.clientY - rect.top) / container.clientHeight) * 2 + 1;
+
+  tdRaycaster.setFromCamera(tdMouse, tdCamera);
+  const intersects = tdRaycaster.intersectObjects(tdScene.children, true);
+
+  let clickedHS = null;
+  for (let hit of intersects) {
+    let parent = hit.object.parent;
+    while (parent && parent !== tdScene) {
+      if (parent.userData && parent.userData.id) {
+        clickedHS = parent;
+        break;
+      }
+      parent = parent.parent;
+    }
+    if (clickedHS) break;
+  }
+
+  if (clickedHS) {
+    focusHotspot(clickedHS.userData.id);
+  }
+}
+
+function on3DViewportMouseMove(e) {
+  const container = document.getElementById("td-viewport");
+  if (!container) return;
+
+  const rect = tdRenderer.domElement.getBoundingClientRect();
+  tdMouse.x = ((e.clientX - rect.left) / container.clientWidth) * 2 - 1;
+  tdMouse.y = -((e.clientY - rect.top) / container.clientHeight) * 2 + 1;
+
+  tdRaycaster.setFromCamera(tdMouse, tdCamera);
+  const intersects = tdRaycaster.intersectObjects(tdScene.children, true);
+
+  let hover = false;
+  for (let hit of intersects) {
+    let parent = hit.object.parent;
+    while (parent && parent !== tdScene) {
+      if (parent.userData && parent.userData.id) {
+        hover = true;
+        break;
+      }
+      parent = parent.parent;
+    }
+    if (hover) break;
+  }
+
+  document.body.style.cursor = hover ? "pointer" : "";
+}
+
+function focusHotspot(id) {
+  const hsInfo = HOTSPOT_DATA.find(x => x.id === id);
+  const hsObject = tdHotspots.find(x => x.userData.id === id);
+  if (!hsInfo || !hsObject) return;
+
+  tdFocusedHotspot = id;
+  tdAutoRotate = false;
+
+  const rotateBtn = document.getElementById("td-autorotate-btn");
+  if (rotateBtn) rotateBtn.classList.remove("active");
+
+  tdTargetLookAt.copy(hsObject.position);
+
+  const offset = new THREE.Vector3().copy(hsObject.position).normalize().multiplyScalar(4);
+  offset.y = 3.5;
+  tdTargetPos.copy(hsObject.position).add(offset);
+
+  const dict = i18n[currentLang] || i18n.uz;
+  
+  document.getElementById("td-details-tag").textContent = dict[hsInfo.tagKey] || "";
+  document.getElementById("td-details-title").textContent = dict[hsInfo.titleKey] || "";
+  document.getElementById("td-details-text").textContent = dict[hsInfo.descKey] || "";
+
+  document.getElementById("td-details-card").classList.add("open");
+}
+
+function close3DDetails() {
+  document.getElementById("td-details-card").classList.remove("open");
+  tdFocusedHotspot = null;
+}
+
+function reset3DCamera() {
+  close3DDetails();
+  tdFocusedHotspot = null;
+  tdTargetLookAt.set(0, 0, 0);
+  tdTargetPos.set(14, 11, 16);
+}
+
+function toggle3DAutoRotate() {
+  tdAutoRotate = !tdAutoRotate;
+  const btn = document.getElementById("td-autorotate-btn");
+  if (btn) {
+    btn.classList.toggle("active", tdAutoRotate);
+  }
+  if (tdAutoRotate) {
+    close3DDetails();
+  }
+}
+
+function toggle3DFullscreen() {
+  const container = document.querySelector(".td-viewport-container");
+  if (!container) return;
+
+  const isFull = container.classList.toggle("fullscreen");
+  
+  setTimeout(on3DWindowResize, 100);
+  document.body.classList.toggle("modal-open", isFull);
 }

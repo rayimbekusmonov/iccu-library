@@ -648,7 +648,56 @@
             </svg>
           </button>
         </div>
-        
+
+        <!-- 3D Library View Section -->
+        <div class="visit-3d-section" id="visit-3d-tour">
+          <div class="section-header">
+            <div>
+              <div class="section-kicker" data-t="tour3dKicker">Virtual Tashrif</div>
+              <h2 class="section-title" data-t="tour3dTitle">Kutubxona 3D Virtual Sayohati</h2>
+              <p class="section-subtitle" data-t="tour3dSubtitle">Kutubxona binolari va zallarini 3D model orqali masofadan o'rganing. Zallarni ko'rish uchun belgilarni bosing.</p>
+            </div>
+          </div>
+          
+          <div class="td-viewport-container">
+            <div id="td-viewport" class="td-viewport">
+              <!-- Three.js Canvas will be appended here -->
+            </div>
+            
+            <!-- 3D UI Overlays -->
+            <div class="td-controls">
+              <button class="td-btn" onclick="toggle3DAutoRotate()" id="td-autorotate-btn" title="Avtomatik aylantirish" data-t-title="tdAutoRotate">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/>
+                </svg>
+              </button>
+              <button class="td-btn" onclick="reset3DCamera()" title="Kamerani qaytarish" data-t-title="tdReset">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+                </svg>
+              </button>
+              <button class="td-btn" onclick="toggle3DFullscreen()" title="To'liq ekran" data-t-title="tdFullscreen">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16">
+                  <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Glassmorphic Details Card -->
+            <div class="td-details-card" id="td-details-card">
+              <button class="td-details-close" onclick="close3DDetails()">×</button>
+              <span class="td-details-tag" id="td-details-tag"></span>
+              <h3 class="td-details-title" id="td-details-title"></h3>
+              <p class="td-details-text" id="td-details-text"></p>
+            </div>
+
+            <!-- Hint overlay -->
+            <div class="td-hint">
+              <span data-t="tdHint">Sichqoncha bilan aylantirish · Zoom · Belgilarni bosing</span>
+            </div>
+          </div>
+        </div>
+
         <!-- Floor Plan Modal -->
         <div class="fp-modal" id="fp-modal" onclick="closeFPifOutside(event)">
           <div class="fp-modal-box">
@@ -1148,6 +1197,8 @@
     </div>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

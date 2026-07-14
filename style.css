@@ -121,6 +121,16 @@ h1,h2,h3,p { margin: 0; }
   background: rgba(200,164,93,0.08) !important;
 }
 
+/* 3D Tour nav link gets a subtle teal/emerald tint */
+.nav-link--3d {
+  color: #4ecb8d !important;
+  font-size: 12.5px !important;
+}
+.nav-link--3d:hover {
+  border-color: rgba(78,203,141,0.3) !important;
+  background: rgba(78,203,141,0.08) !important;
+}
+
 .nav-actions {
   display: flex;
   align-items: center;

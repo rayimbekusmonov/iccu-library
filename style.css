@@ -2448,4 +2448,60 @@ h1 {
   .td-hint {
     display: none;
   }
+}
+
+/* ══════════════ RTL (Arabic) Support ══════════════ */
+html[dir="rtl"] {
+  direction: rtl;
+}
+html[dir="rtl"] .carousel-arrow--prev {
+  left: auto;
+  right: -52px;
+}
+html[dir="rtl"] .carousel-arrow--next {
+  right: auto;
+  left: -52px;
+}
+html[dir="rtl"] .carousel-arrow svg {
+  transform: scaleX(-1);
+}
+html[dir="rtl"] .lang-trigger svg {
+  margin-left: 0 !important;
+  margin-right: 4px !important;
+}
+html[dir="rtl"] .lang-option img {
+  margin-right: 0 !important;
+  margin-left: 8px !important;
+}
+html[dir="rtl"] .td-details-card {
+  left: auto;
+  right: 24px;
+}
+html[dir="rtl"] .td-details-close {
+  right: auto;
+  left: 12px;
+}
+html[dir="rtl"] .td-hint {
+  right: auto;
+  left: 16px;
+}
+@media (max-width: 980px) {
+  html[dir="rtl"] .carousel-arrow--prev {
+    left: auto;
+    right: -44px;
+  }
+  html[dir="rtl"] .carousel-arrow--next {
+    right: auto;
+    left: -44px;
+  }
+}
+@media (max-width: 640px) {
+  html[dir="rtl"] .carousel-arrow--prev {
+    left: auto;
+    right: -38px;
+  }
+  html[dir="rtl"] .carousel-arrow--next {
+    right: auto;
+    left: -38px;
+  }
 }

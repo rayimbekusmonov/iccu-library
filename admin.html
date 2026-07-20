@@ -628,6 +628,10 @@
                 <img src="https://flagcdn.com/w20/tr.png" width="16" style="border-radius:2px"> Türkçe
                 <span class="dot" id="ldot-tr"></span>
               </button>
+              <button class="lang-tab" onclick="switchLang('ar',this)" id="ltab-ar">
+                <img src="https://flagcdn.com/w20/sa.png" width="16" style="border-radius:2px"> العربية
+                <span class="dot" id="ldot-ar"></span>
+              </button>
             </div>
             <div class="lang-body" id="lang-body">
               <div id="uz-required" class="required-note">* O'zbek tili majburiy</div>
@@ -747,6 +751,10 @@
                 <img src="https://flagcdn.com/w20/tr.png" width="16" style="border-radius:2px"> Türkçe
                 <span class="dot" id="aldot-tr"></span>
               </button>
+              <button class="lang-tab" onclick="switchAnnLang('ar',this)" id="altab-ar">
+                <img src="https://flagcdn.com/w20/sa.png" width="16" style="border-radius:2px"> العربية
+                <span class="dot" id="aldot-ar"></span>
+              </button>
             </div>
             <div class="lang-body" id="ann-lang-body">
               <div id="ann-uz-required" class="required-note">* O'zbek tili majburiy</div>
@@ -800,7 +808,7 @@ let activeLang = "uz";
 let selColor  = "#1a5e43";
 
 /* Per-lang field cache: { uz:{tag,headline,excerpt,body}, en:{...}, ... } */
-let langData  = { uz:{}, en:{}, ru:{}, tr:{} };
+let langData  = { uz:{}, en:{}, ru:{}, tr:{}, ar:{} };
 
 /* ════ AUTH ════ */
 function doLogin() {
@@ -915,6 +923,7 @@ const LANGS_META = [
   { k:"en", flag:"🇬🇧" },
   { k:"ru", flag:"🇷🇺" },
   { k:"tr", flag:"🇹🇷" },
+  { k:"ar", flag:"🇸🇦" },
 ];
 
 function renderNewsList() {
@@ -963,7 +972,7 @@ function renderNewsList() {
 /* ════ FORM ════ */
 function openForm(id = null) {
   editId = id;
-  langData = { uz:{}, en:{}, ru:{}, tr:{} };
+  langData = { uz:{}, en:{}, ru:{}, tr:{}, ar:{} };
   showSection("news");
 
   document.getElementById("form-sheet").style.display  = "";
@@ -973,7 +982,7 @@ function openForm(id = null) {
     const n = allNews.find(x => x.id === id);
     if (!n) return;
     // populate langData
-    ["uz","en","ru","tr"].forEach(l => {
+    ["uz","en","ru","tr","ar"].forEach(l => {
       langData[l] = {
         tag:      n[`tag_${l}`]      || "",
         headline: n[`headline_${l}`] || "",
@@ -992,7 +1001,7 @@ function openForm(id = null) {
     dt.setMinutes(dt.getMinutes() - dt.getTimezoneOffset());
     document.getElementById("f-date").value = dt.toISOString().slice(0,16);
   } else {
-    ["uz","en","ru","tr"].forEach(l => { langData[l] = { tag:"", headline:"", excerpt:"", body:"" }; });
+    ["uz","en","ru","tr","ar"].forEach(l => { langData[l] = { tag:"", headline:"", excerpt:"", body:"" }; });
     document.getElementById("f-category").value   = "YANGILIK";
     document.getElementById("f-image").value       = "";
     document.getElementById("f-featured").checked  = false;
@@ -1053,7 +1062,7 @@ function saveLangFields() {
 }
 
 function updateAllDots() {
-  ["uz","en","ru","tr"].forEach(l => {
+  ["uz","en","ru","tr","ar"].forEach(l => {
     const d    = langData[l] || {};
     const dot  = document.getElementById(`ldot-${l}`);
     if (!dot) return;
@@ -1250,7 +1259,7 @@ async function autoTranslateNews() {
   btn.disabled = true;
   btn.innerHTML = `<span class="spin"></span> Tarjima qilinmoqda...`;
 
-  const targets = ["en", "ru", "tr"];
+  const targets = ["en", "ru", "tr", "ar"];
   try {
     for (const target of targets) {
       const tHeadline = await translateText(headlineUz, target);
@@ -1293,7 +1302,7 @@ async function autoTranslateAnn() {
   btn.disabled = true;
   btn.innerHTML = `<span class="spin"></span> Tarjima qilinmoqda...`;
 
-  const targets = ["en", "ru", "tr"];
+  const targets = ["en", "ru", "tr", "ar"];
   try {
     for (const target of targets) {
       const tTitle = await translateText(titleUz, target);
@@ -1337,7 +1346,7 @@ async function saveNews() {
     is_published:document.getElementById("f-published").checked,
   };
   // flatten lang fields
-  ["uz","en","ru","tr"].forEach(l => {
+  ["uz","en","ru","tr","ar"].forEach(l => {
     const d = langData[l] || {};
     payload[`tag_${l}`]      = d.tag      || "";
     payload[`headline_${l}`] = d.headline || "";
@@ -1402,7 +1411,7 @@ let allAnn      = [];
 let editAnnId   = null;
 let annActiveLang = "uz";
 let annSelColor = "#c8a45d";
-let annLangData = { uz:{}, en:{}, ru:{}, tr:{} };
+let annLangData = { uz:{}, en:{}, ru:{}, tr:{}, ar:{} };
 
 async function loadAnnouncements() {
   const list = document.getElementById("ann-list");
@@ -1478,7 +1487,7 @@ function openAnnForm(id = null) {
     } catch(e) {
       data = { title_uz: "E'lon", body_uz: a.content || "", priority: "normal", art_color: "#c8a45d" };
     }
-    ["uz","en","ru","tr"].forEach(l => {
+    ["uz","en","ru","tr","ar"].forEach(l => {
       annLangData[l] = { title: data[`title_${l}`]||"", body: data[`body_${l}`]||"" };
     });
     document.getElementById("af-priority").value  = data.priority || "normal";
@@ -1496,7 +1505,7 @@ function openAnnForm(id = null) {
       document.getElementById("af-ends").value = dt2.toISOString().slice(0,16);
     } else { document.getElementById("af-ends").value = ""; }
   } else {
-    ["uz","en","ru","tr"].forEach(l => { annLangData[l] = {title:"",body:""}; });
+    ["uz","en","ru","tr","ar"].forEach(l => { annLangData[l] = {title:"",body:""}; });
     document.getElementById("af-priority").value  = "normal";
     document.getElementById("af-active").checked  = true;
     setAnnColorSwatch("#c8a45d");
@@ -1541,7 +1550,7 @@ function saveAnnLangFields() {
 }
 
 function updateAnnDots() {
-  ["uz","en","ru","tr"].forEach(l => {
+  ["uz","en","ru","tr","ar"].forEach(l => {
     const d   = annLangData[l] || {};
     const dot = document.getElementById(`aldot-${l}`);
     if (!dot) return;
@@ -1578,10 +1587,12 @@ async function saveAnn() {
     title_en:   annLangData.en.title || "",
     title_ru:   annLangData.ru.title || "",
     title_tr:   annLangData.tr.title || "",
+    title_ar:   annLangData.ar.title || "",
     body_uz:    annLangData.uz.body || "",
     body_en:    annLangData.en.body || "",
     body_ru:    annLangData.ru.body || "",
     body_tr:    annLangData.tr.body || "",
+    body_ar:    annLangData.ar.body || "",
   };
 
   const payload = {

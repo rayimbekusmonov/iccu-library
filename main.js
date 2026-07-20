@@ -232,6 +232,18 @@ const i18n = {
     tdHallDigiDesc: "Nodir manbalarni yuqori aniqlikda skanerlash va raqamli formatga o'tkazish markazi. Bu yerda asarlar kelajak avlodlar uchun saqlanadi.",
     tdHallGalleryTitle: "Ko'rgazmalar galereyasi",
     tdHallGalleryDesc: "Kutubxonadagi eng qadimiy manbalar va tarixiy yozuvlar ko'rgazmasi joylashgan hudud. Tashrif buyuruvchilar uchun ochiq eksponatlar mavjud.",
+    periodicalsTag: "Vaqtli matbuot",
+    periodicalsTitle: "Gazeta va jurnallar",
+    periodicalsSubtitle: "Kutubxonamiz fondidagi davriy nashrlar va gazeta-jurnallar ro'yxati.",
+    periodicalJournal: "Jurnal",
+    periodicalNewspaper: "Gazeta",
+    periodicalMonthly: "Oyda 1 marta",
+    periodicalBiMonthly: "2 oyda 1 marta",
+    periodicalQuarterly: "3 oyda 1 marta",
+    periodicalWeekly: "Haftada 1 marta",
+    periodicalSemiMonthly: "Oyda 2 marta",
+    periodicalTimesWeek: "Haftada 5 marta",
+    periodicalTwiceQuarter: "3 oyda 2 marta",
   }
 };
 
@@ -445,6 +457,18 @@ i18n.en = {
   tdHallDigiDesc: "The high-tech scanning hub where historic documents are digitized at high-resolution to be preserved for future generations.",
   tdHallGalleryTitle: "Exhibition Gallery",
   tdHallGalleryDesc: "A museum-like gallery space highlighting the oldest books, historical scripts, and cultural exhibits open for visitors.",
+  periodicalsTag: "Periodicals",
+  periodicalsTitle: "Journals & Newspapers",
+  periodicalsSubtitle: "List of periodicals, journals, and newspapers in our library collection.",
+  periodicalJournal: "Journal",
+  periodicalNewspaper: "Newspaper",
+  periodicalMonthly: "Monthly",
+  periodicalBiMonthly: "Bi-monthly",
+  periodicalQuarterly: "Quarterly",
+  periodicalWeekly: "Weekly",
+  periodicalSemiMonthly: "Semi-monthly",
+  periodicalTimesWeek: "5 times a week",
+  periodicalTwiceQuarter: "Twice a quarter",
 };
 
 i18n.ru = {
@@ -633,6 +657,18 @@ i18n.ru = {
   tdHallDigiDesc: "Высокотехнологичный центр сканирования и конвертации редких рукописных книг в цифровой формат для сохранения наследия.",
   tdHallGalleryTitle: "Выставочная галерея",
   tdHallGalleryDesc: "Галерейное пространство, где выставлены старейшие оригиналы книг, образцы каллиграфии и исторические артефакты.",
+  periodicalsTag: "Периодика",
+  periodicalsTitle: "Газеты и журналы",
+  periodicalsSubtitle: "Список периодических изданий, газет и журналов в фонде нашей библиотеки.",
+  periodicalJournal: "Журнал",
+  periodicalNewspaper: "Газета",
+  periodicalMonthly: "Ежемесячно",
+  periodicalBiMonthly: "Раз в 2 месяца",
+  periodicalQuarterly: "Раз в 3 месяца",
+  periodicalWeekly: "Раз в неделю",
+  periodicalSemiMonthly: "Дважды в месяц",
+  periodicalTimesWeek: "5 раз в неделю",
+  periodicalTwiceQuarter: "Дважды в квартал",
 };
 
 i18n.tr = {
@@ -819,6 +855,18 @@ i18n.tr = {
   tdHallDigiDesc: "Tarihi kaynakların yüksek çözünürlükte taranarak gelecek nesiller için dijital ortama aktarıldığı teknolojik merkez.",
   tdHallGalleryTitle: "Sergi Galerisi",
   tdHallGalleryDesc: "Kütüphanedeki en eski eserlerin, kaligrafi örneklerinin ve tarihi objelerin sergilendiği, ziyaretçilere açık galeri alanı.",
+  periodicalsTag: "Süreli Yayınlar",
+  periodicalsTitle: "Gazeteler ve Dergiler",
+  periodicalsSubtitle: "Kütüphane koleksiyonumuzdaki süreli yayınlar, gazete ve dergilerin listesi.",
+  periodicalJournal: "Dergi",
+  periodicalNewspaper: "Gazete",
+  periodicalMonthly: "Aylık",
+  periodicalBiMonthly: "2 ayda bir",
+  periodicalQuarterly: "3 ayda bir",
+  periodicalWeekly: "Haftalık",
+  periodicalSemiMonthly: "Ayda 2 kez",
+  periodicalTimesWeek: "Haftada 5 kez",
+  periodicalTwiceQuarter: "3 ayda iki kez",
 };
 
 /* Arabic */
@@ -1081,6 +1129,18 @@ i18n.ar = {
   qs1Link: "الذهاب للأرشيف ←",
   qs2Link: "طلب الدعم ←",
   qs3Link: "التفاصيل ←",
+  periodicalsTag: "الدوريات",
+  periodicalsTitle: "الصحف والمجلات",
+  periodicalsSubtitle: "قائمة بالدوريات والصحف والمجلات المتوفرة في مجموعات مكتبتنا.",
+  periodicalJournal: "مجلة",
+  periodicalNewspaper: "صحيفة",
+  periodicalMonthly: "شهرياً",
+  periodicalBiMonthly: "كل شهرين",
+  periodicalQuarterly: "كل ثلاثة أشهر",
+  periodicalWeekly: "أسبوعياً",
+  periodicalSemiMonthly: "مرتين شهرياً",
+  periodicalTimesWeek: "٥ مرات أسبوعياً",
+  periodicalTwiceQuarter: "مرتين كل فصل",
 };
 
 /* ─────────────────────────────────────────────
@@ -1164,6 +1224,9 @@ function applyTexts() {
   if (typeof tdFocusedHotspot === "string" && tdFocusedHotspot && typeof focusHotspot === "function") {
     focusHotspot(tdFocusedHotspot);
   }
+
+  // Render Periodicals
+  if (typeof renderPeriodicals === "function") renderPeriodicals();
 }
 
 function handleRegisterSubmit(event) {
@@ -2175,4 +2238,265 @@ function toggle3DFullscreen() {
   
   setTimeout(on3DWindowResize, 100);
   document.body.classList.toggle("modal-open", isFull);
+}
+
+/* ══════════════ PERIODICALS ══════════════ */
+const PERIODICALS_DATA = [
+  {
+    id: 1, type: "journal", freqKey: "periodicalMonthly",
+    uz: { title: "Fan va din", desc: "1959-yildan buyon chiqadi, oyda bir marta nashr etiladi." },
+    en: { title: "Science and Religion", desc: "Published since 1959, monthly issue." },
+    ru: { title: "Наука и религия", desc: "Издается с 1959 года, ежемесячное издание." },
+    tr: { title: "Bilim ve Din", desc: "1959'dan beri yayınlanmaktadır, aylık basım." },
+    ar: { title: "العلم والدين", desc: "تصدر منذ عام ١٩٥٩، بمعدل عدد واحد شهرياً." }
+  },
+  {
+    id: 2, type: "journal", freqKey: "periodicalBiMonthly",
+    uz: { title: "San'at va madaniyat", desc: "2010-yildan buyon chiqadi, har 2 oyda bir marta." },
+    en: { title: "Art and Culture", desc: "Published since 2010, once every 2 months." },
+    ru: { title: "Искусство и культура", desc: "Издается с 2010 года, раз в 2 месяца." },
+    tr: { title: "Sanat ve Kültür", desc: "2010'dan beri yayınlanmaktadır, 2 ayda bir." },
+    ar: { title: "الفن والثقافة", desc: "تصدر منذ عام ٢٠١٠، بمعدل مرة كل شهرين." }
+  },
+  {
+    id: 3, type: "journal", freqKey: "periodicalBiMonthly",
+    uz: { title: "Etnografik sharh", desc: "1989-yildan buyon chiqadi, har 2 oyda bir marta." },
+    en: { title: "Ethnographic Review", desc: "Published since 1989, once every 2 months." },
+    ru: { title: "Этнографическое обозрение", desc: "Издается с 1989 года, раз в 2 месяца." },
+    tr: { title: "Etnografik İnceleme", desc: "1989'dan beri yayınlanmaktadır, 2 ayda bir." },
+    ar: { title: "المجلة الإثنوغرافية", desc: "تصدر منذ عام ١٩٨٩، بمعدل مرة كل شهرين." }
+  },
+  {
+    id: 4, type: "journal", freqKey: "periodicalBiMonthly",
+    uz: { title: "Studia Religiosa Rossica", desc: "2018-yildan buyon chiqadi, har 2 oyda bir marta." },
+    en: { title: "Studia Religiosa Rossica", desc: "Published since 2018, once every 2 months." },
+    ru: { title: "Studia Religiosa Rossica", desc: "Издается с 2018 года, раз в 2 месяца." },
+    tr: { title: "Studia Religiosa Rossica", desc: "2018'den beri yayınlanmaktadır, 2 ayda bir." },
+    ar: { title: "دراسات روسية دينية", desc: "تصدر منذ عام ٢٠١٨، بمعدل مرة كل شهرين." }
+  },
+  {
+    id: 5, type: "journal", freqKey: "periodicalQuarterly",
+    uz: { title: "Etnografiya", desc: "2018-yildan buyon chiqadi, har 3 oyda bir marta." },
+    en: { title: "Ethnography", desc: "Published since 2018, once every 3 months." },
+    ru: { title: "Этнография", desc: "Издается с 2018 года, раз в 3 месяца." },
+    tr: { title: "Etnografya", desc: "2018'den beri yayınlanmaktadır, 3 ayda bir." },
+    ar: { title: "الإثنوغرافيا", desc: "تصدر منذ عام ٢٠١٨، بمعدل مرة كل ٣ أشهر." }
+  },
+  {
+    id: 6, type: "journal", freqKey: "periodicalQuarterly",
+    uz: { title: "Muzeyshunoslik masalalari", desc: "2010-yildan buyon chiqadi, har 3 oyda bir marta." },
+    en: { title: "Problems of Museology", desc: "Published since 2010, once every 3 months." },
+    ru: { title: "Вопросы музеологии", desc: "Издается с 2010 года, раз в 3 месяца." },
+    tr: { title: "Müzebilim Sorunları", desc: "2010'dan beri yayınlanmaktadır, 3 ayda bir." },
+    ar: { title: "قضايا علم المتاحف", desc: "تصدر منذ عام ٢٠١٠، بمعدل مرة كل ٣ أشهر." }
+  },
+  {
+    id: 7, type: "journal", freqKey: "periodicalQuarterly",
+    uz: { title: "San'atshunoslik", desc: "1997-yildan buyon chiqadi, har 3 oyda bir marta." },
+    en: { title: "Art Studies", desc: "Published since 1997, once every 3 months." },
+    ru: { title: "Искусствознание", desc: "Издается с 1997 года, раз в 3 месяца." },
+    tr: { title: "Sanat Tarihi Araştırmaları", desc: "1997'den beri yayınlanmaktadır, 3 ayda bir." },
+    ar: { title: "دراسات الفنون", desc: "تصدر منذ عام ١٩٩٧، بمعدل مرة كل ٣ أشهر." }
+  },
+  {
+    id: 8, type: "journal", freqKey: "periodicalQuarterly",
+    uz: { title: "Arxeologiya, etnografiya va antropologiya", desc: "2000-yildan buyon chiqadi, har 3 oyda bir marta." },
+    en: { title: "Archaeology, Ethnography & Anthropology", desc: "Published since 2000, once every 3 months." },
+    ru: { title: "Археология, этнография и антропология", desc: "Издается с 2000 года, раз в 3 месяца." },
+    tr: { title: "Arkeoloji, Etnografya ve Antropoloji", desc: "2000'den beri yayınlanmaktadır, 3 ayda bir." },
+    ar: { title: "الآثار والإثنوغرافيا والأنثروبولوجيا", desc: "تصدر منذ عام ٢٠٠٠، بمعدل مرة كل ٣ أشهر." }
+  },
+  {
+    id: 9, type: "newspaper", freqKey: "periodicalWeekly",
+    uz: { title: "Norma", desc: "2005-yildan buyon chiqadi." },
+    en: { title: "Norma", desc: "Published since 2005, weekly law and business update." },
+    ru: { title: "Норма", desc: "Издается с 2005 года." },
+    tr: { title: "Norma", desc: "2005'ten beri yayınlanmaktadır." },
+    ar: { title: "نورما", desc: "تصدر منذ عام ٢٠٠٥." }
+  },
+  {
+    id: 10, type: "newspaper", freqKey: "periodicalWeekly",
+    uz: { title: "Soliq va bojxona xabarlari", desc: "1994-yildan buyon chiqadi." },
+    en: { title: "Tax and Customs News", desc: "Published since 1994, weekly analysis." },
+    ru: { title: "Налоговые и таможенные вести", desc: "Издается с 1994 года." },
+    tr: { title: "Vergi ve Gümrük Haberleri", desc: "1994'ten beri yayınlanmaktadır." },
+    ar: { title: "أخبار الضرائب والجمارك", desc: "تصدر منذ عام ١٩٩٤." }
+  },
+  {
+    id: 11, type: "journal", freqKey: "periodicalQuarterly",
+    uz: { title: "Din falsafasi", desc: "2017-yildan buyon chiqadi, har 3 oyda bir marta." },
+    en: { title: "Philosophy of Religion", desc: "Published since 2017, once every 3 months." },
+    ru: { title: "Философия религии", desc: "Издается с 2017 года, раз в 3 месяца." },
+    tr: { title: "Din Felsefesi", desc: "2017'den beri yayınlanmaktadır, 3 ayda bir." },
+    ar: { title: "فلسفة الدين", desc: "تصدر منذ عام ٢٠١٧، بمعدل مرة كل ٣ أشهر." }
+  },
+  {
+    id: 12, type: "journal", freqKey: "periodicalBiMonthly",
+    uz: { title: "Jahon adabiyoti", desc: "1997-yildan buyon chiqadi, har 2 oyda bir marta." },
+    en: { title: "World Literature", desc: "Published since 1997, once every 2 months." },
+    ru: { title: "Мировая литература", desc: "Издается с 1997 года, раз в 2 месяца." },
+    tr: { title: "Dünya Edebiyatı", desc: "1997'den beri yayınlanmaktadır, 2 ayda bir." },
+    ar: { title: "الأدب العالمي", desc: "تصدر منذ عام ١٩٩٧، بمعدل مرة كل شهرين." }
+  },
+  {
+    id: 13, type: "journal", freqKey: "periodicalMonthly",
+    uz: { title: "Sharq yulduzi", desc: "1932-yildan buyon chiqadi, har oyda bir marta." },
+    en: { title: "Star of the East", desc: "Published since 1932, monthly issue." },
+    ru: { title: "Звезда Востока", desc: "Издается с 1932 года, ежемесячное издание." },
+    tr: { title: "Doğu Yıldızı", desc: "1932'den beri yayınlanmaktadır, aylık basım." },
+    ar: { title: "نجم الشرق", desc: "تصدر منذ عام ١٩٣٢، بمعدل عدد واحد شهرياً." }
+  },
+  {
+    id: 14, type: "journal", freqKey: "periodicalMonthly",
+    uz: { title: "San'at", desc: "1997-yildan buyon chiqadi, har oyda bir marta." },
+    en: { title: "Art", desc: "Published since 1997, monthly issue." },
+    ru: { title: "Искусство", desc: "Издается с 1997 года, ежемесячное издание." },
+    tr: { title: "Sanat", desc: "1997'den beri yayınlanmaktadır, aylık basım." },
+    ar: { title: "الفن", desc: "تصدر منذ عام ١٩٩٧، بمعدل عدد واحد شهرياً." }
+  },
+  {
+    id: 15, type: "journal", freqKey: "periodicalMonthly",
+    uz: { title: "Guliston", desc: "1925-yildan buyon chiqadi, har oyda bir marta." },
+    en: { title: "Gulistan", desc: "Published since 1925, monthly issue." },
+    ru: { title: "Гулистан", desc: "Издается с 1925 года, ежемесячное издание." },
+    tr: { title: "Gülistan", desc: "1925'ten beri yayınlanmaktadır, aylık basım." },
+    ar: { title: "غولستان", desc: "تصدر منذ عام ١٩٢٥، بمعدل عدد واحد شهرياً." }
+  },
+  {
+    id: 16, type: "journal", freqKey: "periodicalMonthly",
+    uz: { title: "Kadrlar masalalari bo'yicha ma'lumotnoma", desc: "Elektron jurnal. 2017-yildan buyon chiqadi, har oyda bir marta." },
+    en: { title: "HR Directory (e-journal)", desc: "Electronic journal. Published since 2017, monthly issue." },
+    ru: { title: "Справочник по кадровым вопросам (э-журнал)", desc: "Электронный журнал. Издается с 2017 года, ежемесячно." },
+    tr: { title: "İK Kılavuzu (e-dergi)", desc: "Elektronik dergi. 2017'den beri yayınlanmaktadır, aylık." },
+    ar: { title: "دليل الموارد البشرية (مجلة إلكترونية)", desc: "مجلة إلكترونية. تصدر منذ عام ٢٠١٧، بمعدل عدد واحد شهرياً." }
+  },
+  {
+    id: 17, type: "journal", freqKey: "periodicalMonthly",
+    uz: { title: "Soliqqa tortish va buxgalteriya hisobi", desc: "Elektron jurnal. 2006-yildan buyon chiqadi, har oyda bir marta." },
+    en: { title: "Taxation and Accounting (e-journal)", desc: "Electronic journal. Published since 2006, monthly issue." },
+    ru: { title: "Налогообложение и бухучет (э-журнал)", desc: "Электронный журнал. Издается с 2006 года, ежемесячно." },
+    tr: { title: "Vergilendirme ve Muhasebe (e-dergi)", desc: "Elektronik dergi. 2006'dan beri yayınlanmaktadır, aylık." },
+    ar: { title: "الضرائب والمحاسبة (مجلة إلكترونية)", desc: "مجلة إلكترونية. تصدر منذ عام ٢٠٠٦، بمعدل عدد واحد شهرياً." }
+  },
+  {
+    id: 18, type: "journal", freqKey: "periodicalQuarterly",
+    uz: { title: "Infolib", desc: "2012-yildan buyon chiqadi, har 3 oyda bir marta." },
+    en: { title: "Infolib", desc: "Published since 2012, once every 3 months." },
+    ru: { title: "Infolib", desc: "Издается с 2012 года, раз в 3 месяца." },
+    tr: { title: "Infolib", desc: "2012'den beri yayınlanmaktadır, 3 ayda bir." },
+    ar: { title: "إنفوليب", desc: "تصدر منذ عام ٢٠١٢، بمعدل مرة كل ٣ أشهر." }
+  },
+  {
+    id: 19, type: "journal", freqKey: "periodicalTwiceQuarter",
+    uz: { title: "Tafakkur", desc: "1994-yildan buyon chiqadi, har 3 oyda ikki marta." },
+    en: { title: "Tafakkur", desc: "Published since 1994, twice every 3 months." },
+    ru: { title: "Тафаккур", desc: "Издается с 1994 года, дважды в 3 месяца." },
+    tr: { title: "Tefekkür", desc: "1994'ten beri yayınlanmaktadır, 3 ayda iki kez." },
+    ar: { title: "تفكر", desc: "تصدر منذ عام ١٩٩٤، بمعدل مرتين كل ٣ أشهر." }
+  },
+  {
+    id: 20, type: "journal", freqKey: "periodicalTwiceQuarter",
+    uz: { title: "Imom Buxoriy saboqlari", desc: "2000-yildan buyon chiqadi, har 3 oyda ikki marta." },
+    en: { title: "Lessons of Imam Bukhari", desc: "Published since 2000, twice every 3 months." },
+    ru: { title: "Уроки Имама Бухари", desc: "Издается с 2000 года, дважды в 3 месяца." },
+    tr: { title: "İmam Buhari Dersleri", desc: "2000'den beri yayınlanmaktadır, 3 ayda iki kez." },
+    ar: { title: "دروس الإمام البخاري", desc: "تصدر منذ عام ٢٠٠٠، بمعدل مرتين كل ٣ أشهر." }
+  },
+  {
+    id: 21, type: "journal", freqKey: "periodicalTwiceQuarter",
+    uz: { title: "O'zbekiston tarixi", desc: "1998-yildan buyon chiqadi, har 3 oyda ikki marta." },
+    en: { title: "History of Uzbekistan", desc: "Published since 1998, twice every 3 months." },
+    ru: { title: "История Узбекистана", desc: "Издается с 1998 года, дважды в 3 месяца." },
+    tr: { title: "Özbekistan Tarihi", desc: "1998'den beri yayınlanmaktadır, 3 ayda iki kez." },
+    ar: { title: "تاريخ أوزبكستان", desc: "تصدر منذ عام ١٩٩٨، بمعدل مرتين كل ٣ أشهر." }
+  },
+  {
+    id: 22, type: "newspaper", freqKey: "periodicalTimesWeek",
+    uz: { title: "Yangi O'zbekiston", desc: "2020-yildan buyon chiqadi, haftada 5 marta." },
+    en: { title: "New Uzbekistan", desc: "Published since 2020, 5 times a week." },
+    ru: { title: "Янги Узбекистан", desc: "Издается с 2020 года, 5 раз в неделю." },
+    tr: { title: "Yeni Özbekistan", desc: "2020'den beri yayınlanmaktadır, haftada 5 kez." },
+    ar: { title: "أوزبكستان الجديدة", desc: "تصدر منذ عام ٢٠٢٠، بمعدل ٥ مرات أسبوعياً." }
+  },
+  {
+    id: 23, type: "newspaper", freqKey: "periodicalTimesWeek",
+    uz: { title: "Xalq so'zi", desc: "1991-yildan buyon chiqadi, haftada 5 marta." },
+    en: { title: "People's Word (UZ)", desc: "Published since 1991, 5 times a week." },
+    ru: { title: "Халк сузи", desc: "Издается с 1991 года, 5 раз в неделю." },
+    tr: { title: "Halk Sözü (Özbekçe)", desc: "1991'den beri yayınlanmaktadır, haftada 5 kez." },
+    ar: { title: "صوت الشعب (أوزبكي)", desc: "تصدر منذ عام ١٩٩١، بمعدل ٥ مرات أسبوعياً." }
+  },
+  {
+    id: 24, type: "newspaper", freqKey: "periodicalWeekly",
+    uz: { title: "Jadid", desc: "2024-yildan buyon chiqadi, haftada 1 marta." },
+    en: { title: "Jadid", desc: "Published since 2024, once a week." },
+    ru: { title: "Джадид", desc: "Издается с 2024 года, раз в неделю." },
+    tr: { title: "Cedit", desc: "2024'ten beri yayınlanmaktadır, haftada bir." },
+    ar: { title: "الجديد", desc: "تصدر منذ عام ٢٠٢٤، بمعدل مرة واحدة أسبوعياً." }
+  },
+  {
+    id: 25, type: "newspaper", freqKey: "periodicalTimesWeek",
+    uz: { title: "Pravda Vostoka", desc: "2020-yildan buyon chiqadi, haftada 5 marta." },
+    en: { title: "Truth of the East", desc: "Published since 2020, 5 times a week." },
+    ru: { title: "Правда Востока", desc: "Издается с 2020 года, 5 раз в неделю." },
+    tr: { title: "Pravda Vostoka", desc: "2020'den beri yayınlanmaktadır, haftada 5 kez." },
+    ar: { title: "حقيقة الشرق", desc: "تصدر منذ عام ٢٠٢٠، بمعدل ٥ مرات أسبوعياً." }
+  },
+  {
+    id: 26, type: "newspaper", freqKey: "periodicalTimesWeek",
+    uz: { title: "Narodnoye slovo", desc: "1991-yildan buyon chiqadi, haftada 5 marta." },
+    en: { title: "People's Word (RU)", desc: "Published since 1991, 5 times a week." },
+    ru: { title: "Народное слово", desc: "Издается с 1991 года, 5 раз в неделю." },
+    tr: { title: "Halk Sözü (Rusça)", desc: "1991'den beri yayınlanmaktadır, haftada 5 kez." },
+    ar: { title: "صوت الشعب (روسي)", desc: "تصدر منذ عام ١٩٩١، بمعدل ٥ مرات أسبوعياً." }
+  },
+  {
+    id: 27, type: "newspaper", freqKey: "periodicalSemiMonthly",
+    uz: { title: "Bugungi O'zbekiston", desc: "2021-yildan buyon chiqadi, oyda 2 marta." },
+    en: { title: "Uzbekistan Today", desc: "Published since 2021, twice a month." },
+    ru: { title: "Сегодняшний Узбекистан", desc: "Издается с 2021 года, дважды в месяц." },
+    tr: { title: "Bugünün Özbekistan'ı", desc: "2021'den beri yayınlanmaktadır, ayda 2 kez." },
+    ar: { title: "أوزبكستان اليوم", desc: "تصدر منذ عام ٢٠٢١، بمعدل مرتين شهرياً." }
+  }
+];
+
+function renderPeriodicals() {
+  const grid = document.getElementById("periodicals-grid");
+  if (!grid) return;
+
+  const lang = currentLang;
+  const dict = i18n[lang] || i18n.uz;
+
+  grid.innerHTML = PERIODICALS_DATA.map(p => {
+    const translation = p[lang] || p.uz;
+    const badgeText = p.type === "journal" ? (dict.periodicalJournal || "Jurnal") : (dict.periodicalNewspaper || "Gazeta");
+    const badgeClass = p.type === "journal" ? "periodical-badge--journal" : "periodical-badge--newspaper";
+    const frequencyText = dict[p.freqKey] || "";
+
+    // Icons
+    const journalIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>`;
+    const newspaperIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8V6Z"/></svg>`;
+    const icon = p.type === "journal" ? journalIcon : newspaperIcon;
+
+    return `
+      <div class="periodical-card" tabindex="0">
+        <div class="periodical-cover" style="background-image: url('images/press/${p.id}.jpg')">
+          <div class="periodical-card-top">
+            <span class="periodical-badge ${badgeClass}">${badgeText}</span>
+            <div class="periodical-icon-wrap">${icon}</div>
+          </div>
+        </div>
+        <h4 class="periodical-title">${translation.title}</h4>
+        <span class="periodical-freq">${frequencyText}</span>
+        
+        <div class="periodical-overlay">
+          <div class="periodical-overlay-content">
+            <span class="overlay-badge ${badgeClass}">${badgeText}</span>
+            <h4 class="overlay-title">${translation.title}</h4>
+            <p class="periodical-desc">${translation.desc}</p>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join("");
 }

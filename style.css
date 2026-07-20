@@ -2450,6 +2450,186 @@ h1 {
   }
 }
 
+/* Vaqtli matbuot (Periodicals) Grid & Cards */
+.periodicals-wrap {
+  margin-top: 54px;
+  padding-top: 40px;
+  border-top: 1px solid rgba(234, 210, 154, 0.1);
+}
+.section-header-mini {
+  margin-bottom: 28px;
+}
+.section-header-mini .svc-tag {
+  display: inline-block;
+  margin-bottom: 8px;
+}
+.section-title-mini {
+  font-size: 20px;
+  font-weight: 900;
+  color: var(--white);
+  margin-bottom: 6px;
+}
+.section-subtitle-mini {
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 600px;
+}
+.periodicals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 16px;
+}
+.periodical-card {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(234, 210, 154, 0.12);
+  border-radius: var(--radius);
+  background: rgba(255, 250, 240, 0.03);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: inset 0 1px 0 rgba(255, 250, 240, 0.04);
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              background 300ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+.periodical-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(234, 210, 154, 0.35);
+  background: rgba(255, 250, 240, 0.08);
+  box-shadow: 
+    0 12px 30px rgba(200, 164, 93, 0.06),
+    inset 0 1px 0 rgba(255, 250, 240, 0.08);
+}
+.periodical-cover {
+  width: 100%;
+  height: 220px;
+  border-radius: calc(var(--radius) - 4px);
+  background: linear-gradient(135deg, rgba(234, 210, 154, 0.08) 0%, rgba(234, 210, 154, 0.02) 100%);
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  border: 1px solid rgba(255, 250, 240, 0.05);
+  padding: 12px;
+  box-sizing: border-box;
+}
+.periodical-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.periodical-badge {
+  font-size: 10px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 10px;
+  border-radius: 6px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+.periodical-badge--journal {
+  background: rgba(30, 77, 122, 0.2);
+  color: #7ab3ef;
+  border: 1px solid rgba(122, 179, 239, 0.3);
+}
+.periodical-badge--newspaper {
+  background: rgba(45, 90, 61, 0.2);
+  color: #8ed6a9;
+  border: 1px solid rgba(142, 214, 169, 0.3);
+}
+.periodical-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(255, 250, 240, 0.05);
+  border: 1px solid rgba(255, 250, 240, 0.1);
+  display: grid;
+  place-items: center;
+  color: var(--gold-2);
+}
+.periodical-card:hover .periodical-icon-wrap {
+  color: var(--white);
+  border-color: rgba(234, 210, 154, 0.25);
+  background: rgba(234, 210, 154, 0.1);
+}
+.periodical-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.4;
+  margin: 0;
+  flex: 1;
+}
+.periodical-freq {
+  font-size: 12px;
+  color: var(--gold-2);
+  font-weight: 600;
+}
+/* Overlay details on hover */
+.periodical-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(7, 28, 22, 0.96);
+  border: 1px solid rgba(234, 210, 154, 0.35);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 250ms cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 5;
+  border-radius: inherit;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.periodical-card:hover .periodical-overlay {
+  opacity: 1;
+  pointer-events: all;
+}
+.periodical-overlay-content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+.periodical-overlay-content .overlay-badge {
+  align-self: flex-start;
+}
+.overlay-badge {
+  font-size: 9px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+.overlay-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--white);
+  margin: 0;
+}
+.periodical-desc {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* RTL overrides for Periodicals */
+html[dir="rtl"] .periodical-overlay-content {
+  text-align: right;
+}
+html[dir="rtl"] .periodical-overlay-content .overlay-badge {
+  align-self: flex-end;
+}
+
 /* ══════════════ RTL (Arabic) Support ══════════════ */
 html[dir="rtl"] {
   direction: rtl;

@@ -27,7 +27,7 @@ const i18n = {
     brandSubtitle:"O'zbekistondagi islom sivilizatsiyasi markazi kutubxonasi",
     navHome:"Bosh sahifa", navDiscover:"Fondlar", navServices:"Xizmatlar",
     navVisit:"Tashrif", navAbout:"Haqida", navPartners:"Hamkorlar",
-    navDirectors:"Kutubxona jamoasi",
+    navDirectors:"Kutubxona jamoasi", navContact:"Bog'lanish",
     navKirish:"Kirish", navRegister:"Ro'yxatdan o'tish",
     heroEyebrow:"Raqamli meros platformasi",
     heroTitle:"Islom sivilizatsiyasi manbalarini zamonaviy formatda kashf eting.",
@@ -244,6 +244,32 @@ const i18n = {
     periodicalSemiMonthly: "Oyda 2 marta",
     periodicalTimesWeek: "Haftada 5 marta",
     periodicalTwiceQuarter: "3 oyda 2 marta",
+    contactKicker: "Bog'lanish",
+    contactTitle: "Biz bilan bog'laning",
+    contactSubtitle: "Savollaringiz, takliflaringiz yoki murojaat uchun quyidagi formani to'ldiring.",
+    contactInfoEmail: "Elektron pochta",
+    contactInfoPhone: "Telefon",
+    contactInfoTelegram: "Telegram",
+    contactInfoAddress: "Manzil",
+    contactHoursLabel: "Ish vaqti",
+    contactHoursDays: "Dushanba – Shanba",
+    contactFormName: "To'liq ism *",
+    contactFormNamePh: "Ismi Familiyasi",
+    contactFormPhone: "Telefon raqam",
+    contactFormPhonePh: "+998 90 000 00 00",
+    contactFormTelegram: "Telegram",
+    contactFormTelegramPh: "@username",
+    contactFormSubject: "Mavzu *",
+    contactFormSubjectPh: "Murojaat mavzusi",
+    contactFormBody: "Xabar matni *",
+    contactFormBodyPh: "Xabaringizni bu yerga yozing...",
+    contactFormContactNote: "Telefon yoki Telegram — kamida bittasini kiriting",
+    contactFormHint: "* bilan belgilangan maydonlar majburiy",
+    contactFormSubmit: "Yuborish",
+    contactSuccessTitle: "Xabaringiz yuborildi!",
+    contactSuccessText: "Tez orada siz bilan bog'lanamiz.",
+    contactSuccessAgain: "Yangi xabar yuborish",
+    contactErrorText: "Xatolik yuz berdi. Qayta urinib ko'ring.",
   }
 };
 
@@ -469,6 +495,33 @@ i18n.en = {
   periodicalSemiMonthly: "Semi-monthly",
   periodicalTimesWeek: "5 times a week",
   periodicalTwiceQuarter: "Twice a quarter",
+  navContact: "Contact Us",
+  contactKicker: "Contact",
+  contactTitle: "Get in Touch",
+  contactSubtitle: "Fill out the form below with your questions, suggestions or inquiry.",
+  contactInfoEmail: "Email",
+  contactInfoPhone: "Phone",
+  contactInfoTelegram: "Telegram",
+  contactInfoAddress: "Address",
+  contactHoursLabel: "Working Hours",
+  contactHoursDays: "Monday – Saturday",
+  contactFormName: "Full Name *",
+  contactFormNamePh: "First and Last Name",
+  contactFormPhone: "Phone Number",
+  contactFormPhonePh: "+998 90 000 00 00",
+  contactFormTelegram: "Telegram",
+  contactFormTelegramPh: "@username",
+  contactFormSubject: "Subject *",
+  contactFormSubjectPh: "Message subject",
+  contactFormBody: "Message *",
+  contactFormBodyPh: "Write your message here...",
+  contactFormContactNote: "Phone or Telegram — at least one is required",
+  contactFormHint: "Fields marked with * are required",
+  contactFormSubmit: "Send Message",
+  contactSuccessTitle: "Message Sent!",
+  contactSuccessText: "We will get back to you shortly.",
+  contactSuccessAgain: "Send Another Message",
+  contactErrorText: "An error occurred. Please try again.",
 };
 
 i18n.ru = {
@@ -669,6 +722,33 @@ i18n.ru = {
   periodicalSemiMonthly: "Дважды в месяц",
   periodicalTimesWeek: "5 раз в неделю",
   periodicalTwiceQuarter: "Дважды в квартал",
+  navContact: "Связаться",
+  contactKicker: "Контакт",
+  contactTitle: "Свяжитесь с нами",
+  contactSubtitle: "Заполните форму ниже с вашими вопросами, предложениями или обращениями.",
+  contactInfoEmail: "Электронная почта",
+  contactInfoPhone: "Телефон",
+  contactInfoTelegram: "Telegram",
+  contactInfoAddress: "Адрес",
+  contactHoursLabel: "Часы работы",
+  contactHoursDays: "Понедельник – Суббота",
+  contactFormName: "Полное имя *",
+  contactFormNamePh: "Имя Фамилия",
+  contactFormPhone: "Номер телефона",
+  contactFormPhonePh: "+998 90 000 00 00",
+  contactFormTelegram: "Telegram",
+  contactFormTelegramPh: "@username",
+  contactFormSubject: "Тема *",
+  contactFormSubjectPh: "Тема обращения",
+  contactFormBody: "Текст сообщения *",
+  contactFormBodyPh: "Напишите ваше сообщение здесь...",
+  contactFormContactNote: "Телефон или Telegram — укажите хотя бы один",
+  contactFormHint: "Поля, отмеченные * являются обязательными",
+  contactFormSubmit: "Отправить",
+  contactSuccessTitle: "Сообщение отправлено!",
+  contactSuccessText: "Мы свяжемся с вами в ближайшее время.",
+  contactSuccessAgain: "Отправить ещё сообщение",
+  contactErrorText: "Произошла ошибка. Пожалуйста, попробуйте ещё раз.",
 };
 
 i18n.tr = {
@@ -867,6 +947,33 @@ i18n.tr = {
   periodicalSemiMonthly: "Ayda 2 kez",
   periodicalTimesWeek: "Haftada 5 kez",
   periodicalTwiceQuarter: "3 ayda iki kez",
+  navContact: "İletişim",
+  contactKicker: "İletişim",
+  contactTitle: "Bizimle İletişime Geçin",
+  contactSubtitle: "Sorularınız, önerileriniz veya başvurunuz için aşağıdaki formu doldurun.",
+  contactInfoEmail: "E-posta",
+  contactInfoPhone: "Telefon",
+  contactInfoTelegram: "Telegram",
+  contactInfoAddress: "Adres",
+  contactHoursLabel: "Çalışma Saatleri",
+  contactHoursDays: "Pazartesi – Cumartesi",
+  contactFormName: "Ad Soyad *",
+  contactFormNamePh: "Adınız Soyadınız",
+  contactFormPhone: "Telefon Numarası",
+  contactFormPhonePh: "+998 90 000 00 00",
+  contactFormTelegram: "Telegram",
+  contactFormTelegramPh: "@username",
+  contactFormSubject: "Konu *",
+  contactFormSubjectPh: "Mesaj konusu",
+  contactFormBody: "Mesaj İçeriği *",
+  contactFormBodyPh: "Mesajınızı buraya yazın...",
+  contactFormContactNote: "Telefon veya Telegram — en az biri gerekli",
+  contactFormHint: "* ile işaretli alanlar zorunludur",
+  contactFormSubmit: "Gönder",
+  contactSuccessTitle: "Mesajınız Gönderildi!",
+  contactSuccessText: "En kısa sürede sizinle iletişime geçeceğiz.",
+  contactSuccessAgain: "Yeni Mesaj Gönder",
+  contactErrorText: "Bir hata oluştu. Lütfen tekrar deneyin.",
 };
 
 /* Arabic */
@@ -1141,6 +1248,33 @@ i18n.ar = {
   periodicalSemiMonthly: "مرتين شهرياً",
   periodicalTimesWeek: "٥ مرات أسبوعياً",
   periodicalTwiceQuarter: "مرتين كل فصل",
+  navContact: "اتصل بنا",
+  contactKicker: "تواصل",
+  contactTitle: "تواصل معنا",
+  contactSubtitle: "املأ النموذج أدناه بأسئلتك أو مقترحاتك أو طلبك.",
+  contactInfoEmail: "البريد الإلكتروني",
+  contactInfoPhone: "الهاتف",
+  contactInfoTelegram: "تيليغرام",
+  contactInfoAddress: "العنوان",
+  contactHoursLabel: "ساعات العمل",
+  contactHoursDays: "الاثنين – السبت",
+  contactFormName: "الاسم الكامل *",
+  contactFormNamePh: "الاسم واللقب",
+  contactFormPhone: "رقم الهاتف",
+  contactFormPhonePh: "+998 90 000 00 00",
+  contactFormTelegram: "تيليغرام",
+  contactFormTelegramPh: "@username",
+  contactFormSubject: "الموضوع *",
+  contactFormSubjectPh: "موضوع الرسالة",
+  contactFormBody: "نص الرسالة *",
+  contactFormBodyPh: "اكتب رسالتك هنا...",
+  contactFormContactNote: "الهاتف أو تيليغرام — أحدهما مطلوب على الأقل",
+  contactFormHint: "الحقول المشار إليها بـ * إلزامية",
+  contactFormSubmit: "إرسال",
+  contactSuccessTitle: "تم إرسال رسالتك!",
+  contactSuccessText: "سنتواصل معك قريباً.",
+  contactSuccessAgain: "إرسال رسالة جديدة",
+  contactErrorText: "حدث خطأ. حاول مرة أخرى.",
 };
 
 /* ─────────────────────────────────────────────
@@ -1233,6 +1367,86 @@ function handleRegisterSubmit(event) {
   event.preventDefault();
   const dict = i18n[currentLang] || i18n.uz;
   alert(dict.regSuccess || "Muvaffaqiyatli ro'yxatdan o'tdingiz!");
+}
+
+/* ─────────────────────────────────────────────
+   Contact form
+───────────────────────────────────────────── */
+async function handleContactSubmit(event) {
+  event.preventDefault();
+
+  const dict    = i18n[currentLang] || i18n.uz;
+  const name    = document.getElementById("cf-name").value.trim();
+  const phone   = document.getElementById("cf-phone").value.trim();
+  const telegram = document.getElementById("cf-telegram").value.trim();
+  const subject = document.getElementById("cf-subject").value.trim();
+  const body    = document.getElementById("cf-body").value.trim();
+  const note    = document.getElementById("cf-contact-note");
+  const errEl   = document.getElementById("cf-error");
+
+  // Validate at least one contact channel
+  if (!phone && !telegram) {
+    note.style.display = "";
+    note.classList.add("cf-note--shake");
+    setTimeout(() => note.classList.remove("cf-note--shake"), 600);
+    return;
+  }
+  note.style.display = "none";
+
+  const submitBtn = document.getElementById("cf-submit");
+  submitBtn.disabled = true;
+
+  try {
+    const res = await fetch(`${SB_URL}/rest/v1/messages`, {
+      method: "POST",
+      headers: {
+        "apikey":       SB_KEY,
+        "Authorization": `Bearer ${SB_KEY}`,
+        "Content-Type": "application/json",
+        "Prefer":       "return=minimal"
+      },
+      body: JSON.stringify({
+        full_name:    name,
+        phone:        phone || null,
+        telegram:     telegram || null,
+        subject:      subject,
+        body:         body,
+        lang:         currentLang,
+        is_read:      false,
+        created_at:   new Date().toISOString()
+      })
+    });
+
+    if (!res.ok) {
+      const txt = await res.text();
+      throw new Error(txt);
+    }
+
+    // Show success state
+    document.getElementById("contact-form").querySelectorAll(
+      "input, textarea, button[type=submit]"
+    ).forEach(el => el.style.display = "none");
+    document.querySelector(".contact-form-footer").style.display = "none";
+    document.getElementById("cf-success").style.display = "";
+    errEl.style.display = "none";
+
+  } catch (e) {
+    errEl.textContent = (dict.contactErrorText || "Xatolik yuz berdi.") + " (" + (e.message || "") + ")";
+    errEl.style.display = "";
+  } finally {
+    submitBtn.disabled = false;
+  }
+}
+
+function resetContactForm() {
+  const form = document.getElementById("contact-form");
+  form.reset();
+  form.querySelectorAll("input, textarea, button[type=submit]").forEach(el => el.style.display = "");
+  const footer = document.querySelector(".contact-form-footer");
+  if (footer) footer.style.display = "";
+  document.getElementById("cf-success").style.display = "none";
+  document.getElementById("cf-error").style.display   = "none";
+  document.getElementById("cf-contact-note").style.display = "none";
 }
 
 

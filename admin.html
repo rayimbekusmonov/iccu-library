@@ -445,6 +445,29 @@
       .news-thumb { display:none; }
       .stats-grid { grid-template-columns:1fr 1fr; }
     }
+
+    /* ════ MESSAGES ════ */
+    .msg-list { display:grid; gap:12px; }
+    .msg-card {
+      border:1px solid var(--line); border-radius:var(--radius);
+      background:rgba(255,250,240,0.04); padding:20px 22px;
+      display:grid; gap:10px;
+      transition:border-color 150ms, background 150ms;
+    }
+    .msg-card:hover { border-color:rgba(234,210,154,0.25); background:rgba(255,250,240,0.07); }
+    .msg-card.unread { border-left:3px solid var(--gold); }
+    .msg-header { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    .msg-name { font-size:15px; font-weight:900; color:var(--white); }
+    .msg-contact { font-size:12px; color:var(--muted); margin-top:3px; display:flex; gap:12px; flex-wrap:wrap; }
+    .msg-contact span { display:inline-flex; align-items:center; gap:4px; }
+    .msg-badges { display:flex; gap:6px; align-items:center; flex-shrink:0; }
+    .msg-lang { font-size:10px; font-weight:900; text-transform:uppercase; padding:2px 8px; border-radius:4px; background:rgba(200,164,93,0.12); color:var(--gold-2); border:1px solid rgba(200,164,93,0.2); }
+    .msg-unread-dot { width:8px; height:8px; border-radius:50%; background:var(--gold); flex-shrink:0; }
+    .msg-subject { font-size:14px; font-weight:700; color:var(--gold-2); }
+    .msg-body { font-size:13px; color:var(--muted); line-height:1.6; white-space:pre-wrap; }
+    .msg-footer { display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+    .msg-time { font-size:11px; color:rgba(255,250,240,0.3); }
+    .msg-actions { display:flex; gap:8px; }
   </style>
 </head>
 <body>
@@ -493,6 +516,10 @@
         <span class="icon">📢</span> E'lonlar
         <span class="nav-badge" id="nb-ann">0</span>
       </button>
+      <button class="nav-item" onclick="showSection('messages')" id="nav-messages">
+        <span class="icon">✉️</span> Xabarlar
+        <span class="nav-badge" id="nb-msg" style="display:none">0</span>
+      </button>
 
       <span class="sidebar-label">Tez havolalar</span>
       <a class="nav-item" href="/" target="_blank">
@@ -502,6 +529,25 @@
 
     <!-- CONTENT -->
     <div class="content">
+
+      <!-- ─── MESSAGES ─── -->
+      <div id="sec-messages" style="display:none">
+        <div class="panel-header">
+          <div>
+            <h2>Xabarlar</h2>
+            <p>Saytdan kelgan foydalanuvchi murojaatlari</p>
+          </div>
+          <button class="btn-ghost" onclick="loadMessages()" style="gap:6px">
+            <span>↻</span> Yangilash
+          </button>
+        </div>
+        <div id="msg-loading" style="color:var(--muted);font-size:13px;padding:20px 0">Yuklanmoqda…</div>
+        <div id="msg-list" class="msg-list" style="display:none"></div>
+        <div id="msg-empty" style="display:none;text-align:center;padding:48px 0;color:var(--muted);font-size:14px">
+          <div style="font-size:40px;margin-bottom:12px">📭</div>
+          Hozircha xabarlar yo'q
+        </div>
+      </div>
 
       <!-- ─── DASHBOARD ─── -->
       <div id="sec-dashboard">
@@ -849,12 +895,13 @@ async function sbReq(path, opts = {}) {
 
 /* ════ SECTIONS ════ */
 function showSection(name) {
-  ["dashboard","news","announcements"].forEach(s => {
+  ["dashboard","news","announcements","messages"].forEach(s => {
     document.getElementById(`sec-${s}`).style.display   = s === name ? "" : "none";
     document.getElementById(`nav-${s}`).classList.toggle("active", s === name);
   });
-  const labels = { dashboard:"Dashboard", news:"Yangiliklar", announcements:"E'lonlar" };
+  const labels = { dashboard:"Dashboard", news:"Yangiliklar", announcements:"E'lonlar", messages:"Xabarlar" };
   document.getElementById("topbar-page").textContent = labels[name] || name;
+  if (name === "messages") loadMessages();
 }
 
 /* ════ INIT ════ */
@@ -1628,6 +1675,102 @@ async function deleteAnn(id) {
     await loadAnnouncements();
   } catch(e) {
     showErr("ann-err","O'chirishda xato: "+e.message);
+  }
+}
+
+/* ════ MESSAGES ════ */
+async function loadMessages() {
+  const listEl    = document.getElementById("msg-list");
+  const emptyEl   = document.getElementById("msg-empty");
+  const loadingEl = document.getElementById("msg-loading");
+
+  if (!listEl) return;
+  listEl.style.display    = "none";
+  emptyEl.style.display   = "none";
+  loadingEl.style.display = "";
+
+  try {
+    const msgs = await sbReq("/messages?order=created_at.desc&select=*");
+
+    // Update badge
+    const unread = msgs.filter(m => !m.is_read).length;
+    const badge  = document.getElementById("nb-msg");
+    if (badge) {
+      badge.textContent    = unread;
+      badge.style.display  = unread > 0 ? "" : "none";
+    }
+
+    loadingEl.style.display = "none";
+
+    if (!msgs.length) {
+      emptyEl.style.display = "";
+      return;
+    }
+
+    listEl.innerHTML = msgs.map(m => {
+      const d = new Date(m.created_at);
+      const timeStr = d.toLocaleString("uz-UZ", { year:"numeric", month:"short", day:"numeric", hour:"2-digit", minute:"2-digit" });
+
+      const phoneHtml   = m.phone    ? `<span>📞 ${escHtml(m.phone)}</span>` : "";
+      const telegramHtml = m.telegram ? `<span>✈️ ${escHtml(m.telegram)}</span>` : "";
+      const langLabel   = m.lang ? m.lang.toUpperCase() : "UZ";
+
+      return `
+        <div class="msg-card ${m.is_read ? "" : "unread"}" id="msg-${m.id}">
+          <div class="msg-header">
+            <div>
+              <div class="msg-name">${escHtml(m.full_name || "—")}</div>
+              <div class="msg-contact">${phoneHtml}${telegramHtml}</div>
+            </div>
+            <div class="msg-badges">
+              ${!m.is_read ? '<span class="msg-unread-dot" title="O\'qilmagan"></span>' : ""}
+              <span class="msg-lang">${langLabel}</span>
+            </div>
+          </div>
+          <div class="msg-subject">${escHtml(m.subject || "")}</div>
+          <div class="msg-body">${escHtml(m.body || "")}</div>
+          <div class="msg-footer">
+            <span class="msg-time">${timeStr}</span>
+            <div class="msg-actions">
+              ${!m.is_read
+                ? `<button class="btn-edit" onclick="toggleMsgRead(${m.id},true)">✓ O'qildi</button>`
+                : `<button class="btn-ghost" onclick="toggleMsgRead(${m.id},false)" style="font-size:12px">O'qilmagan</button>`
+              }
+              <button class="btn-danger" onclick="deleteMsg(${m.id})">🗑</button>
+            </div>
+          </div>
+        </div>`;
+    }).join("");
+
+    listEl.style.display = "";
+  } catch(e) {
+    loadingEl.textContent = "Xato: " + e.message;
+  }
+}
+
+function escHtml(str) {
+  if (!str) return "";
+  return str.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+async function toggleMsgRead(id, isRead) {
+  try {
+    await sbReq(`/messages?id=eq.${id}`, { method:"PATCH", prefer:"return=minimal", body: JSON.stringify({ is_read: isRead }) });
+    toast(isRead ? "O'qildi deb belgilandi ✓" : "O'qilmagan deb belgilandi");
+    await loadMessages();
+  } catch(e) {
+    toast("Xato: " + e.message, "fail");
+  }
+}
+
+async function deleteMsg(id) {
+  if (!confirm("Bu xabarni o'chirasizmi?")) return;
+  try {
+    await sbReq(`/messages?id=eq.${id}`, { method:"DELETE" });
+    toast("Xabar o'chirildi");
+    await loadMessages();
+  } catch(e) {
+    toast("O'chirishda xato: " + e.message, "fail");
   }
 }
 </script>

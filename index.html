@@ -54,6 +54,7 @@
         <button class="nav-link" id="nav-announcements" type="button" onclick="showPage('announcements')" data-t="navAnnouncements">E'lonlar</button>
         <span class="nav-ann-dot" id="ann-nav-dot" style="display:none"></span>
       </div>
+      <button class="nav-link" id="nav-contact" type="button" onclick="showPage('contact')" data-t="navContact">Bog'lanish</button>
     </div>
 
     <div class="nav-right">
@@ -1105,6 +1106,151 @@
         </div>
       </div>
     </section>
+
+    <!-- ══════════════ CONTACT ══════════════ -->
+    <section class="page" id="page-contact">
+      <div class="container">
+        <header class="page-header">
+          <div>
+            <div class="section-kicker" data-t="contactKicker">Bog'lanish</div>
+            <h2 class="page-title" data-t="contactTitle">Biz bilan bog'laning</h2>
+            <p class="page-subtitle" data-t="contactSubtitle">Savollaringiz, takliflaringiz yoki murojaat uchun quyidagi formani to'ldiring.</p>
+          </div>
+        </header>
+
+        <div class="contact-layout">
+
+          <!-- Left: Info panel -->
+          <div class="contact-info-panel">
+            <div class="contact-info-card">
+              <div class="cinfo-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+                  <rect x="2" y="4" width="20" height="16" rx="2"/>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+              </div>
+              <div>
+                <div class="cinfo-label" data-t="contactInfoEmail">Elektron pochta</div>
+                <div class="cinfo-value">library@iccu.example</div>
+              </div>
+            </div>
+            <div class="contact-info-card">
+              <div class="cinfo-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="cinfo-label" data-t="contactInfoPhone">Telefon</div>
+                <div class="cinfo-value">+998 00 000 00 00</div>
+              </div>
+            </div>
+            <div class="contact-info-card">
+              <div class="cinfo-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+                  <path d="M22 3L2 10l7 3 2 6 3-4 5 4 3-16z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="cinfo-label" data-t="contactInfoTelegram">Telegram</div>
+                <div class="cinfo-value">@icculibrary</div>
+              </div>
+            </div>
+            <div class="contact-info-card">
+              <div class="cinfo-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="22" height="22">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                  <circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div>
+                <div class="cinfo-label" data-t="contactInfoAddress">Manzil</div>
+                <div class="cinfo-value" data-t="footerAddress">Toshkent, O'zbekiston</div>
+              </div>
+            </div>
+
+            <div class="contact-hours">
+              <div class="cinfo-label" data-t="contactHoursLabel">Ish vaqti</div>
+              <div class="contact-hours-row">
+                <span data-t="contactHoursDays">Dushanba – Shanba</span>
+                <span class="contact-hours-time">09:00 – 18:00</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right: Form -->
+          <div class="contact-form-wrap">
+            <form id="contact-form" class="contact-form" onsubmit="handleContactSubmit(event)">
+
+              <div class="contact-form-row">
+                <div class="contact-field">
+                  <label class="contact-label" for="cf-name" data-t="contactFormName">To'liq ism *</label>
+                  <input class="contact-input" id="cf-name" type="text" required
+                    data-t-placeholder="contactFormNamePh"  placeholder="Ismi Familiyasi" autocomplete="name">
+                </div>
+              </div>
+
+              <div class="contact-form-row contact-form-row--2">
+                <div class="contact-field">
+                  <label class="contact-label" for="cf-phone" data-t="contactFormPhone">Telefon raqam</label>
+                  <input class="contact-input" id="cf-phone" type="tel"
+                    data-t-placeholder="contactFormPhonePh" placeholder="+998 90 000 00 00" autocomplete="tel">
+                </div>
+                <div class="contact-field">
+                  <label class="contact-label" for="cf-telegram" data-t="contactFormTelegram">Telegram</label>
+                  <input class="contact-input" id="cf-telegram" type="text"
+                    data-t-placeholder="contactFormTelegramPh" placeholder="@username">
+                </div>
+              </div>
+
+              <div class="contact-form-contact-note" id="cf-contact-note" data-t="contactFormContactNote" style="display:none">
+                Telefon yoki Telegram — kamida bittasini kiriting
+              </div>
+
+              <div class="contact-form-row">
+                <div class="contact-field">
+                  <label class="contact-label" for="cf-subject" data-t="contactFormSubject">Mavzu *</label>
+                  <input class="contact-input" id="cf-subject" type="text" required
+                    data-t-placeholder="contactFormSubjectPh" placeholder="Murojaat mavzusi">
+                </div>
+              </div>
+
+              <div class="contact-form-row">
+                <div class="contact-field">
+                  <label class="contact-label" for="cf-body" data-t="contactFormBody">Xabar matni *</label>
+                  <textarea class="contact-input contact-textarea" id="cf-body" rows="6" required
+                    data-t-placeholder="contactFormBodyPh" placeholder="Xabaringizni bu yerga yozing..."></textarea>
+                </div>
+              </div>
+
+              <div class="contact-form-footer">
+                <span class="contact-form-hint" data-t="contactFormHint">* bilan belgilangan maydonlar majburiy</span>
+                <button class="primary-button contact-submit" type="submit" id="cf-submit">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                    <path d="M22 3L2 10l7 3 2 6 3-4 5 4 3-16z"/>
+                  </svg>
+                  <span data-t="contactFormSubmit">Yuborish</span>
+                </button>
+              </div>
+
+              <div class="contact-form-success" id="cf-success" style="display:none">
+                <div class="cfs-icon">✓</div>
+                <h3 data-t="contactSuccessTitle">Xabaringiz yuborildi!</h3>
+                <p data-t="contactSuccessText">Tez orada siz bilan bog'lanamiz.</p>
+                <button class="secondary-button" type="button" onclick="resetContactForm()" data-t="contactSuccessAgain">Yangi xabar yuborish</button>
+              </div>
+
+              <div class="contact-form-error" id="cf-error" style="display:none">
+                <span data-t="contactErrorText">Xatolik yuz berdi. Qayta urinib ko'ring.</span>
+              </div>
+
+            </form>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
   </main><!-- /main -->
 
   <!-- ══════════════ FOOTER ══════════════ -->

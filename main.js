@@ -261,6 +261,9 @@ const i18n = {
     perFeaturedBadge: "TAVSIYA ETILGAN",
     perNewBadge: "YANGI",
     perEmptyText: "Hech narsa topilmadi. Boshqa kalit so'z sinab ko'ring.",
+    perBtnReadDigital: "Raqamli nashr",
+    perBtnFlip: "3D Varoqlash",
+    perTrendingLabel: "TRENDAGI NASHR",
     contactKicker: "Bog'lanish",
     contactTitle: "Biz bilan bog'laning",
     contactSubtitle: "Savollaringiz, takliflaringiz yoki murojaat uchun quyidagi formani to'ldiring.",
@@ -529,6 +532,9 @@ i18n.en = {
   perFeaturedBadge: "FEATURED",
   perNewBadge: "NEW",
   perEmptyText: "Nothing found. Try a different keyword.",
+  perBtnReadDigital: "Read Digital Edition",
+  perBtnFlip: "Flip 3D Preview",
+  perTrendingLabel: "TRENDING ARCHIVE",
   navContact: "Contact Us",
   contactKicker: "Contact",
   contactTitle: "Get in Touch",
@@ -773,6 +779,9 @@ i18n.ru = {
   perFeaturedBadge: "РЕКОМЕНДУЕМОЕ",
   perNewBadge: "НОВОЕ",
   perEmptyText: "Ничего не найдено. Попробуйте другое ключевое слово.",
+  perBtnReadDigital: "Читать цифровое издание",
+  perBtnFlip: "3D-просмотр",
+  perTrendingLabel: "В ТРЕНДЕ",
   navContact: "Связаться",
   contactKicker: "Контакт",
   contactTitle: "Свяжитесь с нами",
@@ -1015,6 +1024,9 @@ i18n.tr = {
   perFeaturedBadge: "ÖNE ÇIKAN",
   perNewBadge: "YENİ",
   perEmptyText: "Hiçbir şey bulunamadı. Farklı bir anahtar kelime deneyin.",
+  perBtnReadDigital: "Dijital Yayını Oku",
+  perBtnFlip: "3D Çevir",
+  perTrendingLabel: "TRENDDEKİ YAYIN",
   navContact: "İletişim",
   contactKicker: "İletişim",
   contactTitle: "Bizimle İletişime Geçin",
@@ -1333,6 +1345,9 @@ i18n.ar = {
   perFeaturedBadge: "مميز",
   perNewBadge: "جديد",
   perEmptyText: "لم يتم العثور على شيء. جرب كلمة مفتاحية مختلفة.",
+  perBtnReadDigital: "اقرأ النسخة الرقمية",
+  perBtnFlip: "معاينة ثلاثية الأبعاد",
+  perTrendingLabel: "الأكثر قراءة",
   navContact: "اتصل بنا",
   contactKicker: "تواصل",
   contactTitle: "تواصل معنا",
@@ -2506,6 +2521,207 @@ function focusHotspot(id) {
   document.getElementById("td-details-card").classList.add("open");
 }
 
+function renderCarouselSlides() {
+  const carouselContainer = document.getElementById("periodicals-carousel");
+  if (!carouselContainer) return;
+
+  const lang = currentLang;
+  const dict = i18n[lang] || i18n.uz;
+  const featured = PERIODICALS_DATA.filter(p => p.isFeatured);
+
+  if (featured.length === 0) {
+    carouselContainer.innerHTML = "";
+    return;
+  }
+
+  // Cap active index if out of bounds
+  if (_perCarouselActiveIndex >= featured.length) _perCarouselActiveIndex = 0;
+
+  const slideHtml = featured.map((p, idx) => {
+    // Circular Cover Flow offset calculation
+    let diff = idx - _perCarouselActiveIndex;
+    const len = featured.length;
+    if (diff < -Math.floor(len / 2)) diff += len;
+    if (diff > Math.floor(len / 2)) diff -= len;
+
+    let positionClass = "per-slide--hidden";
+    if (diff === 0) positionClass = "per-slide--active";
+    else if (diff === -1) positionClass = "per-slide--prev-1";
+    else if (diff === 1) positionClass = "per-slide--next-1";
+    else if (diff === -2) positionClass = "per-slide--prev-2";
+    else if (diff === 2) positionClass = "per-slide--next-2";
+
+    const translation = p[lang] || p.uz;
+    const typeLabel = p.type === "journal" ? (dict.periodicalJournal || "Jurnal") : (dict.periodicalNewspaper || "Gazeta");
+    
+    // Categories translation keys mapping
+    const catKeys = {
+      science_philosophy: "perCatSciPhil",
+      religion_history: "perCatRelHist",
+      art_culture: "perCatArtCult",
+      business_law: "perCatBusLaw",
+      news_politics: "perCatNewsPol",
+      literature: "perCatLit"
+    };
+    const catText = dict[catKeys[p.category]] || p.category;
+    const freqText = dict[p.freqKey] || "";
+    
+    return `
+      <div class="per-carousel-slide ${positionClass}" role="tabpanel" onclick="if(${diff} !== 0) setPerSlide(${idx})">
+        <div class="per-carousel-bg" style="background-image: linear-gradient(to right, rgba(6, 21, 16, 0.96) 30%, rgba(6, 21, 16, 0.4) 100%), url('images/press/${p.id}.jpg')"></div>
+        <div class="per-carousel-content">
+          <div class="per-carousel-badges">
+            <span class="per-badge per-badge--featured">${dict.perFeaturedBadge || "FEATURED"}</span>
+            <span class="per-badge per-badge--type">${typeLabel}</span>
+          </div>
+          <h2 class="per-carousel-title">${translation.title}</h2>
+          <p class="per-carousel-desc">${translation.desc}</p>
+          <div class="per-carousel-meta">
+            <span class="per-meta-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>${catText}</span>
+            <span class="per-meta-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>${freqText}</span>
+          </div>
+          <button class="primary-button per-carousel-btn-read" onclick="event.stopPropagation(); window.open('https://e-library.cisc.uz','_blank')">${dict.perBtnReadNow || "Hozir o'qish"}</button>
+        </div>
+        <div class="per-carousel-cover-wrap">
+          <div class="per-cover-volume-gloss"></div>
+          <img src="images/press/${p.id}.jpg" class="per-carousel-cover" alt="${translation.title}">
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  const dotsHtml = featured.map((_, idx) => {
+    const isActive = idx === _perCarouselActiveIndex ? "active" : "";
+    return `<button class="per-carousel-dot ${isActive}" type="button" aria-label="Slide ${idx+1}" onclick="setPerSlide(${idx})"></button>`;
+  }).join("");
+
+  const prevArrow = `<button class="per-carousel-arrow per-carousel-arrow--prev" type="button" aria-label="Oldingi" onclick="prevPerSlide()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><polyline points="15 18 9 12 15 6"/></svg></button>`;
+  const nextArrow = `<button class="per-carousel-arrow per-carousel-arrow--next" type="button" aria-label="Keyingi" onclick="nextPerSlide()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><polyline points="9 18 15 12 9 6"/></svg></button>`;
+
+  carouselContainer.innerHTML = `
+    <div class="per-carousel-viewport">
+      ${slideHtml}
+    </div>
+    ${prevArrow}
+    ${nextArrow}
+    <div class="per-carousel-dots">
+      ${dotsHtml}
+    </div>
+  `;
+}
+
+function renderPeriodicalsGridOnly() {
+  const grid = document.getElementById("periodicals-grid");
+  const emptyEl = document.getElementById("per-empty");
+  if (!grid) return;
+
+  const lang = currentLang;
+  const dict = i18n[lang] || i18n.uz;
+
+  const filtered = PERIODICALS_DATA.filter(p => {
+    // Type Filter (pills)
+    if (_perFilter !== "all" && p.type !== _perFilter) return false;
+    // Category dropdown filter
+    if (_perCategory !== "all" && p.category !== _perCategory) return false;
+    // Frequency dropdown filter
+    if (_perFrequency !== "all" && p.freqKey !== _perFrequency) return false;
+    // Search input
+    if (_perSearch) {
+      const translation = p[lang] || p.uz;
+      const haystack = (translation.title + " " + translation.desc).toLowerCase();
+      if (!haystack.includes(_perSearch)) return false;
+    }
+    return true;
+  });
+
+  if (filtered.length === 0) {
+    grid.innerHTML = "";
+    if (emptyEl) emptyEl.style.display = "";
+    return;
+  }
+  if (emptyEl) emptyEl.style.display = "none";
+
+  // Categories translation keys mapping
+  const catKeys = {
+    science_philosophy: "perCatSciPhil",
+    religion_history: "perCatRelHist",
+    art_culture: "perCatArtCult",
+    business_law: "perCatBusLaw",
+    news_politics: "perCatNewsPol",
+    literature: "perCatLit"
+  };
+
+  grid.innerHTML = filtered.map((p, i) => {
+    const translation = p[lang] || p.uz;
+    const badgeText = p.type === "journal" ? (dict.periodicalJournal || "Jurnal") : (dict.periodicalNewspaper || "Gazeta");
+    const badgeClass = p.type === "journal" ? "periodical-badge--journal" : "periodical-badge--newspaper";
+    const frequencyText = dict[p.freqKey] || "";
+    const categoryText = dict[catKeys[p.category]] || p.category;
+
+    // Asymmetrical Bento Layouts:
+    // Main trending journal spans large 2x2. Gazettes occupy sleek 2x1 horizontal wide. Remaining issues use 1x1.
+    const isLarge = p.id === 19; // Tafakkur is the trending 2x2 bento card
+    const isWide = p.type === "newspaper" && p.id === 24; // Jadid is the 2x1 horizontal bento card
+    const bentoClass = isLarge ? "periodical-card--large" : (isWide ? "periodical-card--wide" : "periodical-card--standard");
+    
+    // We add a demo hover state to card ID 2 (San'at va madaniyat) if it's rendered,
+    // to satisfy the requirement: "One card shown in an active hover state with a subtle elevation shift, soft glow, and Read Now button overlay."
+    const demoHoverClass = p.id === 2 ? "periodical-card--hover-demo" : "";
+
+    // Card animations delay
+    const delay = Math.min(i * 40, 500);
+
+    return `
+      <div class="periodical-card ${bentoClass} ${demoHoverClass}" data-type="${p.type}" style="animation-delay: ${delay}ms" tabindex="0">
+        <div class="periodical-cover-wrap">
+          <img src="images/press/${p.id}.jpg" class="periodical-cover-img" alt="${translation.title}" loading="lazy">
+          
+          <!-- Frosted luxury overlay containing the "Flip 3D Preview" icon & "Read Digital Edition" primary button -->
+          <div class="periodical-hover-overlay">
+            <div class="per-hover-icon-wrap">
+              <svg class="per-hover-flip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+                <path d="M6 6h10M6 10h10"/>
+                <path d="M12 22a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+              </svg>
+              <span class="per-hover-flip-text">${dict.perBtnFlip || "Flip 3D Preview"}</span>
+            </div>
+            <button class="per-hover-btn" onclick="event.stopPropagation(); window.open('https://e-library.cisc.uz','_blank')">
+              <span>${dict.perBtnReadDigital || "Read Digital Edition"}</span>
+            </button>
+          </div>
+          
+          <div class="periodical-top-badges">
+            ${isLarge ? `<span class="periodical-badge-trending">${dict.perTrendingLabel || "TRENDING"}</span>` : ""}
+            <span class="periodical-badge ${badgeClass}">${badgeText}</span>
+            ${p.id === 24 ? `<span class="periodical-badge-new">${dict.perNewBadge || "YANGI"}</span>` : ""}
+          </div>
+        </div>
+        
+        <div class="periodical-details">
+          <div class="periodical-meta-row">
+            <span class="periodical-cat-label">${categoryText}</span>
+            <span class="periodical-freq-badge">${frequencyText}</span>
+          </div>
+          <h4 class="periodical-title" title="${translation.title}">${translation.title}</h4>
+          <p class="periodical-card-desc" title="${translation.desc}">${translation.desc}</p>
+          <div class="periodical-card-footer">
+            <button class="per-card-cta" onclick="window.open('https://e-library.cisc.uz','_blank')">
+              <span>${dict.perBtnRead || "PDFni o'qish"}</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join("");
+}
+
+function renderPeriodicals() {
+  renderCarouselSlides();
+  renderPeriodicalsGridOnly();
+}
+
 function close3DDetails() {
   document.getElementById("td-details-card").classList.remove("open");
   tdFocusedHotspot = null;
@@ -2863,7 +3079,19 @@ function renderCarouselSlides() {
   if (_perCarouselActiveIndex >= featured.length) _perCarouselActiveIndex = 0;
 
   const slideHtml = featured.map((p, idx) => {
-    const isActive = idx === _perCarouselActiveIndex ? "active" : "";
+    // Circular Cover Flow offset calculation
+    let diff = idx - _perCarouselActiveIndex;
+    const len = featured.length;
+    if (diff < -Math.floor(len / 2)) diff += len;
+    if (diff > Math.floor(len / 2)) diff -= len;
+
+    let positionClass = "per-slide--hidden";
+    if (diff === 0) positionClass = "per-slide--active";
+    else if (diff === -1) positionClass = "per-slide--prev-1";
+    else if (diff === 1) positionClass = "per-slide--next-1";
+    else if (diff === -2) positionClass = "per-slide--prev-2";
+    else if (diff === 2) positionClass = "per-slide--next-2";
+
     const translation = p[lang] || p.uz;
     const typeLabel = p.type === "journal" ? (dict.periodicalJournal || "Jurnal") : (dict.periodicalNewspaper || "Gazeta");
     
@@ -2880,7 +3108,7 @@ function renderCarouselSlides() {
     const freqText = dict[p.freqKey] || "";
     
     return `
-      <div class="per-carousel-slide ${isActive}" role="tabpanel">
+      <div class="per-carousel-slide ${positionClass}" role="tabpanel" onclick="if(${diff} !== 0) setPerSlide(${idx})">
         <div class="per-carousel-bg" style="background-image: linear-gradient(to right, rgba(6, 21, 16, 0.96) 30%, rgba(6, 21, 16, 0.4) 100%), url('images/press/${p.id}.jpg')"></div>
         <div class="per-carousel-content">
           <div class="per-carousel-badges">
@@ -2893,9 +3121,10 @@ function renderCarouselSlides() {
             <span class="per-meta-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>${catText}</span>
             <span class="per-meta-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>${freqText}</span>
           </div>
-          <button class="primary-button per-carousel-btn-read" onclick="window.open('https://e-library.cisc.uz','_blank')">${dict.perBtnReadNow || "Hozir o'qish"}</button>
+          <button class="primary-button per-carousel-btn-read" onclick="event.stopPropagation(); window.open('https://e-library.cisc.uz','_blank')">${dict.perBtnReadNow || "Hozir o'qish"}</button>
         </div>
         <div class="per-carousel-cover-wrap">
+          <div class="per-cover-volume-gloss"></div>
           <img src="images/press/${p.id}.jpg" class="per-carousel-cover" alt="${translation.title}">
         </div>
       </div>
@@ -2970,8 +3199,11 @@ function renderPeriodicalsGridOnly() {
     const frequencyText = dict[p.freqKey] || "";
     const categoryText = dict[catKeys[p.category]] || p.category;
 
-    // Aspect ratio & Bento styling classes
-    const bentoClass = p.isBento ? "periodical-card--large" : "periodical-card--standard";
+    // Asymmetrical Bento Layouts:
+    // Main trending journal spans large 2x2. Gazettes occupy sleek 2x1 horizontal wide. Remaining issues use 1x1.
+    const isLarge = p.id === 19; // Tafakkur is the trending 2x2 bento card
+    const isWide = p.type === "newspaper" && p.id === 24; // Jadid is the 2x1 horizontal bento card
+    const bentoClass = isLarge ? "periodical-card--large" : (isWide ? "periodical-card--wide" : "periodical-card--standard");
     
     // We add a demo hover state to card ID 2 (San'at va madaniyat) if it's rendered,
     // to satisfy the requirement: "One card shown in an active hover state with a subtle elevation shift, soft glow, and Read Now button overlay."
@@ -2985,15 +3217,23 @@ function renderPeriodicalsGridOnly() {
         <div class="periodical-cover-wrap">
           <img src="images/press/${p.id}.jpg" class="periodical-cover-img" alt="${translation.title}" loading="lazy">
           
-          <!-- Hover action button overlay -->
+          <!-- Frosted luxury overlay containing the "Flip 3D Preview" icon & "Read Digital Edition" primary button -->
           <div class="periodical-hover-overlay">
-            <button class="per-hover-btn" onclick="window.open('https://e-library.cisc.uz','_blank')">
-              <span>${dict.perBtnReadNow || "Hozir o'qish"}</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            <div class="per-hover-icon-wrap">
+              <svg class="per-hover-flip-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="28" height="28" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+                <path d="M6 6h10M6 10h10"/>
+                <path d="M12 22a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+              </svg>
+              <span class="per-hover-flip-text">${dict.perBtnFlip || "Flip 3D Preview"}</span>
+            </div>
+            <button class="per-hover-btn" onclick="event.stopPropagation(); window.open('https://e-library.cisc.uz','_blank')">
+              <span>${dict.perBtnReadDigital || "Read Digital Edition"}</span>
             </button>
           </div>
           
           <div class="periodical-top-badges">
+            ${isLarge ? `<span class="periodical-badge-trending">${dict.perTrendingLabel || "TRENDING"}</span>` : ""}
             <span class="periodical-badge ${badgeClass}">${badgeText}</span>
             ${p.id === 24 ? `<span class="periodical-badge-new">${dict.perNewBadge || "YANGI"}</span>` : ""}
           </div>

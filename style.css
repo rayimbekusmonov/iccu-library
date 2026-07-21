@@ -2630,45 +2630,96 @@ h1 {
   gap: 18px; /* Tighter layout to eliminate excessive whitespace */
 }
 
-/* ── Featured Hero Carousel ── */
+/* ── 3D Cover Flow Hero Carousel Showcase ── */
 .per-carousel-container {
   position: relative;
   width: 100%;
   border-radius: 16px;
   overflow: hidden;
-  background: #041410; /* Deep blackish emerald */
-  border: 1px solid rgba(234, 210, 154, 0.15);
+  background: radial-gradient(circle at center, #0a2920 0%, #030e0b 100%);
+  border: 1px solid rgba(234, 210, 154, 0.18);
   box-shadow: 
-    0 25px 50px -12px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(16, 185, 129, 0.05);
+    0 25px 60px -12px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(16, 185, 129, 0.08);
 }
 .per-carousel-viewport {
   position: relative;
-  min-height: 380px;
+  min-height: 400px;
   width: 100%;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1250px;
+  transform-style: preserve-3d;
+  overflow: hidden;
+  padding: 40px 0;
 }
 .per-carousel-slide {
   position: absolute;
-  inset: 0;
-  opacity: 0;
-  pointer-events: none;
-  visibility: hidden;
+  width: 90%;
+  max-width: 820px;
+  height: 320px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 40px clamp(24px, 6vw, 64px);
-  gap: 40px;
-  transition: opacity 600ms cubic-bezier(0.25, 1, 0.5, 1), 
-              visibility 600ms;
+  padding: 32px clamp(24px, 6vw, 64px);
+  background: rgba(13, 43, 34, 0.45);
+  border: 1px solid rgba(234, 210, 154, 0.16);
+  border-radius: 16px;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+  transform-style: preserve-3d;
+  transition: transform 700ms cubic-bezier(0.25, 1, 0.3, 1),
+              opacity 700ms cubic-bezier(0.25, 1, 0.3, 1),
+              visibility 700ms;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
   z-index: 1;
 }
-.per-carousel-slide.active {
+
+/* 3D Cover Flow layout configurations */
+.per-slide--active {
+  transform: translate3d(0, 0, 0) rotateY(0deg) scale(1);
   opacity: 1;
-  pointer-events: all;
+  z-index: 10;
+  pointer-events: auto;
   visibility: visible;
-  z-index: 2;
 }
+.per-slide--prev-1 {
+  transform: translate3d(-200px, 0, -220px) rotateY(38deg) scale(0.92);
+  opacity: 0.65;
+  z-index: 5;
+  pointer-events: auto;
+  visibility: visible;
+}
+.per-slide--next-1 {
+  transform: translate3d(200px, 0, -220px) rotateY(-38deg) scale(0.92);
+  opacity: 0.65;
+  z-index: 5;
+  pointer-events: auto;
+  visibility: visible;
+}
+.per-slide--prev-2 {
+  transform: translate3d(-360px, 0, -400px) rotateY(48deg) scale(0.82);
+  opacity: 0.3;
+  z-index: 3;
+  visibility: visible;
+}
+.per-slide--next-2 {
+  transform: translate3d(360px, 0, -400px) rotateY(-48deg) scale(0.82);
+  opacity: 0.3;
+  z-index: 3;
+  visibility: visible;
+}
+.per-slide--hidden {
+  transform: translate3d(0, 0, -600px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
 .per-carousel-bg {
   position: absolute;
   inset: 0;
@@ -2678,16 +2729,18 @@ h1 {
   opacity: 0.65;
   pointer-events: none;
   z-index: 0;
+  border-radius: inherit;
 }
 .per-carousel-content {
   position: relative;
   z-index: 3;
   flex: 1;
-  max-width: 600px;
+  max-width: 480px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
+  transform: translateZ(30px);
 }
 .per-carousel-badges {
   display: flex;
@@ -2713,24 +2766,26 @@ h1 {
   border: 1px solid rgba(16, 185, 129, 0.3);
 }
 .per-carousel-title {
-  font-size: clamp(24px, 4vw, 36px);
+  font-size: 26px;
   font-weight: 900;
   color: var(--white);
-  line-height: 1.2;
+  line-height: 1.25;
   letter-spacing: -0.02em;
 }
 .per-carousel-desc {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--muted);
-  line-height: 1.6;
-  max-width: 520px;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 .per-carousel-meta {
   display: flex;
-  gap: 20px;
-  font-size: 12px;
+  gap: 16px;
+  font-size: 11px;
   color: var(--gold-2);
-  margin-top: 8px;
 }
 .per-meta-tag {
   display: flex;
@@ -2742,28 +2797,40 @@ h1 {
   border: 1px solid rgba(255, 255, 255, 0.06);
 }
 .per-carousel-btn-read {
-  margin-top: 12px;
+  margin-top: 8px;
   box-shadow: 0 4px 14px rgba(200, 164, 93, 0.25);
 }
 
-/* Slide Cover Art */
+/* 3D Realistic Volume Cover Effect */
 .per-carousel-cover-wrap {
   position: relative;
   z-index: 3;
-  width: 200px;
-  height: 266px; /* 3:4 aspect ratio approx */
-  border-radius: 12px;
+  width: 170px;
+  height: 226px;
+  border-radius: 8px;
   overflow: hidden;
   box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.6),
-    0 0 25px rgba(200, 164, 93, 0.15);
+    -12px 15px 30px rgba(0, 0, 0, 0.55),
+    0 0 20px rgba(200, 164, 93, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  transform: rotate(2deg) translateY(-8px);
+  transform: translateZ(50px) rotateY(-10deg);
   transition: transform 600ms cubic-bezier(0.25, 1, 0.5, 1);
   flex-shrink: 0;
 }
-.per-carousel-slide.active .per-carousel-cover-wrap {
-  transform: rotate(0deg) translateY(0);
+.per-carousel-cover-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 8px;
+  background: linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(255,255,255,0.2) 50%, rgba(0,0,0,0.3) 100%);
+  z-index: 3;
+}
+.per-cover-volume-gloss {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(105deg, rgba(255,255,255,0.18) 0%, rgba(255,255,255,0) 35%, rgba(0,0,0,0.05) 36%, rgba(0,0,0,0.2) 100%);
+  z-index: 2;
+  pointer-events: none;
 }
 .per-carousel-cover {
   width: 100%;
@@ -2771,7 +2838,7 @@ h1 {
   object-fit: cover;
 }
 
-/* Carousel arrows */
+/* Arrows controls */
 .per-carousel-arrow {
   position: absolute;
   top: 50%;
@@ -2785,7 +2852,7 @@ h1 {
   display: grid;
   place-items: center;
   cursor: pointer;
-  z-index: 10;
+  z-index: 15;
   transition: all 200ms;
   backdrop-filter: blur(8px);
 }
@@ -2795,10 +2862,9 @@ h1 {
   color: #34d399;
   box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
 }
-.per-carousel-arrow--prev { left: 16px; }
-.per-carousel-arrow--next { right: 16px; }
+.per-carousel-arrow--prev { left: 24px; }
+.per-carousel-arrow--next { right: 24px; }
 
-/* Dots indicators */
 .per-carousel-dots {
   position: absolute;
   bottom: 20px;
@@ -2806,7 +2872,7 @@ h1 {
   transform: translateX(-50%);
   display: flex;
   gap: 8px;
-  z-index: 10;
+  z-index: 15;
 }
 .per-carousel-dot {
   width: 8px;
@@ -2830,14 +2896,14 @@ h1 {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  padding: 16px;
-  background: rgba(13, 43, 34, 0.45); /* Emerald dark glass */
-  border: 1px solid rgba(234, 210, 154, 0.12);
+  padding: 14px 20px;
+  background: rgba(13, 43, 34, 0.45); /* Emerald glass */
+  border: 1px solid rgba(234, 210, 154, 0.15);
   border-radius: 12px;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   flex-wrap: wrap;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
 }
 
 /* Search bar box */
@@ -2857,7 +2923,7 @@ h1 {
 }
 .per-search-input {
   width: 100%;
-  background: rgba(255, 250, 240, 0.04);
+  background: rgba(4, 20, 16, 0.4);
   border: 1px solid rgba(234, 210, 154, 0.15);
   border-radius: 20px;
   color: var(--white);
@@ -2869,7 +2935,7 @@ h1 {
 .per-search-input::placeholder { color: rgba(255, 250, 240, 0.35); }
 .per-search-input:focus {
   border-color: #34d399;
-  background: rgba(255, 250, 240, 0.07);
+  background: rgba(4, 20, 16, 0.6);
   box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
 }
 .per-search-clear {
@@ -2940,7 +3006,6 @@ h1 {
 }
 .per-select:hover, .per-select:focus {
   border-color: #34d399;
-  box-shadow: 0 0 10px rgba(16, 185, 129, 0.15);
 }
 .per-select option {
   background: #0a201b;
@@ -2971,38 +3036,64 @@ h1 {
   grid-row: span 1;
 }
 
-/* Bento cards: 2x2 */
+/* Bento card large: 2x2 */
 .periodical-card--large {
   grid-column: span 2;
   grid-row: span 2;
 }
+.periodical-card--large .periodical-cover-wrap {
+  aspect-ratio: auto !important;
+  height: 250px !important;
+}
+.periodical-card--large .periodical-title {
+  font-size: 20px !important;
+}
+.periodical-card--large .periodical-card-desc {
+  -webkit-line-clamp: 4 !important;
+}
 
-/* Standardized Card Style */
+/* Bento card wide horizontal: 2x1 */
+.periodical-card--wide {
+  grid-column: span 2;
+  grid-row: span 1;
+  display: flex !important;
+  flex-direction: row !important;
+}
+.periodical-card--wide .periodical-cover-wrap {
+  width: 160px;
+  height: auto;
+  aspect-ratio: auto !important;
+  flex-shrink: 0;
+}
+.periodical-card--wide .periodical-details {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.periodical-card--wide .periodical-card-desc {
+  -webkit-line-clamp: 3 !important;
+}
+
+/* Card aesthetics */
 .periodical-card {
   position: relative;
   display: flex;
   flex-direction: column;
   background: rgba(13, 43, 34, 0.25);
-  border: 1px solid rgba(234, 210, 154, 0.1);
-  border-radius: 12px;
+  border: 1px solid rgba(234, 210, 154, 0.12);
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 350ms cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 350ms cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  transition: transform 450ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 450ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 450ms cubic-bezier(0.16, 1, 0.3, 1);
   outline: none;
 }
-
-/* Card animations entry */
-@keyframes perCardFadeIn {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.periodical-card {
-  animation: perCardFadeIn 400ms cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
-/* aspect ratio: 3:4 for standard card images */
 .periodical-cover-wrap {
   position: relative;
   width: 100%;
@@ -3010,14 +3101,21 @@ h1 {
   overflow: hidden;
   background: #020c0a;
 }
+.periodical-cover-wrap::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 6px;
+  background: linear-gradient(to right, rgba(0,0,0,0.55) 0%, rgba(255,255,255,0.15) 50%, rgba(0,0,0,0.25) 100%);
+  z-index: 3;
+}
 .periodical-cover-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* Badges over covers */
 .periodical-top-badges {
   position: absolute;
   top: 12px;
@@ -3056,17 +3154,58 @@ h1 {
   letter-spacing: 0.05em;
   align-self: flex-start;
 }
+.periodical-badge-trending {
+  background: linear-gradient(135deg, rgba(200, 164, 93, 0.9) 0%, rgba(162, 123, 44, 0.9) 100%);
+  color: #041410;
+  border: 1px solid rgba(234, 210, 154, 0.5);
+  font-size: 9px;
+  font-weight: 900;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  align-self: flex-start;
+  box-shadow: 0 0 10px rgba(200, 164, 93, 0.3);
+}
 
-/* Hover read overlay */
+/* Hover preview overlay style */
 .periodical-hover-overlay {
   position: absolute;
   inset: 0;
-  background: rgba(4, 20, 16, 0.8);
-  display: grid;
-  place-items: center;
+  background: rgba(4, 20, 16, 0.9);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 16px;
   opacity: 0;
-  transition: opacity 300ms;
+  transition: opacity 300ms cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 4;
+}
+.per-hover-icon-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  color: var(--gold-2);
+  transform: translateY(-8px);
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.per-hover-flip-icon {
+  filter: drop-shadow(0 0 8px rgba(234, 210, 154, 0.4));
+  animation: perFlipPulse 2s infinite ease-in-out;
+}
+@keyframes perFlipPulse {
+  0%, 100% { transform: scale(1) rotate(0deg); }
+  50% { transform: scale(1.08) rotate(10deg); }
+}
+.per-hover-flip-text {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 .per-hover-btn {
   background: var(--gold-2);
@@ -3074,21 +3213,17 @@ h1 {
   border: none;
   padding: 10px 20px;
   border-radius: 20px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  box-shadow: 0 4px 15px rgba(234, 210, 154, 0.4);
-  transform: translateY(12px);
+  box-shadow: 0 4px 15px rgba(234, 210, 154, 0.35);
+  transform: translateY(8px);
   transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), background 200ms;
+  cursor: pointer;
 }
 .per-hover-btn:hover {
   background: var(--white);
 }
 
-/* Details area */
 .periodical-details {
   padding: 16px;
   display: flex;
@@ -3159,27 +3294,16 @@ h1 {
   border-color: var(--gold-2);
 }
 
-/* 2x2 large card specific adjustments */
-.periodical-card--large .periodical-cover-wrap {
-  aspect-ratio: auto;
-  height: 240px;
-}
-.periodical-card--large .periodical-title {
-  font-size: 18px;
-}
-.periodical-card--large .periodical-card-desc {
-  -webkit-line-clamp: 4;
-}
-
-/* ── Micro-interactions & Active Hover State ── */
+/* ── Micro-interactions: Active Hover State ── */
 .periodical-card:hover,
 .periodical-card--hover-demo {
-  transform: translateY(-8px) scale(1.015);
-  border-color: rgba(16, 185, 129, 0.35);
+  transform: translateY(-8px) rotateX(4deg) rotateY(-2deg) scale(1.02);
+  border-color: rgba(16, 185, 129, 0.45);
   box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.35),
-    0 0 25px rgba(16, 185, 129, 0.15),
-    0 0 10px rgba(200, 164, 93, 0.1);
+    0 25px 45px rgba(0, 0, 0, 0.45),
+    0 0 25px rgba(16, 185, 129, 0.22),
+    0 0 15px rgba(200, 164, 93, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
 .periodical-card:hover .periodical-cover-img,
 .periodical-card--hover-demo .periodical-cover-img {
@@ -3188,6 +3312,10 @@ h1 {
 .periodical-card:hover .periodical-hover-overlay,
 .periodical-card--hover-demo .periodical-hover-overlay {
   opacity: 1;
+}
+.periodical-card:hover .per-hover-icon-wrap,
+.periodical-card--hover-demo .per-hover-icon-wrap {
+  transform: translateY(0);
 }
 .periodical-card:hover .per-hover-btn,
 .periodical-card--hover-demo .per-hover-btn {
@@ -3217,10 +3345,7 @@ h1 {
 
 /* RTL support overrides */
 html[dir="rtl"] .per-carousel-cover-wrap {
-  transform: rotate(-2deg) translateY(-8px);
-}
-html[dir="rtl"] .per-carousel-slide.active .per-carousel-cover-wrap {
-  transform: rotate(0deg) translateY(0);
+  transform: translateZ(50px) rotateY(10deg);
 }
 html[dir="rtl"] .per-search-icon {
   left: auto;
@@ -3246,39 +3371,45 @@ html[dir="rtl"] .periodical-top-badges {
 }
 html[dir="rtl"] .periodical-card:hover,
 html[dir="rtl"] .periodical-card--hover-demo {
-  box-shadow: 
-    0 20px 40px rgba(0, 0, 0, 0.35),
-    0 0 25px rgba(16, 185, 129, 0.15),
-    0 0 10px rgba(200, 164, 93, 0.1);
+  transform: translateY(-8px) rotateX(4deg) rotateY(2deg) scale(1.02);
 }
 
 /* Responsive adjustments */
 @media (max-width: 980px) {
+  .per-carousel-viewport {
+    min-height: 520px;
+  }
   .per-carousel-slide {
     flex-direction: column;
-    padding: 32px 40px;
+    padding: 32px clamp(24px, 4vw, 40px);
     gap: 20px;
     align-items: center;
     text-align: center;
+    height: auto;
   }
   .per-carousel-content {
     align-items: center;
     max-width: 100%;
+    transform: none;
   }
   .per-carousel-cover-wrap {
     order: -1;
     width: 140px;
     height: 186px;
+    transform: none;
   }
   .per-carousel-bg {
     background-image: linear-gradient(to bottom, rgba(6, 21, 16, 0.95) 40%, rgba(6, 21, 16, 0.8) 100%) !important;
   }
-  .per-carousel-viewport {
-    min-height: 480px;
-  }
-  .periodical-card--large {
+  .periodical-card--large, .periodical-card--wide {
     grid-column: span 1;
     grid-row: span 1;
+  }
+  .periodical-card--wide {
+    flex-direction: column !important;
+  }
+  .periodical-card--wide .periodical-cover-wrap {
+    width: 100%;
   }
 }
 @media (max-width: 720px) {
@@ -3304,7 +3435,7 @@ html[dir="rtl"] .periodical-card--hover-demo {
 }
 @media (max-width: 480px) {
   .per-carousel-viewport {
-    min-height: 520px;
+    min-height: 560px;
   }
   .per-carousel-arrow {
     width: 36px;
@@ -3367,4 +3498,3 @@ html[dir="rtl"] .td-hint {
     left: -38px;
   }
 }
-

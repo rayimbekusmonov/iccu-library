@@ -518,9 +518,75 @@
             <h3 class="section-title-mini" data-t="periodicalsTitle">Gazeta va jurnallar</h3>
             <p class="section-subtitle-mini" data-t="periodicalsSubtitle">Kutubxonamiz fondidagi davriy nashrlar va gazeta-jurnallar ro'yxati.</p>
           </header>
-          
-          <div class="periodicals-grid" id="periodicals-grid">
+
+          <!-- Featured Hero Carousel -->
+          <div class="per-carousel-container" id="periodicals-carousel">
             <!-- Populated via Javascript -->
+          </div>
+
+          <!-- Sleek Interactive Control Bar -->
+          <div class="per-control-bar">
+            <!-- Search bar -->
+            <div class="per-search-box">
+              <svg class="per-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              </svg>
+              <input class="per-search-input" id="per-search" type="search" data-t-placeholder="perSearchPh" placeholder="Qidirish..." autocomplete="off" oninput="filterPeriodicals()">
+              <button class="per-search-clear" id="per-search-clear" type="button" onclick="clearPerSearch()" aria-label="Tozalash" style="display:none">×</button>
+            </div>
+
+            <!-- Pill-shaped filtering tabs (Journals active by default) -->
+            <div class="per-pills" role="tablist">
+              <button class="per-pill" role="tab" data-filter="all" onclick="setPerFilter('all')" data-t="perFilterAll">Barchasi</button>
+              <button class="per-pill active" role="tab" data-filter="journal" onclick="setPerFilter('journal')" data-t="perFilterJournals">Jurnallar</button>
+              <button class="per-pill" role="tab" data-filter="newspaper" onclick="setPerFilter('newspaper')" data-t="perFilterNewspapers">Gazetalar</button>
+            </div>
+
+            <!-- Dropdowns for Category and Frequency -->
+            <div class="per-dropdowns">
+              <div class="per-select-wrap">
+                <select class="per-select" id="per-category-select" onchange="filterPeriodicals()">
+                  <option value="all" data-t="perCatAll">Barcha toifalar</option>
+                  <option value="science_philosophy" data-t="perCatSciPhil">Ilm-fan va falsafa</option>
+                  <option value="religion_history" data-t="perCatRelHist">Din va tarix</option>
+                  <option value="art_culture" data-t="perCatArtCult">San'at va madaniyat</option>
+                  <option value="business_law" data-t="perCatBusLaw">Biznes va qonun</option>
+                  <option value="news_politics" data-t="perCatNewsPol">Yangiliklar va siyosat</option>
+                  <option value="literature" data-t="perCatLit">Adabiyot</option>
+                </select>
+                <svg class="per-select-arrow" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l4 4 4-4"/></svg>
+              </div>
+
+              <div class="per-select-wrap">
+                <select class="per-select" id="per-frequency-select" onchange="filterPeriodicals()">
+                  <option value="all" data-t="perFreqAll">Barcha davriyliklar</option>
+                  <option value="periodicalMonthly" data-t="periodicalMonthly">Oyda 1 marta</option>
+                  <option value="periodicalBiMonthly" data-t="periodicalBiMonthly">2 oyda 1 marta</option>
+                  <option value="periodicalQuarterly" data-t="periodicalQuarterly">3 oyda 1 marta</option>
+                  <option value="periodicalWeekly" data-t="periodicalWeekly">Haftada 1 marta</option>
+                  <option value="periodicalSemiMonthly" data-t="periodicalSemiMonthly">Oyda 2 marta</option>
+                  <option value="periodicalTimesWeek" data-t="periodicalTimesWeek">Haftada 5 marta</option>
+                  <option value="periodicalTwiceQuarter" data-t="periodicalTwiceQuarter">3 oyda 2 marta</option>
+                </select>
+                <svg class="per-select-arrow" viewBox="0 0 10 6" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M1 1l4 4 4-4"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento Grid Layout -->
+          <div class="periodicals-grid per-bento-grid" id="periodicals-grid">
+            <!-- Populated via Javascript -->
+          </div>
+
+          <!-- Empty State -->
+          <div class="per-empty" id="per-empty" style="display:none">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="40" height="40">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+              <line x1="8" y1="11" x2="14" y2="11"></line>
+            </svg>
+            <p data-t="perEmptyText">Hech narsa topilmadi. Boshqa kalit so'z sinab ko'ring.</p>
           </div>
         </div>
       

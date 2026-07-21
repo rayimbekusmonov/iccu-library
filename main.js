@@ -244,6 +244,23 @@ const i18n = {
     periodicalSemiMonthly: "Oyda 2 marta",
     periodicalTimesWeek: "Haftada 5 marta",
     periodicalTwiceQuarter: "3 oyda 2 marta",
+    perCatAll: "Barcha toifalar",
+    perCatSciPhil: "Ilm-fan va falsafa",
+    perCatRelHist: "Din va tarix",
+    perCatArtCult: "San'at va madaniyat",
+    perCatBusLaw: "Biznes va qonun",
+    perCatNewsPol: "Yangiliklar va siyosat",
+    perCatLit: "Adabiyot",
+    perFreqAll: "Barcha davriyliklar",
+    perSearchPh: "Gazeta va jurnallarni qidirish...",
+    perFilterAll: "Barchasi",
+    perFilterJournals: "Jurnallar",
+    perFilterNewspapers: "Gazetalar",
+    perBtnRead: "PDFni o'qish",
+    perBtnReadNow: "Hozir o'qish",
+    perFeaturedBadge: "TAVSIYA ETILGAN",
+    perNewBadge: "YANGI",
+    perEmptyText: "Hech narsa topilmadi. Boshqa kalit so'z sinab ko'ring.",
     contactKicker: "Bog'lanish",
     contactTitle: "Biz bilan bog'laning",
     contactSubtitle: "Savollaringiz, takliflaringiz yoki murojaat uchun quyidagi formani to'ldiring.",
@@ -495,6 +512,23 @@ i18n.en = {
   periodicalSemiMonthly: "Semi-monthly",
   periodicalTimesWeek: "5 times a week",
   periodicalTwiceQuarter: "Twice a quarter",
+  perCatAll: "All Categories",
+  perCatSciPhil: "Science & Philosophy",
+  perCatRelHist: "Religion & History",
+  perCatArtCult: "Art & Culture",
+  perCatBusLaw: "Business & Law",
+  perCatNewsPol: "News & Politics",
+  perCatLit: "Literature",
+  perFreqAll: "All Frequencies",
+  perSearchPh: "Search newspapers and magazines...",
+  perFilterAll: "All",
+  perFilterJournals: "Journals",
+  perFilterNewspapers: "Newspapers",
+  perBtnRead: "Read PDF",
+  perBtnReadNow: "Read Now",
+  perFeaturedBadge: "FEATURED",
+  perNewBadge: "NEW",
+  perEmptyText: "Nothing found. Try a different keyword.",
   navContact: "Contact Us",
   contactKicker: "Contact",
   contactTitle: "Get in Touch",
@@ -722,6 +756,23 @@ i18n.ru = {
   periodicalSemiMonthly: "Дважды в месяц",
   periodicalTimesWeek: "5 раз в неделю",
   periodicalTwiceQuarter: "Дважды в квартал",
+  perCatAll: "Все категории",
+  perCatSciPhil: "Наука и философия",
+  perCatRelHist: "Религия и история",
+  perCatArtCult: "Искусство и культура",
+  perCatBusLaw: "Бизнес и право",
+  perCatNewsPol: "Новости и политика",
+  perCatLit: "Литература",
+  perFreqAll: "Все частоты",
+  perSearchPh: "Поиск газет и журналов...",
+  perFilterAll: "Все",
+  perFilterJournals: "Журналы",
+  perFilterNewspapers: "Газеты",
+  perBtnRead: "Читать PDF",
+  perBtnReadNow: "Читать сейчас",
+  perFeaturedBadge: "РЕКОМЕНДУЕМОЕ",
+  perNewBadge: "НОВОЕ",
+  perEmptyText: "Ничего не найдено. Попробуйте другое ключевое слово.",
   navContact: "Связаться",
   contactKicker: "Контакт",
   contactTitle: "Свяжитесь с нами",
@@ -947,6 +998,23 @@ i18n.tr = {
   periodicalSemiMonthly: "Ayda 2 kez",
   periodicalTimesWeek: "Haftada 5 kez",
   periodicalTwiceQuarter: "3 ayda iki kez",
+  perCatAll: "Tüm Kategoriler",
+  perCatSciPhil: "Bilim ve Felsefe",
+  perCatRelHist: "Din ve Tarih",
+  perCatArtCult: "Sanat ve Kültür",
+  perCatBusLaw: "İş ve Hukuk",
+  perCatNewsPol: "Haberler ve Siyaset",
+  perCatLit: "Edebiyat",
+  perFreqAll: "Tüm Sıklıklar",
+  perSearchPh: "Gazete ve dergileri ara...",
+  perFilterAll: "Tümü",
+  perFilterJournals: "Dergiler",
+  perFilterNewspapers: "Gazeteler",
+  perBtnRead: "PDF Oku",
+  perBtnReadNow: "Şimdi Oku",
+  perFeaturedBadge: "ÖNE ÇIKAN",
+  perNewBadge: "YENİ",
+  perEmptyText: "Hiçbir şey bulunamadı. Farklı bir anahtar kelime deneyin.",
   navContact: "İletişim",
   contactKicker: "İletişim",
   contactTitle: "Bizimle İletişime Geçin",
@@ -1248,6 +1316,23 @@ i18n.ar = {
   periodicalSemiMonthly: "مرتين شهرياً",
   periodicalTimesWeek: "٥ مرات أسبوعياً",
   periodicalTwiceQuarter: "مرتين كل فصل",
+  perCatAll: "جميع الفئات",
+  perCatSciPhil: "العلوم والفلسفة",
+  perCatRelHist: "الدين والتاريخ",
+  perCatArtCult: "الفن والثقافة",
+  perCatBusLaw: "الأعمال والقانون",
+  perCatNewsPol: "الأخبار والسياسة",
+  perCatLit: "الأدب",
+  perFreqAll: "جميع الفترات",
+  perSearchPh: "بحث في الصحف والمجلات...",
+  perFilterAll: "الكل",
+  perFilterJournals: "المجلات",
+  perFilterNewspapers: "الصحف",
+  perBtnRead: "قراءة PDF",
+  perBtnReadNow: "اقرأ الآن",
+  perFeaturedBadge: "مميز",
+  perNewBadge: "جديد",
+  perEmptyText: "لم يتم العثور على شيء. جرب كلمة مفتاحية مختلفة.",
   navContact: "اتصل بنا",
   contactKicker: "تواصل",
   contactTitle: "تواصل معنا",
@@ -2674,43 +2759,267 @@ const PERIODICALS_DATA = [
   }
 ];
 
-function renderPeriodicals() {
+
+// Initialize categories dynamically to keep the database definition simple
+PERIODICALS_DATA.forEach(p => {
+  if ([1, 4, 11, 20, 21].includes(p.id)) {
+    p.category = "religion_history";
+  } else if ([2, 6, 7, 14, 18].includes(p.id)) {
+    p.category = "art_culture";
+  } else if ([3, 5, 8].includes(p.id)) {
+    p.category = "science_philosophy";
+  } else if ([9, 10, 16, 17].includes(p.id)) {
+    p.category = "business_law";
+  } else if ([22, 23, 24, 25, 26, 27].includes(p.id)) {
+    p.category = "news_politics";
+  } else if ([12, 13, 15, 19].includes(p.id)) {
+    p.category = "literature";
+  } else {
+    p.category = "science_philosophy";
+  }
+
+  // Bento markers (large cards)
+  if ([19, 24].includes(p.id)) {
+    p.isBento = true;
+  }
+  
+  // Featured markers for Carousel
+  if ([1, 2, 8, 12, 13, 22, 24].includes(p.id)) {
+    p.isFeatured = true;
+  }
+});
+
+/* ══════════════ PERIODICALS — STATE & RENDERING ══════════════ */
+let _perFilter = "journal"; // "Journals" active by default
+let _perSearch = "";
+let _perCategory = "all";
+let _perFrequency = "all";
+let _perCarouselActiveIndex = 0;
+
+function setPerFilter(type) {
+  _perFilter = type;
+  document.querySelectorAll(".per-pill").forEach(btn => {
+    btn.classList.toggle("active", btn.dataset.filter === type);
+  });
+  filterPeriodicals();
+}
+
+function clearPerSearch() {
+  const input = document.getElementById("per-search");
+  if (input) { input.value = ""; }
+  filterPeriodicals();
+}
+
+function filterPeriodicals() {
+  const input = document.getElementById("per-search");
+  _perSearch = input ? input.value.trim().toLowerCase() : "";
+  
+  const clearBtn = document.getElementById("per-search-clear");
+  if (clearBtn) clearBtn.style.display = _perSearch ? "" : "none";
+
+  const catSelect = document.getElementById("per-category-select");
+  _perCategory = catSelect ? catSelect.value : "all";
+
+  const freqSelect = document.getElementById("per-frequency-select");
+  _perFrequency = freqSelect ? freqSelect.value : "all";
+
+  renderPeriodicalsGridOnly();
+}
+
+// Carousel helpers
+function nextPerSlide() {
+  const featured = PERIODICALS_DATA.filter(p => p.isFeatured);
+  if (featured.length === 0) return;
+  _perCarouselActiveIndex = (_perCarouselActiveIndex + 1) % featured.length;
+  renderCarouselSlides();
+}
+
+function prevPerSlide() {
+  const featured = PERIODICALS_DATA.filter(p => p.isFeatured);
+  if (featured.length === 0) return;
+  _perCarouselActiveIndex = (_perCarouselActiveIndex - 1 + featured.length) % featured.length;
+  renderCarouselSlides();
+}
+
+function setPerSlide(idx) {
+  _perCarouselActiveIndex = idx;
+  renderCarouselSlides();
+}
+
+function renderCarouselSlides() {
+  const carouselContainer = document.getElementById("periodicals-carousel");
+  if (!carouselContainer) return;
+
+  const lang = currentLang;
+  const dict = i18n[lang] || i18n.uz;
+  const featured = PERIODICALS_DATA.filter(p => p.isFeatured);
+
+  if (featured.length === 0) {
+    carouselContainer.innerHTML = "";
+    return;
+  }
+
+  // Cap active index if out of bounds
+  if (_perCarouselActiveIndex >= featured.length) _perCarouselActiveIndex = 0;
+
+  const slideHtml = featured.map((p, idx) => {
+    const isActive = idx === _perCarouselActiveIndex ? "active" : "";
+    const translation = p[lang] || p.uz;
+    const typeLabel = p.type === "journal" ? (dict.periodicalJournal || "Jurnal") : (dict.periodicalNewspaper || "Gazeta");
+    
+    // Categories translation keys mapping
+    const catKeys = {
+      science_philosophy: "perCatSciPhil",
+      religion_history: "perCatRelHist",
+      art_culture: "perCatArtCult",
+      business_law: "perCatBusLaw",
+      news_politics: "perCatNewsPol",
+      literature: "perCatLit"
+    };
+    const catText = dict[catKeys[p.category]] || p.category;
+    const freqText = dict[p.freqKey] || "";
+    
+    return `
+      <div class="per-carousel-slide ${isActive}" role="tabpanel">
+        <div class="per-carousel-bg" style="background-image: linear-gradient(to right, rgba(6, 21, 16, 0.96) 30%, rgba(6, 21, 16, 0.4) 100%), url('images/press/${p.id}.jpg')"></div>
+        <div class="per-carousel-content">
+          <div class="per-carousel-badges">
+            <span class="per-badge per-badge--featured">${dict.perFeaturedBadge || "FEATURED"}</span>
+            <span class="per-badge per-badge--type">${typeLabel}</span>
+          </div>
+          <h2 class="per-carousel-title">${translation.title}</h2>
+          <p class="per-carousel-desc">${translation.desc}</p>
+          <div class="per-carousel-meta">
+            <span class="per-meta-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>${catText}</span>
+            <span class="per-meta-tag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>${freqText}</span>
+          </div>
+          <button class="primary-button per-carousel-btn-read" onclick="window.open('https://e-library.cisc.uz','_blank')">${dict.perBtnReadNow || "Hozir o'qish"}</button>
+        </div>
+        <div class="per-carousel-cover-wrap">
+          <img src="images/press/${p.id}.jpg" class="per-carousel-cover" alt="${translation.title}">
+        </div>
+      </div>
+    `;
+  }).join("");
+
+  const dotsHtml = featured.map((_, idx) => {
+    const isActive = idx === _perCarouselActiveIndex ? "active" : "";
+    return `<button class="per-carousel-dot ${isActive}" type="button" aria-label="Slide ${idx+1}" onclick="setPerSlide(${idx})"></button>`;
+  }).join("");
+
+  const prevArrow = `<button class="per-carousel-arrow per-carousel-arrow--prev" type="button" aria-label="Oldingi" onclick="prevPerSlide()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><polyline points="15 18 9 12 15 6"/></svg></button>`;
+  const nextArrow = `<button class="per-carousel-arrow per-carousel-arrow--next" type="button" aria-label="Keyingi" onclick="nextPerSlide()"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="20" height="20"><polyline points="9 18 15 12 9 6"/></svg></button>`;
+
+  carouselContainer.innerHTML = `
+    <div class="per-carousel-viewport">
+      ${slideHtml}
+    </div>
+    ${prevArrow}
+    ${nextArrow}
+    <div class="per-carousel-dots">
+      ${dotsHtml}
+    </div>
+  `;
+}
+
+function renderPeriodicalsGridOnly() {
   const grid = document.getElementById("periodicals-grid");
+  const emptyEl = document.getElementById("per-empty");
   if (!grid) return;
 
   const lang = currentLang;
   const dict = i18n[lang] || i18n.uz;
 
-  grid.innerHTML = PERIODICALS_DATA.map(p => {
+  const filtered = PERIODICALS_DATA.filter(p => {
+    // Type Filter (pills)
+    if (_perFilter !== "all" && p.type !== _perFilter) return false;
+    // Category dropdown filter
+    if (_perCategory !== "all" && p.category !== _perCategory) return false;
+    // Frequency dropdown filter
+    if (_perFrequency !== "all" && p.freqKey !== _perFrequency) return false;
+    // Search input
+    if (_perSearch) {
+      const translation = p[lang] || p.uz;
+      const haystack = (translation.title + " " + translation.desc).toLowerCase();
+      if (!haystack.includes(_perSearch)) return false;
+    }
+    return true;
+  });
+
+  if (filtered.length === 0) {
+    grid.innerHTML = "";
+    if (emptyEl) emptyEl.style.display = "";
+    return;
+  }
+  if (emptyEl) emptyEl.style.display = "none";
+
+  // Categories translation keys mapping
+  const catKeys = {
+    science_philosophy: "perCatSciPhil",
+    religion_history: "perCatRelHist",
+    art_culture: "perCatArtCult",
+    business_law: "perCatBusLaw",
+    news_politics: "perCatNewsPol",
+    literature: "perCatLit"
+  };
+
+  grid.innerHTML = filtered.map((p, i) => {
     const translation = p[lang] || p.uz;
     const badgeText = p.type === "journal" ? (dict.periodicalJournal || "Jurnal") : (dict.periodicalNewspaper || "Gazeta");
     const badgeClass = p.type === "journal" ? "periodical-badge--journal" : "periodical-badge--newspaper";
     const frequencyText = dict[p.freqKey] || "";
+    const categoryText = dict[catKeys[p.category]] || p.category;
 
-    // Icons
-    const journalIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>`;
-    const newspaperIcon = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8M15 18h-5M10 6h8v4h-8V6Z"/></svg>`;
-    const icon = p.type === "journal" ? journalIcon : newspaperIcon;
+    // Aspect ratio & Bento styling classes
+    const bentoClass = p.isBento ? "periodical-card--large" : "periodical-card--standard";
+    
+    // We add a demo hover state to card ID 2 (San'at va madaniyat) if it's rendered,
+    // to satisfy the requirement: "One card shown in an active hover state with a subtle elevation shift, soft glow, and Read Now button overlay."
+    const demoHoverClass = p.id === 2 ? "periodical-card--hover-demo" : "";
+
+    // Card animations delay
+    const delay = Math.min(i * 40, 500);
 
     return `
-      <div class="periodical-card" tabindex="0">
-        <div class="periodical-cover" style="background-image: url('images/press/${p.id}.jpg')">
-          <div class="periodical-card-top">
+      <div class="periodical-card ${bentoClass} ${demoHoverClass}" data-type="${p.type}" style="animation-delay: ${delay}ms" tabindex="0">
+        <div class="periodical-cover-wrap">
+          <img src="images/press/${p.id}.jpg" class="periodical-cover-img" alt="${translation.title}" loading="lazy">
+          
+          <!-- Hover action button overlay -->
+          <div class="periodical-hover-overlay">
+            <button class="per-hover-btn" onclick="window.open('https://e-library.cisc.uz','_blank')">
+              <span>${dict.perBtnReadNow || "Hozir o'qish"}</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="16" height="16"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+            </button>
+          </div>
+          
+          <div class="periodical-top-badges">
             <span class="periodical-badge ${badgeClass}">${badgeText}</span>
-            <div class="periodical-icon-wrap">${icon}</div>
+            ${p.id === 24 ? `<span class="periodical-badge-new">${dict.perNewBadge || "YANGI"}</span>` : ""}
           </div>
         </div>
-        <h4 class="periodical-title">${translation.title}</h4>
-        <span class="periodical-freq">${frequencyText}</span>
         
-        <div class="periodical-overlay">
-          <div class="periodical-overlay-content">
-            <span class="overlay-badge ${badgeClass}">${badgeText}</span>
-            <h4 class="overlay-title">${translation.title}</h4>
-            <p class="periodical-desc">${translation.desc}</p>
+        <div class="periodical-details">
+          <div class="periodical-meta-row">
+            <span class="periodical-cat-label">${categoryText}</span>
+            <span class="periodical-freq-badge">${frequencyText}</span>
+          </div>
+          <h4 class="periodical-title" title="${translation.title}">${translation.title}</h4>
+          <p class="periodical-card-desc" title="${translation.desc}">${translation.desc}</p>
+          <div class="periodical-card-footer">
+            <button class="per-card-cta" onclick="window.open('https://e-library.cisc.uz','_blank')">
+              <span>${dict.perBtnRead || "PDFni o'qish"}</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" width="12" height="12"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </button>
           </div>
         </div>
       </div>
     `;
   }).join("");
 }
+
+function renderPeriodicals() {
+  renderCarouselSlides();
+  renderPeriodicalsGridOnly();
+}
+

@@ -2619,183 +2619,697 @@ h1 {
   .contact-form-row--2 { grid-template-columns: 1fr; }
 }
 
+
+/* ══════════════ REDESIGNED PERIODICALS PORTAL ══════════════ */
 .periodicals-wrap {
-  margin-top: 54px;
-  padding-top: 40px;
+  margin-top: 36px;
+  padding-top: 24px;
   border-top: 1px solid rgba(234, 210, 154, 0.1);
-}
-.section-header-mini {
-  margin-bottom: 28px;
-}
-.section-header-mini .svc-tag {
-  display: inline-block;
-  margin-bottom: 8px;
-}
-.section-title-mini {
-  font-size: 20px;
-  font-weight: 900;
-  color: var(--white);
-  margin-bottom: 6px;
-}
-.section-subtitle-mini {
-  font-size: 13px;
-  color: var(--muted);
-  max-width: 600px;
-}
-.periodicals-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 16px;
-}
-.periodical-card {
-  position: relative;
-  overflow: hidden;
-  border: 1px solid rgba(234, 210, 154, 0.12);
-  border-radius: var(--radius);
-  background: rgba(255, 250, 240, 0.03);
-  padding: 12px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: inset 0 1px 0 rgba(255, 250, 240, 0.04);
-  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1),
-              border-color 300ms cubic-bezier(0.16, 1, 0.3, 1),
-              background 300ms cubic-bezier(0.16, 1, 0.3, 1),
-              box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1);
-  cursor: pointer;
+  gap: 18px; /* Tighter layout to eliminate excessive whitespace */
 }
-.periodical-card:hover {
-  transform: translateY(-3px);
-  border-color: rgba(234, 210, 154, 0.35);
-  background: rgba(255, 250, 240, 0.08);
-  box-shadow: 
-    0 12px 30px rgba(200, 164, 93, 0.06),
-    inset 0 1px 0 rgba(255, 250, 240, 0.08);
-}
-.periodical-cover {
+
+/* ── Featured Hero Carousel ── */
+.per-carousel-container {
+  position: relative;
   width: 100%;
-  height: 220px;
-  border-radius: calc(var(--radius) - 4px);
-  background: linear-gradient(135deg, rgba(234, 210, 154, 0.08) 0%, rgba(234, 210, 154, 0.02) 100%);
+  border-radius: 16px;
+  overflow: hidden;
+  background: #041410; /* Deep blackish emerald */
+  border: 1px solid rgba(234, 210, 154, 0.15);
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(16, 185, 129, 0.05);
+}
+.per-carousel-viewport {
+  position: relative;
+  min-height: 380px;
+  width: 100%;
+  display: flex;
+}
+.per-carousel-slide {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 40px clamp(24px, 6vw, 64px);
+  gap: 40px;
+  transition: opacity 600ms cubic-bezier(0.25, 1, 0.5, 1), 
+              visibility 600ms;
+  z-index: 1;
+}
+.per-carousel-slide.active {
+  opacity: 1;
+  pointer-events: all;
+  visibility: visible;
+  z-index: 2;
+}
+.per-carousel-bg {
+  position: absolute;
+  inset: 0;
   background-size: cover;
   background-position: center;
+  filter: blur(40px) brightness(0.2);
+  opacity: 0.65;
+  pointer-events: none;
+  z-index: 0;
+}
+.per-carousel-content {
   position: relative;
-  border: 1px solid rgba(255, 250, 240, 0.05);
-  padding: 12px;
-  box-sizing: border-box;
-}
-.periodical-card-top {
+  z-index: 3;
+  flex: 1;
+  max-width: 600px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
 }
-.periodical-badge {
+.per-carousel-badges {
+  display: flex;
+  gap: 8px;
+}
+.per-badge {
   font-size: 10px;
   font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.08em;
   padding: 4px 10px;
   border-radius: 6px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
 }
-.periodical-badge--journal {
-  background: rgba(30, 77, 122, 0.2);
-  color: #7ab3ef;
-  border: 1px solid rgba(122, 179, 239, 0.3);
+.per-badge--featured {
+  background: rgba(200, 164, 93, 0.15);
+  color: var(--gold-2);
+  border: 1px solid rgba(200, 164, 93, 0.3);
+  box-shadow: 0 0 12px rgba(200, 164, 93, 0.1);
 }
-.periodical-badge--newspaper {
-  background: rgba(45, 90, 61, 0.2);
-  color: #8ed6a9;
-  border: 1px solid rgba(142, 214, 169, 0.3);
+.per-badge--type {
+  background: rgba(16, 185, 129, 0.15);
+  color: #34d399;
+  border: 1px solid rgba(16, 185, 129, 0.3);
 }
-.periodical-icon-wrap {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background: rgba(255, 250, 240, 0.05);
-  border: 1px solid rgba(255, 250, 240, 0.1);
+.per-carousel-title {
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+.per-carousel-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 520px;
+}
+.per-carousel-meta {
+  display: flex;
+  gap: 20px;
+  font-size: 12px;
+  color: var(--gold-2);
+  margin-top: 8px;
+}
+.per-meta-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+.per-carousel-btn-read {
+  margin-top: 12px;
+  box-shadow: 0 4px 14px rgba(200, 164, 93, 0.25);
+}
+
+/* Slide Cover Art */
+.per-carousel-cover-wrap {
+  position: relative;
+  z-index: 3;
+  width: 200px;
+  height: 266px; /* 3:4 aspect ratio approx */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.6),
+    0 0 25px rgba(200, 164, 93, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transform: rotate(2deg) translateY(-8px);
+  transition: transform 600ms cubic-bezier(0.25, 1, 0.5, 1);
+  flex-shrink: 0;
+}
+.per-carousel-slide.active .per-carousel-cover-wrap {
+  transform: rotate(0deg) translateY(0);
+}
+.per-carousel-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Carousel arrows */
+.per-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(4, 20, 16, 0.7);
+  border: 1px solid rgba(234, 210, 154, 0.2);
+  color: var(--white);
   display: grid;
   place-items: center;
-  color: var(--gold-2);
+  cursor: pointer;
+  z-index: 10;
+  transition: all 200ms;
+  backdrop-filter: blur(8px);
 }
-.periodical-card:hover .periodical-icon-wrap {
+.per-carousel-arrow:hover {
+  background: rgba(16, 185, 129, 0.25);
+  border-color: #34d399;
+  color: #34d399;
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.3);
+}
+.per-carousel-arrow--prev { left: 16px; }
+.per-carousel-arrow--next { right: 16px; }
+
+/* Dots indicators */
+.per-carousel-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+.per-carousel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  transition: all 250ms;
+}
+.per-carousel-dot.active {
+  background: var(--gold-2);
+  width: 24px;
+  border-radius: 4px;
+}
+
+/* ── Interactive Control Bar ── */
+.per-control-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px;
+  background: rgba(13, 43, 34, 0.45); /* Emerald dark glass */
+  border: 1px solid rgba(234, 210, 154, 0.12);
+  border-radius: 12px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  flex-wrap: wrap;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Search bar box */
+.per-search-box {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+  max-width: 280px;
+}
+.per-search-icon {
+  position: absolute;
+  left: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  pointer-events: none;
+}
+.per-search-input {
+  width: 100%;
+  background: rgba(255, 250, 240, 0.04);
+  border: 1px solid rgba(234, 210, 154, 0.15);
+  border-radius: 20px;
   color: var(--white);
-  border-color: rgba(234, 210, 154, 0.25);
-  background: rgba(234, 210, 154, 0.1);
+  font-size: 13px;
+  padding: 9px 36px 9px 38px;
+  outline: none;
+  transition: all 200ms;
+}
+.per-search-input::placeholder { color: rgba(255, 250, 240, 0.35); }
+.per-search-input:focus {
+  border-color: #34d399;
+  background: rgba(255, 250, 240, 0.07);
+  box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+}
+.per-search-clear {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--muted);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* Pill-shaped tabs */
+.per-pills {
+  display: flex;
+  gap: 4px;
+  background: rgba(4, 20, 16, 0.6);
+  border: 1px solid rgba(234, 210, 154, 0.1);
+  padding: 4px;
+  border-radius: 30px;
+}
+.per-pill {
+  border: none;
+  background: transparent;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 8px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 200ms;
+}
+.per-pill.active {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+  box-shadow: inset 0 0 0 1px rgba(16, 185, 129, 0.4);
+}
+.per-pill:hover:not(.active) {
+  color: var(--white);
+}
+
+/* Select dropdowns */
+.per-dropdowns {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.per-select-wrap {
+  position: relative;
+}
+.per-select {
+  appearance: none;
+  -webkit-appearance: none;
+  background: rgba(4, 20, 16, 0.6);
+  border: 1px solid rgba(234, 210, 154, 0.15);
+  border-radius: 20px;
+  color: var(--white);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 36px 8px 16px;
+  outline: none;
+  cursor: pointer;
+  transition: all 200ms;
+}
+.per-select:hover, .per-select:focus {
+  border-color: #34d399;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.15);
+}
+.per-select option {
+  background: #0a201b;
+  color: var(--white);
+}
+.per-select-arrow {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted);
+  width: 10px;
+  height: 6px;
+  pointer-events: none;
+}
+
+/* ── Dynamic Bento Grid Layout ── */
+.per-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-auto-flow: dense;
+  gap: 20px;
+}
+
+/* Standard cards: 1x1 */
+.periodical-card--standard {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+/* Bento cards: 2x2 */
+.periodical-card--large {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+/* Standardized Card Style */
+.periodical-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background: rgba(13, 43, 34, 0.25);
+  border: 1px solid rgba(234, 210, 154, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow 350ms cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 350ms cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+/* Card animations entry */
+@keyframes perCardFadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.periodical-card {
+  animation: perCardFadeIn 400ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* aspect ratio: 3:4 for standard card images */
+.periodical-cover-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  background: #020c0a;
+}
+.periodical-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Badges over covers */
+.periodical-top-badges {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 5;
+}
+.periodical-badge {
+  font-size: 9px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+.periodical-badge--journal {
+  background: rgba(30, 77, 122, 0.85);
+  color: #93c5fd;
+  border: 1px solid rgba(147, 197, 253, 0.4);
+}
+.periodical-badge--newspaper {
+  background: rgba(45, 90, 61, 0.85);
+  color: #a7f3d0;
+  border: 1px solid rgba(167, 243, 208, 0.4);
+}
+.periodical-badge-new {
+  background: rgba(224, 92, 92, 0.85);
+  color: #fca5a5;
+  border: 1px solid rgba(252, 165, 165, 0.4);
+  font-size: 9px;
+  font-weight: 900;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  align-self: flex-start;
+}
+
+/* Hover read overlay */
+.periodical-hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(4, 20, 16, 0.8);
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  transition: opacity 300ms;
+  z-index: 4;
+}
+.per-hover-btn {
+  background: var(--gold-2);
+  color: #041410;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(234, 210, 154, 0.4);
+  transform: translateY(12px);
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), background 200ms;
+}
+.per-hover-btn:hover {
+  background: var(--white);
+}
+
+/* Details area */
+.periodical-details {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+  background: rgba(13, 43, 34, 0.15);
+}
+.periodical-meta-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+.periodical-cat-label {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: var(--gold-2);
+  letter-spacing: 0.05em;
+}
+.periodical-freq-badge {
+  font-size: 11px;
+  color: var(--muted);
 }
 .periodical-title {
   font-size: 15px;
   font-weight: 800;
   color: var(--white);
-  line-height: 1.4;
+  line-height: 1.3;
   margin: 0;
-  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
-.periodical-freq {
-  font-size: 12px;
-  color: var(--gold-2);
-  font-weight: 600;
-}
-/* Overlay details on hover */
-.periodical-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(7, 28, 22, 0.96);
-  border: 1px solid rgba(234, 210, 154, 0.35);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 250ms cubic-bezier(0.16, 1, 0.3, 1);
-  z-index: 5;
-  border-radius: inherit;
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-.periodical-card:hover .periodical-overlay {
-  opacity: 1;
-  pointer-events: all;
-}
-.periodical-overlay-content {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  text-align: left;
-}
-.periodical-overlay-content .overlay-badge {
-  align-self: flex-start;
-}
-.overlay-badge {
-  font-size: 9px;
-  font-weight: 900;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  padding: 2px 8px;
-  border-radius: 4px;
-}
-.overlay-title {
-  font-size: 14px;
-  font-weight: 800;
-  color: var(--white);
-  margin: 0;
-}
-.periodical-desc {
+.periodical-card-desc {
   font-size: 12px;
   color: var(--muted);
-  line-height: 1.6;
+  line-height: 1.5;
   margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.periodical-card-footer {
+  margin-top: auto;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+.per-card-cta {
+  background: transparent;
+  border: 1px solid rgba(234, 210, 154, 0.25);
+  color: var(--gold-2);
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 200ms;
+}
+.per-card-cta:hover {
+  background: rgba(200, 164, 93, 0.1);
+  border-color: var(--gold-2);
 }
 
-/* RTL overrides for Periodicals */
-html[dir="rtl"] .periodical-overlay-content {
-  text-align: right;
+/* 2x2 large card specific adjustments */
+.periodical-card--large .periodical-cover-wrap {
+  aspect-ratio: auto;
+  height: 240px;
 }
-html[dir="rtl"] .periodical-overlay-content .overlay-badge {
-  align-self: flex-end;
+.periodical-card--large .periodical-title {
+  font-size: 18px;
+}
+.periodical-card--large .periodical-card-desc {
+  -webkit-line-clamp: 4;
+}
+
+/* ── Micro-interactions & Active Hover State ── */
+.periodical-card:hover,
+.periodical-card--hover-demo {
+  transform: translateY(-8px) scale(1.015);
+  border-color: rgba(16, 185, 129, 0.35);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.35),
+    0 0 25px rgba(16, 185, 129, 0.15),
+    0 0 10px rgba(200, 164, 93, 0.1);
+}
+.periodical-card:hover .periodical-cover-img,
+.periodical-card--hover-demo .periodical-cover-img {
+  transform: scale(1.05);
+}
+.periodical-card:hover .periodical-hover-overlay,
+.periodical-card--hover-demo .periodical-hover-overlay {
+  opacity: 1;
+}
+.periodical-card:hover .per-hover-btn,
+.periodical-card--hover-demo .per-hover-btn {
+  transform: translateY(0);
+}
+
+/* Empty State styling */
+.per-empty {
+  text-align: center;
+  padding: 64px 32px;
+  color: var(--muted);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  background: rgba(13, 43, 34, 0.1);
+  border: 1px dashed rgba(234, 210, 154, 0.15);
+  border-radius: 12px;
+}
+.per-empty svg {
+  color: var(--gold-2);
+  opacity: 0.5;
+}
+.per-empty p {
+  font-size: 14px;
+}
+
+/* RTL support overrides */
+html[dir="rtl"] .per-carousel-cover-wrap {
+  transform: rotate(-2deg) translateY(-8px);
+}
+html[dir="rtl"] .per-carousel-slide.active .per-carousel-cover-wrap {
+  transform: rotate(0deg) translateY(0);
+}
+html[dir="rtl"] .per-search-icon {
+  left: auto;
+  right: 14px;
+}
+html[dir="rtl"] .per-search-input {
+  padding: 9px 38px 9px 36px;
+}
+html[dir="rtl"] .per-search-clear {
+  right: auto;
+  left: 12px;
+}
+html[dir="rtl"] .per-select {
+  padding: 8px 16px 8px 36px;
+}
+html[dir="rtl"] .per-select-arrow {
+  right: auto;
+  left: 14px;
+}
+html[dir="rtl"] .periodical-top-badges {
+  left: auto;
+  right: 12px;
+}
+html[dir="rtl"] .periodical-card:hover,
+html[dir="rtl"] .periodical-card--hover-demo {
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.35),
+    0 0 25px rgba(16, 185, 129, 0.15),
+    0 0 10px rgba(200, 164, 93, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 980px) {
+  .per-carousel-slide {
+    flex-direction: column;
+    padding: 32px 40px;
+    gap: 20px;
+    align-items: center;
+    text-align: center;
+  }
+  .per-carousel-content {
+    align-items: center;
+    max-width: 100%;
+  }
+  .per-carousel-cover-wrap {
+    order: -1;
+    width: 140px;
+    height: 186px;
+  }
+  .per-carousel-bg {
+    background-image: linear-gradient(to bottom, rgba(6, 21, 16, 0.95) 40%, rgba(6, 21, 16, 0.8) 100%) !important;
+  }
+  .per-carousel-viewport {
+    min-height: 480px;
+  }
+  .periodical-card--large {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
+}
+@media (max-width: 720px) {
+  .per-control-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .per-search-box {
+    max-width: 100%;
+  }
+  .per-pills {
+    justify-content: center;
+  }
+  .per-dropdowns {
+    justify-content: center;
+  }
+  .per-select-wrap {
+    flex: 1;
+  }
+  .per-select {
+    width: 100%;
+  }
+}
+@media (max-width: 480px) {
+  .per-carousel-viewport {
+    min-height: 520px;
+  }
+  .per-carousel-arrow {
+    width: 36px;
+    height: 36px;
+  }
 }
 
 /* ══════════════ RTL (Arabic) Support ══════════════ */
@@ -2852,4 +3366,5 @@ html[dir="rtl"] .td-hint {
     right: auto;
     left: -38px;
   }
-}
+}
+
